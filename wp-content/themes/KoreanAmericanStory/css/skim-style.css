@@ -1,0 +1,14 @@
+.column_inner h3.cat-link-title a{
+	line-height: 53px;
+	font-size: 23px;
+	text-transform: uppercase;
+}
+.column_inner h3.cat-link-title a span.read-more{
+	display: none;
+}
+.column_inner:hover h3.cat-link-title a span.read-more{
+	display: block;
+	font-size: 14px;
+	float: right;
+	font-weight: 200;
+}

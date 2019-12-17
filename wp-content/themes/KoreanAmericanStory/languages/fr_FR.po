@@ -1,0 +1,1535 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Infographer v1.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-07-11 19:22+0100\n"
+"Last-Translator: Lisa Brunner (ID Grafix) <lisa.b@idgrafix.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;"
+"_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"Language: en_US\n"
+"X-Poedit-SearchPath-0: .\n"
+
+# @ qode
+#: 404.php:52
+msgid "404"
+msgstr "404"
+
+# @ qode
+#: 404.php:53
+msgid "Something went wrong"
+msgstr "Une erreur s'est produite"
+
+# @ qode
+#: 404.php:64
+msgid "Page not found"
+msgstr "page non trouvée"
+
+# @ qode
+#: 404.php:65
+msgid "Back to homepage"
+msgstr "Retour à la page d’accueil"
+
+# @ qode
+#: archive.php:65
+msgid "Archive"
+msgstr "Archive"
+
+# @ qode
+#: archive.php:114 archive.php:164 archive.php:218 archive.php:276
+#: archive.php:326 archive.php:381 archive.php:450 archive.php:501
+#: archive.php:556 blog-template1.php:123 blog-template1.php:175
+#: blog-template1.php:236 blog-template2.php:123 blog-template2.php:172
+#: blog-template2.php:231 blog-template3.php:131 blog-template3.php:192
+#: blog-template3.php:262 category.php:102 category.php:152 category.php:206
+#: category.php:264 category.php:314 category.php:369 category.php:438
+#: category.php:489 category.php:544 home.php:116 home.php:166 home.php:220
+#: home.php:278 home.php:328 home.php:383 home.php:452 home.php:503
+#: home.php:558 index.php:116 index.php:166 index.php:220 index.php:278
+#: index.php:328 index.php:383 index.php:452 index.php:503 index.php:558
+#: search.php:107 search.php:157 search.php:211 search.php:269 search.php:319
+#: search.php:374 search.php:443 search.php:494 search.php:549 single.php:128
+#: single.php:245 single.php:372
+msgid "Posted by"
+msgstr "Publié par"
+
+# @ qode
+#: archive.php:115 archive.php:165 archive.php:219 archive.php:277
+#: archive.php:327 archive.php:382 archive.php:451 archive.php:502
+#: archive.php:557 blog-template1.php:124 blog-template1.php:176
+#: blog-template1.php:237 blog-template2.php:124 blog-template2.php:173
+#: blog-template2.php:232 blog-template3.php:132 blog-template3.php:193
+#: blog-template3.php:263 category.php:103 category.php:153 category.php:207
+#: category.php:265 category.php:315 category.php:370 category.php:439
+#: category.php:490 category.php:545 home.php:117 home.php:167 home.php:221
+#: home.php:279 home.php:329 home.php:384 home.php:453 home.php:504
+#: home.php:559 index.php:117 index.php:167 index.php:221 index.php:279
+#: index.php:329 index.php:384 index.php:453 index.php:504 index.php:559
+#: search.php:108 search.php:158 search.php:212 search.php:270 search.php:320
+#: search.php:375 search.php:444 search.php:495 search.php:550 single.php:129
+#: single.php:246 single.php:373
+msgid "Category"
+msgstr "Categorie"
+
+# @ qode
+#: archive.php:132 archive.php:182 archive.php:237 archive.php:294
+#: archive.php:344 archive.php:400 archive.php:468 archive.php:519
+#: archive.php:575 blog-template1.php:141 blog-template1.php:193
+#: blog-template1.php:254 blog-template2.php:141 blog-template2.php:190
+#: blog-template2.php:249 blog-template3.php:150 blog-template3.php:211
+#: blog-template3.php:281 category.php:120 category.php:170 category.php:225
+#: category.php:282 category.php:332 category.php:388 category.php:456
+#: category.php:507 category.php:563 home.php:134 home.php:184 home.php:239
+#: home.php:296 home.php:346 home.php:402 home.php:470 home.php:521
+#: home.php:577 index.php:134 index.php:184 index.php:239 index.php:296
+#: index.php:346 index.php:402 index.php:470 index.php:521 index.php:577
+#: search.php:125 search.php:175 search.php:230 search.php:287 search.php:337
+#: search.php:393 search.php:461 search.php:512 search.php:568
+msgid "Read More"
+msgstr "Plus d'info"
+
+# @ qode
+#: archive.php:141 archive.php:193 archive.php:252 archive.php:303
+#: archive.php:355 archive.php:415 archive.php:477 archive.php:530
+#: archive.php:590 blog-template1.php:150 blog-template1.php:202
+#: blog-template1.php:263 blog-template2.php:152 blog-template2.php:201
+#: blog-template2.php:260 blog-template3.php:165 blog-template3.php:226
+#: blog-template3.php:296 category.php:129 category.php:181 category.php:240
+#: category.php:291 category.php:343 category.php:403 category.php:465
+#: category.php:518 category.php:578 home.php:143 home.php:195 home.php:254
+#: home.php:305 home.php:357 home.php:417 home.php:479 home.php:532
+#: home.php:592 index.php:143 index.php:195 index.php:254 index.php:305
+#: index.php:357 index.php:417 index.php:479 index.php:532 index.php:592
+#: search.php:134 search.php:186 search.php:245 search.php:296 search.php:348
+#: search.php:408 search.php:470 search.php:523 search.php:583
+msgid "No posts were found."
+msgstr "Aucun article trouvé."
+
+# @ qode
+#: comments.php:3
+msgid ""
+"This post is password protected. Enter the password to view any comments."
+msgstr ""
+"Cet article est protégé par un mot de passe. Veuillez saisir le mot de passe "
+"pour accéder aux commentaires."
+
+# @ qode
+#: comments.php:27
+msgid "Sorry, the comment form is closed at this time."
+msgstr ""
+"Désolé. Le formulaire pour les commentaire est désactivé pour le moment."
+
+# @ qode
+#: comments.php:40
+msgid "Post a comment"
+msgstr "Publier un commentaire"
+
+# @ qode
+#: comments.php:41
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Répondre à %s"
+
+# @ qode
+#: comments.php:42
+msgid "Cancel Reply"
+msgstr "Annuler la réponse"
+
+# @ qode
+#: comments.php:43 comments.php:44 single.php:133 single.php:250
+#: single.php:377
+msgid "COMMENT"
+msgstr "COMMENTAIRE"
+
+# @ qode
+#: comments.php:48
+msgid "NAME"
+msgstr "NOM"
+
+# @ qode
+#: comments.php:49
+msgid "WEBSITE"
+msgstr "SITE WEB"
+
+# @ qode
+#: comments.php:50
+msgid "EMAIL"
+msgstr "EMAIL"
+
+# @ qode
+#: contact-page.php:118 contact-page.php:185
+msgid "CONTACT US"
+msgstr "CONTACTEZ-NOUS"
+
+# @ qode
+#: contact-page.php:129
+msgid "First Name *"
+msgstr "Prénom *"
+
+# @ qode
+#: contact-page.php:131 contact-page.php:147
+msgid "Email *"
+msgstr "Email *"
+
+# @ qode
+#: contact-page.php:137
+msgid "Last Name *"
+msgstr "Nom *"
+
+# @ qode
+#: contact-page.php:141
+msgid "Web site"
+msgstr "Site web"
+
+# @ qode
+#: contact-page.php:149
+msgid "Message"
+msgstr "Message"
+
+# @ qode
+#: contact-page.php:219
+msgid " Required"
+msgstr " Obligatoire"
+
+# @ qode
+#: contact-page.php:231
+msgid " Invalid"
+msgstr " Invalide"
+
+# @ qode
+#: contact-page.php:266
+msgid "THANK YOU!"
+msgstr "MERCI !"
+
+# @ qode
+#: contact-page.php:266
+msgid ""
+"Your email was successfully sent. We will contact you as soon as possible."
+msgstr ""
+"Votre email a bien été envoyé. Nous vous contacterons dans les plus brefs "
+"délais."
+
+# @ qode
+#: contact-page.php:278
+msgid "Invalid Captcha"
+msgstr "Captcha invalide"
+
+# @ qode
+#: contact-page.php:287
+msgid "Email server problem"
+msgstr "Problème avec le serveur"
+
+# @ qode
+#: full_width.php:128 full_width.php:153 full_width.php:191 full_width.php:216
+#: full_width.php:260 full_width.php:285 page.php:124 page.php:149
+#: page.php:187 page.php:212 page.php:256 page.php:281
+#: single-portfolio_page.php:230 single-portfolio_page.php:255
+#: single-portfolio_page.php:363 single-portfolio_page.php:388
+#: single-portfolio_page.php:497 single-portfolio_page.php:522
+#: single-portfolio_page.php:552 single-portfolio_page.php:577
+#: single-portfolio_page.php:680 single-portfolio_page.php:705
+#: single-portfolio_page.php:811 single-portfolio_page.php:836
+#: single-portfolio_page.php:944 single-portfolio_page.php:969
+#: single-portfolio_page.php:1078 single-portfolio_page.php:1103
+#: single-portfolio_page.php:1133 single-portfolio_page.php:1158
+#: single-portfolio_page.php:1261 single-portfolio_page.php:1286
+#: single.php:178 single.php:203 single.php:294 single.php:319 single.php:423
+#: single.php:448
+msgid "Share"
+msgstr "Partager"
+
+# @ qode
+#: full_width.php:141 full_width.php:204 full_width.php:273 page.php:137
+#: page.php:200 page.php:269 single-portfolio_page.php:243
+#: single-portfolio_page.php:376 single-portfolio_page.php:510
+#: single-portfolio_page.php:565 single-portfolio_page.php:693
+#: single-portfolio_page.php:824 single-portfolio_page.php:957
+#: single-portfolio_page.php:1091 single-portfolio_page.php:1146
+#: single-portfolio_page.php:1274 single.php:191 single.php:307 single.php:436
+msgid "Tweet"
+msgstr "Tweeter"
+
+# @ qode
+#: functions.php:204
+msgid "Top Navigation"
+msgstr "Navigation supérieure"
+
+# @ qode
+#: functions.php:248
+msgid "Your comment is awaiting moderation."
+msgstr "Votre commentaire est en attente de modération"
+
+# @ qode
+#: functions.php:435
+msgid "Portfolio"
+msgstr "Portfolio"
+
+# @ qode
+#: functions.php:436
+msgid "Portfolio Item"
+msgstr "Elément du portfolio"
+
+# @ qode
+#: functions.php:437
+msgid "New Portfolio Item"
+msgstr "Nouvel élément du portfolio"
+
+# @ qode
+#: functions.php:438
+msgid "Add New Portfolio Item"
+msgstr "Ajouter nouvel élément au portfolio"
+
+# @ qode
+#: functions.php:439
+msgid "Edit Portfolio Item"
+msgstr "Editer une élément du portfolio"
+
+# @ taxonomy general name
+# @ qode
+#: functions.php:461 functions.php:471
+msgid "Portfolio Categories"
+msgstr "Catégories du portfolio"
+
+# @ taxonomy singular name
+#: functions.php:462
+msgid "Portfolio Category"
+msgstr "Catégories du portfolio"
+
+# @ qode
+#: functions.php:463
+msgid "Search Portfolio Categories"
+msgstr "Rechercher dans les catégories de portfolio"
+
+# @ qode
+#: functions.php:464
+msgid "All Portfolio Categories"
+msgstr "Toutes les catégories du portfolio"
+
+# @ qode
+#: functions.php:465
+msgid "Parent Portfolio Category"
+msgstr "Catégorie parente de portfolio"
+
+# @ qode
+#: functions.php:466
+msgid "Parent Portfolio Category:"
+msgstr "Catégorie parente de portfolio :"
+
+# @ qode
+#: functions.php:467
+msgid "Edit Portfolio Category"
+msgstr "Editer la catégorie du portfolio"
+
+# @ qode
+#: functions.php:468
+msgid "Update Portfolio Category"
+msgstr "Mettre à jour la catégorie du portfolio"
+
+# @ qode
+#: functions.php:469
+msgid "Add New Portfolio Category"
+msgstr "Ajouter une nouvelle catégorie de portfolio"
+
+# @ qode
+#: functions.php:470
+msgid "New Portfolio Category Name"
+msgstr "Nouveau nom de catégorie de portfolio"
+
+# @ qode
+#: functions.php:696 includes/class-tgm-plugin-activation.php:164
+msgid "Install Required Plugins"
+msgstr "Installez les plugins requis"
+
+# @ qode
+#: functions.php:697 includes/class-tgm-plugin-activation.php:165
+msgid "Install Plugins"
+msgstr "Installez les plugins"
+
+# @ qode
+#: functions.php:698 includes/class-tgm-plugin-activation.php:166
+#, php-format
+msgid "Installing Plugin: %s"
+msgstr "Installation des plugins : %s"
+
+# @ qode
+#: functions.php:699
+msgid "Something went wrong with the plugin API."
+msgstr " Quelque chose a mal fonctionné avec l’API du plugin."
+
+# @ qode
+#: functions.php:700 includes/class-tgm-plugin-activation.php:168
+#, php-format
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] "Ce thème requiert les plugins suivants : %1$s."
+msgstr[1] "Ce thème requiert les plugins suivants : %1$s."
+
+# @ qode
+#: functions.php:701 includes/class-tgm-plugin-activation.php:169
+#, php-format
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] "Ce thème recommande le plugin suivant : %1$s."
+msgstr[1] "Ce thème recommande le plugin suivant : %1$s."
+
+# @ qode
+#: functions.php:702 includes/class-tgm-plugin-activation.php:170
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to install the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"installed."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to install the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins installed."
+msgstr[0] ""
+"Désolé, vous ne disposez pas des droits nécessaires pour installer les %s "
+"plugins. Veuillez contacter l’administrateur du site."
+msgstr[1] ""
+"Désolé, vous ne disposez pas des droits nécessaires pour installer les %s "
+"plugins. Veuillez contacter l’administrateur du site."
+
+# @ qode
+#: functions.php:703 includes/class-tgm-plugin-activation.php:171
+#, php-format
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] "Le plugin requis suivant est inactif : %1$s."
+msgstr[1] "Les plugins requis suivants sont inactifs : %1$s."
+
+# @ qode
+#: functions.php:704 includes/class-tgm-plugin-activation.php:172
+#, php-format
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] "Le plugin recommandé suivant est inactif : %1$s."
+msgstr[1] "Les plugins recommandés suivants sont inactifs : %1$s."
+
+# @ qode
+#: functions.php:705 includes/class-tgm-plugin-activation.php:173
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugin. Contact the administrator of this site for help on getting the "
+"plugin activated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to activate the %s "
+"plugins. Contact the administrator of this site for help on getting the "
+"plugins activated."
+msgstr[0] ""
+"Désolé, vous ne disposez pas de droits suffisants pour activer le plugin %s. "
+"Veuillez contacter l’administrateur svp."
+msgstr[1] ""
+"Désolé, vous ne disposez pas de droits suffisants pour activer les plugins "
+"%s. Veuillez contacter l’administrateur svp."
+
+# @ qode
+#: functions.php:706 includes/class-tgm-plugin-activation.php:174
+#, php-format
+msgid ""
+"The following plugin needs to be updated to its latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgid_plural ""
+"The following plugins need to be updated to their latest version to ensure "
+"maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+"Le plugin suivant doit être mis à jour afin de garantir une compatibilité "
+"optimale avec ce thème : %1$s."
+msgstr[1] ""
+"Les plugins suivants doivent être mis à jour afin de garantir une "
+"compatibilité optimale avec ce thème : %1$s."
+
+# @ qode
+#: functions.php:707 includes/class-tgm-plugin-activation.php:175
+#, php-format
+msgid ""
+"Sorry, but you do not have the correct permissions to update the %s plugin. "
+"Contact the administrator of this site for help on getting the plugin "
+"updated."
+msgid_plural ""
+"Sorry, but you do not have the correct permissions to update the %s plugins. "
+"Contact the administrator of this site for help on getting the plugins "
+"updated."
+msgstr[0] ""
+"Désolé, vous ne disposez pas de droits suffisants pour mettre à jour le "
+"plugin %s. Veuillez contacter l’administrateur svp."
+msgstr[1] ""
+"Désolé, vous ne disposez pas de droits suffisants pour mettre à jour les "
+"plugins %s. Veuillez contacter l’administrateur svp."
+
+# @ qode
+#: functions.php:708 includes/class-tgm-plugin-activation.php:176
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] "Commencer l'installation du plugin"
+msgstr[1] "Commencer l'installation des plugins"
+
+# @ qode
+#: functions.php:709 includes/class-tgm-plugin-activation.php:177
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] "Activer le plugin installé"
+msgstr[1] "Activer les pluginsinstallés"
+
+# @ qode
+#: functions.php:710 includes/class-tgm-plugin-activation.php:178
+#: includes/class-tgm-plugin-activation.php:490
+msgid "Return to Required Plugins Installer"
+msgstr "Retour à l'installateur des plugins requis"
+
+# @ qode
+#: functions.php:711 includes/class-tgm-plugin-activation.php:179
+#: includes/class-tgm-plugin-activation.php:1846
+msgid "Plugin activated successfully."
+msgstr "Plugin activé avec succès."
+
+# @ qode
+#: functions.php:712
+#, php-format
+msgid "All plugins installed and activated successfully. %s"
+msgstr "Tous les plugins ont été installés et activés avec succès. %s"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:167
+msgid "Something went wrong."
+msgstr "Une erreur s'est produite."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:180
+#, php-format
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr "Tous les plugins ont été installés et activés avec succès. %1$s"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:517
+#: includes/class-tgm-plugin-activation.php:2058
+msgid "Return to the Dashboard"
+msgstr "Retour au tableau de bord"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:545
+#, php-format
+msgid "The following plugin was activated successfully: %s."
+msgstr "Le plugin suivant a été activé avec succès : %s."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:704
+msgid "Dismiss this notice"
+msgstr "Ignorer ce commentaire"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1091
+msgid "External Link"
+msgstr "Lien externe"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1096
+msgid "Private Repository"
+msgstr "Répertoire privé"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1099
+msgid "Pre-Packaged"
+msgstr "Pré-packagé"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1103
+msgid "WordPress Repository"
+msgstr "Répertoires des plugins de Wordpress"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1106
+msgid "Required"
+msgstr "Requis"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1106
+msgid "Recommended"
+msgstr "Recommandé"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1109
+msgid "Not Installed"
+msgstr "Non installé"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1111
+msgid "Installed But Not Activated"
+msgstr "Installé mais pas activé"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1281
+#, php-format
+msgid ""
+"No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+"Aucun plugin à installer ou activer. <a href=\"%1$s\" title=\"Return to the "
+"Dashboard\">Retour au tableau de bord</a>"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1297
+msgid "Plugin"
+msgstr "Plugin"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1298
+msgid "Source"
+msgstr "Source"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1299
+msgid "Type"
+msgstr "Type"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1300
+msgid "Status"
+msgstr "Statut"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1318
+msgid "Install"
+msgstr "Installer"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1319
+msgid "Activate"
+msgstr "Activer"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1544
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] "Le plugin suivant a été activé avec succès :"
+msgstr[1] "Les plugins suivant ont été activés avec succès :"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1829
+msgid "Install package not available."
+msgstr "Le package d’installation n’est pas disponible."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1830
+#, php-format
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+"Téléchargement du package d'installation de <span class=\"code\">%s</"
+"span>&#8230;"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1831
+msgid "Unpacking the package&#8230;"
+msgstr "Dépaquetement du paquet &#8230; en cours"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1832
+msgid "Installing the plugin&#8230;"
+msgstr "Installation du plugin &#8230;"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1833
+msgid "Plugin install failed."
+msgstr "L'installation du plugin a échoué."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1834
+msgid "Plugin installed successfully."
+msgstr "Plugin installé avec succès."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1845
+msgid "Plugin activation failed."
+msgstr "L'activation du plugin a échoué."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1955
+msgid ""
+"The installation and activation process is starting. This process may take a "
+"while on some hosts, so please be patient."
+msgstr "Installation en cours. Veuillez patienter svp."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1956
+#, php-format
+msgid "%1$s installed and activated successfully."
+msgstr "%1$s installé et activé avec succès."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1956
+#: includes/class-tgm-plugin-activation.php:1965
+msgid "Show Details"
+msgstr "Afficher le détail"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1956
+#: includes/class-tgm-plugin-activation.php:1965
+msgid "Hide Details"
+msgstr "Masquer le détail"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1957
+msgid "All installations and activations have been completed."
+msgstr "Toutes les installations et activations sont terminées."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1958
+#, php-format
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr "Installation et activation du plugin %1$s (%2$d/%3$d) en cours"
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1962
+msgid ""
+"The installation process is starting. This process may take a while on some "
+"hosts, so please be patient."
+msgstr "L'installation commence. Veuillez patienter svp."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1963
+#, php-format
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+"Une erreur set survenue durant l'installation de %1$s: <strong>%2$s</strong>."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1964
+#, php-format
+msgid "The installation of %1$s failed."
+msgstr "L'installation de %1$s a échoué."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1965
+#, php-format
+msgid "%1$s installed successfully."
+msgstr "%1$s installé avec succès."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1966
+msgid "All installations have been completed."
+msgstr "Toutes les installations sont terminées."
+
+# @ qode
+#: includes/class-tgm-plugin-activation.php:1967
+#, php-format
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr "Installation du plugin %1$s (%2$d/%3$d)"
+
+# @ qode
+#: includes/qode-options.php:230
+msgid "Qode"
+msgstr "Qode"
+
+# @ qode
+#: includes/qode-options.php:237
+msgid "Options"
+msgstr "Options"
+
+# @ qode
+#: includes/qode-options.php:248
+msgid "Settings saved."
+msgstr "Réglages sauvegardés"
+
+# @ qode
+#: includes/qode-options.php:255
+#, php-format
+msgid "version %1$s"
+msgstr "Version %1$s"
+
+# @ qode
+#: includes/qode-options.php:270 includes/qode-options.php:273
+msgid "Reset to defaults"
+msgstr "Restaurer les paramètres par défaut"
+
+# @ qode
+#: includes/qode-options.php:278 includes/qode-options.php:1976
+msgid "Save Changes"
+msgstr "Sauver les changements"
+
+# @ qode
+#: includes/qode-options.php:333
+msgid "First main color"
+msgstr "Première couleur principale"
+
+# @ qode
+#: includes/qode-options.php:337
+msgid "Choose first main color"
+msgstr "Choisir la première couleur principale"
+
+# @ qode
+#: includes/qode-options.php:341
+msgid "Second main color"
+msgstr "Deuxième couleur principale"
+
+# @ qode
+#: includes/qode-options.php:345
+msgid "Choose second main color"
+msgstr "Choisir la deuxième couleur principale"
+
+# @ qode
+#: includes/qode-options.php:349 includes/qode-options.php:1049
+#: includes/qode-options.php:1346 includes/qode-options.php:1361
+#: includes/qode-options.php:1424 includes/qode-options.php:1543
+#: includes/qode-options.php:1559 includes/qode-options.php:1584
+#: includes/qode-options.php:1635 includes/qode-options.php:1665
+msgid "Background color"
+msgstr "Couleur de fond"
+
+# @ qode
+#: includes/qode-options.php:353
+msgid "Choose background color"
+msgstr "Choisir la couleur de fond"
+
+# @ qode
+#: includes/qode-options.php:357
+msgid "Box background color"
+msgstr "Couleur de fond de la boîte"
+
+# @ qode
+#: includes/qode-options.php:361
+msgid "Choose box background color"
+msgstr "Choisir la couleur de fond de la boîte"
+
+# @ qode
+#: includes/qode-options.php:365
+msgid "Highlight color"
+msgstr "Couleur de surlignage"
+
+# @ qode
+#: includes/qode-options.php:369
+msgid "Choose highlight color"
+msgstr "Choisir la couleur de surlignage"
+
+# @ qode
+#: includes/qode-options.php:373
+msgid "Selection color"
+msgstr "Couleur de sélection"
+
+# @ qode
+#: includes/qode-options.php:377
+msgid "Choose selection color"
+msgstr "Choisir la couleur de sélection"
+
+# @ qode
+#: includes/qode-options.php:381
+msgid "Background image"
+msgstr "Image de fond"
+
+# @ qode
+#: includes/qode-options.php:387 includes/qode-options.php:398
+msgid "Only with boxed layout"
+msgstr "Seulement avec la mise en page encadrée"
+
+# @ qode
+#: includes/qode-options.php:392
+msgid "Pattern background image"
+msgstr "Image du motif de fond"
+
+# @ qode
+#: includes/qode-options.php:403
+msgid "Favicon image"
+msgstr "Image du favicon"
+
+# @ qode
+#: includes/qode-options.php:412
+msgid "Google fonts"
+msgstr "Polices Google"
+
+# @ qode
+#: includes/qode-options.php:421
+msgid "Choose Font"
+msgstr "Choisir polices"
+
+# @ qode
+#: includes/qode-options.php:425
+msgid "Page transition"
+msgstr "Transition de pages"
+
+# @ qode
+#: includes/qode-options.php:434
+msgid ""
+"In order for animation to work properly, you must choose \"Post name\" in "
+"permalinks settings"
+msgstr ""
+"Pour que l'animation fonctionne correctement, vous devez choisir \"Post name"
+"\" dans les paramètres permaliens"
+
+# @ qode
+#: includes/qode-options.php:438
+msgid "Boxed"
+msgstr "Encadré"
+
+# @ qode
+#: includes/qode-options.php:447
+msgid "Responsiveness"
+msgstr "Adaptivité"
+
+# @ qode
+#: includes/qode-options.php:456
+msgid "Show back button"
+msgstr "Afficher le bouton retour"
+
+# @ qode
+#: includes/qode-options.php:465
+msgid "Google Analytics Account ID"
+msgstr "ID du compte Google Analytics"
+
+# @ qode
+#: includes/qode-options.php:471
+msgid "List of internal URLs loaded without AJAX (separated with comma)"
+msgstr ""
+"Liste des URLs internes téléchargés sans AJAX (séparés par une virgule)"
+
+# @ qode
+#: includes/qode-options.php:480
+msgid "Custom css"
+msgstr "Feuille de style CSS personnalisée"
+
+# @ qode
+#: includes/qode-options.php:489
+msgid "Custom js"
+msgstr "JS personnalisé"
+
+# @ qode
+#: includes/qode-options.php:494
+msgid "jQuery selector is \"$j\" because of the conflict mode"
+msgstr "Le sélecteur jQuery est \"$j\" en raison du mode conflit"
+
+# @ qode
+#: includes/qode-options.php:498
+msgid "Meta Keywords"
+msgstr "Meta keywords"
+
+# @ qode
+#: includes/qode-options.php:506
+msgid "Meta Description"
+msgstr "Meta description"
+
+# @ qode
+#: includes/qode-options.php:514
+msgid "Disable Qode SEO"
+msgstr "Désactiver le Qode SEO"
+
+# @ qode
+#: includes/qode-options.php:532
+msgid "H1 style"
+msgstr "Style H1"
+
+# @ qode
+#: includes/qode-options.php:535 includes/qode-options.php:585
+#: includes/qode-options.php:636 includes/qode-options.php:687
+#: includes/qode-options.php:738 includes/qode-options.php:789
+#: includes/qode-options.php:841 includes/qode-options.php:896
+#: includes/qode-options.php:945 includes/qode-options.php:1052
+#: includes/qode-options.php:1092 includes/qode-options.php:1154
+#: includes/qode-options.php:1209 includes/qode-options.php:1372
+#: includes/qode-options.php:1450 includes/qode-options.php:1472
+#: includes/qode-options.php:1491 includes/qode-options.php:1554
+#: includes/qode-options.php:1638 includes/qode-options.php:1668
+msgid "Color"
+msgstr "Couleur"
+
+# @ qode
+#: includes/qode-options.php:540 includes/qode-options.php:590
+#: includes/qode-options.php:641 includes/qode-options.php:692
+#: includes/qode-options.php:743 includes/qode-options.php:794
+#: includes/qode-options.php:846 includes/qode-options.php:950
+#: includes/qode-options.php:1102 includes/qode-options.php:1164
+#: includes/qode-options.php:1219 includes/qode-options.php:1382
+#: includes/qode-options.php:1501 includes/qode-options.php:1564
+msgid "Font family"
+msgstr "Famille de polices"
+
+# @ qode
+#: includes/qode-options.php:549 includes/qode-options.php:599
+#: includes/qode-options.php:650 includes/qode-options.php:701
+#: includes/qode-options.php:752 includes/qode-options.php:803
+#: includes/qode-options.php:855 includes/qode-options.php:959
+#: includes/qode-options.php:1111 includes/qode-options.php:1173
+#: includes/qode-options.php:1228 includes/qode-options.php:1391
+#: includes/qode-options.php:1510
+msgid "Font size (px)"
+msgstr "Taille de la police (px)"
+
+# @ qode
+#: includes/qode-options.php:553 includes/qode-options.php:603
+#: includes/qode-options.php:654 includes/qode-options.php:705
+#: includes/qode-options.php:756 includes/qode-options.php:807
+#: includes/qode-options.php:859 includes/qode-options.php:963
+#: includes/qode-options.php:1115 includes/qode-options.php:1177
+#: includes/qode-options.php:1232 includes/qode-options.php:1395
+#: includes/qode-options.php:1514
+msgid "Line height (px)"
+msgstr "Hauteur de ligne (px)"
+
+# @ qode
+#: includes/qode-options.php:557 includes/qode-options.php:607
+#: includes/qode-options.php:658 includes/qode-options.php:709
+#: includes/qode-options.php:760 includes/qode-options.php:811
+#: includes/qode-options.php:863 includes/qode-options.php:906
+#: includes/qode-options.php:967 includes/qode-options.php:1119
+#: includes/qode-options.php:1181 includes/qode-options.php:1236
+#: includes/qode-options.php:1399 includes/qode-options.php:1518
+msgid "Font style"
+msgstr "Style de police"
+
+# @ qode
+#: includes/qode-options.php:566 includes/qode-options.php:616
+#: includes/qode-options.php:667 includes/qode-options.php:718
+#: includes/qode-options.php:769 includes/qode-options.php:820
+#: includes/qode-options.php:872 includes/qode-options.php:915
+#: includes/qode-options.php:976 includes/qode-options.php:1128
+#: includes/qode-options.php:1190 includes/qode-options.php:1244
+#: includes/qode-options.php:1408 includes/qode-options.php:1527
+msgid "Font weight"
+msgstr "Graisse de la police"
+
+# @ qode
+#: includes/qode-options.php:582
+msgid "H2 style"
+msgstr "Style H2"
+
+# @ qode
+#: includes/qode-options.php:633
+msgid "H3 style"
+msgstr "Style H3"
+
+# @ qode
+#: includes/qode-options.php:684
+msgid "H4 style"
+msgstr "Style H4"
+
+# @ qode
+#: includes/qode-options.php:735
+msgid "H5 style"
+msgstr "Style H5"
+
+# @ qode
+#: includes/qode-options.php:786
+msgid "H6 style"
+msgstr "Style H6"
+
+# @ qode
+#: includes/qode-options.php:838
+msgid "Text style"
+msgstr "Style du texte"
+
+# @ qode
+#: includes/qode-options.php:887
+msgid "Top/Bottom margin (px)"
+msgstr "Marge supérieure/inférieure (px)"
+
+# @ qode
+#: includes/qode-options.php:893
+msgid "Link style"
+msgstr "Style du lien"
+
+# @ qode
+#: includes/qode-options.php:901 includes/qode-options.php:1097
+#: includes/qode-options.php:1159 includes/qode-options.php:1214
+#: includes/qode-options.php:1377 includes/qode-options.php:1496
+msgid "Hover color"
+msgstr "Couleur changeable"
+
+# @ qode
+#: includes/qode-options.php:930
+msgid "Font decoration"
+msgstr "Décoration de la police"
+
+# @ qode
+#: includes/qode-options.php:942
+msgid "Page title style"
+msgstr "Style du titre de la page"
+
+# @ qode
+#: includes/qode-options.php:1002
+msgid "Hide header"
+msgstr "Masquer l'entête"
+
+# @ qode
+#: includes/qode-options.php:1014
+msgid "Header in grid"
+msgstr "Entête dans grille"
+
+# @ qode
+#: includes/qode-options.php:1026
+msgid "Fixed header"
+msgstr "Entête fixe"
+
+# @ qode
+#: includes/qode-options.php:1037
+msgid "Show header widget area"
+msgstr "Afficher la zone des widgets"
+
+# @ qode
+#: includes/qode-options.php:1059
+msgid "Logo"
+msgstr "Logo"
+
+# @ qode
+#: includes/qode-options.php:1062
+msgid "Logo image"
+msgstr "Image du logo"
+
+# @ qode
+#: includes/qode-options.php:1069
+msgid "Menu position"
+msgstr "Position du menu"
+
+# @ qode
+#: includes/qode-options.php:1080
+msgid "Main menu background color for 2nd and 3rd level"
+msgstr "Couleur principale du fond de menu pour 2ème et 3ème niveaux"
+
+# @ qode
+#: includes/qode-options.php:1089
+msgid "1st level menu style"
+msgstr "Style du 1er niveau de menu"
+
+# @ qode
+#: includes/qode-options.php:1144
+msgid "Background hover color"
+msgstr "Couleur changeable du fond"
+
+# @ qode
+#: includes/qode-options.php:1151
+msgid "2nd level menu style"
+msgstr "Style du 2ème niveau de menu"
+
+# @ qode
+#: includes/qode-options.php:1206
+msgid "3rd level menu style"
+msgstr "Style du 3ème niveau de menu"
+
+# @ qode
+#: includes/qode-options.php:1260 includes/qode-options.php:1846
+msgid "Title"
+msgstr "Titre"
+
+# @ qode
+#: includes/qode-options.php:1263
+msgid "Responsive title image"
+msgstr "Image de titre adaptative"
+
+# @ qode
+#: includes/qode-options.php:1270
+msgid "Title image"
+msgstr "Titre de l'image"
+
+# @ qode
+#: includes/qode-options.php:1276
+msgid "Fixed title image"
+msgstr "Image de titre fixe"
+
+# @ qode
+#: includes/qode-options.php:1281 includes/qode-options.php:1286
+msgid "Only if title image is not responsive"
+msgstr "Seulement si l'image de titre n'est pas adaptative"
+
+# @ qode
+#: includes/qode-options.php:1284
+msgid "Title height (px)"
+msgstr "Hauteur du titre (px)"
+
+# @ qode
+#: includes/qode-options.php:1290
+msgid "Title position"
+msgstr "Position du titre"
+
+# @ qode
+#: includes/qode-options.php:1299
+msgid "Title in grid"
+msgstr "Titre dans la grille"
+
+# @ qode
+#: includes/qode-options.php:1309
+msgid "Show footer top"
+msgstr "Montrer le haut du pied de page"
+
+# @ qode
+#: includes/qode-options.php:1321
+msgid "Show footer bootm"
+msgstr "Montrer le bas du pied de page"
+
+# @ qode
+#: includes/qode-options.php:1333
+msgid "Footer top colors"
+msgstr "Couleur du pied de page (partie supérieure)"
+
+# @ qode
+#: includes/qode-options.php:1336
+msgid "Title color"
+msgstr "Couleur du titre"
+
+# @ qode
+#: includes/qode-options.php:1341 includes/qode-options.php:1356
+#: includes/qode-options.php:1579
+msgid "Text color"
+msgstr "Couleur du texte"
+
+# @ qode
+#: includes/qode-options.php:1353
+msgid "Footer bottom colors"
+msgstr "Couleur du pied de page (partie inférieure)"
+
+# @ qode
+#: includes/qode-options.php:1369
+msgid "Content menu style"
+msgstr "Style du menu contenu"
+
+# @ qode
+#: includes/qode-options.php:1429
+msgid "Position"
+msgstr "Position"
+
+# @ qode
+#: includes/qode-options.php:1447
+msgid "Default separator"
+msgstr "Séparateur par défaut"
+
+# @ qode
+#: includes/qode-options.php:1455
+msgid "Thickness (px)"
+msgstr "Epaisseur (px)"
+
+# @ qode
+#: includes/qode-options.php:1459 includes/qode-options.php:1477
+msgid "Top margin (px)"
+msgstr "MArge supérieure (px)"
+
+# @ qode
+#: includes/qode-options.php:1463 includes/qode-options.php:1481
+msgid "Bottom margin (px)"
+msgstr "Marge inférieure (px)"
+
+# @ qode
+#: includes/qode-options.php:1469
+msgid "Pattern separator"
+msgstr "Séparateur à motif"
+
+# @ qode
+#: includes/qode-options.php:1488
+msgid "Button style"
+msgstr "Style du bouton"
+
+# @ qode
+#: includes/qode-options.php:1551
+msgid "Message box style"
+msgstr "Style boîte de message"
+
+# @ qode
+#: includes/qode-options.php:1576
+msgid "Blockquote style"
+msgstr "Style citations"
+
+# @ qode
+#: includes/qode-options.php:1599
+msgid "Parallax speed"
+msgstr "Vitesse du parallaxe"
+
+# @ qode
+#: includes/qode-options.php:1607
+msgid "Parallax on touch devices"
+msgstr "Parallaxe sur les appareils touch"
+
+# @ qode
+#: includes/qode-options.php:1618
+msgid "Parallax min height (px)"
+msgstr "Hauteur minimale du parallaxe (px)"
+
+# @ qode
+#: includes/qode-options.php:1622
+msgid "Set min-height for last two stages"
+msgstr "Définir la hauteur minimale pour les deux dernières étapes"
+
+# @ qode
+#: includes/qode-options.php:1645
+msgid "Portfolio style"
+msgstr "Style de portfolio"
+
+# @ qode
+#: includes/qode-options.php:1675
+msgid "Pagination"
+msgstr "Pagination"
+
+# @ qode
+#: includes/qode-options.php:1684
+msgid "Blog list style"
+msgstr "Style de la liste du blog"
+
+# @ qode
+#: includes/qode-options.php:1694
+msgid "Blog sidebar"
+msgstr "Barre latérale du blog"
+
+# @ qode
+#: includes/qode-options.php:1704
+msgid "Choose category sidebar"
+msgstr "Choisir la barre latérale des catégories"
+
+# @ qode
+#: includes/qode-options.php:1708
+msgid "Hide comments"
+msgstr "Masquer les commentaires"
+
+# @ qode
+#: includes/qode-options.php:1717
+msgid "Number of characters"
+msgstr "Nombre de caractères"
+
+# @ qode
+#: includes/qode-options.php:1720
+msgid "Number of characters in blog listing"
+msgstr "Nombre de caractères dans le listing du blog"
+
+# @ qode
+#: includes/qode-options.php:1724
+msgid "Enable back to previous"
+msgstr "Activer retour au précédent"
+
+# @ qode
+#: includes/qode-options.php:1730
+msgid "Enable back to previous button in single post"
+msgstr "Activer le bouton retour au précédent pour les articles"
+
+# @ qode
+#: includes/qode-options.php:1742
+msgid "Mail send to"
+msgstr "Mail envoyé à"
+
+# @ qode
+#: includes/qode-options.php:1748
+msgid "Enable Contact Form"
+msgstr "Activer le formulaire de contact"
+
+# @ qode
+#: includes/qode-options.php:1757
+msgid "Hide Website Field"
+msgstr "Cacher le champ du site web"
+
+# @ qode
+#: includes/qode-options.php:1766
+msgid "Email From"
+msgstr "Email de"
+
+# @ qode
+#: includes/qode-options.php:1772
+msgid "Email Subject"
+msgstr "Sujet de l'email"
+
+# @ qode
+#: includes/qode-options.php:1778
+msgid "Use reCaptcha"
+msgstr "Utiliser reCaptcha"
+
+# @ qode
+#: includes/qode-options.php:1787
+msgid "ReCaptcha public key"
+msgstr "ReCaptcha clé publique"
+
+# @ qode
+#: includes/qode-options.php:1794
+msgid "ReCaptcha private key"
+msgstr "ReCaptcha clé privée"
+
+# @ qode
+#: includes/qode-options.php:1800
+msgid "Heading above contact form"
+msgstr "Heading au-dessus du formulaire de contact"
+
+# @ qode
+#: includes/qode-options.php:1806
+msgid "Text above contact form"
+msgstr "Texte au-dessus du formulaire de contact"
+
+# @ qode
+#: includes/qode-options.php:1812
+msgid "Enable Google Map"
+msgstr "Activer Google Map"
+
+# @ qode
+#: includes/qode-options.php:1822
+msgid "Pin image"
+msgstr "Image pin"
+
+# @ qode
+#: includes/qode-options.php:1831
+msgid "Google map address"
+msgstr "Adresse Google map"
+
+# @ qode
+#: includes/qode-options.php:1852
+msgid "Subtitle"
+msgstr "Sous-titre"
+
+# @ qode
+#: includes/qode-options.php:1858
+msgid "Text"
+msgstr "Texte"
+
+# @ qode
+#: includes/qode-options.php:1864
+msgid "Back to home label"
+msgstr "Retour à l'accueil"
+
+# @ qode
+#: includes/qode-options.php:1878
+msgid "Enable Social Share"
+msgstr "Activer le partage social"
+
+# @ qode
+#: includes/qode-options.php:1887
+msgid "Facebook"
+msgstr "Facebook"
+
+# @ qode
+#: includes/qode-options.php:1890
+msgid "Enable Facebook"
+msgstr "Activer Facebook"
+
+# @ qode
+#: includes/qode-options.php:1897 includes/qode-options.php:1914
+#: includes/qode-options.php:1935
+msgid "Share Icon"
+msgstr "Icône de partage"
+
+# @ qode
+#: includes/qode-options.php:1904
+msgid "Twitter"
+msgstr "Twitter"
+
+# @ qode
+#: includes/qode-options.php:1907
+msgid "Enable Twitter"
+msgstr "Activer Twitter"
+
+# @ qode
+#: includes/qode-options.php:1919
+msgid "Via"
+msgstr "Via"
+
+# @ qode
+#: includes/qode-options.php:1925
+msgid "Google +"
+msgstr "Google +"
+
+# @ qode
+#: includes/qode-options.php:1928
+msgid "Enable Google +"
+msgstr "Activer Google +"
+
+# @ qode
+#: includes/qode-options.php:1942
+msgid "Show For"
+msgstr "Montrer pour"
+
+# @ qode
+#: includes/shortcodes.php:733
+msgid "View by Type"
+msgstr "Filtrer par type"
+
+# @ qode
+#: includes/shortcodes.php:736
+msgid "All"
+msgstr "Tous"
+
+# @ qode
+#: includes/shortcodes.php:883
+msgid "Sorry, no posts matched your criteria."
+msgstr "Désolé, aucun article ne correspond à ces critères."
+
+# @ qode
+#: includes/shortcodes.php:887
+msgid "Load More"
+msgstr "Télécharger plus"
+
+# @ qode
+#: js/default_dynamic.php:116
+msgid "Comment has been sent!"
+msgstr "Le commentaire a été envoyé !"
+
+# @ qode
+#: search.php:66
+msgid "SEARCH"
+msgstr "RECHERCHE"
+
+# @ qode
+#: single-portfolio_page.php:70
+msgid "Category: "
+msgstr "Catégorie :"
+
+# @ qode
+#: single-portfolio_page.php:98
+msgid "PREVIOUS"
+msgstr "PRECEDENT"
+
+# @ qode
+#: single-portfolio_page.php:102
+msgid "NEXT"
+msgstr "SUIVANT"
+
+# @ qode
+#: single-portfolio_page.php:209 single-portfolio_page.php:342
+#: single-portfolio_page.php:470 single-portfolio_page.php:653
+#: single-portfolio_page.php:790 single-portfolio_page.php:923
+#: single-portfolio_page.php:1051 single-portfolio_page.php:1234
+msgid "Date"
+msgstr "Date"
+
+# @ qode
+#: single-portfolio_page.php:213 single-portfolio_page.php:346
+#: single-portfolio_page.php:480 single-portfolio_page.php:663
+#: single-portfolio_page.php:794 single-portfolio_page.php:927
+#: single-portfolio_page.php:1061 single-portfolio_page.php:1244
+msgid "About"
+msgstr "A propos de"
+
+# @ qode
+#: single.php:74
+msgid "BLOG"
+msgstr "BLOG"
+
+# @ qode
+#: single.php:133 single.php:250 single.php:377
+msgid "NO COMMENT"
+msgstr "PAS DE COMMENTAIRE"
+
+# @ qode
+#: single.php:138 single.php:255 single.php:382
+msgid "Back"
+msgstr "Retour"
+
+# @ qode
+#: single.php:161 single.php:277 single.php:406
+msgid "TAGS > "
+msgstr "TAGS > "
+
+# @ text_domain
+#: widgets/relate_posts_widget.php:8
+msgid "Related Posts Widget"
+msgstr "Widget pour les articles liés"
+
+# @ qode
+#: widgets/relate_posts_widget.php:15
+msgid "Related Posts"
+msgstr "Articles liés"
+
+# @ qode
+#: widgets/relate_posts_widget.php:75
+msgid "Title:"
+msgstr "Titre :"
+
+# @ qode
+#: widgets/relate_posts_widget.php:79
+msgid "Number of posts:"
+msgstr "Nombre d'articles :"

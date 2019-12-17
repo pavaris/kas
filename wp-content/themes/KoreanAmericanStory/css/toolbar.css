@@ -1,0 +1,161 @@
+#panel {
+	position: fixed;
+	top:145px;
+	z-index: 99;
+}
+#panel.opened-panel{
+	z-index: 9999;
+}
+#panel-admin {
+	float: left;
+	width: 225px;
+	background: #fff;
+	color: #333333;
+	z-index: 9999;
+	position: relative;
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.panel-admin-heading{
+	background-image: url('img/panle_infographer_options.png');
+	background-position: 3px center;
+	background-repeat: no-repeat;
+	background-color: #e91b23;
+	padding:0 0 0 55px;
+}
+.panel-admin-box{
+	padding:25px 0 20px 20px;
+	border-bottom:1px solid #c7c7c7;
+	
+}
+.panel-admin-box.no-border{
+
+	border-bottom:none;
+	
+}
+.touch #panel-admin{
+	border: 1px solid #e4e4e4;
+}
+
+#panel-admin .panel-admin-box h5{
+	margin: 0px 0px 15px 0px;
+	color: #333333 !important;
+	font-size: 15px !important;
+	line-height:22px !important;
+	font-family: 'Oswald',sans-serif !important;
+	font-weight: 800 !important;
+	text-transform: uppercase !important;
+
+}
+
+#panel-admin h4{
+	color: #fff;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px;
+	font-family: 'Oswald',sans-serif !important;
+	font-size: 15px !important;
+	line-height:50px !important;
+	text-transform: uppercase !important;
+}
+
+#panel-admin p{
+	margin: 0px;
+	padding: 0px;
+	color: #7a7a7a !important;
+	font-size: 13px !important;
+	line-height: 18px !important;
+	font-family: 'PT Sans',sans-serif !important;
+	font-weight: 400 !important;
+}
+
+.panel-admin-options-holder{
+	display:inline-block;
+	width:100%;
+}
+
+.panel-admin-options-holder span{
+	font-family: 'Oswald',sans-serif !important;
+	font-size: 15px !important;
+	line-height:29px !important;
+	text-transform:uppercase;
+	background-color:#f1f1f1;
+	padding:0;
+	width:37px;
+	text-align:center;
+	float:left;
+	margin:0 2px 0 0;
+	cursor:pointer;
+}
+
+.panel-admin-options-holder span.active{
+	background-color:#e91b23;
+	color:#fff;
+}
+
+.panel-admin-options-holder span.panel-admin-option-color{
+	float:left;
+	margin:0 2px 0 0;
+	width:29px;
+	height:29px;
+	padding:0;
+}
+.panel-admin-options-holder span.panel-admin-option-color.active-color{
+	border:1px solid #262626;
+	width:27px;
+	height:27px;
+}
+.panel-admin-option-color.red{
+	background-color: #e91b23;
+}
+
+.panel-admin-option-color.blue{
+	background-color: #00a2ff;
+}
+
+.panel-admin-option-color.green{
+	background-color: #bdcd00;
+}
+
+.panel-admin-option-color.darkgreen{
+	background-color: #b07596;
+}
+
+.panel-admin-option-color.purple{
+	background-color: #00a0a0;
+}
+
+
+
+.panel-admin-option-color.brown{
+	background-color: #b39964;
+}
+
+.open{
+	background-image: url('img/options_open_close.png');
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	background-color: #e91b23;
+	display: block;
+	height: 50px;
+	width: 50px;
+	float: right;
+	margin: 0px 0px 0px 3px;
+	z-index: 1000;
+	position: relative;
+	-webkit-transition:none; 
+	-moz-transition:none; 
+	-o-transition:none;
+
+}
+
+.open:hover,
+.open.opened{
+	
+	
+}
+
+body.background_boxed {
+	background-image: url('../img/box-background.jpg');
+	background-position: center 0px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}

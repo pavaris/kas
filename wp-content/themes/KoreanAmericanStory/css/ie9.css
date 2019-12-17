@@ -1,0 +1,9 @@
+.price_table{
+	width: 24.70%;
+	margin: 0px 0.3% 40px 0px;
+}
+
+.flip_icon_holder .back,
+.flip_image_holder .back{
+	display: none;
+}

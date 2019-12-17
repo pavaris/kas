@@ -1,0 +1,1784 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Infographer v1.0.5\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2013-08-06 12:54:38+0000\n"
+"Last-Translator: admin <support@qodeinteractive.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: 404.php:52
+#@ qode
+msgid "404"
+msgstr ""
+
+#: 404.php:53
+#@ qode
+msgid "Something went wrong"
+msgstr ""
+
+#: 404.php:64
+#@ qode
+msgid "Page not found"
+msgstr ""
+
+#: 404.php:65
+#@ qode
+msgid "Back to homepage"
+msgstr ""
+
+#: archive.php:65
+#@ qode
+msgid "Archive"
+msgstr ""
+
+#: archive.php:114
+#: archive.php:164
+#: archive.php:218
+#: archive.php:276
+#: archive.php:326
+#: archive.php:381
+#: archive.php:450
+#: archive.php:501
+#: archive.php:556
+#: blog-template1.php:123
+#: blog-template1.php:175
+#: blog-template1.php:236
+#: blog-template2.php:123
+#: blog-template2.php:172
+#: blog-template2.php:231
+#: blog-template3.php:131
+#: blog-template3.php:192
+#: blog-template3.php:262
+#: category.php:102
+#: category.php:152
+#: category.php:206
+#: category.php:264
+#: category.php:314
+#: category.php:369
+#: category.php:438
+#: category.php:489
+#: category.php:544
+#: home.php:116
+#: home.php:166
+#: home.php:220
+#: home.php:278
+#: home.php:328
+#: home.php:383
+#: home.php:452
+#: home.php:503
+#: home.php:558
+#: index.php:116
+#: index.php:166
+#: index.php:220
+#: index.php:278
+#: index.php:328
+#: index.php:383
+#: index.php:452
+#: index.php:503
+#: index.php:558
+#: search.php:107
+#: search.php:157
+#: search.php:211
+#: search.php:269
+#: search.php:319
+#: search.php:374
+#: search.php:443
+#: search.php:494
+#: search.php:549
+#: single.php:128
+#: single.php:245
+#: single.php:372
+#@ qode
+msgid "Posted by"
+msgstr ""
+
+#: archive.php:115
+#: archive.php:165
+#: archive.php:219
+#: archive.php:277
+#: archive.php:327
+#: archive.php:382
+#: archive.php:451
+#: archive.php:502
+#: archive.php:557
+#: blog-template1.php:124
+#: blog-template1.php:176
+#: blog-template1.php:237
+#: blog-template2.php:124
+#: blog-template2.php:173
+#: blog-template2.php:232
+#: blog-template3.php:132
+#: blog-template3.php:193
+#: blog-template3.php:263
+#: category.php:103
+#: category.php:153
+#: category.php:207
+#: category.php:265
+#: category.php:315
+#: category.php:370
+#: category.php:439
+#: category.php:490
+#: category.php:545
+#: home.php:117
+#: home.php:167
+#: home.php:221
+#: home.php:279
+#: home.php:329
+#: home.php:384
+#: home.php:453
+#: home.php:504
+#: home.php:559
+#: index.php:117
+#: index.php:167
+#: index.php:221
+#: index.php:279
+#: index.php:329
+#: index.php:384
+#: index.php:453
+#: index.php:504
+#: index.php:559
+#: search.php:108
+#: search.php:158
+#: search.php:212
+#: search.php:270
+#: search.php:320
+#: search.php:375
+#: search.php:444
+#: search.php:495
+#: search.php:550
+#: single.php:129
+#: single.php:246
+#: single.php:373
+#@ qode
+msgid "Category"
+msgstr ""
+
+#: archive.php:132
+#: archive.php:182
+#: archive.php:237
+#: archive.php:294
+#: archive.php:344
+#: archive.php:400
+#: archive.php:468
+#: archive.php:519
+#: archive.php:575
+#: blog-template1.php:141
+#: blog-template1.php:193
+#: blog-template1.php:254
+#: blog-template2.php:141
+#: blog-template2.php:190
+#: blog-template2.php:249
+#: blog-template3.php:150
+#: blog-template3.php:211
+#: blog-template3.php:281
+#: category.php:120
+#: category.php:170
+#: category.php:225
+#: category.php:282
+#: category.php:332
+#: category.php:388
+#: category.php:456
+#: category.php:507
+#: category.php:563
+#: home.php:134
+#: home.php:184
+#: home.php:239
+#: home.php:296
+#: home.php:346
+#: home.php:402
+#: home.php:470
+#: home.php:521
+#: home.php:577
+#: index.php:134
+#: index.php:184
+#: index.php:239
+#: index.php:296
+#: index.php:346
+#: index.php:402
+#: index.php:470
+#: index.php:521
+#: index.php:577
+#: search.php:125
+#: search.php:175
+#: search.php:230
+#: search.php:287
+#: search.php:337
+#: search.php:393
+#: search.php:461
+#: search.php:512
+#: search.php:568
+#@ qode
+msgid "Read More"
+msgstr ""
+
+#: archive.php:141
+#: archive.php:193
+#: archive.php:252
+#: archive.php:303
+#: archive.php:355
+#: archive.php:415
+#: archive.php:477
+#: archive.php:530
+#: archive.php:590
+#: blog-template1.php:150
+#: blog-template1.php:202
+#: blog-template1.php:263
+#: blog-template2.php:152
+#: blog-template2.php:201
+#: blog-template2.php:260
+#: blog-template3.php:165
+#: blog-template3.php:226
+#: blog-template3.php:296
+#: category.php:129
+#: category.php:181
+#: category.php:240
+#: category.php:291
+#: category.php:343
+#: category.php:403
+#: category.php:465
+#: category.php:518
+#: category.php:578
+#: home.php:143
+#: home.php:195
+#: home.php:254
+#: home.php:305
+#: home.php:357
+#: home.php:417
+#: home.php:479
+#: home.php:532
+#: home.php:592
+#: index.php:143
+#: index.php:195
+#: index.php:254
+#: index.php:305
+#: index.php:357
+#: index.php:417
+#: index.php:479
+#: index.php:532
+#: index.php:592
+#: search.php:134
+#: search.php:186
+#: search.php:245
+#: search.php:296
+#: search.php:348
+#: search.php:408
+#: search.php:470
+#: search.php:523
+#: search.php:583
+#@ qode
+msgid "No posts were found."
+msgstr ""
+
+#: comments.php:3
+#@ qode
+msgid "This post is password protected. Enter the password to view any comments."
+msgstr ""
+
+#: comments.php:27
+#@ qode
+msgid "Sorry, the comment form is closed at this time."
+msgstr ""
+
+#: comments.php:40
+#@ qode
+msgid "Post a comment"
+msgstr ""
+
+#: comments.php:41
+#, php-format
+#@ qode
+msgid "Leave a Reply to %s"
+msgstr ""
+
+#: comments.php:42
+#@ qode
+msgid "Cancel Reply"
+msgstr ""
+
+#: comments.php:43
+#: comments.php:44
+#: single.php:133
+#: single.php:250
+#: single.php:377
+#@ qode
+msgid "COMMENT"
+msgstr ""
+
+#: comments.php:48
+#@ qode
+msgid "NAME"
+msgstr ""
+
+#: comments.php:49
+#@ qode
+msgid "WEBSITE"
+msgstr ""
+
+#: comments.php:50
+#@ qode
+msgid "EMAIL"
+msgstr ""
+
+#: contact-page.php:118
+#: contact-page.php:185
+#@ qode
+msgid "CONTACT US"
+msgstr ""
+
+#: contact-page.php:129
+#@ qode
+msgid "First Name *"
+msgstr ""
+
+#: contact-page.php:131
+#: contact-page.php:147
+#@ qode
+msgid "Email *"
+msgstr ""
+
+#: contact-page.php:137
+#@ qode
+msgid "Last Name *"
+msgstr ""
+
+#: contact-page.php:141
+#@ qode
+msgid "Web site"
+msgstr ""
+
+#: contact-page.php:149
+#@ qode
+msgid "Message"
+msgstr ""
+
+#: contact-page.php:219
+#@ qode
+msgid " Required"
+msgstr ""
+
+#: contact-page.php:231
+#@ qode
+msgid " Invalid"
+msgstr ""
+
+#: contact-page.php:266
+#@ qode
+msgid "THANK YOU!"
+msgstr ""
+
+#: contact-page.php:266
+#@ qode
+msgid "Your email was successfully sent. We will contact you as soon as possible."
+msgstr ""
+
+#: contact-page.php:278
+#@ qode
+msgid "Invalid Captcha"
+msgstr ""
+
+#: contact-page.php:287
+#@ qode
+msgid "Email server problem"
+msgstr ""
+
+#: full_width.php:128
+#: full_width.php:153
+#: full_width.php:191
+#: full_width.php:216
+#: full_width.php:260
+#: full_width.php:285
+#: page.php:124
+#: page.php:149
+#: page.php:187
+#: page.php:212
+#: page.php:256
+#: page.php:281
+#: single-portfolio_page.php:230
+#: single-portfolio_page.php:255
+#: single-portfolio_page.php:363
+#: single-portfolio_page.php:388
+#: single-portfolio_page.php:497
+#: single-portfolio_page.php:522
+#: single-portfolio_page.php:552
+#: single-portfolio_page.php:577
+#: single-portfolio_page.php:680
+#: single-portfolio_page.php:705
+#: single-portfolio_page.php:811
+#: single-portfolio_page.php:836
+#: single-portfolio_page.php:944
+#: single-portfolio_page.php:969
+#: single-portfolio_page.php:1078
+#: single-portfolio_page.php:1103
+#: single-portfolio_page.php:1133
+#: single-portfolio_page.php:1158
+#: single-portfolio_page.php:1261
+#: single-portfolio_page.php:1286
+#: single.php:178
+#: single.php:203
+#: single.php:294
+#: single.php:319
+#: single.php:423
+#: single.php:448
+#@ qode
+msgid "Share"
+msgstr ""
+
+#: full_width.php:141
+#: full_width.php:204
+#: full_width.php:273
+#: page.php:137
+#: page.php:200
+#: page.php:269
+#: single-portfolio_page.php:243
+#: single-portfolio_page.php:376
+#: single-portfolio_page.php:510
+#: single-portfolio_page.php:565
+#: single-portfolio_page.php:693
+#: single-portfolio_page.php:824
+#: single-portfolio_page.php:957
+#: single-portfolio_page.php:1091
+#: single-portfolio_page.php:1146
+#: single-portfolio_page.php:1274
+#: single.php:191
+#: single.php:307
+#: single.php:436
+#@ qode
+msgid "Tweet"
+msgstr ""
+
+#: functions.php:190
+#@ qode
+msgid "Top Navigation"
+msgstr ""
+
+#: functions.php:234
+#@ qode
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: functions.php:439
+#@ qode
+msgid "Portfolio"
+msgstr ""
+
+#: functions.php:440
+#@ qode
+msgid "Portfolio Item"
+msgstr ""
+
+#: functions.php:441
+#@ qode
+msgid "New Portfolio Item"
+msgstr ""
+
+#: functions.php:442
+#@ qode
+msgid "Add New Portfolio Item"
+msgstr ""
+
+#: functions.php:443
+#@ qode
+msgid "Edit Portfolio Item"
+msgstr ""
+
+#: functions.php:465
+#: functions.php:475
+#@ taxonomy general name
+#@ qode
+msgid "Portfolio Categories"
+msgstr ""
+
+#: functions.php:466
+#@ taxonomy singular name
+msgid "Portfolio Category"
+msgstr ""
+
+#: functions.php:467
+#@ qode
+msgid "Search Portfolio Categories"
+msgstr ""
+
+#: functions.php:468
+#@ qode
+msgid "All Portfolio Categories"
+msgstr ""
+
+#: functions.php:469
+#@ qode
+msgid "Parent Portfolio Category"
+msgstr ""
+
+#: functions.php:470
+#@ qode
+msgid "Parent Portfolio Category:"
+msgstr ""
+
+#: functions.php:471
+#@ qode
+msgid "Edit Portfolio Category"
+msgstr ""
+
+#: functions.php:472
+#@ qode
+msgid "Update Portfolio Category"
+msgstr ""
+
+#: functions.php:473
+#@ qode
+msgid "Add New Portfolio Category"
+msgstr ""
+
+#: functions.php:474
+#@ qode
+msgid "New Portfolio Category Name"
+msgstr ""
+
+#: functions.php:700
+#: includes/class-tgm-plugin-activation.php:164
+#@ qode
+msgid "Install Required Plugins"
+msgstr ""
+
+#: functions.php:701
+#: includes/class-tgm-plugin-activation.php:165
+#@ qode
+msgid "Install Plugins"
+msgstr ""
+
+#: functions.php:702
+#: includes/class-tgm-plugin-activation.php:166
+#, php-format
+#@ qode
+msgid "Installing Plugin: %s"
+msgstr ""
+
+#: functions.php:703
+#@ qode
+msgid "Something went wrong with the plugin API."
+msgstr ""
+
+#: functions.php:704
+#: includes/class-tgm-plugin-activation.php:168
+#, php-format
+#@ qode
+msgid "This theme requires the following plugin: %1$s."
+msgid_plural "This theme requires the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:705
+#: includes/class-tgm-plugin-activation.php:169
+#, php-format
+#@ qode
+msgid "This theme recommends the following plugin: %1$s."
+msgid_plural "This theme recommends the following plugins: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:706
+#: includes/class-tgm-plugin-activation.php:170
+#, php-format
+#@ qode
+msgid "Sorry, but you do not have the correct permissions to install the %s plugin. Contact the administrator of this site for help on getting the plugin installed."
+msgid_plural "Sorry, but you do not have the correct permissions to install the %s plugins. Contact the administrator of this site for help on getting the plugins installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:707
+#: includes/class-tgm-plugin-activation.php:171
+#, php-format
+#@ qode
+msgid "The following required plugin is currently inactive: %1$s."
+msgid_plural "The following required plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:708
+#: includes/class-tgm-plugin-activation.php:172
+#, php-format
+#@ qode
+msgid "The following recommended plugin is currently inactive: %1$s."
+msgid_plural "The following recommended plugins are currently inactive: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:709
+#: includes/class-tgm-plugin-activation.php:173
+#, php-format
+#@ qode
+msgid "Sorry, but you do not have the correct permissions to activate the %s plugin. Contact the administrator of this site for help on getting the plugin activated."
+msgid_plural "Sorry, but you do not have the correct permissions to activate the %s plugins. Contact the administrator of this site for help on getting the plugins activated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:710
+#: includes/class-tgm-plugin-activation.php:174
+#, php-format
+#@ qode
+msgid "The following plugin needs to be updated to its latest version to ensure maximum compatibility with this theme: %1$s."
+msgid_plural "The following plugins need to be updated to their latest version to ensure maximum compatibility with this theme: %1$s."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:711
+#: includes/class-tgm-plugin-activation.php:175
+#, php-format
+#@ qode
+msgid "Sorry, but you do not have the correct permissions to update the %s plugin. Contact the administrator of this site for help on getting the plugin updated."
+msgid_plural "Sorry, but you do not have the correct permissions to update the %s plugins. Contact the administrator of this site for help on getting the plugins updated."
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:712
+#: includes/class-tgm-plugin-activation.php:176
+#@ qode
+msgid "Begin installing plugin"
+msgid_plural "Begin installing plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:713
+#: includes/class-tgm-plugin-activation.php:177
+#@ qode
+msgid "Activate installed plugin"
+msgid_plural "Activate installed plugins"
+msgstr[0] ""
+msgstr[1] ""
+
+#: functions.php:714
+#: includes/class-tgm-plugin-activation.php:178
+#: includes/class-tgm-plugin-activation.php:490
+#@ qode
+msgid "Return to Required Plugins Installer"
+msgstr ""
+
+#: functions.php:715
+#: includes/class-tgm-plugin-activation.php:179
+#: includes/class-tgm-plugin-activation.php:1846
+#@ qode
+msgid "Plugin activated successfully."
+msgstr ""
+
+#: functions.php:716
+#, php-format
+#@ qode
+msgid "All plugins installed and activated successfully. %s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:167
+#@ qode
+msgid "Something went wrong."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:180
+#, php-format
+#@ qode
+msgid "All plugins installed and activated successfully. %1$s"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:517
+#: includes/class-tgm-plugin-activation.php:2058
+#@ qode
+msgid "Return to the Dashboard"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:545
+#, php-format
+#@ qode
+msgid "The following plugin was activated successfully: %s."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:704
+#@ qode
+msgid "Dismiss this notice"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1091
+#@ qode
+msgid "External Link"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1096
+#@ qode
+msgid "Private Repository"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1099
+#@ qode
+msgid "Pre-Packaged"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1103
+#@ qode
+msgid "WordPress Repository"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1106
+#@ qode
+msgid "Required"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1106
+#@ qode
+msgid "Recommended"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1109
+#@ qode
+msgid "Not Installed"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1111
+#@ qode
+msgid "Installed But Not Activated"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1281
+#, php-format
+#@ qode
+msgid "No plugins to install or activate. <a href=\"%1$s\" title=\"Return to the Dashboard\">Return to the Dashboard</a>"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1297
+#@ qode
+msgid "Plugin"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1298
+#@ qode
+msgid "Source"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1299
+#@ qode
+msgid "Type"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1300
+#@ qode
+msgid "Status"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1318
+#@ qode
+msgid "Install"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1319
+#@ qode
+msgid "Activate"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1544
+#@ qode
+msgid "The following plugin was activated successfully:"
+msgid_plural "The following plugins were activated successfully:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: includes/class-tgm-plugin-activation.php:1829
+#@ qode
+msgid "Install package not available."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1830
+#, php-format
+#@ qode
+msgid "Downloading install package from <span class=\"code\">%s</span>&#8230;"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1831
+#@ qode
+msgid "Unpacking the package&#8230;"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1832
+#@ qode
+msgid "Installing the plugin&#8230;"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1833
+#@ qode
+msgid "Plugin install failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1834
+#@ qode
+msgid "Plugin installed successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1845
+#@ qode
+msgid "Plugin activation failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1955
+#@ qode
+msgid "The installation and activation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1956
+#, php-format
+#@ qode
+msgid "%1$s installed and activated successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1956
+#: includes/class-tgm-plugin-activation.php:1965
+#@ qode
+msgid "Show Details"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1956
+#: includes/class-tgm-plugin-activation.php:1965
+#@ qode
+msgid "Hide Details"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1957
+#@ qode
+msgid "All installations and activations have been completed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1958
+#, php-format
+#@ qode
+msgid "Installing and Activating Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1962
+#@ qode
+msgid "The installation process is starting. This process may take a while on some hosts, so please be patient."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1963
+#, php-format
+#@ qode
+msgid "An error occurred while installing %1$s: <strong>%2$s</strong>."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1964
+#, php-format
+#@ qode
+msgid "The installation of %1$s failed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1965
+#, php-format
+#@ qode
+msgid "%1$s installed successfully."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1966
+#@ qode
+msgid "All installations have been completed."
+msgstr ""
+
+#: includes/class-tgm-plugin-activation.php:1967
+#, php-format
+#@ qode
+msgid "Installing Plugin %1$s (%2$d/%3$d)"
+msgstr ""
+
+#: includes/qode-options.php:231
+#@ qode
+msgid "Qode"
+msgstr ""
+
+#: includes/qode-options.php:238
+#@ qode
+msgid "Options"
+msgstr ""
+
+#: includes/qode-options.php:249
+#@ qode
+msgid "Settings saved."
+msgstr ""
+
+#: includes/qode-options.php:256
+#, php-format
+#@ qode
+msgid "version %1$s"
+msgstr ""
+
+#: includes/qode-options.php:271
+#: includes/qode-options.php:274
+#@ qode
+msgid "Reset to defaults"
+msgstr ""
+
+#: includes/qode-options.php:279
+#: includes/qode-options.php:1987
+#@ qode
+msgid "Save Changes"
+msgstr ""
+
+#: includes/qode-options.php:334
+#@ qode
+msgid "First main color"
+msgstr ""
+
+#: includes/qode-options.php:338
+#@ qode
+msgid "Choose first main color"
+msgstr ""
+
+#: includes/qode-options.php:342
+#@ qode
+msgid "Second main color"
+msgstr ""
+
+#: includes/qode-options.php:346
+#@ qode
+msgid "Choose second main color"
+msgstr ""
+
+#: includes/qode-options.php:350
+#: includes/qode-options.php:1060
+#: includes/qode-options.php:1357
+#: includes/qode-options.php:1372
+#: includes/qode-options.php:1435
+#: includes/qode-options.php:1554
+#: includes/qode-options.php:1570
+#: includes/qode-options.php:1595
+#: includes/qode-options.php:1646
+#: includes/qode-options.php:1676
+#@ qode
+msgid "Background color"
+msgstr ""
+
+#: includes/qode-options.php:354
+#@ qode
+msgid "Choose background color"
+msgstr ""
+
+#: includes/qode-options.php:358
+#@ qode
+msgid "Box background color"
+msgstr ""
+
+#: includes/qode-options.php:362
+#@ qode
+msgid "Choose box background color"
+msgstr ""
+
+#: includes/qode-options.php:366
+#@ qode
+msgid "Highlight color"
+msgstr ""
+
+#: includes/qode-options.php:370
+#@ qode
+msgid "Choose highlight color"
+msgstr ""
+
+#: includes/qode-options.php:374
+#@ qode
+msgid "Selection color"
+msgstr ""
+
+#: includes/qode-options.php:378
+#@ qode
+msgid "Choose selection color"
+msgstr ""
+
+#: includes/qode-options.php:382
+#@ qode
+msgid "Background image"
+msgstr ""
+
+#: includes/qode-options.php:388
+#: includes/qode-options.php:399
+#@ qode
+msgid "Only with boxed layout"
+msgstr ""
+
+#: includes/qode-options.php:393
+#@ qode
+msgid "Pattern background image"
+msgstr ""
+
+#: includes/qode-options.php:404
+#@ qode
+msgid "Favicon image"
+msgstr ""
+
+#: includes/qode-options.php:413
+#@ qode
+msgid "Google fonts"
+msgstr ""
+
+#: includes/qode-options.php:422
+#@ qode
+msgid "Choose Font"
+msgstr ""
+
+#: includes/qode-options.php:426
+#@ qode
+msgid "Page transition"
+msgstr ""
+
+#: includes/qode-options.php:435
+#@ qode
+msgid "In order for animation to work properly, you must choose \"Post name\" in permalinks settings"
+msgstr ""
+
+#: includes/qode-options.php:439
+#@ qode
+msgid "Boxed"
+msgstr ""
+
+#: includes/qode-options.php:448
+#@ qode
+msgid "Responsiveness"
+msgstr ""
+
+#: includes/qode-options.php:457
+#@ qode
+msgid "Show back button"
+msgstr ""
+
+#: includes/qode-options.php:476
+#@ qode
+msgid "Google Analytics Account ID"
+msgstr ""
+
+#: includes/qode-options.php:482
+#@ qode
+msgid "List of internal URLs loaded without AJAX (separated with comma)"
+msgstr ""
+
+#: includes/qode-options.php:491
+#@ qode
+msgid "Custom css"
+msgstr ""
+
+#: includes/qode-options.php:500
+#@ qode
+msgid "Custom js"
+msgstr ""
+
+#: includes/qode-options.php:505
+#@ qode
+msgid "jQuery selector is \"$j\" because of the conflict mode"
+msgstr ""
+
+#: includes/qode-options.php:509
+#@ qode
+msgid "Meta Keywords"
+msgstr ""
+
+#: includes/qode-options.php:517
+#@ qode
+msgid "Meta Description"
+msgstr ""
+
+#: includes/qode-options.php:525
+#@ qode
+msgid "Disable Qode SEO"
+msgstr ""
+
+#: includes/qode-options.php:543
+#@ qode
+msgid "H1 style"
+msgstr ""
+
+#: includes/qode-options.php:546
+#: includes/qode-options.php:596
+#: includes/qode-options.php:647
+#: includes/qode-options.php:698
+#: includes/qode-options.php:749
+#: includes/qode-options.php:800
+#: includes/qode-options.php:852
+#: includes/qode-options.php:907
+#: includes/qode-options.php:956
+#: includes/qode-options.php:1063
+#: includes/qode-options.php:1103
+#: includes/qode-options.php:1165
+#: includes/qode-options.php:1220
+#: includes/qode-options.php:1383
+#: includes/qode-options.php:1461
+#: includes/qode-options.php:1483
+#: includes/qode-options.php:1502
+#: includes/qode-options.php:1565
+#: includes/qode-options.php:1649
+#: includes/qode-options.php:1679
+#@ qode
+msgid "Color"
+msgstr ""
+
+#: includes/qode-options.php:551
+#: includes/qode-options.php:601
+#: includes/qode-options.php:652
+#: includes/qode-options.php:703
+#: includes/qode-options.php:754
+#: includes/qode-options.php:805
+#: includes/qode-options.php:857
+#: includes/qode-options.php:961
+#: includes/qode-options.php:1113
+#: includes/qode-options.php:1175
+#: includes/qode-options.php:1230
+#: includes/qode-options.php:1393
+#: includes/qode-options.php:1512
+#: includes/qode-options.php:1575
+#@ qode
+msgid "Font family"
+msgstr ""
+
+#: includes/qode-options.php:560
+#: includes/qode-options.php:610
+#: includes/qode-options.php:661
+#: includes/qode-options.php:712
+#: includes/qode-options.php:763
+#: includes/qode-options.php:814
+#: includes/qode-options.php:866
+#: includes/qode-options.php:970
+#: includes/qode-options.php:1122
+#: includes/qode-options.php:1184
+#: includes/qode-options.php:1239
+#: includes/qode-options.php:1402
+#: includes/qode-options.php:1521
+#@ qode
+msgid "Font size (px)"
+msgstr ""
+
+#: includes/qode-options.php:564
+#: includes/qode-options.php:614
+#: includes/qode-options.php:665
+#: includes/qode-options.php:716
+#: includes/qode-options.php:767
+#: includes/qode-options.php:818
+#: includes/qode-options.php:870
+#: includes/qode-options.php:974
+#: includes/qode-options.php:1126
+#: includes/qode-options.php:1188
+#: includes/qode-options.php:1243
+#: includes/qode-options.php:1406
+#: includes/qode-options.php:1525
+#@ qode
+msgid "Line height (px)"
+msgstr ""
+
+#: includes/qode-options.php:568
+#: includes/qode-options.php:618
+#: includes/qode-options.php:669
+#: includes/qode-options.php:720
+#: includes/qode-options.php:771
+#: includes/qode-options.php:822
+#: includes/qode-options.php:874
+#: includes/qode-options.php:917
+#: includes/qode-options.php:978
+#: includes/qode-options.php:1130
+#: includes/qode-options.php:1192
+#: includes/qode-options.php:1247
+#: includes/qode-options.php:1410
+#: includes/qode-options.php:1529
+#@ qode
+msgid "Font style"
+msgstr ""
+
+#: includes/qode-options.php:577
+#: includes/qode-options.php:627
+#: includes/qode-options.php:678
+#: includes/qode-options.php:729
+#: includes/qode-options.php:780
+#: includes/qode-options.php:831
+#: includes/qode-options.php:883
+#: includes/qode-options.php:926
+#: includes/qode-options.php:987
+#: includes/qode-options.php:1139
+#: includes/qode-options.php:1201
+#: includes/qode-options.php:1255
+#: includes/qode-options.php:1419
+#: includes/qode-options.php:1538
+#@ qode
+msgid "Font weight"
+msgstr ""
+
+#: includes/qode-options.php:593
+#@ qode
+msgid "H2 style"
+msgstr ""
+
+#: includes/qode-options.php:644
+#@ qode
+msgid "H3 style"
+msgstr ""
+
+#: includes/qode-options.php:695
+#@ qode
+msgid "H4 style"
+msgstr ""
+
+#: includes/qode-options.php:746
+#@ qode
+msgid "H5 style"
+msgstr ""
+
+#: includes/qode-options.php:797
+#@ qode
+msgid "H6 style"
+msgstr ""
+
+#: includes/qode-options.php:849
+#@ qode
+msgid "Text style"
+msgstr ""
+
+#: includes/qode-options.php:898
+#@ qode
+msgid "Top/Bottom margin (px)"
+msgstr ""
+
+#: includes/qode-options.php:904
+#@ qode
+msgid "Link style"
+msgstr ""
+
+#: includes/qode-options.php:912
+#: includes/qode-options.php:1108
+#: includes/qode-options.php:1170
+#: includes/qode-options.php:1225
+#: includes/qode-options.php:1388
+#: includes/qode-options.php:1507
+#@ qode
+msgid "Hover color"
+msgstr ""
+
+#: includes/qode-options.php:941
+#@ qode
+msgid "Font decoration"
+msgstr ""
+
+#: includes/qode-options.php:953
+#@ qode
+msgid "Page title style"
+msgstr ""
+
+#: includes/qode-options.php:1013
+#@ qode
+msgid "Hide header"
+msgstr ""
+
+#: includes/qode-options.php:1025
+#@ qode
+msgid "Header in grid"
+msgstr ""
+
+#: includes/qode-options.php:1037
+#@ qode
+msgid "Fixed header"
+msgstr ""
+
+#: includes/qode-options.php:1048
+#@ qode
+msgid "Show header widget area"
+msgstr ""
+
+#: includes/qode-options.php:1070
+#@ qode
+msgid "Logo"
+msgstr ""
+
+#: includes/qode-options.php:1073
+#@ qode
+msgid "Logo image"
+msgstr ""
+
+#: includes/qode-options.php:1080
+#@ qode
+msgid "Menu position"
+msgstr ""
+
+#: includes/qode-options.php:1091
+#@ qode
+msgid "Main menu background color for 2nd and 3rd level"
+msgstr ""
+
+#: includes/qode-options.php:1100
+#@ qode
+msgid "1st level menu style"
+msgstr ""
+
+#: includes/qode-options.php:1155
+#@ qode
+msgid "Background hover color"
+msgstr ""
+
+#: includes/qode-options.php:1162
+#@ qode
+msgid "2nd level menu style"
+msgstr ""
+
+#: includes/qode-options.php:1217
+#@ qode
+msgid "3rd level menu style"
+msgstr ""
+
+#: includes/qode-options.php:1271
+#: includes/qode-options.php:1857
+#@ qode
+msgid "Title"
+msgstr ""
+
+#: includes/qode-options.php:1274
+#@ qode
+msgid "Responsive title image"
+msgstr ""
+
+#: includes/qode-options.php:1281
+#@ qode
+msgid "Title image"
+msgstr ""
+
+#: includes/qode-options.php:1287
+#@ qode
+msgid "Fixed title image"
+msgstr ""
+
+#: includes/qode-options.php:1292
+#: includes/qode-options.php:1297
+#@ qode
+msgid "Only if title image is not responsive"
+msgstr ""
+
+#: includes/qode-options.php:1295
+#@ qode
+msgid "Title height (px)"
+msgstr ""
+
+#: includes/qode-options.php:1301
+#@ qode
+msgid "Title position"
+msgstr ""
+
+#: includes/qode-options.php:1310
+#@ qode
+msgid "Title in grid"
+msgstr ""
+
+#: includes/qode-options.php:1320
+#@ qode
+msgid "Show footer top"
+msgstr ""
+
+#: includes/qode-options.php:1344
+#@ qode
+msgid "Footer top colors"
+msgstr ""
+
+#: includes/qode-options.php:1347
+#@ qode
+msgid "Title color"
+msgstr ""
+
+#: includes/qode-options.php:1352
+#: includes/qode-options.php:1367
+#: includes/qode-options.php:1590
+#@ qode
+msgid "Text color"
+msgstr ""
+
+#: includes/qode-options.php:1364
+#@ qode
+msgid "Footer bottom colors"
+msgstr ""
+
+#: includes/qode-options.php:1380
+#@ qode
+msgid "Content menu style"
+msgstr ""
+
+#: includes/qode-options.php:1440
+#@ qode
+msgid "Position"
+msgstr ""
+
+#: includes/qode-options.php:1458
+#@ qode
+msgid "Default separator"
+msgstr ""
+
+#: includes/qode-options.php:1466
+#@ qode
+msgid "Thickness (px)"
+msgstr ""
+
+#: includes/qode-options.php:1470
+#: includes/qode-options.php:1488
+#@ qode
+msgid "Top margin (px)"
+msgstr ""
+
+#: includes/qode-options.php:1474
+#: includes/qode-options.php:1492
+#@ qode
+msgid "Bottom margin (px)"
+msgstr ""
+
+#: includes/qode-options.php:1480
+#@ qode
+msgid "Pattern separator"
+msgstr ""
+
+#: includes/qode-options.php:1499
+#@ qode
+msgid "Button style"
+msgstr ""
+
+#: includes/qode-options.php:1562
+#@ qode
+msgid "Message box style"
+msgstr ""
+
+#: includes/qode-options.php:1587
+#@ qode
+msgid "Blockquote style"
+msgstr ""
+
+#: includes/qode-options.php:1610
+#@ qode
+msgid "Parallax speed"
+msgstr ""
+
+#: includes/qode-options.php:1618
+#@ qode
+msgid "Parallax on touch devices"
+msgstr ""
+
+#: includes/qode-options.php:1629
+#@ qode
+msgid "Parallax min height (px)"
+msgstr ""
+
+#: includes/qode-options.php:1633
+#@ qode
+msgid "Set min-height for last two stages"
+msgstr ""
+
+#: includes/qode-options.php:1656
+#@ qode
+msgid "Portfolio style"
+msgstr ""
+
+#: includes/qode-options.php:1686
+#@ qode
+msgid "Pagination"
+msgstr ""
+
+#: includes/qode-options.php:1695
+#@ qode
+msgid "Blog list style"
+msgstr ""
+
+#: includes/qode-options.php:1705
+#@ qode
+msgid "Blog sidebar"
+msgstr ""
+
+#: includes/qode-options.php:1715
+#@ qode
+msgid "Choose category sidebar"
+msgstr ""
+
+#: includes/qode-options.php:1719
+#@ qode
+msgid "Hide comments"
+msgstr ""
+
+#: includes/qode-options.php:1728
+#@ qode
+msgid "Number of characters"
+msgstr ""
+
+#: includes/qode-options.php:1731
+#@ qode
+msgid "Number of characters in blog listing"
+msgstr ""
+
+#: includes/qode-options.php:1735
+#@ qode
+msgid "Enable back to previous"
+msgstr ""
+
+#: includes/qode-options.php:1741
+#@ qode
+msgid "Enable back to previous button in single post"
+msgstr ""
+
+#: includes/qode-options.php:1753
+#@ qode
+msgid "Mail send to"
+msgstr ""
+
+#: includes/qode-options.php:1759
+#@ qode
+msgid "Enable Contact Form"
+msgstr ""
+
+#: includes/qode-options.php:1768
+#@ qode
+msgid "Hide Website Field"
+msgstr ""
+
+#: includes/qode-options.php:1777
+#@ qode
+msgid "Email From"
+msgstr ""
+
+#: includes/qode-options.php:1783
+#@ qode
+msgid "Email Subject"
+msgstr ""
+
+#: includes/qode-options.php:1789
+#@ qode
+msgid "Use reCaptcha"
+msgstr ""
+
+#: includes/qode-options.php:1798
+#@ qode
+msgid "ReCaptcha public key"
+msgstr ""
+
+#: includes/qode-options.php:1805
+#@ qode
+msgid "ReCaptcha private key"
+msgstr ""
+
+#: includes/qode-options.php:1811
+#@ qode
+msgid "Heading above contact form"
+msgstr ""
+
+#: includes/qode-options.php:1817
+#@ qode
+msgid "Text above contact form"
+msgstr ""
+
+#: includes/qode-options.php:1823
+#@ qode
+msgid "Enable Google Map"
+msgstr ""
+
+#: includes/qode-options.php:1833
+#@ qode
+msgid "Pin image"
+msgstr ""
+
+#: includes/qode-options.php:1842
+#@ qode
+msgid "Google map address"
+msgstr ""
+
+#: includes/qode-options.php:1863
+#@ qode
+msgid "Subtitle"
+msgstr ""
+
+#: includes/qode-options.php:1869
+#@ qode
+msgid "Text"
+msgstr ""
+
+#: includes/qode-options.php:1875
+#@ qode
+msgid "Back to home label"
+msgstr ""
+
+#: includes/qode-options.php:1889
+#@ qode
+msgid "Enable Social Share"
+msgstr ""
+
+#: includes/qode-options.php:1898
+#@ qode
+msgid "Facebook"
+msgstr ""
+
+#: includes/qode-options.php:1901
+#@ qode
+msgid "Enable Facebook"
+msgstr ""
+
+#: includes/qode-options.php:1908
+#: includes/qode-options.php:1925
+#: includes/qode-options.php:1946
+#@ qode
+msgid "Share Icon"
+msgstr ""
+
+#: includes/qode-options.php:1915
+#@ qode
+msgid "Twitter"
+msgstr ""
+
+#: includes/qode-options.php:1918
+#@ qode
+msgid "Enable Twitter"
+msgstr ""
+
+#: includes/qode-options.php:1930
+#@ qode
+msgid "Via"
+msgstr ""
+
+#: includes/qode-options.php:1936
+#@ qode
+msgid "Google +"
+msgstr ""
+
+#: includes/qode-options.php:1939
+#@ qode
+msgid "Enable Google +"
+msgstr ""
+
+#: includes/qode-options.php:1953
+#@ qode
+msgid "Show For"
+msgstr ""
+
+#: includes/shortcodes.php:734
+#@ qode
+msgid "View by Type"
+msgstr ""
+
+#: includes/shortcodes.php:737
+#@ qode
+msgid "All"
+msgstr ""
+
+#: includes/shortcodes.php:884
+#@ qode
+msgid "Sorry, no posts matched your criteria."
+msgstr ""
+
+#: includes/shortcodes.php:888
+#@ qode
+msgid "Load More"
+msgstr ""
+
+#: js/default_dynamic.php:119
+#@ qode
+msgid "Comment has been sent!"
+msgstr ""
+
+#: search.php:66
+#@ qode
+msgid "SEARCH"
+msgstr ""
+
+#: single-portfolio_page.php:70
+#@ qode
+msgid "Category: "
+msgstr ""
+
+#: single-portfolio_page.php:98
+#@ qode
+msgid "PREVIOUS"
+msgstr ""
+
+#: single-portfolio_page.php:102
+#@ qode
+msgid "NEXT"
+msgstr ""
+
+#: single-portfolio_page.php:209
+#: single-portfolio_page.php:342
+#: single-portfolio_page.php:470
+#: single-portfolio_page.php:653
+#: single-portfolio_page.php:790
+#: single-portfolio_page.php:923
+#: single-portfolio_page.php:1051
+#: single-portfolio_page.php:1234
+#@ qode
+msgid "Date"
+msgstr ""
+
+#: single-portfolio_page.php:213
+#: single-portfolio_page.php:346
+#: single-portfolio_page.php:480
+#: single-portfolio_page.php:663
+#: single-portfolio_page.php:794
+#: single-portfolio_page.php:927
+#: single-portfolio_page.php:1061
+#: single-portfolio_page.php:1244
+#@ qode
+msgid "About"
+msgstr ""
+
+#: single.php:74
+#@ qode
+msgid "BLOG"
+msgstr ""
+
+#: single.php:133
+#: single.php:250
+#: single.php:377
+#@ qode
+msgid "NO COMMENT"
+msgstr ""
+
+#: single.php:138
+#: single.php:255
+#: single.php:382
+#@ qode
+msgid "Back"
+msgstr ""
+
+#: single.php:161
+#: single.php:277
+#: single.php:406
+#@ qode
+msgid "TAGS > "
+msgstr ""
+
+#: widgets/relate_posts_widget.php:8
+#@ text_domain
+msgid "Related Posts Widget"
+msgstr ""
+
+#: widgets/relate_posts_widget.php:15
+#@ qode
+msgid "Related Posts"
+msgstr ""
+
+#: widgets/relate_posts_widget.php:75
+#@ qode
+msgid "Title:"
+msgstr ""
+
+#: widgets/relate_posts_widget.php:79
+#@ qode
+msgid "Number of posts:"
+msgstr ""
+
+#: includes/qode-options.php:466
+#@ qode
+msgid "Turn off delay on touch devices"
+msgstr ""
+
+#: includes/qode-options.php:472
+#@ qode
+msgid "Turn off displaying delay of elements on touch devices"
+msgstr ""
+
+#: includes/qode-options.php:1332
+#@ qode
+msgid "Show footer bottom"
+msgstr ""
+
