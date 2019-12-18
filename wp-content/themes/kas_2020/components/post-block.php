@@ -7,7 +7,7 @@ function postBlock($id){
       <?php the_post_thumbnail(); ?>
     </div>
     <div class="post-block-desc">
-      <p>something or other;</p>
+      <!-- <p>something or other;</p> -->
     </div>
   </article>
 

@@ -25,12 +25,21 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'theme-name' ); ?></a>
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
-
+			<?php echo get_custom_logo(); ?>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-
+			<?php wp_nav_menu(); ?>
+			<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
 		</nav><!-- #site-navigation -->
+
+		<?php include get_template_directory() . '/components/social-nav.php'; ?>
+
+		<button class="search-toggle">
+			search
+		</button>
+
+
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

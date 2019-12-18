@@ -1,0 +1,67 @@
+.site-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+
+  .site-branding{
+    display: flex;
+    margin-right: 10px;
+    img{
+      height: 90px;
+      width: auto;
+    }
+  }
+
+  #site-navigation{
+    display: flex;
+    align-items: center;
+    a{
+      color: white;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+    a.donate-button{
+      background-color: $pink;
+      color:black;
+      border-radius: 10px;
+      padding: 4px 10px;
+    }
+
+
+    #menu-header-menu{
+      display: flex;
+
+      > li{
+        margin-right: 10px;
+        position: relative;
+        .sub-menu{
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+
+    }
+  }
+}
+
+
+
+.social-nav{
+  ul{
+    display: flex;
+  }
+  li{
+    margin-right: 10px;
+  }
+  a{
+    color: white;
+    text-decoration: none;
+  }
+}

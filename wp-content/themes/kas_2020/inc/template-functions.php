@@ -153,6 +153,42 @@ function add_posttype() {
 
 	register_post_type( 'event' , $args );
 
+
+	$thisName = 'Written';
+	$labels = array(
+		'name' => _x($thisName, 'post type general name'),
+		'singular_name' => _x($thisName, 'post type singular name'),
+		'add_new' => _x('Add New', $thisName),
+		'add_new_item' => __('Add New ' . $thisName),
+		'edit_item' => __('Edit ' . $thisName),
+		'new_item' => __('New ' . $thisName),
+		'view_item' => __('View ' . $thisName),
+		'search_items' => __('Search ' . $thisName),
+		'not_found' =>  __('Nothing found'),
+		'not_found_in_trash' => __('Nothing found in Trash'),
+		'parent_item_colon' => '',
+	);
+
+	$args = array(
+		'labels' => $labels,
+		'public' => true,
+		'publicly_queryable' => true,
+		'show_ui' => true,
+		'query_var' => true,
+		'rewrite' => TRUE,
+		'capability_type' => 'post',
+		'hierarchical' => false,
+		'menu_position' => null,
+		'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
+		'has_archive' => true,
+		'taxonomies' => array('category'),
+		'menu_icon' => 'dashicons-media-text',
+		'show_in_rest' => true,
+		);
+
+	register_post_type( 'written' , $args );
+
+
 	flush_rewrite_rules();
 
 }
@@ -184,8 +220,10 @@ function create_topics_hierarchical_taxonomy() {
     'labels' => $labels,
     'show_ui' => true,
     'show_admin_column' => true,
+		'show_in_nav_menus' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'podcast-type' ),
+		'show_in_rest'               => true,
   ));
 
 
@@ -210,8 +248,10 @@ function create_topics_hierarchical_taxonomy() {
     'labels' => $labels,
     'show_ui' => true,
     'show_admin_column' => true,
+		'show_in_nav_menus' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'video-type' ),
+		'show_in_rest'               => true,
   ));
 
   $labels = array(
@@ -235,9 +275,17 @@ function create_topics_hierarchical_taxonomy() {
     'labels' => $labels,
     'show_ui' => true,
     'show_admin_column' => true,
+		'show_in_nav_menus' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'event-type' ),
+		'show_in_rest'               => true,
   ));
 
 }
 add_action( 'init', 'create_topics_hierarchical_taxonomy', 0 );
+
+
+// adding ACF options
+if( function_exists('acf_add_options_page') ) {
+	acf_add_options_page();
+}
