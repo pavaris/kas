@@ -289,3 +289,31 @@ add_action( 'init', 'create_topics_hierarchical_taxonomy', 0 );
 if( function_exists('acf_add_options_page') ) {
 	acf_add_options_page();
 }
+
+
+
+add_action('acf/init', 'my_acf_init');
+function my_acf_init() {
+
+	// check function exists
+	if( function_exists('acf_register_block') ) {
+
+		// content box block
+		acf_register_block(
+			array(
+				'name'				=> 'post-feed',
+				'title'				=> __('KAS Post Feed'),
+				'description'		=> __('A post feed'),
+				'category'			=> 'widgets',
+				'icon'				=> 'screenoptions',
+				'keywords'			=> array( 'kas', 'post', 'feed'),
+				'mode' => 'edit',
+				'render_template' => 'custom-blocks/post-feed.php',
+				'supports' => array(
+					'align' => array('full'),
+					),
+				)
+			);
+
+	}
+}

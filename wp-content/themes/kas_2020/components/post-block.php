@@ -1,28 +1,25 @@
 <?php
 function postBlock($id){
   ob_start();
+  $postType = get_post_type($id);
+
   ?>
   <article class="post-block">
-    <div class="post-block-image">
-      <?php the_post_thumbnail(); ?>
-    </div>
-    <div class="post-block-desc">
-      <!-- <p>something or other;</p> -->
-    </div>
+    <a href="<?php echo get_the_permalink($id); ?>">
+
+      <div class="post-block-image">
+        <div class="post-type-cont">
+          <?php echo $postType; ?>
+        </div>
+        <?php echo get_the_post_thumbnail($id); ?>
+      </div>
+      <h4><?php echo get_the_title($id); ?></h4>
+      <div class="post-block-desc">
+        <p><?php echo get_field('short_description', $id); ?></p>
+      </div>
+    </a>
   </article>
 
-  <?php
-  echo ob_get_clean();
-}
-
-
-
-function postBlockFeed($posts){
-  ob_start();
-  ?>
-  <?php foreach($posts as $post){
-    postBlock($post->ID);
-  } ?>
   <?php
   echo ob_get_clean();
 }

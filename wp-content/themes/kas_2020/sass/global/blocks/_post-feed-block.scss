@@ -1,0 +1,21 @@
+.post-feed-block{
+  .post-feed-block-inner{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+  }
+  .post-feed-left{
+    width: calc(66.66%);
+    padding-right: 30px;
+    border-right: 1px solid rgba(0,0,0,0.4);
+
+  }
+  .post-feed-right{
+    width: calc(33.333% - 30px);
+    display: flex;
+    flex-direction: column;
+    h4{
+      font-size: 20px;
+    }
+  }
+}

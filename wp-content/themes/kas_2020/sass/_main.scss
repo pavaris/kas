@@ -1,7 +1,7 @@
 $mobile_width: 767px;
 
 body {
-
+  font-family: $montserrat;
 }
 
 h1{
@@ -18,18 +18,25 @@ h3{
 
 h4{
   margin-bottom: 15px;
+  font-size: 29px;
+  font-weight: 600;
 }
 
 h5{
   margin-bottom: 15px;
+  font-size: 20px;
 }
 
 h6{
   margin-bottom: 15px;
+  font-size: 15px;
 }
 
 p{
   margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 1.3em;
+  // letter-spacing: 0.1em;
 }
 
 

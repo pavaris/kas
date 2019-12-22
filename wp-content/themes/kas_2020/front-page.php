@@ -18,7 +18,7 @@ get_header();
  	<div id="primary" class="content-area">
  		<main id="main" class="site-main">
 
- 			<div class="content-margins">
+
  				<article class="">
  					<?php
  					while ( have_posts() ) :
@@ -27,18 +27,21 @@ get_header();
  						<section id="page-header">
 
              </section>
-<?php
-  $args = ['post_type' => 'post', 'posts_per_page' => 3];
-  $latestPosts = new WP_Query($args);
-?>
-             <section class="posts-feed">
-               <?php postBlockFeed($latestPosts->posts); ?>
-             </section>
+            <?php
+              $args = ['post_type' => 'post', 'posts_per_page' => 3];
+              $latestPosts = new WP_Query($args);
+            ?>
+            <section class="homepage-content">
+              <div class="content-margins">
+                <?php the_content(); ?>
+              </div>
+            </section>
+
  					<?php
  					endwhile; // End of the loop.
  					?>
  				</article>
- 			</div>
+
  		</main><!-- #main -->
  	</div><!-- #primary -->
 
