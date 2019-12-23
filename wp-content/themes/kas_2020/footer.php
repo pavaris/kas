@@ -14,10 +14,24 @@
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<div class="site-info">
+		<div class="content-margins">
+			<div class="site-info">
+				<?php echo get_custom_logo(); ?>
+				<div class="footer-address">
+					<?php echo get_field('address', 'options'); ?>
+				</div>
+				<div class="footer-menu">
+					<?php echo wp_nav_menu('Footer Menu'); ?>
+				</div>
+				<div class="footer-social">
+					<?php include get_template_directory() . '/components/social-nav.php'; ?>
+				</div>
+			</div><!-- .site-info --></div>
 
-			
-		</div><!-- .site-info -->
+		<div class="footer-copyright">
+			<?php echo get_field('copyright', 'options'); ?>
+		</div>
+
 	</footer><!-- #colophon -->
 </div><!-- #page -->
 

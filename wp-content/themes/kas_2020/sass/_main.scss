@@ -20,6 +20,7 @@ h4{
   margin-bottom: 15px;
   font-size: 29px;
   font-weight: 600;
+  line-height: 1.2em;
 }
 
 h5{
@@ -39,9 +40,12 @@ p{
   // letter-spacing: 0.1em;
 }
 
-
 a{
 
+}
+
+em{
+  font-style: italic;
 }
 
 .content-margins{

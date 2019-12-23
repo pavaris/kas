@@ -7,6 +7,16 @@
     border-bottom: 0px;
     padding-bottom: 0px;
     margin-bottom: 0px;
+    @media (max-width: 905px){
+      border-bottom: 1px solid rgba(0,0,0,0.4);
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+    }
+  }
+  @media (max-width: 905px){
+    border-bottom: 1px solid rgba(0,0,0,0.4);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
   }
   a{
     color: black;

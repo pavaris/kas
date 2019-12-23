@@ -317,3 +317,46 @@ function my_acf_init() {
 
 	}
 }
+
+
+function threeUp($feedPosts, $sectionTitle){
+	if($feedPosts->have_posts()){ ?>
+		<!-- 3 up post block -->
+		<div class="post-feed-block">
+			<div class="post-feed-title">
+				<div class="content-margins">
+					<h4><?php echo $sectionTitle; ?></h4>
+				</div>
+			</div>
+			<div class="post-feed-block-inner">
+				<div class="post-feed-left">
+					<?php $thisblock = array_shift($feedPosts->posts); ?>
+					<?php postBlock($thisblock->ID); ?>
+				</div>
+				<div class="post-feed-right">
+					<?php foreach($feedPosts->posts as $key=>$thispost){
+						postBlock($thispost->ID);
+					} ?>
+				</div>
+			</div>
+		</div>
+
+	<?php
+	}
+}
+
+function twoUp($events){ ?>
+	<!-- 2 up post block -->
+	<div class="post-feed-block-2">
+		<div class="post-feed-title">
+			<div class="content-margins">
+				<h4>Events</h4>
+			</div>
+		</div>
+		<div class="post-feed-block-inner">
+			<?php foreach($events as $key=>$thispost){
+				postBlock($thispost->ID);
+			} ?>
+		</div>
+	</div>
+<?php }

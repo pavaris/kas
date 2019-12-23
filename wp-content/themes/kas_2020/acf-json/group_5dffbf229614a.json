@@ -1,0 +1,113 @@
+{
+    "key": "group_5dffbf229614a",
+    "title": "Post Feed Block",
+    "fields": [
+        {
+            "key": "field_5dffc88aaf923",
+            "label": "Feed Type",
+            "name": "feed_type",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "Latest Posts": "Latest Posts",
+                "Taxonomy": "Taxonomy",
+                "Events": "Events"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5dffc1a22fda2",
+            "label": "Taxonomy",
+            "name": "taxonomy",
+            "type": "advanced_taxonomy_selector",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dffc88aaf923",
+                        "operator": "==",
+                        "value": "Taxonomy"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "data_type": "terms",
+            "taxonomies": [
+                "all"
+            ],
+            "post_type": "",
+            "field_type": "select",
+            "allow_null": 1,
+            "return_value": "object"
+        },
+        {
+            "key": "field_5e0018ce32ab4",
+            "label": "Events",
+            "name": "events",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_5dffc88aaf923",
+                        "operator": "==",
+                        "value": "Events"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "event"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/post-feed"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1577064727
+}
