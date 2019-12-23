@@ -323,13 +323,16 @@ body {
   font-family: "Montserrat", sans-serif; }
 
 h1 {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  font-size: 65px; }
 
 h2 {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  font-size: 45px; }
 
 h3 {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  font-size: 35px; }
 
 h4 {
   margin-bottom: 15px;
@@ -371,10 +374,24 @@ em {
   position: fixed;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 5;
   display: flex;
-  align-items: center; }
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto; }
+  .site-header a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 15px; }
+  .site-header a.donate-button {
+    background-color: #ED9795;
+    color: black;
+    border-radius: 15px;
+    padding: 7px 12px; }
   .site-header .site-branding {
     display: flex;
     margin-right: 10px; }
@@ -384,17 +401,10 @@ em {
   .site-header #site-navigation {
     display: flex;
     align-items: center; }
-    .site-header #site-navigation a {
-      color: white;
-      text-decoration: none;
-      text-transform: uppercase; }
-    .site-header #site-navigation a.donate-button {
-      background-color: #ED9795;
-      color: black;
-      border-radius: 10px;
-      padding: 4px 10px; }
     .site-header #site-navigation #menu-header-menu {
-      display: flex; }
+      display: flex;
+      width: 100%;
+      justify-content: space-between; }
       .site-header #site-navigation #menu-header-menu > li {
         margin-right: 10px;
         position: relative; }
@@ -414,9 +424,6 @@ em {
 .social-nav a {
   color: white;
   text-decoration: none; }
-
-body #content {
-  padding-top: 150px; }
 
 .post-block {
   width: 100%;
@@ -531,6 +538,48 @@ body #content {
     .site-footer .footer-copyright p {
       font-size: 10px;
       margin-bottom: 0px; }
+
+.header-slide {
+  height: 80vh;
+  position: relative;
+  width: 100%;
+  margin-bottom: 30px; }
+  .header-slide .header-slide-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%; }
+    .header-slide .header-slide-img:before {
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      height: 100%;
+      width: 100%;
+      z-index: 1;
+      content: ''; }
+    .header-slide .header-slide-img img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover; }
+  .header-slide .header-slide-info {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    margin: auto;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    color: white; }
+    .header-slide .header-slide-info h3 {
+      font-style: italic;
+      font-weight: 600; }
+    .header-slide .header-slide-info .header-slide-cta {
+      font-size: 24px;
+      font-style: italic; }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;

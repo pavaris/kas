@@ -21,7 +21,7 @@
 					<?php echo get_field('address', 'options'); ?>
 				</div>
 				<div class="footer-menu">
-					<?php echo wp_nav_menu('Footer Menu'); ?>
+					<?php wp_nav_menu(['menu' => 'Footer Menu']); ?>
 				</div>
 				<div class="footer-social">
 					<?php include get_template_directory() . '/components/social-nav.php'; ?>

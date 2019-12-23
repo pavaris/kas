@@ -23,13 +23,14 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'theme-name' ); ?></a>
+
 	<header id="masthead" class="site-header">
 		<div class="site-branding">
 			<?php echo get_custom_logo(); ?>
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<?php wp_nav_menu(); ?>
+			<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
 			<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
 		</nav><!-- #site-navigation -->
 
@@ -38,7 +39,6 @@
 		<button class="search-toggle">
 			search
 		</button>
-
 
 	</header><!-- #masthead -->
 
