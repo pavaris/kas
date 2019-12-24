@@ -376,12 +376,29 @@ em {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 5;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  max-width: 1440px;
-  margin: 0 auto; }
+  z-index: 5; }
+  .site-header .header-inner {
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 auto; }
+  .site-header:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: #323848;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    content: '';
+    transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform: translateY(-100%);
+    opacity: 0; }
+  .site-header.scrolled:before {
+    transform: translateY(0%);
+    opacity: 1;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); }
   .site-header a {
     color: white;
     text-decoration: none;
@@ -397,33 +414,43 @@ em {
     margin-right: 10px; }
     .site-header .site-branding img {
       height: 90px;
-      width: auto; }
+      width: auto;
+      display: block; }
   .site-header #site-navigation {
     display: flex;
-    align-items: center; }
+    align-items: center;
+    justify-content: space-around;
+    flex-grow: 1;
+    padding-right: 20px; }
+    .site-header #site-navigation .menu-header-menu-container {
+      flex-grow: 1; }
     .site-header #site-navigation #menu-header-menu {
       display: flex;
       width: 100%;
-      justify-content: space-between; }
+      justify-content: space-around; }
       .site-header #site-navigation #menu-header-menu > li {
-        margin-right: 10px;
+        margin: 0 10px;
         position: relative; }
         .site-header #site-navigation #menu-header-menu > li .sub-menu {
           position: absolute;
-          top: 100%;
-          left: 0;
-          right: 0;
-          margin: auto; }
-
-.social-nav ul {
-  display: flex; }
-
-.social-nav li {
-  margin-right: 10px; }
-
-.social-nav a {
-  color: white;
-  text-decoration: none; }
+          top: calc(100% + 10px);
+          left: -20px;
+          margin: auto;
+          transform: translateY(-10px);
+          opacity: 0;
+          transition: all 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
+          padding: 20px;
+          background-color: white; }
+          .site-header #site-navigation #menu-header-menu > li .sub-menu li {
+            margin-bottom: 20px; }
+            .site-header #site-navigation #menu-header-menu > li .sub-menu li:last-child {
+              margin-bottom: 0px; }
+          .site-header #site-navigation #menu-header-menu > li .sub-menu a {
+            color: black;
+            white-space: nowrap; }
+        .site-header #site-navigation #menu-header-menu > li:hover .sub-menu {
+          opacity: 1;
+          transform: translateY(0); }
 
 .post-block {
   width: 100%;
@@ -539,11 +566,41 @@ em {
       font-size: 10px;
       margin-bottom: 0px; }
 
-.header-slide {
-  height: 80vh;
-  position: relative;
-  width: 100%;
+.footer-social .social-nav ul li {
+  margin: 0 15px; }
+
+#page-header {
+  width: 100%; }
+
+.header-slides {
   margin-bottom: 30px; }
+  .header-slides .slick-dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    display: flex !important;
+    justify-content: center;
+    padding-bottom: 20px; }
+    .header-slides .slick-dots button {
+      font-size: 0px;
+      padding: 0px;
+      border-radius: 10px;
+      height: 10px;
+      width: 10px;
+      border: 1px solid white;
+      margin: 0 5px;
+      background-color: transparent;
+      cursor: pointer; }
+    .header-slides .slick-dots li.slick-active button {
+      background-color: white; }
+
+.header-slide {
+  height: 0;
+  padding-bottom: 10%;
+  position: relative;
+  width: 100%; }
   .header-slide .header-slide-img {
     position: absolute;
     left: 0;
@@ -580,6 +637,22 @@ em {
     .header-slide .header-slide-info .header-slide-cta {
       font-size: 24px;
       font-style: italic; }
+
+.social-nav {
+  flex-grow: 1; }
+  .social-nav ul {
+    display: flex;
+    justify-content: space-around; }
+  .social-nav li {
+    margin-right: 10px; }
+    .social-nav li svg {
+      height: 20px;
+      width: auto; }
+      .social-nav li svg path {
+        fill: white; }
+  .social-nav a {
+    color: white;
+    text-decoration: none; }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;

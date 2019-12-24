@@ -131,8 +131,8 @@ function theme_name_scripts() {
 
 
 
-
-	wp_enqueue_script( 'theme-name-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	wp_enqueue_script( 'slick', get_template_directory_uri() . '/js/slick.min.js', ['jquery'], null, true );
+	wp_enqueue_style( 'slick-css', get_template_directory_uri() . '/js/slick.css', false, null );
 
 	wp_enqueue_script( 'theme-name-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 
