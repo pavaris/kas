@@ -88,7 +88,7 @@ $(document).ready(function () {
   // header background on scroll
   $(window).scroll(function () {
     let scrollTop = $(window).scrollTop();
-    console.log(scrollTop);
+    // console.log(scrollTop);
     if (scrollTop > 5) {
       $('.site-header').addClass('scrolled');
     } else {
