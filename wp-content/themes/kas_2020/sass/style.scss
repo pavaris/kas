@@ -2,17 +2,18 @@
   box-sizing: border-box;
 }
 
+@import "global/colors";
 @import "reset";
 @import "global/fonts";
 @import "main";
 
 
-@import "global/colors";
 @import "global/header";
 @import "global/post-block";
 @import "global/footer";
 @import "global/page";
 @import "global/social-nav";
+@import "global/archive";
 
 
 @import "global/blocks/post-feed-block";

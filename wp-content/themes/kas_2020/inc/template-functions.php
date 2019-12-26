@@ -222,7 +222,7 @@ function create_topics_hierarchical_taxonomy() {
     'show_admin_column' => true,
 		'show_in_nav_menus' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'podcast-type' ),
+    'rewrite' => array( 'slug' => 'podcasts' ),
 		'show_in_rest'               => true,
   ));
 
@@ -250,7 +250,7 @@ function create_topics_hierarchical_taxonomy() {
     'show_admin_column' => true,
 		'show_in_nav_menus' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'video-type' ),
+    'rewrite' => array( 'slug' => 'videos' ),
 		'show_in_rest'               => true,
   ));
 
@@ -277,7 +277,7 @@ function create_topics_hierarchical_taxonomy() {
     'show_admin_column' => true,
 		'show_in_nav_menus' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'event-type' ),
+    'rewrite' => array( 'slug' => 'events' ),
 		'show_in_rest'               => true,
   ));
 
@@ -360,3 +360,67 @@ function twoUp($events){ ?>
 		</div>
 	</div>
 <?php }
+
+
+add_filter( 'get_the_archive_title', 'my_theme_archive_title' );
+/**
+ * Remove archive labels.
+ *
+ * @param  string $title Current archive title to be displayed.
+ * @return string        Modified archive title to be displayed.
+ */
+function my_theme_archive_title( $title ) {
+    if ( is_category() ) {
+        $title = single_cat_title( '', false );
+    } elseif ( is_tag() ) {
+        $title = single_tag_title( '', false );
+    } elseif ( is_author() ) {
+        $title = '<span class="vcard">' . get_the_author() . '</span>';
+    } elseif ( is_post_type_archive() ) {
+        $title = post_type_archive_title( '', false );
+    } elseif ( is_tax() ) {
+        $title = single_term_title( '', false );
+    }
+
+    return $title;
+}
+
+
+
+function podcast_article($postID){
+	ob_start();
+
+	if(get_the_terms($postID, 'Podcast')){
+		$tax = get_the_terms($postID, 'Podcast');
+	}else{
+		$tax = null;
+	}
+
+
+
+	?>
+		<article class='podcast-post'>
+			<a href="<?php echo get_the_permalink($postID); ?>">
+				<div class="podcast-post-img">
+					<?php echo get_the_post_thumbnail($postID); ?>
+				</div>
+				<span class="podcast-post-desc">
+					<h4>
+						<?php echo get_the_title($postID); ?>
+						<span class='episode-deets'>
+							<?php if(get_field('episode_number', $postID)){ ?>
+								<?php echo ' <span class="separator">|</span> Ep.&nbsp;' . get_field('episode_number', $postID) . " - "; ?>
+							<?php }else { echo ' <span class="separator">|</span> '; } ?>
+							<?php echo get_the_date('F j, Y ', $postID); ?>
+						</span>
+					</h4>
+					<?php echo get_field('short_description'); ?>
+				</span>
+			</a>
+		</article>
+
+
+	<?php
+
+	echo ob_get_clean();
+}

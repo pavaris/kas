@@ -15,7 +15,7 @@ function postBlock($id){
       </div>
       <h4><?php echo get_the_title($id); ?></h4>
       <div class="post-block-desc">
-        <p><?php echo get_field('short_description', $id); ?></p>
+        <?php echo get_field('short_description', $id); ?>
       </div>
     </a>
   </article>
