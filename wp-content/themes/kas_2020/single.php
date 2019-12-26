@@ -19,6 +19,18 @@ get_header();
 					while ( have_posts() ) :
 						the_post();
 					?>
+						<section class="article-header">
+							<?php $tags = get_the_tags(get_the_ID()); ?>
+							<?php if($tags){
+								?>
+								<div class="article-tag">
+									<?php echo $tags[0]->name; ?>
+								</div>
+								<?php
+							} ?>
+							<h1><?php the_title(); ?></h1>
+							<h4><?php the_date('F m, Y'); ?></h4>
+						</section>
 						<section>
 							<?php the_content(); ?>
 						</section>
@@ -30,21 +42,6 @@ get_header();
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
-<?php
-	foreach ($posts->posts as $key => $value) {
-		?>
-
-		<?php
-	}
- ?>
 
 <?php
 get_footer();
-
-
-
-?>
-
-
-
-<?php
