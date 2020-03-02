@@ -1,66 +1,70 @@
 $mobile_width: 767px;
+$tablet_width: 1056px;
 
 body {
-  font-family: $montserrat;
+	font-family: $montserrat;
 }
 
-h1{
-  margin-bottom: 15px;
-  font-size: 65px;
+h1 {
+	margin-bottom: 15px;
+	font-size: 65px;
 }
 
-h2{
-  margin-bottom: 15px;
-  font-size: 45px;
+h2 {
+	margin-bottom: 15px;
+	font-size: 45px;
 }
 
-h3{
-  margin-bottom: 15px;
-  font-size: 35px;
+h3 {
+	margin-bottom: 15px;
+	font-size: 35px;
 }
 
-h4{
-  margin-bottom: 15px;
-  font-size: 29px;
-  font-weight: 600;
-  line-height: 1.2em;
+h4 {
+	margin-bottom: 15px;
+	font-size: 29px;
+	font-weight: 600;
+	line-height: 1.2em;
 }
 
-h5{
-  margin-bottom: 15px;
-  font-size: 20px;
+h5 {
+	margin-bottom: 15px;
+	font-size: 20px;
 }
 
-h6{
-  margin-bottom: 15px;
-  font-size: 15px;
+h6 {
+	margin-bottom: 15px;
+	font-size: 15px;
 }
 
-p{
-  margin-bottom: 15px;
-  font-size: 18px;
-  line-height: 1.4em;
-  // letter-spacing: 0.1em;
+p {
+	margin-bottom: 15px;
+	font-size: 18px;
+	line-height: 1.4em;
+	// letter-spacing: 0.1em;
 }
 
-a{
-
+a {
 }
 
-em{
-  font-style: italic;
+em {
+	font-style: italic;
 }
 
-.content-margins{
-  max-width: 1280px;
-  width: 90%;
-  margin: 0 auto;
+#content {
+	padding-top: 50px;
 }
 
-.bg-center{
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+.content-margins {
+	max-width: 1280px;
+	width: 90%;
+	margin: 0 auto;
+}
+
+.bg-center {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
 }
 
 /* Do not show the outline on the skip link target. */
@@ -68,17 +72,17 @@ em{
 	outline: 0;
 }
 
-.full-width-title{
-  width: 100%;
-  text-align: center;
-  background-color: $darkGray;
-  color: white;
-  padding: 15px 0;
-  margin-bottom: 25px;
-  h4{
-    text-transform: uppercase;
-    font-size: 20px;
-    font-weight: 100;
-    margin-bottom: 0px;
-  }
+.full-width-title {
+	width: 100%;
+	text-align: center;
+	background-color: $darkGray;
+	color: white;
+	padding: 15px 0;
+	margin-bottom: 25px;
+	h4 {
+		text-transform: uppercase;
+		font-size: 20px;
+		font-weight: 100;
+		margin-bottom: 0px;
+	}
 }

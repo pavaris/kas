@@ -25,22 +25,30 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'theme-name' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="header-inner">
+
 			<div class="site-branding">
 				<?php echo get_custom_logo(); ?>
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-				<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+				<div class="site-nav-left">
+					<div class="nav-search">
+						<?php get_search_form();?>
+					</div>
+					<div class="nav-links">
+						<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
+						<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+					</div>
+					
+				</div>
+				<div class="site-nav-right">
+					<div class="nav-social">
+						<?php include get_template_directory() . '/components/social-nav.php'; ?>
+					</div>
+					
+				</div>
+			</nav><!-- #site-navigation -->
 
-				<?php include get_template_directory() . '/components/social-nav.php'; ?>
-
-				<button class="search-toggle">
-					search
-				</button>
-		</div>
-		</nav><!-- #site-navigation -->
 
 	</header><!-- #masthead -->
 
