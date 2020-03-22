@@ -67,6 +67,22 @@
             "placeholder": ""
         },
         {
+            "key": "field_5e5c1954e5f88",
+            "label": "Vimeo",
+            "name": "vimeo",
+            "type": "url",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        },
+        {
             "key": "field_5df99d8bc2da8",
             "label": "Youtube",
             "name": "youtube",
@@ -154,5 +170,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1577068171
+    "modified": 1583094109
 }

@@ -34,9 +34,14 @@ get_header();
                       </div>
                       <div class="header-slide-info">
                         <div class="content-margins">
-                          <h3><?php echo get_the_title($slide->ID); ?></h3>
-                          <div class="header-slide-cta">
-                            CTA
+                          <div class="header-slide-inner">
+                            <h3><?php echo get_the_title($slide->ID); ?></h3>
+                            <?php echo get_field('short_description', $slide->ID); ?>
+                            <div class="header-slide-cta">
+                              <a href="<?php echo get_the_permalink($slide->ID); ?>" class='button'>
+                                <?php the_field('cta', $slide->ID); ?>
+                              </a>
+                            </div>
                           </div>
                         </div>
                       </div>

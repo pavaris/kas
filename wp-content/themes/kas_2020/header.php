@@ -16,7 +16,7 @@
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
-	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,600,600i,700,700i&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://use.typekit.net/eay4akt.css"> 
 	<?php wp_head(); ?>
 </head>
 
@@ -25,22 +25,30 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'theme-name' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="header-inner">
+
 			<div class="site-branding">
 				<?php echo get_custom_logo(); ?>
 			</div><!-- .site-branding -->
 
 			<nav id="site-navigation" class="main-navigation">
-				<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-				<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+				<div class="site-nav-top">
+					<div class="nav-search">
+						<?php get_search_form();?>
+					</div>
+					<div class="nav-social">
+						<?php include get_template_directory() . '/components/social-nav.php'; ?>
+					</div>
+				</div>	
+				<div class="site-nav-bottom">
+					<div class="nav-links">
+						<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
+						<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+					</div>
+				</div>
+				
+				
+			</nav><!-- #site-navigation -->
 
-				<?php include get_template_directory() . '/components/social-nav.php'; ?>
-
-				<button class="search-toggle">
-					search
-				</button>
-		</div>
-		</nav><!-- #site-navigation -->
 
 	</header><!-- #masthead -->
 
