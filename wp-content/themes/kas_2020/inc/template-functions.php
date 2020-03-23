@@ -215,7 +215,7 @@ function create_topics_hierarchical_taxonomy() {
 
 // Now register the taxonomy
 
-  register_taxonomy('Podcast',array('podcast'), array(
+  register_taxonomy('podcast_type',array('podcast'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
@@ -223,7 +223,7 @@ function create_topics_hierarchical_taxonomy() {
 		'show_in_nav_menus' => true,
     'query_var' => true,
     'rewrite' => array( 'slug' => 'podcasts' ),
-		'show_in_rest'               => true,
+		'show_in_rest' => true,
   ));
 
 
@@ -243,15 +243,15 @@ function create_topics_hierarchical_taxonomy() {
 
 // Now register the taxonomy
 
-  register_taxonomy('Video',array('video'), array(
+  register_taxonomy('video_type',array('video'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,
     'show_admin_column' => true,
 		'show_in_nav_menus' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'videos' ),
-		'show_in_rest'               => true,
+		'show_in_rest' => true,
+		'public' => true
   ));
 
   $labels = array(
@@ -270,7 +270,7 @@ function create_topics_hierarchical_taxonomy() {
 
 // Now register the taxonomy
 
-  register_taxonomy('Event',array('event'), array(
+  register_taxonomy('event_type',array('event'), array(
     'hierarchical' => true,
     'labels' => $labels,
     'show_ui' => true,

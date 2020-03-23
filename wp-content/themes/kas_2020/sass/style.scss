@@ -1,12 +1,11 @@
-*{
-  box-sizing: border-box;
+* {
+	box-sizing: border-box;
 }
 
 @import "global/colors";
 @import "reset";
 @import "global/fonts";
 @import "main";
-
 
 @import "global/header";
 @import "global/post-block";
@@ -15,6 +14,5 @@
 @import "global/social-nav";
 @import "global/archive";
 @import "global/single";
-
 
 @import "global/blocks/post-feed-block";

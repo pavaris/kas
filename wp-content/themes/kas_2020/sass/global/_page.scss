@@ -82,19 +82,22 @@
 		p {
 			font-size: 25px;
 			font-weight: 100;
-			font-family: $mrEavesModern;
+			font-family: $mrEaves;
+			letter-spacing: 0.04em;
 		}
 		h3 {
 			font-weight: 600;
 			text-transform: uppercase;
-			font-family: $mrEavesModern;
+			font-family: $mrsEaves;
+			letter-spacing: 0.05em;
 		}
 		.header-slide-inner {
 			width: 50%;
 		}
 		.header-slide-cta {
-			font-size: 24px;
-			font-style: italic;
+			a {
+				font-size: 18px;
+			}
 		}
 	}
 }
