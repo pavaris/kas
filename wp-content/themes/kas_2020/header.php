@@ -26,28 +26,45 @@
 
 	<header id="masthead" class="site-header">
 
-			<div class="site-branding">
-				<?php echo get_custom_logo(); ?>
-			</div><!-- .site-branding -->
-
 			<nav id="site-navigation" class="main-navigation">
-				<div class="site-nav-top">
-					<div class="nav-search">
+				<div class="site-branding">
+					<?php echo get_custom_logo(); ?>
+				</div><!-- .site-branding -->
+				<div class="site-nav-cont">
+					<div class="site-nav-top">
+						<div class="nav-search">
+							<?php get_search_form();?>
+						</div>
+						<div class="nav-social">
+							<?php include get_template_directory() . '/components/social-nav.php'; ?>
+						</div>
+					</div>	
+					<div class="site-nav-bottom">
+						<div class="nav-links">
+							<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
+							<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+						</div>
+					</div>	
+				</div>
+			</nav><!-- #site-navigation -->
+
+			<nav id="mobile-nav">
+				<div id="mobile-header">
+					<a href="<?php echo site_url(); ?>" class="mobile-home"><span>KoreanAmerican</span>story.org</a>
+					<button id="mobile-ham">
+						<?php include get_template_directory() . '/img/hamburger.svg'; ?>
+					</button>
+				</div>	
+				<div id="mobile-nav-links">
+					<div class="mobile-search">
 						<?php get_search_form();?>
 					</div>
-					<div class="nav-social">
-						<?php include get_template_directory() . '/components/social-nav.php'; ?>
-					</div>
-				</div>	
-				<div class="site-nav-bottom">
-					<div class="nav-links">
-						<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-						<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
-					</div>
+					<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
+					<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+					<?php include get_template_directory() . '/components/social-nav.php'; ?>
+
 				</div>
-				
-				
-			</nav><!-- #site-navigation -->
+			</nav>
 
 
 	</header><!-- #masthead -->
