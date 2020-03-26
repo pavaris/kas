@@ -47,6 +47,7 @@
 				> li {
 					margin-right: 20px;
 					text-align: left;
+					margin-bottom: 25px;
 					@media (max-width: 900px) {
 						width: 50%;
 						margin-right: 0px;
@@ -66,9 +67,6 @@
 						font-size: 16px;
 						margin-bottom: 18px;
 						font-weight: 800;
-					}
-					.sub-menu {
-						margin-bottom: 25px;
 					}
 				}
 			}

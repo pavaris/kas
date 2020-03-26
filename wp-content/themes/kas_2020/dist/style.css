@@ -764,7 +764,8 @@ button {
         flex-wrap: wrap; }
         .site-footer .site-info .footer-menu ul.menu > li {
           margin-right: 20px;
-          text-align: left; }
+          text-align: left;
+          margin-bottom: 25px; }
           @media (max-width: 900px) {
             .site-footer .site-info .footer-menu ul.menu > li {
               width: 50%;
@@ -782,8 +783,6 @@ button {
             font-size: 16px;
             margin-bottom: 18px;
             font-weight: 800; }
-          .site-footer .site-info .footer-menu ul.menu > li .sub-menu {
-            margin-bottom: 25px; }
   .site-footer a {
     color: white; }
   .site-footer .footer-copyright {
