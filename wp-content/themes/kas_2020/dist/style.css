@@ -762,6 +762,9 @@ button {
         justify-content: space-around;
         align-items: flex-start;
         flex-wrap: wrap; }
+        @media (max-width: 900px) {
+          .site-footer .site-info .footer-menu ul.menu {
+            justify-content: flex-start; } }
         .site-footer .site-info .footer-menu ul.menu > li {
           margin-right: 20px;
           text-align: left;
