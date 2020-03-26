@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/koreanam/public_html/dev/kas_new
+    - /bin/cp -R images $DEPLOYPATH
