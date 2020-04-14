@@ -3,30 +3,6 @@
     "title": "Podcast Taxonomy Fields",
     "fields": [
         {
-            "key": "field_5e041ba99976b",
-            "label": "Cover Image",
-            "name": "cover_image",
-            "type": "image",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "return_format": "array",
-            "preview_size": "medium",
-            "library": "all",
-            "min_width": "",
-            "min_height": "",
-            "min_size": "",
-            "max_width": "",
-            "max_height": "",
-            "max_size": "",
-            "mime_types": ""
-        },
-        {
             "key": "field_5e04206b5f921",
             "label": "Listen On",
             "name": "listen_on",
@@ -157,7 +133,7 @@
             {
                 "param": "taxonomy",
                 "operator": "==",
-                "value": "Podcast"
+                "value": "podcast_type"
             }
         ]
     ],
@@ -169,5 +145,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1577334249
+    "modified": 1586729545
 }

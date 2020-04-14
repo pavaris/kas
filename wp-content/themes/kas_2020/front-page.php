@@ -19,7 +19,7 @@ get_header();
  		<main id="main" class="site-main">
 
 
- 				<article class="">
+ 				
  					<?php
  					while ( have_posts() ) :
  						the_post();
@@ -54,15 +54,133 @@ get_header();
               $latestPosts = new WP_Query($args);
             ?>
             <section class="homepage-content">
-              <div class="content-margins">
-                <?php the_content(); ?>
-              </div>
+
+            <?php $videoFeed = get_field('video_feed'); 
+            if($videoFeed){
+            ?>
+              <section class="home-latest-videos">
+                <div class="content-margins">
+                  <h3>Watch Our Latest Videos</h3>
+                  <div class="home-latest-videos-feed">
+                    <?php foreach($videoFeed as $video){ ?> 
+                      <a href="<?php echo get_the_permalink($video->ID); ?>">
+                        <?php echo get_the_post_thumbnail($video->ID); ?>
+                      </a>
+                    <?php } ?>
+                  </div>
+                </div>
+              </section>
+            <?php } ?>
+<?php wp_reset_query(); ?>
+
+            <section class="home-mission">
+              <h3>Our Mission</h3>
+              <h5>To capture, createm preserve and share the stoires of the Korean American experience</h5>
+              <a href="" class="button">Learn More</a>
+            </section>
+            
+            <?php $podcasts = get_field('podcasts'); 
+              if($podcasts){ ?>
+                <section class="home-podcasts">
+                  <div class="content-margins">
+                    <h3>Listen</h3>
+                    <p>KAS Podcast Series</p>
+                  </div>
+                  <div class="home-podcasts-cont">
+                    <div class='content-margins'>
+                      <div class="home-podcast-feed">
+                        <?php foreach($podcasts as $podcast){ ?> 
+                          <a href="<?php echo get_the_permalink($podcast->ID); ?>">
+                            <div class="home-podcast-image">
+                              <?php echo get_the_post_thumbnail($podcast->ID); ?>
+                            </div>
+                            <h4>
+                              <?php 
+                                $tax = get_the_terms($podcast->ID, 'podcast_type'); 
+                                if($tax){
+                                  echo $tax[0]->name . '<br>';
+                                }
+                              ?>
+                              <?php echo $podcast->post_title; ?>
+                            </h4>
+                          </a>
+                        <?php } ?>
+                        <a style='width: 30px;'></a>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+              <?php } ?>
+
+
+            <?php 
+              $writtenArgs = array('post_type' => 'written', 'posts_per_page' => 6 ); 
+              $writtenQuery = new WP_Query($writtenArgs);
+
+              if($writtenQuery->have_posts()){
+            ?>
+              <section class="home-latest-stories">
+                <div class="content-margins">
+                  <h3>Latest Stories</h3>
+                  <div class="posts-feed">
+                    <?php foreach($writtenQuery->posts as $post){ ?>
+                      
+                      <a href="<?php echo get_the_permalink($post->ID); ?>">
+                        <div class="post-feed-image">
+                          <?php echo get_the_post_thumbnail($post->ID); ?>
+                        </div>
+                        <div class="post-feed-info">
+                          <div class="post-category">
+                            Article
+                          </div>
+                          <?php echo get_the_title($post->ID); ?>
+                        </div>
+                      </a>
+                    <?php } ?>
+                  </div>
+                </div>
+              </section>
+            <?php } ?>
+<?php wp_reset_query(); ?>
+
+        <section class="newsletter-container">
+          <div class="content-margins">
+            <h3>Stay Connected</h3>
+            <p>Subscribe to our newsletter</p>
+            <form action="">
+              <input type="email">
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+        </section>
+    
+        
+        <?php $projects = get_field('projects'); ?>
+        <?php if($projects){ ?>
+        <section class="home-projects">
+          <div class="content-margins">
+            <h3>Our Projects</h3>
+            <div class="home-projects-feed">
+              <?php foreach($projects as $project){ ?> 
+                <a href="<?php echo get_term_link($project->term_id); ?>">
+                <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
+                <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'medium');  ?>
+                <?php } ?>
+                  <?php echo $project->name; ?>
+                </a>
+              <?php } ?>
+            </div>
+          </div>
+        </section>
+        <?php } ?>
+
+
             </section>
 
  					<?php
  					endwhile; // End of the loop.
  					?>
- 				</article>
+ 				
 
  		</main><!-- #main -->
  	</div><!-- #primary -->

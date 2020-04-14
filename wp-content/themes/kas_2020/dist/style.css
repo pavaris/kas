@@ -379,7 +379,7 @@ em {
 .full-width-title {
   width: 100%;
   text-align: center;
-  background-color: #424a56;
+  background-color: #4c5154;
   color: white;
   padding: 15px 0;
   margin-bottom: 25px; }
@@ -391,10 +391,10 @@ em {
 
 .button,
 button {
-  background-color: #7be4fe;
-  border-radius: 10px;
+  background-color: #73aab7;
   border: 0px;
-  padding: 15px 50px;
+  border-radius: 25px;
+  padding: 12px 40px;
   color: white;
   font-style: normal;
   text-transform: uppercase;
@@ -428,7 +428,7 @@ button {
       .site-header a {
         font-size: 13px; } }
   .site-header a.donate-button {
-    border: 2px solid #7be4fe;
+    border: 0px;
     border-radius: 25px;
     padding: 12px 40px; }
     @media (max-width: 1056px) {
@@ -514,7 +514,7 @@ button {
     height: 50px;
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #4c5154;
     position: relative;
     width: 100%; }
     #site-navigation .nav-search:before {
@@ -524,7 +524,7 @@ button {
       width: 100vw;
       top: 0;
       height: 100%;
-      background-color: white;
+      background-color: #4c5154;
       z-index: -1; }
     #site-navigation .nav-search .search-form {
       width: 100%;
@@ -547,12 +547,16 @@ button {
     padding: 10px 20px;
     outline: none;
     font-size: 14px;
-    height: 100%; }
+    height: 100%;
+    background-color: #4c5154;
+    color: white;
+    letter-spacing: 0.1em;
+    font-size: 15px; }
     #site-navigation .search-field::placeholder {
       text-transform: uppercase;
       letter-spacing: 0.2em;
       font-weight: 600;
-      color: #747f87; }
+      color: white; }
   #site-navigation .search-submit {
     display: none; }
 
@@ -560,7 +564,7 @@ button {
   display: flex; }
 
 .site-nav-bottom {
-  padding: 0 5%; }
+  padding: 0 5% 0 0; }
 
 #mobile-nav {
   position: fixed;
@@ -569,7 +573,7 @@ button {
   top: 0;
   width: 100%;
   padding: 0 25px;
-  background-color: #747f87;
+  background-color: #4c5154;
   z-index: 10;
   display: none; }
   @media (max-width: 767px) {
@@ -587,7 +591,7 @@ button {
       text-transform: initial;
       font-size: 22px; }
       #mobile-nav #mobile-header .mobile-home span {
-        color: #7be4fe; }
+        color: #73aab7; }
   #mobile-nav .menu-header-menu-container {
     margin-bottom: 30px; }
   #mobile-nav #mobile-nav-links {
@@ -619,7 +623,7 @@ button {
       font-family: "mr-eaves-sans";
       font-size: 15px; }
   #mobile-nav .donate-button {
-    background-color: #7be4fe;
+    background-color: #73aab7;
     padding: 5px 25px;
     font-size: 20px;
     font-weight: 100;
@@ -703,7 +707,7 @@ button {
     z-index: 1;
     border-radius: 20px;
     text-transform: capitalize;
-    color: #424a56;
+    color: #4c5154;
     font-size: 13px; }
 
 .post-feed-title {
@@ -713,7 +717,7 @@ button {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-color: #424a56;
+  background-color: #4c5154;
   padding: 15px 0;
   margin-bottom: 25px; }
   .post-feed-title h4 {
@@ -731,7 +735,7 @@ button {
   align-items: center;
   padding-top: 120px; }
   .site-footer .site-info {
-    background-color: #424a56;
+    background-color: #4c5154;
     width: 100%; }
     @media (max-width: 900px) {
       .site-footer .site-info {
@@ -838,8 +842,8 @@ button {
         display: inline-block; } }
 
 a.donate-button {
-  border: 2px solid #7be4fe;
-  background-color: #7be4fe;
+  border: 2px solid #73aab7;
+  background-color: #73aab7;
   border-radius: 25px;
   padding: 12px 40px;
   font-size: 22px;
@@ -851,33 +855,83 @@ a.donate-button {
 #page-header {
   width: 100%; }
 
-.header-slides {
-  margin-bottom: 30px; }
-  .header-slides .slick-dots {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    bottom: 0;
-    display: flex !important;
-    justify-content: center;
-    padding-bottom: 20px; }
-    .header-slides .slick-dots button {
-      font-size: 0px;
-      padding: 0px;
-      border-radius: 10px;
-      height: 10px;
-      width: 10px;
-      border: 1px solid white;
-      margin: 0 5px;
-      background-color: transparent;
-      cursor: pointer; }
-    .header-slides .slick-dots li.slick-active button {
-      background-color: white; }
+.social-nav {
+  flex-grow: 1;
+  background-color: #4c5154; }
+  .social-nav ul {
+    display: flex;
+    justify-content: space-around; }
+  .social-nav li {
+    margin-right: 10px; }
+    .social-nav li svg {
+      height: 20px;
+      width: auto; }
+      .social-nav li svg path {
+        fill: white; }
+  .social-nav a {
+    color: white;
+    text-decoration: none; }
+
+.single .site-header:before {
+  transform: translateY(0%);
+  opacity: 1;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); }
+
+.single #content {
+  padding-top: 150px; }
+
+.article-tag {
+  background-color: #d8d8d8;
+  display: inline-block;
+  padding: 5px 20px;
+  font-size: 18px;
+  margin-bottom: 20px; }
+
+.article-header {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 30px auto; }
+  .article-header h1 {
+    font-style: italic;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 1.3em; }
+  .article-header h4 {
+    font-weight: 500;
+    font-size: 20px; }
+
+.home section h3 {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-family: "mrs-eaves";
+  letter-spacing: 0.3em;
+  margin-bottom: 60px;
+  color: #4c5154; }
+
+.header-slides .slick-dots {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  bottom: 0;
+  display: flex !important;
+  justify-content: center;
+  padding-bottom: 20px; }
+  .header-slides .slick-dots button {
+    font-size: 0px;
+    padding: 0px;
+    border-radius: 10px;
+    height: 10px;
+    width: 10px;
+    border: 1px solid white;
+    margin: 0 5px;
+    background-color: transparent;
+    cursor: pointer; }
+  .header-slides .slick-dots li.slick-active button {
+    background-color: white; }
 
 .header-slide {
-  height: 0;
-  padding-bottom: 50%;
+  height: 70vh;
   position: relative;
   width: 100%; }
   .header-slide.slick-slide {
@@ -927,50 +981,194 @@ a.donate-button {
     .header-slide .header-slide-info .header-slide-cta a {
       font-size: 18px; }
 
-.social-nav {
-  flex-grow: 1;
-  background-color: #747f87; }
-  .social-nav ul {
-    display: flex;
-    justify-content: space-around; }
-  .social-nav li {
-    margin-right: 10px; }
-    .social-nav li svg {
-      height: 20px;
-      width: auto; }
-      .social-nav li svg path {
-        fill: white; }
-  .social-nav a {
-    color: white;
-    text-decoration: none; }
-
-.single .site-header:before {
-  transform: translateY(0%);
-  opacity: 1;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); }
-
-.single #content {
-  padding-top: 150px; }
-
-.article-tag {
-  background-color: #d8d8d8;
-  display: inline-block;
-  padding: 5px 20px;
-  font-size: 18px;
-  margin-bottom: 20px; }
-
-.article-header {
+.home-latest-videos {
+  background-color: #4c5154;
+  color: white;
   text-align: center;
-  max-width: 900px;
-  margin: 0 auto 30px auto; }
-  .article-header h1 {
-    font-style: italic;
+  padding: 60px 0; }
+  .home-latest-videos h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-family: "mrs-eaves";
+    letter-spacing: 0.3em;
+    margin-bottom: 40px; }
+  .home-latest-videos .home-latest-videos-feed {
+    max-width: 80%;
+    margin: 0 auto; }
+    .home-latest-videos .home-latest-videos-feed a {
+      outline: none;
+      display: block;
+      position: relative; }
+      .home-latest-videos .home-latest-videos-feed a:before {
+        height: 75px;
+        width: 75px;
+        content: "";
+        border-radius: 75px;
+        border: 2px solid white;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        pointer-events: none; }
+      .home-latest-videos .home-latest-videos-feed a:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 5px;
+        margin: auto;
+        pointer-events: none;
+        height: 0;
+        width: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 15px solid white; }
+      .home-latest-videos .home-latest-videos-feed a img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .home-latest-videos .home-latest-videos-feed .slick-arrow {
+      height: 0;
+      width: 0;
+      font-size: 0;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      padding: 0px;
+      background-color: transparent;
+      border-radius: 0px;
+      cursor: pointer; }
+    .home-latest-videos .home-latest-videos-feed .slick-prev {
+      right: calc(100% + 50px);
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-right: 25px solid white; }
+    .home-latest-videos .home-latest-videos-feed .slick-next {
+      left: calc(100% + 50px);
+      border-top: 25px solid transparent;
+      border-bottom: 25px solid transparent;
+      border-left: 25px solid white; }
+
+section.home-podcasts {
+  background-color: #4c5154;
+  color: white;
+  padding: 60px 0; }
+  section.home-podcasts h3 {
     font-weight: 600;
-    font-size: 50px;
-    line-height: 1.3em; }
-  .article-header h4 {
-    font-weight: 500;
-    font-size: 20px; }
+    text-transform: uppercase;
+    font-family: "mrs-eaves";
+    letter-spacing: 0.2em;
+    color: white !important;
+    font-size: 30px;
+    margin-bottom: 20px; }
+  section.home-podcasts p {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: 0.2em;
+    margin-bottom: 50px; }
+
+.home-podcasts-cont {
+  width: 100vw;
+  overflow: scroll; }
+  .home-podcasts-cont:after {
+    content: "";
+    width: 30px; }
+
+.home-podcast-feed {
+  display: flex; }
+  .home-podcast-feed a {
+    width: 100%;
+    margin-right: 30px;
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase; }
+    .home-podcast-feed a h4 {
+      font-size: 20px; }
+    .home-podcast-feed a:last-child {
+      padding-right: 30px; }
+  .home-podcast-feed .home-podcast-image {
+    height: 0;
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+    min-width: 300px;
+    margin-bottom: 20px; }
+    .home-podcast-feed .home-podcast-image img {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
+
+section.home-mission {
+  text-align: center;
+  padding: 60px 0; }
+
+section.home-latest-stories {
+  padding: 60px 0; }
+  section.home-latest-stories h3 {
+    font-family: "mrs-eaves";
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 20px;
+    letter-spacing: 0.3em;
+    margin-bottom: 40px; }
+
+section.home-projects {
+  padding: 60px 0;
+  text-align: center; }
+
+.posts-feed {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  .posts-feed a {
+    width: calc(33% - 20px);
+    margin-bottom: 25px;
+    text-decoration: none; }
+    .posts-feed a .post-feed-image {
+      position: relative;
+      height: 0;
+      width: 100%;
+      padding-bottom: 65%; }
+    .posts-feed a img {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      object-fit: cover; }
+    .posts-feed a .post-feed-info {
+      padding: 0 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      margin-top: -15px;
+      position: relative;
+      z-index: 2;
+      color: #4c5154;
+      text-transform: uppercase;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.3em; }
+      .posts-feed a .post-feed-info .post-category {
+        line-height: initial;
+        background-color: #73aab7;
+        padding: 5px 20px;
+        color: white;
+        text-transform: uppercase;
+        font-size: 16px;
+        margin-bottom: 15px;
+        font-weight: 400; }
+
+.newsletter-container {
+  text-align: center;
+  padding: 60px 0; }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;

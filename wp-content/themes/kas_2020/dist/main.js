@@ -85,12 +85,12 @@ var $ = jQuery.noConflict();
 $(document).ready(function () {
 	console.log("ready? ok!");
 
-	if ($(".header-slide").length > 1) {
-		$(".header-slides").slick({
-			arrows: false,
+	if ($(".home-latest-videos-feed a").length > 1) {
+		console.log("what?");
+		$(".home-latest-videos-feed").slick({
+			arrows: true,
 			slidesToShow: 1,
-			slidesToScroll: 1,
-			dots: true
+			slidesToScroll: 1
 		});
 	}
 

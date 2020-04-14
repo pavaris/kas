@@ -1,0 +1,280 @@
+.home {
+	section {
+		h3 {
+			font-size: 20px;
+			text-transform: uppercase;
+			font-family: "mrs-eaves";
+			letter-spacing: 0.3em;
+			margin-bottom: 60px;
+			color: $darkGray;
+		}
+	}
+}
+
+.header-slides {
+	.slick-dots {
+		position: absolute;
+		left: 0;
+		right: 0;
+		margin: auto;
+		bottom: 0;
+		display: flex !important;
+		justify-content: center;
+		padding-bottom: 20px;
+		button {
+			font-size: 0px;
+			padding: 0px;
+			border-radius: 10px;
+			height: 10px;
+			width: 10px;
+			border: 1px solid white;
+			margin: 0 5px;
+			background-color: transparent;
+			cursor: pointer;
+		}
+		li.slick-active {
+			button {
+				background-color: white;
+			}
+		}
+	}
+}
+
+.header-slide {
+	height: 70vh;
+	position: relative;
+	width: 100%;
+
+	&.slick-slide {
+		padding-bottom: 10%;
+	}
+
+	// @media(min-width: 1441px){
+	//   height:80vh;
+	//   padding-bottom: 0px;
+	// }
+	.header-slide-img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+		&:before {
+			position: absolute;
+			left: 0;
+			top: 0;
+			background-color: rgba(0, 0, 0, 0.5);
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+			content: "";
+		}
+		img {
+			height: 100%;
+			width: 100%;
+			object-fit: cover;
+		}
+	}
+	.header-slide-info {
+		position: absolute;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 100%;
+		margin: auto;
+		z-index: 1;
+		display: flex;
+		align-items: center;
+		color: white;
+		p {
+			font-size: 25px;
+			font-weight: 100;
+			font-family: $mrEaves;
+			letter-spacing: 0.04em;
+		}
+		h3 {
+			font-weight: 600;
+			text-transform: uppercase;
+			font-family: $mrsEaves;
+			letter-spacing: 0.05em;
+		}
+		.header-slide-inner {
+			width: 50%;
+		}
+		.header-slide-cta {
+			a {
+				font-size: 18px;
+			}
+		}
+	}
+}
+
+.home-latest-videos {
+	background-color: $darkGray;
+	color: white;
+	text-align: center;
+	padding: 60px 0;
+	h3 {
+		font-size: 20px;
+		text-transform: uppercase;
+		font-family: $mrsEaves;
+		letter-spacing: 0.3em;
+		margin-bottom: 40px;
+	}
+	.home-latest-videos-feed {
+		max-width: 80%;
+		margin: 0 auto;
+		a {
+			outline: none;
+			display: block;
+			position: relative;
+			&:before {
+				height: 75px;
+				width: 75px;
+				content: "";
+				border-radius: 75px;
+				border: 2px solid white;
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 0;
+				margin: auto;
+				pointer-events: none;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				right: 0;
+				left: 5px;
+				margin: auto;
+				pointer-events: none;
+				height: 0;
+				width: 0;
+				border-top: 10px solid transparent;
+				border-bottom: 10px solid transparent;
+				border-left: 15px solid white;
+			}
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		.slick-arrow {
+			height: 0;
+			width: 0;
+			font-size: 0;
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			margin: auto;
+			padding: 0px;
+			background-color: transparent;
+			border-radius: 0px;
+			cursor: pointer;
+		}
+		.slick-prev {
+			right: calc(100% + 50px);
+			border-top: 25px solid transparent;
+			border-bottom: 25px solid transparent;
+			border-right: 25px solid white;
+		}
+		.slick-next {
+			left: calc(100% + 50px);
+			border-top: 25px solid transparent;
+			border-bottom: 25px solid transparent;
+			border-left: 25px solid white;
+		}
+	}
+}
+
+section.home-podcasts {
+	background-color: $darkGray;
+	color: white;
+	padding: 60px 0;
+
+	h3 {
+		font-weight: 600;
+		text-transform: uppercase;
+		font-family: $mrsEaves;
+		letter-spacing: 0.2em;
+		color: white !important;
+		font-size: 30px;
+		margin-bottom: 20px;
+	}
+	p {
+		text-transform: uppercase;
+		font-weight: 600;
+		font-size: 20px;
+		letter-spacing: 0.2em;
+		margin-bottom: 50px;
+	}
+}
+
+.home-podcasts-cont {
+	width: 100vw;
+	overflow: scroll;
+	&:after {
+		content: "";
+		width: 30px;
+	}
+}
+
+.home-podcast-feed {
+	display: flex;
+
+	a {
+		width: 100%;
+		margin-right: 30px;
+		color: white;
+		text-decoration: none;
+		text-transform: uppercase;
+		h4 {
+			font-size: 20px;
+		}
+		&:last-child {
+			padding-right: 30px;
+		}
+	}
+	.home-podcast-image {
+		height: 0;
+		width: 100%;
+		padding-bottom: 100%;
+		position: relative;
+		min-width: 300px;
+		margin-bottom: 20px;
+		img {
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
+section.home-mission {
+	text-align: center;
+	padding: 60px 0;
+}
+
+section.home-latest-stories {
+	padding: 60px 0;
+	h3 {
+		font-family: $mrsEaves;
+		text-align: center;
+		text-transform: uppercase;
+		font-size: 20px;
+		letter-spacing: 0.3em;
+		margin-bottom: 40px;
+	}
+}
+
+section.home-projects {
+	padding: 60px 0;
+	text-align: center;
+}
