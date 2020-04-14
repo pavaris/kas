@@ -163,18 +163,43 @@ get_header();
             <div class="home-projects-feed">
               <?php foreach($projects as $project){ ?> 
                 <a href="<?php echo get_term_link($project->term_id); ?>">
-                <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
-                <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'medium');  ?>
-                <?php } ?>
-                  <?php echo $project->name; ?>
+                  <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
+                    <div class="home-projects-image">
+                      <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'medium');  ?>
+                    </div>
+                  <?php } ?>
+                  <h5><?php echo $project->name; ?></h5>
                 </a>
               <?php } ?>
             </div>
+              <a href="" class="button">All Projects</a>
+
           </div>
         </section>
         <?php } ?>
 
 
+        <?php $events = get_field('events'); ?>
+        <?php if($events){ ?>
+          <section class="home-events">
+            <div class="content-margins">
+              <h3>Events</h3>
+              <div class="home-events-feed">
+                <?php foreach($events as $event){ ?>
+                  <a href="<?php echo get_the_permalink($event->ID); ?>">
+                    <div class="home-events-image">
+                      <?php echo get_the_post_thumbnail($event->ID); ?>
+                    </div>
+                    <div class="home-events-desc">
+                      <h5><?php echo $event->post_title; ?></h5>
+                      <?php echo get_field('short_description', $event->ID); ?>
+                    </div>
+                  </a>
+                <?php } ?>
+              </div>
+            </div>
+          </section>
+        <?php } ?>
             </section>
 
  					<?php

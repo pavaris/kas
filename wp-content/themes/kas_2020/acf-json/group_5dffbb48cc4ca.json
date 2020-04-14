@@ -100,6 +100,31 @@
             "field_type": "multiselect",
             "allow_null": 1,
             "return_value": "object"
+        },
+        {
+            "key": "field_5e9513c8612ca",
+            "label": "Events",
+            "name": "events",
+            "type": "relationship",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "event"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": "",
+            "min": "",
+            "max": "",
+            "return_format": "object"
         }
     ],
     "location": [
@@ -119,5 +144,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1586729801
+    "modified": 1586828250
 }
