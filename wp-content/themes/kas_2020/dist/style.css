@@ -972,10 +972,13 @@ a.donate-button {
       font-family: "mr-eaves-sans";
       letter-spacing: 0.04em; }
     .header-slide .header-slide-info h3 {
-      font-weight: 600;
       text-transform: uppercase;
       font-family: "mrs-eaves";
-      letter-spacing: 0.05em; }
+      color: white;
+      font-size: 30px;
+      color: white;
+      letter-spacing: 0.3em;
+      font-weight: 100; }
     .header-slide .header-slide-info .header-slide-inner {
       width: 50%; }
     .header-slide .header-slide-info .header-slide-cta a {
