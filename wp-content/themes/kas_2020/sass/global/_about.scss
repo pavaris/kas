@@ -1,0 +1,131 @@
+.page-template-page-about {
+	.page-content {
+		padding-top: 50px;
+		color: $darkGray;
+		margin-bottom: 50px;
+		h1 {
+			text-transform: uppercase;
+			font-family: $mrsEaves;
+			font-size: 20px;
+			color: $darkGray;
+			letter-spacing: 0.3em;
+			font-weight: 500;
+			margin-bottom: 30px;
+		}
+		p {
+			line-height: 1em;
+			font-size: 20px;
+			font-weight: 500;
+		}
+	}
+	.site-footer {
+		padding-top: 0px;
+	}
+}
+
+.page-header-container {
+	height: 30vh;
+	min-height: 400px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 50px;
+	h2 {
+		color: white;
+		text-align: center;
+		font-family: $mrsEaves;
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		font-weight: 700;
+		font-size: 40px;
+		margin-top: 30px;
+	}
+}
+
+.page-header-image {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: -1;
+	img {
+		object-fit: cover;
+		height: 100%;
+		width: 100%;
+		object-position: center;
+	}
+}
+
+.about-page-nav-cont {
+	position: relative;
+}
+
+.about-page-nav {
+	display: flex;
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+	justify-content: center;
+	right: 0;
+	max-width: 100%;
+	@media (max-width: 920px) {
+		flex-wrap: wrap;
+		justify-content: flex-start;
+		top: 100%;
+		position: initial;
+	}
+	a {
+		padding: 20px 35px;
+		background-color: white;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $darkGray;
+		font-size: 20px;
+		font-weight: 600;
+		border-right: 1px solid $gray;
+		border-bottom: 1px solid $gray;
+		min-width: 150px;
+		text-align: center;
+		transition: ease 300ms all;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		&:last-child {
+			border-right: 0px;
+		}
+		&:hover,
+		&.active {
+			background-color: $skyBlue;
+			color: white;
+		}
+		@media (max-width: 920px) {
+			flex-grow: 1;
+		}
+	}
+}
+
+#about-page-content {
+	background-color: $darkGray;
+	padding: 30px 0 120px;
+	color: white;
+	h2 {
+		text-transform: uppercase;
+		font-family: $mrsEaves;
+		font-size: 20px;
+		color: white;
+		letter-spacing: 0.3em;
+		font-weight: 500;
+		margin-bottom: 30px;
+		text-align: center;
+	}
+	iframe {
+		width: 100%;
+	}
+}
+
+.bottom-padding {
+	padding-bottom: 120px;
+}

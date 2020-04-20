@@ -9,6 +9,9 @@
 			color: $darkGray;
 		}
 	}
+	#content {
+		padding-top: 0px;
+	}
 }
 
 .header-slides {
@@ -95,7 +98,7 @@
 		h3 {
 			text-transform: uppercase;
 			font-family: $mrsEaves;
-			color: white;
+
 			font-size: 30px;
 			color: white;
 			letter-spacing: 0.3em;
