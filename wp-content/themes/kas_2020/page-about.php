@@ -34,6 +34,52 @@
 		 <div class="content-margins">
 			<div class="page-content">
 					<h1 style="text-align: center"><?php the_title(); ?></h1>
+
+
+<?php if(get_field('members')){ ?>
+	<div class="team-members">
+		<?php foreach(get_field('members') as $member){ ?> 
+				<div class="team-member">
+					<div class="team-member-images">
+						<?php echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-now'); ?>
+						<?php if($member['childhood_image'] != ''){ ?> 
+							<?php echo wp_get_attachment_image($member['childhood_image']['ID'], 'medium', false, 'class=image-child'); ?>
+						<?php }else{ echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-child'); } ?>
+						
+					</div>
+					<div class="team-member-name"><?php echo $member['name']; ?></div>
+					<div class="team-member-info">
+						<?php echo $member['info']; ?>
+					</div>
+				</div>
+		<?php }	?>
+	</div>
+<?php } ?>
+
+<?php if(get_field('board_members')){
+	?> 
+	<div class="board-members">
+		<?php foreach(get_field('board_members') as $member){ ?> 
+			<div class="board-member">
+				<div class="board-member-images">
+					<?php echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-now'); ?>
+					<?php if($member['childhood_image'] != ''){ ?> 
+						<?php echo wp_get_attachment_image($member['childhood_image']['ID'], 'medium', false, 'class=image-child'); ?>
+					<?php }else{ echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-child'); } ?>
+					<h3 class="board-member-name">
+						<span><?php echo $member['name']; ?></span>
+					</h3>
+				</div>
+				<div class="board-member-info">
+					<h4><?php echo $member['title']; ?></h4>
+					<?php echo $member['info']; ?>
+				</div>
+			</div>
+		<?php } ?>
+	</div>
+	<?php
+} ?>
+
 					<?php the_content(); ?>
 		 	</div>
 		 </div>

@@ -1429,6 +1429,126 @@ section.home-events {
 .bottom-padding {
   padding-bottom: 120px; }
 
+.team-members {
+  display: flex;
+  margin-top: 50px;
+  flex-wrap: wrap;
+  justify-content: center; }
+  .team-members .team-member {
+    width: 31%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 45px;
+    margin-right: 3%; }
+    .team-members .team-member:nth-child(3n), .team-members .team-member:last-child {
+      margin-right: 0px; }
+    @media (max-width: 900px) {
+      .team-members .team-member {
+        width: 47%;
+        margin-right: 3%; }
+        .team-members .team-member:nth-child(2n) {
+          margin-right: 0px; }
+        .team-members .team-member:nth-child(3n) {
+          margin-right: 3%; } }
+    @media (max-width: 600px) {
+      .team-members .team-member {
+        width: 100%;
+        margin-right: 0px !important; } }
+    .team-members .team-member .team-member-images {
+      height: 0;
+      width: 100%;
+      position: relative;
+      padding-bottom: 120%; }
+      .team-members .team-member .team-member-images img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        transition: ease 400ms all; }
+        .team-members .team-member .team-member-images img.image-now {
+          z-index: 1; }
+      .team-members .team-member .team-member-images:hover .image-now {
+        opacity: 0; }
+    .team-members .team-member .team-member-name {
+      background-color: #4c5154;
+      color: white;
+      padding: 10px 30px;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      position: relative;
+      top: -20px;
+      z-index: 1; }
+    .team-members .team-member .team-member-info {
+      margin-top: -10px; }
+    .team-members .team-member p {
+      margin-bottom: 10px; }
+    .team-members .team-member a {
+      color: #4c5154; }
+
+.board-members {
+  margin-top: 60px; }
+  .board-members .board-member {
+    display: flex;
+    margin-bottom: 80px; }
+    @media (max-width: 767px) {
+      .board-members .board-member {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 60px; } }
+    .board-members .board-member .board-member-images {
+      margin-right: 40px;
+      height: 0;
+      padding-bottom: 35%;
+      position: relative;
+      min-width: 28%;
+      max-width: 28%; }
+      @media (max-width: 767px) {
+        .board-members .board-member .board-member-images {
+          margin-bottom: 30px;
+          max-width: 50%;
+          min-width: 50%;
+          padding-bottom: 60%;
+          margin-right: 0px; } }
+      .board-members .board-member .board-member-images img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        object-fit: cover;
+        transition: ease 400ms all; }
+        .board-members .board-member .board-member-images img.image-now {
+          z-index: 1; }
+      .board-members .board-member .board-member-images:hover .image-now {
+        opacity: 0; }
+    .board-members .board-member h3.board-member-name {
+      top: calc(100% - 10px);
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      color: white;
+      font-size: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      z-index: 1;
+      position: absolute;
+      text-align: center; }
+      .board-members .board-member h3.board-member-name span {
+        background-color: #4c5154;
+        padding: 10px 30px; }
+    .board-members .board-member .board-member-info {
+      flex-grow: 1; }
+      .board-members .board-member .board-member-info h4 {
+        text-transform: uppercase;
+        font-size: 32px; }
+      .board-members .board-member .board-member-info p {
+        font-weight: 100; }
+
 .post-feed-block .post-feed-block-inner {
   display: flex;
   justify-content: space-between;
