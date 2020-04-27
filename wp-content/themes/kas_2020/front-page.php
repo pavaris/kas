@@ -61,13 +61,18 @@ get_header();
                       ?>
                         <section class="home-latest-videos">
                           <div class="content-margins">
-                            <h3>Watch Our Latest Videos</h3>
+                            <h3>Watch Our Latest Video</h3>
                             <div class="home-latest-videos-feed">
-                              <?php foreach($videoFeed as $video){ ?> 
-                                <a href="<?php echo get_the_permalink($video->ID); ?>">
-                                  <?php echo get_the_post_thumbnail($video->ID); ?>
+                            
+                              <iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $videoFeed[0]->ID); ?>?controls=0" frameborder="0"  class="superembed-force"></iframe>
+
+
+
+
+                                <a id="play-video" href="#">
+                                  <?php echo get_the_post_thumbnail($videoFeed[0]->ID); ?>
                                 </a>
-                              <?php } ?>
+                              
                             </div>
                           </div>
                         </section>

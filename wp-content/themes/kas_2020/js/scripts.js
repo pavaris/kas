@@ -1,18 +1,15 @@
 var $ = jQuery.noConflict();
 
-$(document).ready(function() {
+$(document).ready(function () {
 	console.log("ready? ok!");
 
-	if ($(".home-latest-videos-feed a").length > 1) {
-		console.log("what?");
-		$(".home-latest-videos-feed").slick({
-			arrows: true,
-			slidesToShow: 1,
-			slidesToScroll: 1
-		});
-	}
+	$(".home-latest-videos #play-video").on("click", function (ev) {
+		$(".home-latest-videos iframe")[0].src += "&autoplay=1";
+		$(this).fadeOut();
+		ev.preventDefault();
+	});
 
-	$("#mobile-ham").click(function() {
+	$("#mobile-ham").click(function () {
 		$("#mobile-nav-links").toggleClass("active");
 	});
 });

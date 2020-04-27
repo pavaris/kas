@@ -10,7 +10,7 @@
 			color: $darkGray;
 			letter-spacing: 0.3em;
 			font-weight: 500;
-			margin-bottom: 30px;
+			margin-bottom: 60px;
 		}
 		p {
 			line-height: 1em;
@@ -132,7 +132,7 @@
 
 .team-members {
 	display: flex;
-	margin-top: 50px;
+
 	flex-wrap: wrap;
 	justify-content: center;
 	.team-member {
@@ -208,7 +208,6 @@
 }
 
 .board-members {
-	margin-top: 60px;
 	.board-member {
 		display: flex;
 		margin-bottom: 80px;
