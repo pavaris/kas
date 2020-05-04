@@ -1,0 +1,31 @@
+.single-podcast {
+	.archive-title {
+		font-size: 50px;
+		a {
+			color: inherit;
+			text-decoration: none;
+		}
+	}
+	#page-header {
+		margin-bottom: 50px;
+	}
+	.section-title {
+		font-weight: 700;
+		margin-bottom: 40px;
+		font-size: 22px;
+	}
+	.podcast-embed-cont {
+		margin-bottom: 60px;
+	}
+}
+.more-podcasts-feed {
+	background-color: $gray;
+	padding: 40px 0 80px;
+	margin-bottom: -120px;
+	.section-title {
+		font-size: 30px;
+	}
+	.posts-feed {
+		justify-content: space-between;
+	}
+}

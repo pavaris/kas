@@ -12,4 +12,21 @@ $(document).ready(function () {
 	$("#mobile-ham").click(function () {
 		$("#mobile-nav-links").toggleClass("active");
 	});
+
+	// GALLERY
+	if ($(".wp-block-gallery").length > 0) {
+		console.log("gallery");
+		$("body").append(
+			`<div class="gallery-block-lightbox"><div class="gallery-block-lightbox-inner"></div></div>`
+		);
+		$(".blocks-gallery-item").click(function () {
+			let href = $(this).find("img").attr("src");
+			console.log(href);
+			$(".gallery-block-lightbox").fadeIn();
+			$(".gallery-block-lightbox-inner").html("<img src='" + href + "' />");
+		});
+		$(".gallery-block-lightbox-inner").click(function () {
+			$(".gallery-block-lightbox").fadeOut();
+		});
+	}
 });

@@ -1,39 +1,83 @@
-.single{
-  .site-header{
-    &:before{
-      transform: translateY(0%);
-      opacity: 1;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-    }
-  }
-  #content{
-    padding-top: 150px;
-  }
+.single {
+	.site-header {
+		&:before {
+			transform: translateY(0%);
+			opacity: 1;
+			box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+		}
+	}
 }
 
-
-.article-tag{
-  background-color: $gray;
-  display: inline-block;
-  padding: 5px 20px;
-  font-size: 18px;
-  margin-bottom: 20px;
-
+.article-tag {
+	background-color: $gray;
+	display: inline-block;
+	padding: 5px 20px;
+	font-size: 18px;
+	margin-bottom: 20px;
 }
 
+.article-header {
+	text-align: center;
+	max-width: 900px;
+	margin: 0 auto 30px auto;
 
-.article-header{
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
-  h1{
-    font-style: italic;
-    font-weight: 600;
-    font-size: 50px;
-    line-height: 1.3em;
-  }
-  h4{
-    font-weight: 500;
-    font-size: 20px;
-  }
+	h4 {
+		font-weight: 500;
+		font-size: 20px;
+	}
+}
+
+.post-content {
+	.kas-block.section-title {
+		text-align: center;
+	}
+}
+
+.credits {
+	margin-bottom: 60px;
+	h4.section-title {
+		text-align: center;
+	}
+	.credit-content {
+		max-width: 70%;
+		margin: 0 auto;
+		p {
+			font-size: 25px;
+			letter-spacing: 0.06em;
+		}
+	}
+}
+
+.podcast-listen-on {
+	.section-title {
+		text-align: center;
+	}
+}
+
+.wp-block-gallery {
+	margin-bottom: 50px;
+	.blocks-gallery-item {
+		cursor: pointer;
+	}
+}
+
+.gallery-block-lightbox {
+	display: none;
+	background-color: rgba(0, 0, 0, 0.7);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	.gallery-block-lightbox-inner {
+		height: 100%;
+		width: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		img {
+			max-width: 80%;
+			height: auto;
+		}
+	}
 }

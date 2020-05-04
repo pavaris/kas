@@ -315,6 +315,22 @@ function my_acf_init() {
 				)
 			);
 
+			acf_register_block(
+			array(
+				'name'				=> 'section-title',
+				'title'				=> __('Section Title'),
+				'description'		=> __('Section Title'),
+				'category'			=> 'widgets',
+				'icon'				=> 'editor-bold',
+				'keywords'			=> array( 'kas', 'section', 'title'),
+				'mode' => 'edit',
+				'render_template' => 'custom-blocks/section-title.php',
+				'supports' => array(
+					'align' => array('full'),
+					),
+				)
+			);
+
 	}
 }
 
@@ -399,28 +415,103 @@ function podcast_article($postID){
 
 
 	?>
-		<article class='podcast-post'>
-			<a href="<?php echo get_the_permalink($postID); ?>">
-				<div class="podcast-post-img">
+	
+
+		<a href="<?php echo get_the_permalink($postID); ?>">
+				<div class="post-feed-image">
 					<?php echo get_the_post_thumbnail($postID); ?>
 				</div>
-				<span class="podcast-post-desc">
-					<h4>
-						<?php echo get_the_title($postID); ?>
-						<span class='episode-deets'>
-							<?php if(get_field('episode_number', $postID)){ ?>
-								<?php echo ' <span class="separator">|</span> Ep.&nbsp;' . get_field('episode_number', $postID) . " - "; ?>
-							<?php }else { echo ' <span class="separator">|</span> '; } ?>
-							<?php echo get_the_date('F j, Y ', $postID); ?>
-						</span>
-					</h4>
-					<?php echo get_field('short_description'); ?>
-				</span>
+				<div class="post-feed-info">
+					<div class="post-category">
+						Episode #
+					</div>
+					<?php echo get_the_title($postID); ?>
+				</div>
 			</a>
-		</article>
+
 
 
 	<?php
 
 	echo ob_get_clean();
+}
+
+
+    function customize_customtaxonomy_archive_display ( $query ) {
+        if (($query->is_main_query()) && (is_tax('podcast_type')))
+        	$query->set( 'posts_per_page', '9' );
+    }
+
+     add_action( 'pre_get_posts', 'customize_customtaxonomy_archive_display' );
+
+
+
+
+		 function wpbeginner_numeric_posts_nav() {
+ 
+    if( is_singular() )
+        return;
+ 
+    global $wp_query;
+ 
+    /** Stop execution if there's only 1 page */
+    if( $wp_query->max_num_pages <= 1 )
+        return;
+ 
+    $paged = get_query_var( 'paged' ) ? absint( get_query_var( 'paged' ) ) : 1;
+    $max   = intval( $wp_query->max_num_pages );
+ 
+    /** Add current page to the array */
+    if ( $paged >= 1 )
+        $links[] = $paged;
+ 
+    /** Add the pages around the current page to the array */
+    if ( $paged >= 3 ) {
+        $links[] = $paged - 1;
+        $links[] = $paged - 2;
+    }
+ 
+    if ( ( $paged + 2 ) <= $max ) {
+        $links[] = $paged + 2;
+        $links[] = $paged + 1;
+    }
+ 
+    echo '<div class="pagination-navigation"><ul>' . "\n";
+ 
+    /** Previous Post Link */
+    if ( get_previous_posts_link() )
+        printf( '<li class="page-arrow">%s</li>' . "\n", get_previous_posts_link('<span class="page-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13"><path fill="#FFF" fill-rule="evenodd" d="M1.484.6l6 6-6 6-1.416-1.416L4.676 6.6.068 2.016z"/></svg></span>') );
+ 
+    /** Link to first page, plus ellipses if necessary */
+    if ( ! in_array( 1, $links ) ) {
+        $class = 1 == $paged ? ' class="active"' : '';
+ 
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+ 
+        if ( ! in_array( 2, $links ) )
+            echo '<li>…</li>';
+    }
+ 
+    /** Link to current page, plus 2 pages in either direction if necessary */
+    sort( $links );
+    foreach ( (array) $links as $link ) {
+        $class = $paged == $link ? ' class="active"' : '';
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+    }
+ 
+    /** Link to last page, plus ellipses if necessary */
+    if ( ! in_array( $max, $links ) ) {
+        if ( ! in_array( $max - 1, $links ) )
+            echo '<li>…</li>' . "\n";
+ 
+        $class = $paged == $max ? ' class="active"' : '';
+        printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+    }
+ 
+    /** Next Post Link */
+    if ( get_next_posts_link() )
+        printf( '<li class="page-arrow">%s</li>' . "\n", get_next_posts_link('<svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13"><path fill="#FFF" fill-rule="evenodd" d="M1.484.6l6 6-6 6-1.416-1.416L4.676 6.6.068 2.016z"/></svg>') );
+ 
+    echo '</ul></div>' . "\n";
+ 
 }

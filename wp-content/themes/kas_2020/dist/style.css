@@ -389,18 +389,64 @@ em {
     font-weight: 100;
     margin-bottom: 0px; }
 
+.section-title {
+  text-transform: uppercase;
+  font-family: "mrs-eaves";
+  font-size: 20px;
+  color: #4c5154;
+  letter-spacing: 0.3em;
+  font-weight: 500;
+  margin-bottom: 60px; }
+
 .button,
 button {
-  background-color: #73aab7;
+  background-color: #6cb5ce;
   border: 0px;
-  border-radius: 25px;
-  padding: 12px 40px;
+  border-radius: 70px;
+  padding: 20px 70px;
   color: white;
   font-style: normal;
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
-  font-size: 14px; }
+  font-size: 20px; }
+
+.button-cnt {
+  margin: 20px 0;
+  display: block;
+  text-align: center; }
+
+.pagination-navigation ul {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .pagination-navigation ul li {
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+    background-color: #6cb5ce;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0px; }
+    .pagination-navigation ul li.active {
+      background-color: #4c5154; }
+    .pagination-navigation ul li.page-arrow {
+      margin: 0 30px; }
+    .pagination-navigation ul li:first-child svg {
+      transform: rotate(180deg); }
+    .pagination-navigation ul li a {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 0px;
+      color: white;
+      font-size: 20px;
+      text-decoration: none; }
+      .pagination-navigation ul li a svg {
+        height: 20px; }
 
 #masthead {
   position: absolute;
@@ -591,7 +637,7 @@ button {
       text-transform: initial;
       font-size: 22px; }
       #mobile-nav #mobile-header .mobile-home span {
-        color: #73aab7; }
+        color: #6cb5ce; }
   #mobile-nav .menu-header-menu-container {
     margin-bottom: 30px; }
   #mobile-nav #mobile-nav-links {
@@ -623,7 +669,7 @@ button {
       font-family: "mr-eaves-sans";
       font-size: 15px; }
   #mobile-nav .donate-button {
-    background-color: #73aab7;
+    background-color: #6cb5ce;
     padding: 5px 25px;
     font-size: 20px;
     font-weight: 100;
@@ -842,8 +888,8 @@ button {
         display: inline-block; } }
 
 a.donate-button {
-  border: 2px solid #73aab7;
-  background-color: #73aab7;
+  border: 2px solid #6cb5ce;
+  background-color: #6cb5ce;
   border-radius: 25px;
   padding: 12px 40px;
   font-size: 22px;
@@ -872,13 +918,19 @@ a.donate-button {
     color: white;
     text-decoration: none; }
 
+.archive-title {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "mrs-eaves";
+  letter-spacing: 0.4em;
+  font-weight: 700;
+  font-size: 65px;
+  color: white; }
+
 .single .site-header:before {
   transform: translateY(0%);
   opacity: 1;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); }
-
-.single #content {
-  padding-top: 150px; }
 
 .article-tag {
   background-color: #d8d8d8;
@@ -891,14 +943,49 @@ a.donate-button {
   text-align: center;
   max-width: 900px;
   margin: 0 auto 30px auto; }
-  .article-header h1 {
-    font-style: italic;
-    font-weight: 600;
-    font-size: 50px;
-    line-height: 1.3em; }
   .article-header h4 {
     font-weight: 500;
     font-size: 20px; }
+
+.post-content .kas-block.section-title {
+  text-align: center; }
+
+.credits {
+  margin-bottom: 60px; }
+  .credits h4.section-title {
+    text-align: center; }
+  .credits .credit-content {
+    max-width: 70%;
+    margin: 0 auto; }
+    .credits .credit-content p {
+      font-size: 25px;
+      letter-spacing: 0.06em; }
+
+.podcast-listen-on .section-title {
+  text-align: center; }
+
+.wp-block-gallery {
+  margin-bottom: 50px; }
+  .wp-block-gallery .blocks-gallery-item {
+    cursor: pointer; }
+
+.gallery-block-lightbox {
+  display: none;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%; }
+  .gallery-block-lightbox .gallery-block-lightbox-inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+    .gallery-block-lightbox .gallery-block-lightbox-inner img {
+      max-width: 80%;
+      height: auto; }
 
 .home section h3 {
   font-size: 20px;
@@ -1266,9 +1353,86 @@ section.home-events {
         width: 100%;
         object-fit: cover; }
 
+.taxonomy-description {
+  padding: 60px 0 40px; }
+
+.tax-podcast_type .section-title {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 40px; }
+
+.tax-podcast_type .latest-podcast-episode {
+  margin-bottom: 100px; }
+
+.tax-podcast_type .archive-title {
+  padding: 0 10px; }
+  @media (max-width: 767px) {
+    .tax-podcast_type .archive-title {
+      font-size: 40px; } }
+
+.latest-podcast-embed iframe {
+  margin: 0 auto;
+  display: block; }
+
+.podcast-platform-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 60px;
+  flex-wrap: wrap; }
+  .podcast-platform-links .platform-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-transform: uppercase;
+    color: #4c5154;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0 30px 20px 30px; }
+    .podcast-platform-links .platform-link svg {
+      margin-bottom: 15px;
+      height: 90px; }
+    .podcast-platform-links .platform-link.youtube-podcast svg {
+      margin: 10px 0 24px;
+      height: 70px; }
+
+.podcast-hosts {
+  margin-bottom: 60px; }
+  .podcast-hosts .team-members .team-member {
+    margin-right: 0; }
+  .podcast-hosts .team-members {
+    justify-content: space-around; }
+  .podcast-hosts .team-member-info {
+    text-align: left; }
+    .podcast-hosts .team-member-info p {
+      font-size: 20px; }
+  .podcast-hosts .team-member-social {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap; }
+    .podcast-hosts .team-member-social a {
+      margin-right: 10px;
+      font-size: 20px; }
+      .podcast-hosts .team-member-social a:last-child {
+        margin-right: 0px; }
+    .podcast-hosts .team-member-social img {
+      max-height: 40px;
+      width: auto; }
+
+.podcast-feed {
+  margin-bottom: 50px; }
+  .podcast-feed .section-title {
+    font-size: 35px;
+    margin-bottom: 50px;
+    line-height: 1.3em; }
+    @media (max-width: 767px) {
+      .podcast-feed .section-title {
+        font-size: 25px; } }
+
 .posts-feed {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap; }
   .posts-feed a {
     width: calc(33% - 20px);
@@ -1300,7 +1464,7 @@ section.home-events {
       line-height: 1.3em; }
       .posts-feed a .post-feed-info .post-category {
         line-height: initial;
-        background-color: #73aab7;
+        background-color: #6cb5ce;
         padding: 5px 20px;
         color: white;
         text-transform: uppercase;
@@ -1348,7 +1512,21 @@ section.home-events {
   justify-content: center;
   align-items: center;
   padding-top: 50px; }
+  .page-header-container:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 0; }
+  .page-header-container h1 {
+    position: relative;
+    z-index: 2; }
   .page-header-container h2 {
+    position: relative;
+    z-index: 2;
     color: white;
     text-align: center;
     font-family: "mrs-eaves";
@@ -1407,7 +1585,7 @@ section.home-events {
     .about-page-nav a:last-child {
       border-right: 0px; }
     .about-page-nav a:hover, .about-page-nav a.active {
-      background-color: #73aab7;
+      background-color: #6cb5ce;
       color: white; }
     @media (max-width: 920px) {
       .about-page-nav a {
@@ -1548,6 +1726,32 @@ section.home-events {
       font-size: 32px; }
     .board-members .board-member .board-member-info p {
       font-weight: 100; }
+
+.single-podcast .archive-title {
+  font-size: 50px; }
+  .single-podcast .archive-title a {
+    color: inherit;
+    text-decoration: none; }
+
+.single-podcast #page-header {
+  margin-bottom: 50px; }
+
+.single-podcast .section-title {
+  font-weight: 700;
+  margin-bottom: 40px;
+  font-size: 22px; }
+
+.single-podcast .podcast-embed-cont {
+  margin-bottom: 60px; }
+
+.more-podcasts-feed {
+  background-color: #d8d8d8;
+  padding: 40px 0 80px;
+  margin-bottom: -120px; }
+  .more-podcasts-feed .section-title {
+    font-size: 30px; }
+  .more-podcasts-feed .posts-feed {
+    justify-content: space-between; }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;
