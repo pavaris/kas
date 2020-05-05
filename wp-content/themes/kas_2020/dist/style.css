@@ -416,37 +416,65 @@ button {
   display: block;
   text-align: center; }
 
-.pagination-navigation ul {
+.page-content .wpcf7 .form-inputs {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center; }
-  .pagination-navigation ul li {
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-    background-color: #6cb5ce;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    line-height: 0px; }
-    .pagination-navigation ul li.active {
-      background-color: #4c5154; }
-    .pagination-navigation ul li.page-arrow {
-      margin: 0 30px; }
-    .pagination-navigation ul li:first-child svg {
-      transform: rotate(180deg); }
-    .pagination-navigation ul li a {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      line-height: 0px;
-      color: white;
-      font-size: 20px;
-      text-decoration: none; }
-      .pagination-navigation ul li a svg {
-        height: 20px; }
+  justify-content: space-between; }
+  .page-content .wpcf7 .form-inputs p {
+    width: calc(50% - 20px); }
+  @media (max-width: 767px) {
+    .page-content .wpcf7 .form-inputs {
+      flex-direction: column; }
+      .page-content .wpcf7 .form-inputs p {
+        width: 100%; } }
+
+.page-content .wpcf7 label {
+  width: 100%;
+  display: block;
+  text-transform: uppercase;
+  font-weight: 800; }
+  .page-content .wpcf7 label .wpcf7-form-control-wrap {
+    width: 100%;
+    display: block;
+    margin-top: 15px; }
+  .page-content .wpcf7 label input {
+    width: 100%;
+    border: 1px solid #4c5154;
+    border-radius: 5px;
+    padding: 10px; }
+
+.page-content .wpcf7 textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #4c5154;
+  border-radius: 5px; }
+
+.page-content .wpcf7 .wpcf7-validation-errors {
+  display: none !important; }
+
+.page-content .wpcf7 .wpcf7-not-valid-tip {
+  font-size: 14px;
+  margin-top: 5px;
+  font-weight: 700; }
+
+.page-content .wpcf7 input[type="submit"] {
+  display: inline-block;
+  margin: 0 auto; }
+
+.page-content .wpcf7 .center input[type="submit"] {
+  background-color: #6cb5ce;
+  border: 0px;
+  border-radius: 70px;
+  padding: 20px 70px;
+  color: white;
+  font-style: normal;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px; }
+
+.center {
+  text-align: center; }
 
 #masthead {
   position: absolute;
@@ -924,8 +952,11 @@ a.donate-button {
   font-family: "mrs-eaves";
   letter-spacing: 0.4em;
   font-weight: 700;
-  font-size: 65px;
+  font-size: 50px;
   color: white; }
+  @media (max-width: 767px) {
+    .archive-title {
+      font-size: 30px; } }
 
 .single .site-header:before {
   transform: translateY(0%);
@@ -1454,7 +1485,7 @@ section.home-events {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
-      margin-top: -15px;
+      margin-top: 20px;
       position: relative;
       z-index: 2;
       color: #4c5154;
@@ -1470,7 +1501,9 @@ section.home-events {
         text-transform: uppercase;
         font-size: 16px;
         margin-bottom: 15px;
-        font-weight: 600; }
+        font-weight: 600;
+        position: absolute;
+        top: -35px; }
     @media (max-width: 920px) {
       .posts-feed a {
         width: calc(50% - 20px); } }
@@ -1478,6 +1511,42 @@ section.home-events {
       .posts-feed a {
         width: 100%;
         margin-bottom: 40px; } }
+
+.pagination-navigation ul {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .pagination-navigation ul li {
+    margin: 0 5px;
+    height: 40px;
+    width: 40px;
+    background-color: #6cb5ce;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 0px;
+    color: white; }
+    .pagination-navigation ul li.active {
+      background-color: #4c5154; }
+    .pagination-navigation ul li.page-arrow {
+      margin: 0 30px; }
+      @media (max-width: 600px) {
+        .pagination-navigation ul li.page-arrow {
+          margin: 0 10px; } }
+    .pagination-navigation ul li:first-child svg {
+      transform: rotate(180deg); }
+    .pagination-navigation ul li a {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 0px;
+      color: white;
+      font-size: 20px;
+      text-decoration: none; }
+      .pagination-navigation ul li a svg {
+        height: 20px; }
 
 .newsletter-container {
   text-align: center;
@@ -1752,6 +1821,39 @@ section.home-events {
     font-size: 30px; }
   .more-podcasts-feed .posts-feed {
     justify-content: space-between; }
+
+.blog #page-header {
+  margin-bottom: 40px; }
+
+.blog .lead-article {
+  margin-bottom: 60px; }
+  @media (max-width: 920px) {
+    .blog .lead-article {
+      margin-bottom: 40px; } }
+  .blog .lead-article a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none; }
+    @media (max-width: 920px) {
+      .blog .lead-article a {
+        flex-direction: column; } }
+
+.blog .lead-article-img {
+  width: calc(50% - 20px); }
+  @media (max-width: 920px) {
+    .blog .lead-article-img {
+      margin-bottom: 25px;
+      width: 100%; } }
+  .blog .lead-article-img img {
+    width: 100%;
+    height: auto; }
+
+.blog .lead-article-content {
+  width: calc(50% - 20px); }
+  @media (max-width: 920px) {
+    .blog .lead-article-content {
+      margin-bottom: 25px;
+      width: 100%; } }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;

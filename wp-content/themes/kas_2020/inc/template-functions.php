@@ -422,9 +422,11 @@ function podcast_article($postID){
 					<?php echo get_the_post_thumbnail($postID); ?>
 				</div>
 				<div class="post-feed-info">
-					<div class="post-category">
-						Episode #
-					</div>
+					<?php if(get_field('episode_number', $postID)){ ?>
+						<div class="post-category">
+							Episode #<?php echo get_field('episode_number', $postID); ?>
+						</div>
+					<?php } ?>
 					<?php echo get_the_title($postID); ?>
 				</div>
 			</a>
@@ -447,7 +449,7 @@ function podcast_article($postID){
 
 
 
-		 function wpbeginner_numeric_posts_nav() {
+function wpbeginner_numeric_posts_nav() {
  
     if( is_singular() )
         return;

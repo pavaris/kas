@@ -114,7 +114,7 @@ get_header();
 					<section class="podcast-feed">
 						<h3 class="section-title"><?php echo get_the_archive_title(); ?> Episodes</h3>
 
-						<div class="content-margins">
+
 							<div class="posts-feed">
 								<?php
 								while ( have_posts() ) :
@@ -133,7 +133,7 @@ get_header();
 								<?php endwhile;
 								 ?>
 							</div>
-						</div>
+
 					</section>
 
 

@@ -4,6 +4,9 @@
 	font-family: $mrsEaves;
 	letter-spacing: 0.4em;
 	font-weight: 700;
-	font-size: 65px;
+	font-size: 50px;
 	color: white;
+	@media (max-width: 767px) {
+		font-size: 30px;
+	}
 }

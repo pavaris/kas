@@ -14,43 +14,86 @@
 
 get_header();
 ?>
-
+<?php $obj = get_queried_object(); ?>
+<?php $loop = 0; ?>
+<!-- <?php print_r($obj); ?> -->
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<div class="content-margins">
+
+				
 				<?php
 				if ( have_posts() ) :
 
-					if ( is_home() && ! is_front_page() ) :
-						?>
-						<header>
-							<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-						</header>
-						<?php
-					endif;
+				?>
+					<header id="page-header">
+						<div class="page-header-container">
+							<h1 class="archive-title">Articles</h1>
+							<div class="page-header-image">
+								<?php echo get_the_post_thumbnail($obj->ID); ?>
+							</div>
+						</div>
+					</header><!-- .page-header -->
+					<div class="content-margins">
 
+					<section class="latest-articles">
+						
+						<h3 class="center section-title">Latest Articles</h3>
+
+					</section>
+				<?php
 					/* Start the Loop */
 					while ( have_posts() ) :
 						the_post();
 
-						/*
+						if($loop == 0){
+							?> 
+							<section class="lead-article">
+								<a href="<?php the_permalink(); ?>">
+									<div class="lead-article-img">
+										<?php echo get_the_post_thumbnail(); ?>
+									</div>
+									<div class="lead-article-content">
+										<h3 class='section-title'><?php the_title(); ?></h3>
+										<?php echo get_field('short_description'); ?>
+									</div>
+								</a>
+							</section>
+							
+							<section class="all-articles">
+								<h3 class="center section-title">All Articles</h3>
+								<div class="posts-feed">
+
+							<?php 
+
+						}else{
+									/*
 						 * Include the Post-Type-specific template for the content.
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 						 */
-						get_template_part( 'template-parts/content', get_post_type() );
+							?> 
+									<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
+				<div class="post-feed-image">
+					<?php echo get_the_post_thumbnail(get_the_ID()); ?>
+				</div>
+				<div class="post-feed-info">
+						<div class="post-category">
+							Written
+						</div>
+					<?php echo get_the_title(get_the_ID()); ?>
+				</div>
+			</a>
 
+							<?php 
+						}
+					$loop++;
 					endwhile;
-
-					the_posts_navigation();
-
-				else :
-
-					get_template_part( 'template-parts/content', 'none' );
-
 				endif;
 				?>
-			</div>
+				</div>
+				<?php wpbeginner_numeric_posts_nav(); ?>
+				</section>
+
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

@@ -24,7 +24,7 @@
 			flex-direction: column;
 			justify-content: flex-start;
 			align-items: flex-start;
-			margin-top: -15px;
+			margin-top: 20px;
 			position: relative;
 			z-index: 2;
 			color: $darkGray;
@@ -32,6 +32,7 @@
 			font-size: 20px;
 			font-weight: 600;
 			line-height: 1.3em;
+
 			.post-category {
 				line-height: initial;
 				background-color: $skyBlue;
@@ -41,6 +42,8 @@
 				font-size: 16px;
 				margin-bottom: 15px;
 				font-weight: 600;
+				position: absolute;
+				top: -35px;
 			}
 		}
 		@media (max-width: 920px) {
@@ -49,6 +52,54 @@
 		@media (max-width: 767px) {
 			width: 100%;
 			margin-bottom: 40px;
+		}
+	}
+}
+
+.pagination-navigation {
+	ul {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		li {
+			margin: 0 5px;
+			height: 40px;
+			width: 40px;
+			background-color: $skyBlue;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			line-height: 0px;
+			color: white;
+
+			&.active {
+				background-color: $darkGray;
+			}
+			&.page-arrow {
+				margin: 0 30px;
+				@media (max-width: 600px) {
+					margin: 0 10px;
+				}
+			}
+			&:first-child {
+				svg {
+					transform: rotate(180deg);
+				}
+			}
+			a {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				line-height: 0px;
+				color: white;
+				font-size: 20px;
+				text-decoration: none;
+				svg {
+					height: 20px;
+				}
+			}
 		}
 	}
 }
