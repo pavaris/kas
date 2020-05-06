@@ -84,87 +84,6 @@
             ]
         },
         {
-            "key": "field_5eb04d28f2ed2",
-            "label": "Listen On (copy)",
-            "name": "listen_on_copy",
-            "type": "group",
-            "instructions": "",
-            "required": 0,
-            "conditional_logic": 0,
-            "wrapper": {
-                "width": "",
-                "class": "",
-                "id": ""
-            },
-            "layout": "block",
-            "sub_fields": [
-                {
-                    "key": "field_5eb04d28f2ed3",
-                    "label": "Apple Podcast",
-                    "name": "apple_podcast",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5eb04d28f2ed4",
-                    "label": "Spotify",
-                    "name": "spotify",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5eb04d28f2ed5",
-                    "label": "Anchor",
-                    "name": "anchor",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                },
-                {
-                    "key": "field_5eb04d28f2ed6",
-                    "label": "Youtube",
-                    "name": "youtube",
-                    "type": "url",
-                    "instructions": "",
-                    "required": 0,
-                    "conditional_logic": 0,
-                    "wrapper": {
-                        "width": "",
-                        "class": "",
-                        "id": ""
-                    },
-                    "default_value": "",
-                    "placeholder": ""
-                }
-            ]
-        },
-        {
             "key": "field_5e042140ee27a",
             "label": "Hosts",
             "name": "hosts",
@@ -273,7 +192,7 @@
                             "key": "field_5eadca0993bad",
                             "label": "Link",
                             "name": "link",
-                            "type": "link",
+                            "type": "url",
                             "instructions": "",
                             "required": 0,
                             "conditional_logic": 0,
@@ -282,7 +201,8 @@
                                 "class": "",
                                 "id": ""
                             },
-                            "return_format": "array"
+                            "default_value": "",
+                            "placeholder": ""
                         }
                     ]
                 },
@@ -325,5 +245,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1588612401
+    "modified": 1588803158
 }

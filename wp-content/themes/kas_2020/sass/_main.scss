@@ -41,6 +41,7 @@ p {
 	margin-bottom: 15px;
 	font-size: 18px;
 	line-height: 1.4em;
+	color: $darkGray;
 	// letter-spacing: 0.1em;
 }
 
@@ -122,6 +123,9 @@ button {
 }
 
 .page-content {
+	a {
+		color: $skyBlue;
+	}
 	.wpcf7 {
 		.form-inputs {
 			width: 100%;

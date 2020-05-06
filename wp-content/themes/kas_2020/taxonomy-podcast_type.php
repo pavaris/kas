@@ -96,9 +96,9 @@ get_header();
 
 													<?php foreach($host['social'] as $social){ ?>
 														<a href="<?php echo $social['link']['url']; ?>" target="_blank">
-															<?php if($social['icon']){ ?>
+															
 																<?php echo wp_get_attachment_image($social['icon']['ID'], 'medium'); ?>
-															<?php }else{ echo $social['link']['title']; } ?>
+															
 														</a>
 													<?php } ?>
 												</div>

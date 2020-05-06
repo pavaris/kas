@@ -178,8 +178,9 @@ get_header();
                           </a>
                         <?php } ?>
                       </div>
+                      <div class="center ">
                         <a href="" class="button">All Projects</a>
-          
+                      </div>
                     </div>
                   </section>
                   <?php } ?>

@@ -11,7 +11,7 @@
 				<div class="page-header-image">
 					<?php echo get_the_post_thumbnail($aboutPage->ID); ?>
 				</div>
-			 </div>
+			</div>
 		<div class="about-page-nav-cont">
 				<div class="about-page-nav">
 				<?php  

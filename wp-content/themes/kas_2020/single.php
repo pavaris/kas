@@ -12,7 +12,12 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-
+			<div class="page-header-container">
+				<h2>Articles</h2>
+				<div class="page-header-image">
+					<?php echo get_the_post_thumbnail(); ?>
+				</div>
+			</div>
 			<div class="content-margins">
 				<article class="">
 					<?php
@@ -20,20 +25,47 @@ get_header();
 						the_post();
 					?>
 						<section class="article-header">
-							<?php $tags = get_the_tags(get_the_ID()); ?>
-							<?php if($tags){
-								?>
-								<div class="article-tag">
-									<?php echo $tags[0]->name; ?>
-								</div>
-								<?php
-							} ?>
 							<h1><?php the_title(); ?></h1>
-							<h4><?php the_date('F m, Y'); ?></h4>
+							
 						</section>
-						<section>
+						<section class='page-content'>
 							<?php the_content(); ?>
 						</section>
+
+						<section class="single-meta-cont">
+							<div class="single-meta">
+									<?php echo get_field('author_name') ? 'By ' . get_field('author_name') . ' | ' : ''; ?>
+									Posted on <?php the_date('m/d/j'); ?>
+							</div>
+						</section>
+
+						<?php if(get_field('author_name')){
+							?> 
+							<section class="single-author">
+								<?php if(get_field('author_image')){ ?>
+									<div class="author-img">
+											<?php echo wp_get_attachment_image(get_field('author_image')['ID'], 'medium'); ?>
+									</div>
+								<?php } ?>
+								<div class="author-desc">
+									<?php echo get_field('author_description') ?>
+									<?php if(get_field('author_social')){
+										?> 
+										<div class="author-social">
+											<?php foreach(get_field('author_social') as $social){ ?> 
+												<a class="author-social-link" href="<?php echo $social['link']; ?>">
+													<?php echo wp_get_attachment_image($social['icon']['ID'], 'medium'); ?>
+												</a>
+											<?php } ?>
+										</div>
+										<?php 
+									} ?>
+								</div>
+							</section>
+							<?php 
+						} ?>
+
+
 					<?php
 					endwhile; // End of the loop.
 					?>
