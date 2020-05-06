@@ -25,7 +25,7 @@ get_header();
 						the_post();
 					?>
 						<section class="article-header">
-							<h1><?php the_title(); ?></h1>
+							<h1 class='section-title'><?php the_title(); ?></h1>
 							
 						</section>
 						<section class='page-content'>
@@ -37,6 +37,15 @@ get_header();
 									<?php echo get_field('author_name') ? 'By ' . get_field('author_name') . ' | ' : ''; ?>
 									Posted on <?php the_date('m/d/j'); ?>
 							</div>
+							<?php if(get_the_tags(get_the_ID())){ ?>
+							<div class="single-tags">
+								<?php foreach(get_the_tags(get_the_ID()) as $tag){
+									?> 
+									<a href="<?php echo get_tag_link($tag); ?>"><?php echo $tag->name; ?></a>
+									<?php 
+								} ?>
+							</div>
+							<?php } ?>
 						</section>
 
 						<?php if(get_field('author_name')){
