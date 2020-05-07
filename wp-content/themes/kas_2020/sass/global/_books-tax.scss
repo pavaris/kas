@@ -1,0 +1,94 @@
+.term-book-reviews {
+	.lead-article-content {
+		p {
+			margin-bottom: 30px;
+		}
+		.button {
+			padding: 10px 30px;
+			border-radius: 10px;
+		}
+	}
+}
+
+.single-written,
+.term-book-reviews {
+	.all-articles {
+		margin-top: 60px;
+		background-color: $darkGray;
+		padding: 60px 0 100px;
+		.section-title {
+			color: white;
+		}
+
+		.posts-feed {
+			justify-content: space-between;
+			a {
+				border-radius: 5px;
+				overflow: hidden;
+				background-color: white;
+				margin-bottom: 30px;
+				display: block;
+				.post-feed-info {
+					margin-top: 0px;
+					padding-top: 30px;
+					padding-bottom: 10px;
+					h6 {
+						line-height: 1.3em;
+						font-size: 18px;
+					}
+					.post-category {
+						top: -10px;
+					}
+					p {
+						font-size: 16px;
+						text-transform: initial;
+						font-weight: 100;
+					}
+				}
+			}
+		}
+	}
+	.site-footer {
+		padding-top: 0px;
+	}
+}
+
+.single-written {
+	.all-articles {
+		.slick-track {
+			display: flex !important;
+		}
+		.slick-slide {
+			height: inherit !important;
+			outline: none;
+		}
+		.slick-dots {
+			display: flex !important;
+			justify-content: center;
+			li {
+				margin: 0 10px;
+				button {
+					background-color: white;
+					font-size: 0px;
+					padding: 0px;
+					height: 10px;
+					width: 10px;
+				}
+				&.slick-active {
+					button {
+						background-color: #6cb5ce;
+					}
+				}
+			}
+		}
+		.posts-feed {
+			a {
+				// margin-bottom: 0px;
+				margin-right: 20px;
+				@media (max-width: 667px) {
+					margin-right: 0px;
+				}
+			}
+		}
+	}
+}

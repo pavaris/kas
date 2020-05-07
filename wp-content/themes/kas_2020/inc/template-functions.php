@@ -252,7 +252,37 @@ function create_topics_hierarchical_taxonomy() {
     'query_var' => true,
 		'show_in_rest' => true,
 		'public' => true
+	));
+	
+
+
+
+		$labels = array(
+    'name' => _x( 'Written Type', 'taxonomy general name' ),
+    'singular_name' => _x( 'Written Type', 'taxonomy singular name' ),
+    'search_items' =>  __( 'Search Written Type' ),
+    'all_items' => __( 'All Written Types' ),
+    'parent_item' => __( 'Parent Written Type' ),
+    'parent_item_colon' => __( 'Parent Written Type:' ),
+    'edit_item' => __( 'Edit Written Type' ),
+    'update_item' => __( 'Update Written Type' ),
+    'add_new_item' => __( 'Add New Written Type' ),
+    'new_item_name' => __( 'New Written Type' ),
+    'menu_name' => __( 'Written Types' ),
+  );
+
+
+  register_taxonomy('written_type',array('written'), array(
+    'hierarchical' => true,
+    'labels' => $labels,
+    'show_ui' => true,
+    'show_admin_column' => true,
+		'show_in_nav_menus' => true,
+    'query_var' => true,
+    'rewrite' => array( 'slug' => 'written-work' ),
+		'show_in_rest' => true,
   ));
+
 
   $labels = array(
     'name' => _x( 'Event Type', 'taxonomy general name' ),
@@ -422,11 +452,15 @@ function podcast_article($postID){
 					<?php echo get_the_post_thumbnail($postID); ?>
 				</div>
 				<div class="post-feed-info">
-					<?php if(get_field('episode_number', $postID)){ ?>
+					
 						<div class="post-category">
-							Episode #<?php echo get_field('episode_number', $postID); ?>
+							<?php if(get_field('episode_number', $postID)){ ?>
+								Episode #<?php echo get_field('episode_number', $postID); ?>
+							<?php }else{
+								echo '<span>' . get_the_date('M d, Y', $postID) . '</span>';
+							} ?>
 						</div>
-					<?php } ?>
+
 					<?php echo get_the_title($postID); ?>
 				</div>
 			</a>
@@ -517,3 +551,9 @@ function wpbeginner_numeric_posts_nav() {
     echo '</ul></div>' . "\n";
  
 }
+
+
+function add_author_support_to_posts() {
+   add_post_type_support( 'podcast', 'author' ); 
+}
+add_action( 'init', 'add_author_support_to_posts' );

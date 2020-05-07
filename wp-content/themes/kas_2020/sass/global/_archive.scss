@@ -10,3 +10,30 @@
 		font-size: 30px;
 	}
 }
+
+.latest-articles {
+	.section-title {
+		font-weight: 700;
+	}
+}
+
+.all-articles {
+	.section-title {
+		font-size: 32px;
+		font-weight: 600;
+		margin-bottom: 35px;
+	}
+}
+
+h1.section-title {
+	line-height: 1.6em;
+	font-weight: 600;
+}
+
+.blue-bg {
+	display: block;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	background-color: $anotherGray;
+}

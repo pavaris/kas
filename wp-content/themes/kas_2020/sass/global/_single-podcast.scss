@@ -29,3 +29,13 @@
 		justify-content: space-between;
 	}
 }
+
+.podcast-author {
+	padding: 30px 0 60px;
+	p {
+		font-size: 16px;
+		letter-spacing: 0.1em;
+	}
+	font-style: italic;
+	text-transform: uppercase;
+}

@@ -13,6 +13,29 @@ $(document).ready(function () {
 		$("#mobile-nav-links").toggleClass("active");
 	});
 
+	$(".single-written .posts-feed").slick({
+		slidesToShow: 3,
+		arrows: false,
+		slidesToScroll: 3,
+		dots: true,
+		responsive: [
+			{
+				breakpoint: 876,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 2,
+				},
+			},
+			{
+				breakpoint: 667,
+				settings: {
+					slidesToShow: 1,
+					slidesToScroll: 1,
+				},
+			},
+		],
+	});
+
 	// GALLERY
 	if ($(".wp-block-gallery").length > 0) {
 		console.log("gallery");

@@ -150,3 +150,19 @@
 		width: auto;
 	}
 }
+
+.book-review-content {
+	display: flex;
+	.book-image {
+		width: 30%;
+		min-width: 30%;
+		margin-right: 50px;
+		img {
+			width: 100%;
+			height: auto;
+			position: sticky;
+			position: -webkit-sticky;
+			top: 20px;
+		}
+	}
+}

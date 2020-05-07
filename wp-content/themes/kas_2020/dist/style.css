@@ -816,7 +816,7 @@ button {
   align-items: center;
   padding-top: 120px; }
   .site-footer .site-info {
-    background-color: #4c5154;
+    background-color: #39414d;
     width: 100%; }
     @media (max-width: 900px) {
       .site-footer .site-info {
@@ -965,6 +965,25 @@ a.donate-button {
     .archive-title {
       font-size: 30px; } }
 
+.latest-articles .section-title {
+  font-weight: 700; }
+
+.all-articles .section-title {
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 35px; }
+
+h1.section-title {
+  line-height: 1.6em;
+  font-weight: 600; }
+
+.blue-bg {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  background-color: #39414d; }
+
 .single .site-header:before {
   transform: translateY(0%);
   opacity: 1;
@@ -1077,6 +1096,19 @@ a.donate-button {
   .author-social img {
     max-height: 25px;
     width: auto; }
+
+.book-review-content {
+  display: flex; }
+  .book-review-content .book-image {
+    width: 30%;
+    min-width: 30%;
+    margin-right: 50px; }
+    .book-review-content .book-image img {
+      width: 100%;
+      height: auto;
+      position: sticky;
+      position: -webkit-sticky;
+      top: 20px; }
 
 .home section h3 {
   font-size: 20px;
@@ -1564,6 +1596,8 @@ section.home-events {
         font-weight: 600;
         position: absolute;
         top: -35px; }
+        .posts-feed a .post-feed-info .post-category span {
+          text-transform: initial; }
     @media (max-width: 920px) {
       .posts-feed a {
         width: calc(50% - 20px); } }
@@ -1607,6 +1641,11 @@ section.home-events {
       text-decoration: none; }
       .pagination-navigation ul li a svg {
         height: 20px; }
+
+.tax-written_type .post-feed-info p {
+  font-size: 16px;
+  text-transform: initial;
+  font-weight: 100; }
 
 .newsletter-container {
   text-align: center;
@@ -1664,6 +1703,8 @@ section.home-events {
     font-weight: 700;
     font-size: 40px;
     margin-top: 30px; }
+  .page-header-container a {
+    text-decoration: none; }
 
 .page-header-image {
   position: absolute;
@@ -1882,38 +1923,136 @@ section.home-events {
   .more-podcasts-feed .posts-feed {
     justify-content: space-between; }
 
-.blog #page-header {
-  margin-bottom: 40px; }
+.podcast-author {
+  padding: 30px 0 60px;
+  font-style: italic;
+  text-transform: uppercase; }
+  .podcast-author p {
+    font-size: 16px;
+    letter-spacing: 0.1em; }
 
-.blog .lead-article {
+#page-header {
+  margin-bottom: 60px; }
+
+.blog .lead-article,
+.archive .lead-article {
   margin-bottom: 60px; }
   @media (max-width: 920px) {
-    .blog .lead-article {
+    .blog .lead-article,
+    .archive .lead-article {
       margin-bottom: 40px; } }
-  .blog .lead-article a {
+  .blog .lead-article h3,
+  .archive .lead-article h3 {
+    line-height: 1.6em;
+    font-weight: 600; }
+  .blog .lead-article a,
+  .archive .lead-article a {
     display: flex;
     justify-content: space-between;
     text-decoration: none; }
     @media (max-width: 920px) {
-      .blog .lead-article a {
+      .blog .lead-article a,
+      .archive .lead-article a {
         flex-direction: column; } }
 
-.blog .lead-article-img {
+.blog .lead-article-img,
+.archive .lead-article-img {
   width: calc(50% - 20px); }
   @media (max-width: 920px) {
-    .blog .lead-article-img {
+    .blog .lead-article-img,
+    .archive .lead-article-img {
       margin-bottom: 25px;
       width: 100%; } }
-  .blog .lead-article-img img {
+  .blog .lead-article-img img,
+  .archive .lead-article-img img {
     width: 100%;
     height: auto; }
 
-.blog .lead-article-content {
+.blog .lead-article-content,
+.archive .lead-article-content {
   width: calc(50% - 20px); }
+  .blog .lead-article-content h3,
+  .archive .lead-article-content h3 {
+    margin-bottom: 20px; }
   @media (max-width: 920px) {
-    .blog .lead-article-content {
+    .blog .lead-article-content,
+    .archive .lead-article-content {
       margin-bottom: 25px;
       width: 100%; } }
+
+.term-book-reviews .lead-article-content p {
+  margin-bottom: 30px; }
+
+.term-book-reviews .lead-article-content .button {
+  padding: 10px 30px;
+  border-radius: 10px; }
+
+.single-written .all-articles,
+.term-book-reviews .all-articles {
+  margin-top: 60px;
+  background-color: #4c5154;
+  padding: 60px 0 100px; }
+  .single-written .all-articles .section-title,
+  .term-book-reviews .all-articles .section-title {
+    color: white; }
+  .single-written .all-articles .posts-feed,
+  .term-book-reviews .all-articles .posts-feed {
+    justify-content: space-between; }
+    .single-written .all-articles .posts-feed a,
+    .term-book-reviews .all-articles .posts-feed a {
+      border-radius: 5px;
+      overflow: hidden;
+      background-color: white;
+      margin-bottom: 30px;
+      display: block; }
+      .single-written .all-articles .posts-feed a .post-feed-info,
+      .term-book-reviews .all-articles .posts-feed a .post-feed-info {
+        margin-top: 0px;
+        padding-top: 30px;
+        padding-bottom: 10px; }
+        .single-written .all-articles .posts-feed a .post-feed-info h6,
+        .term-book-reviews .all-articles .posts-feed a .post-feed-info h6 {
+          line-height: 1.3em;
+          font-size: 18px; }
+        .single-written .all-articles .posts-feed a .post-feed-info .post-category,
+        .term-book-reviews .all-articles .posts-feed a .post-feed-info .post-category {
+          top: -10px; }
+        .single-written .all-articles .posts-feed a .post-feed-info p,
+        .term-book-reviews .all-articles .posts-feed a .post-feed-info p {
+          font-size: 16px;
+          text-transform: initial;
+          font-weight: 100; }
+
+.single-written .site-footer,
+.term-book-reviews .site-footer {
+  padding-top: 0px; }
+
+.single-written .all-articles .slick-track {
+  display: flex !important; }
+
+.single-written .all-articles .slick-slide {
+  height: inherit !important;
+  outline: none; }
+
+.single-written .all-articles .slick-dots {
+  display: flex !important;
+  justify-content: center; }
+  .single-written .all-articles .slick-dots li {
+    margin: 0 10px; }
+    .single-written .all-articles .slick-dots li button {
+      background-color: white;
+      font-size: 0px;
+      padding: 0px;
+      height: 10px;
+      width: 10px; }
+    .single-written .all-articles .slick-dots li.slick-active button {
+      background-color: #6cb5ce; }
+
+.single-written .all-articles .posts-feed a {
+  margin-right: 20px; }
+  @media (max-width: 667px) {
+    .single-written .all-articles .posts-feed a {
+      margin-right: 0px; } }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;

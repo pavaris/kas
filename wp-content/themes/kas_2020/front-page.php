@@ -64,7 +64,7 @@ get_header();
                             <h3>Watch Our Latest Video</h3>
                             <div class="home-latest-videos-feed">
                             
-                              <iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $videoFeed[0]->ID); ?>?controls=0" frameborder="0"  class="superembed-force"></iframe>
+                              <iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $videoFeed[0]->ID); ?>" frameborder="0"  class="superembed-force"></iframe>
 
 
 

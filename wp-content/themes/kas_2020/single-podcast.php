@@ -47,6 +47,17 @@ get_header();
 						<section class='post-content'>  
 							<?php the_content(); ?>
 						</section>
+					<?php if($terms){ 
+						if($terms[0]->slug == 'krb-podcast'){
+							?> 
+							<section class="podcast-author">
+								<p>
+									Posted by: <?php echo get_the_author_meta('user_firstname') . ' ' . get_the_author_meta('user_lastname'); ?> | Released <?php echo get_the_date('m/d/Y'); ?>
+								</p>
+							</section>
+							<?php 
+						}
+					} ?>
 				
 					<?php
 					endwhile; // End of the loop.

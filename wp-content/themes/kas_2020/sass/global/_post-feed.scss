@@ -44,6 +44,9 @@
 				font-weight: 600;
 				position: absolute;
 				top: -35px;
+				span {
+					text-transform: initial;
+				}
 			}
 		}
 		@media (max-width: 920px) {
@@ -100,6 +103,16 @@
 					height: 20px;
 				}
 			}
+		}
+	}
+}
+
+.tax-written_type {
+	.post-feed-info {
+		p {
+			font-size: 16px;
+			text-transform: initial;
+			font-weight: 100;
 		}
 	}
 }
