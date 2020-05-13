@@ -4,7 +4,7 @@ $(document).ready(function () {
 	console.log("ready? ok!");
 
 	$(".home-latest-videos-feed #play-video").on("click", function (ev) {
-		$(".home-latest-videos-feed iframe")[0].src += "&autoplay=1";
+		$(".home-latest-videos-feed iframe")[0].src += "?autoplay=1";
 		$(this).fadeOut();
 		ev.preventDefault();
 	});
