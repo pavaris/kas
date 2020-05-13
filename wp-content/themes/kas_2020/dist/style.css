@@ -1028,8 +1028,10 @@ h1.section-title {
     font-weight: 500;
     font-size: 20px; }
 
-.post-content .kas-block.section-title {
-  text-align: center; }
+.post-content {
+  margin-bottom: 50px; }
+  .post-content .kas-block.section-title {
+    text-align: center; }
 
 .credits {
   margin-bottom: 60px; }
