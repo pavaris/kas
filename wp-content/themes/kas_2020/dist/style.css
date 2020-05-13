@@ -1605,7 +1605,8 @@ section.home-events {
       position: absolute;
       height: 100%;
       width: 100%;
-      object-fit: cover; }
+      object-fit: cover;
+      object-position: top; }
     .posts-feed a .post-feed-info {
       padding: 0 20px;
       display: flex;
