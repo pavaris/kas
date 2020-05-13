@@ -1136,6 +1136,14 @@ h1.section-title {
       position: -webkit-sticky;
       top: 20px; }
 
+.alignleft {
+  float: left;
+  margin-right: 15px; }
+
+.alignright {
+  float: right;
+  margin-left: 15px; }
+
 .home section h3 {
   font-size: 20px;
   text-transform: uppercase;
