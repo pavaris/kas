@@ -92,8 +92,8 @@ get_header();
 												<div class="team-member-name">
 													<?php echo $host['name']; ?>
 												</div>
+												<?php if($host['social']){ ?>
 												<div class="team-member-social">
-
 													<?php foreach($host['social'] as $social){ ?>
 														<a href="<?php echo $social['link']; ?>" target="_blank">
 															
@@ -102,6 +102,7 @@ get_header();
 														</a>
 													<?php } ?>
 												</div>
+													<?php } ?>
 												<div class="team-member-info">
 													<?php echo $host['description']; ?>
 												</div>
