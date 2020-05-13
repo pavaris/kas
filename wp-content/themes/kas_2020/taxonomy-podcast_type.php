@@ -95,7 +95,7 @@ get_header();
 												<div class="team-member-social">
 
 													<?php foreach($host['social'] as $social){ ?>
-														<a href="<?php echo $social['link']['url']; ?>" target="_blank">
+														<a href="<?php echo $social['link']; ?>" target="_blank">
 															
 																<?php echo wp_get_attachment_image($social['icon']['ID'], 'medium'); ?>
 															
