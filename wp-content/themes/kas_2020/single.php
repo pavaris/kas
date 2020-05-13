@@ -21,7 +21,7 @@ get_header();
 					<div class="page-header-image">
 						<?php 
 							if($terms){
-								$image = get_field('image', $terms[0]);
+								$image = get_field('banner_image', $terms[0]);
 										
 								if($image){
 									echo wp_get_attachment_image($image['ID'], 'large');

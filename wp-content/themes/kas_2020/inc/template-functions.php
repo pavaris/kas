@@ -329,22 +329,37 @@ function my_acf_init() {
 	if( function_exists('acf_register_block') ) {
 
 		// content box block
-		acf_register_block(
+		// acf_register_block(
+		// 	array(
+		// 		'name'				=> 'post-feed',
+		// 		'title'				=> __('KAS Post Feed'),
+		// 		'description'		=> __('A post feed'),
+		// 		'category'			=> 'widgets',
+		// 		'icon'				=> 'screenoptions',
+		// 		'keywords'			=> array( 'kas', 'post', 'feed'),
+		// 		'mode' => 'edit',
+		// 		'render_template' => 'custom-blocks/post-feed.php',
+		// 		'supports' => array(
+		// 			'align' => array('full'),
+		// 			),
+		// 		)
+		// 	);
+
+			acf_register_block(
 			array(
-				'name'				=> 'post-feed',
-				'title'				=> __('KAS Post Feed'),
-				'description'		=> __('A post feed'),
+				'name'				=> 'section-title',
+				'title'				=> __('Section Title'),
+				'description'		=> __('Section Title'),
 				'category'			=> 'widgets',
-				'icon'				=> 'screenoptions',
-				'keywords'			=> array( 'kas', 'post', 'feed'),
+				'icon'				=> 'editor-bold',
+				'keywords'			=> array( 'kas', 'section', 'title'),
 				'mode' => 'edit',
-				'render_template' => 'custom-blocks/post-feed.php',
+				'render_template' => 'custom-blocks/section-title.php',
 				'supports' => array(
 					'align' => array('full'),
 					),
 				)
 			);
-
 			acf_register_block(
 			array(
 				'name'				=> 'section-title',
@@ -557,3 +572,11 @@ function add_author_support_to_posts() {
    add_post_type_support( 'podcast', 'author' ); 
 }
 add_action( 'init', 'add_author_support_to_posts' );
+
+
+function wpa_cpt_tags( $query ) {
+    if ( $query->is_tag() && $query->is_main_query() ) {
+        $query->set( 'post_type', array( 'post', 'written', 'podcast', 'event', 'video' ) );
+    }
+}
+add_action( 'pre_get_posts', 'wpa_cpt_tags' );

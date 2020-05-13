@@ -43,7 +43,7 @@
 					<div class="site-nav-bottom">
 						<div class="nav-links">
 							<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-							<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+							<a href="<?php echo get_home_url(); ?>/donate" class='donate-button'>Donate</a>
 						</div>
 					</div>	
 				</div>

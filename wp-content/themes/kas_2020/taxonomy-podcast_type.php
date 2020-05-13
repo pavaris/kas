@@ -13,7 +13,7 @@ get_header();
 									?>
 							<div class="page-header-image">
 													<?php
-										$image = get_field('image', $term);
+										$image = get_field('banner_image', $term);
 										?>
 									
 										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>

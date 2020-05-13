@@ -1,8 +1,8 @@
 <?php
 /**
- * The template for displaying search results pages
+ * The template for displaying archive pages
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
+ * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
  * @package theme-name
  */
@@ -10,22 +10,19 @@
 get_header();
 ?>
 
-	<section id="primary" class="content-area">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+	
+				
+						<div class="page-header-container">
+							<h1 class="archive-title">Tag: <?php the_archive_title(); ?></h1>
+							<div class="page-header-image">
+								
+							</div>
+						</div>
 
-
-			<div class="page-header-container">
-				<h1 class="archive-title">Search</h1>
-				<div class="page-header-image">
-					
-				</div>
-			</div>
-
-			<div class="content-margins">
-				<div class="search-input">
-					<?php get_search_form(); ?>
-				</div>
-				<section class="search-results-cont">
+						<div class="content-margins">
+								<section class="search-results-cont">
 					<?php if ( have_posts() ) : ?>
 						<?php
 						/* Start the Loop */
@@ -65,10 +62,9 @@ get_header();
 					endif;
 				?>
 				</section>
-			</div>
-
+						</div>
 		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #primary -->
 
 <?php
 

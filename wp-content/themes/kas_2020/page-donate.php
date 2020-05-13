@@ -7,15 +7,17 @@
  						the_post();
  					?>
 			<div class="page-header-container">
-				<h2><?php the_title(); ?></h2>
+				<h1 class="archive-title">Support Us</h1>
 				<div class="page-header-image">
 					<?php echo get_the_post_thumbnail(); ?>
 				</div>
 			</div>
 
 	
- 						<section>
-							 <?php the_title(); ?>
+ 						<section class='page-content'>
+							 <div class="content-margins">
+								 <?php the_content(); ?>
+							 </div>
  						</section>
  			
 
