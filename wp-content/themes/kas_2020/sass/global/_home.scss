@@ -90,19 +90,22 @@
 		align-items: center;
 		color: white;
 		p {
-			font-size: 25px;
+			font-size: 22px;
 			font-weight: 100;
 			font-family: $mrEaves;
 			letter-spacing: 0.04em;
+			line-height: 1.2em;
+			color: white;
 		}
 		h3 {
 			text-transform: uppercase;
 			font-family: $mrsEaves;
-
 			font-size: 30px;
 			color: white;
 			letter-spacing: 0.3em;
 			font-weight: 100;
+			margin-bottom: 20px;
+			line-height: 1.1em;
 		}
 		.header-slide-inner {
 			width: 50%;
@@ -110,6 +113,18 @@
 		.header-slide-cta {
 			a {
 				font-size: 18px;
+				font-weight: 700;
+			}
+		}
+		@media (max-width: 767px) {
+			.header-slide-inner {
+				width: 100%;
+			}
+			h3 {
+				font-size: 25px;
+			}
+			p {
+				font-size: 20px;
 			}
 		}
 	}
@@ -291,6 +306,12 @@ section.home-mission {
 		letter-spacing: 0.075em;
 		font-size: 35px;
 		line-height: 1.4em;
+		padding: 0 20px;
+	}
+	@media (max-width: 767px) {
+		h5 {
+			font-size: 25px;
+		}
 	}
 }
 

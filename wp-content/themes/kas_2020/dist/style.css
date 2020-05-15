@@ -413,7 +413,8 @@ button {
   text-transform: uppercase;
   text-decoration: none;
   display: inline-block;
-  font-size: 20px; }
+  font-size: 20px;
+  font-weight: 700; }
 
 .button-cnt {
   margin: 20px 0;
@@ -734,7 +735,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer; }
+  cursor: pointer;
+  border-radius: 0px; }
   #mobile-ham svg {
     width: 25px; }
   #mobile-ham line {
@@ -1214,21 +1216,33 @@ h1.section-title {
     align-items: center;
     color: white; }
     .header-slide .header-slide-info p {
-      font-size: 25px;
+      font-size: 22px;
       font-weight: 100;
       font-family: "mr-eaves-sans";
-      letter-spacing: 0.04em; }
+      letter-spacing: 0.04em;
+      line-height: 1.2em;
+      color: white; }
     .header-slide .header-slide-info h3 {
       text-transform: uppercase;
       font-family: "mrs-eaves";
       font-size: 30px;
       color: white;
       letter-spacing: 0.3em;
-      font-weight: 100; }
+      font-weight: 100;
+      margin-bottom: 20px;
+      line-height: 1.1em; }
     .header-slide .header-slide-info .header-slide-inner {
       width: 50%; }
     .header-slide .header-slide-info .header-slide-cta a {
-      font-size: 18px; }
+      font-size: 18px;
+      font-weight: 700; }
+    @media (max-width: 767px) {
+      .header-slide .header-slide-info .header-slide-inner {
+        width: 100%; }
+      .header-slide .header-slide-info h3 {
+        font-size: 25px; }
+      .header-slide .header-slide-info p {
+        font-size: 20px; } }
 
 section.home-latest-videos {
   background-color: #39414d;
@@ -1381,7 +1395,11 @@ section.home-mission {
     color: #4c5154;
     letter-spacing: 0.075em;
     font-size: 35px;
-    line-height: 1.4em; }
+    line-height: 1.4em;
+    padding: 0 20px; }
+  @media (max-width: 767px) {
+    section.home-mission h5 {
+      font-size: 25px; } }
 
 section.home-latest-stories {
   padding: 60px 0; }

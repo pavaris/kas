@@ -25,7 +25,7 @@ get_header();
            					while ( have_posts() ) :
            						the_post();
            					?>
-           						<section id="page-header">
+           						<section>
                         <?php $slides = get_field('featured_post'); ?>
                           <div class="header-slides">
                             <?php foreach($slides as $slide){ ?>
@@ -183,7 +183,7 @@ get_header();
                         <?php } ?>
                       </div>
                       <div class="center ">
-                        <a href="" class="button">All Projects</a>
+                        <a href="<?php echo get_home_url(); ?>/explore" class="button">All Projects</a>
                       </div>
                     </div>
                   </section>
