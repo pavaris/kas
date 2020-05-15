@@ -40,7 +40,11 @@ get_header();
                                       <?php echo get_field('short_description', $slide->ID); ?>
                                       <div class="header-slide-cta">
                                         <a href="<?php echo get_the_permalink($slide->ID); ?>" class='button'>
-                                          <?php the_field('cta', $slide->ID); ?>
+                                          <?php if(get_field('cta', $slide->ID)){
+                                            the_field('cta', $slide->ID);
+                                          }else{
+                                            echo 'Learn More';
+                                          } ?>
                                         </a>
                                       </div>
                                     </div>

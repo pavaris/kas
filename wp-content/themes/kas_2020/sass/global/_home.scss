@@ -116,7 +116,7 @@
 }
 
 section.home-latest-videos {
-	background-color: $darkGray;
+	background-color: $anotherGray;
 	color: white;
 	text-align: center;
 	padding: 60px 0;
@@ -209,7 +209,7 @@ section.home-latest-videos {
 }
 
 section.home-podcasts {
-	background-color: $darkGray;
+	background-color: $anotherGray;
 	color: white;
 	padding: 60px 0;
 
@@ -228,6 +228,7 @@ section.home-podcasts {
 		font-size: 20px;
 		letter-spacing: 0.2em;
 		margin-bottom: 50px;
+		color: white;
 	}
 }
 
@@ -314,7 +315,7 @@ section.home-projects {
 				position: absolute;
 				left: 0;
 				top: 0;
-				background-color: rgba(0, 0, 0, 0.4);
+				background-color: rgba(0, 0, 0, 0.3);
 				height: 100%;
 				width: 100%;
 				z-index: 1;
@@ -326,7 +327,7 @@ section.home-projects {
 				height: 0;
 				position: relative;
 				width: 100%;
-				padding-bottom: 175%;
+				padding-bottom: 185%;
 				img {
 					position: absolute;
 					left: 0;
