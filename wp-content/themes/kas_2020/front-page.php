@@ -157,10 +157,7 @@ get_header();
                     <div class="content-margins">
                       <h3>Stay Connected</h3>
                       <p>Subscribe to our newsletter</p>
-                      <form action="">
-                        <input type="email">
-                        <input type="submit" value="Submit">
-                      </form>
+                      <?php echo do_shortcode('[contact-form-7 id="11424" title="Newsletter"]'); ?>
                     </div>
                   </section>
               

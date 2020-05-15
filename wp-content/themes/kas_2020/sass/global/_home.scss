@@ -481,3 +481,31 @@ section.home-events {
 		}
 	}
 }
+
+.flex {
+	display: flex;
+}
+
+.newsletter-container {
+	text-align: center;
+	label {
+		span.form-label {
+			font-size: 0px;
+			line-height: 0px;
+		}
+		br {
+			display: none;
+		}
+		.wpcf7-form-control-wrap {
+			display: block;
+			input {
+				padding: 10px 15px;
+				font-size: 20px;
+				text-align: center;
+				border-radius: 15px;
+				border: 1px solid $darkGray;
+				outline: none;
+			}
+		}
+	}
+}

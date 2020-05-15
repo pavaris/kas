@@ -1543,6 +1543,26 @@ section.home-events {
         width: 100%;
         object-fit: cover; }
 
+.flex {
+  display: flex; }
+
+.newsletter-container {
+  text-align: center; }
+  .newsletter-container label span.form-label {
+    font-size: 0px;
+    line-height: 0px; }
+  .newsletter-container label br {
+    display: none; }
+  .newsletter-container label .wpcf7-form-control-wrap {
+    display: block; }
+    .newsletter-container label .wpcf7-form-control-wrap input {
+      padding: 10px 15px;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 15px;
+      border: 1px solid #4c5154;
+      outline: none; }
+
 .taxonomy-description {
   padding: 60px 0 40px; }
 
