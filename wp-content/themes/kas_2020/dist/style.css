@@ -1231,7 +1231,7 @@ h1.section-title {
       font-size: 18px; }
 
 section.home-latest-videos {
-  background-color: #4c5154;
+  background-color: #39414d;
   color: white;
   text-align: center;
   padding: 60px 0; }
@@ -1314,9 +1314,9 @@ section.home-latest-videos {
         left: calc(100% + 20px); } }
 
 section.home-podcasts {
-  background-color: #4c5154;
+  background-color: #39414d;
   color: white;
-  padding: 60px 0; }
+  padding: 40px 0; }
   section.home-podcasts h3 {
     font-weight: 600;
     text-transform: uppercase;
@@ -1324,13 +1324,14 @@ section.home-podcasts {
     letter-spacing: 0.2em;
     color: white !important;
     font-size: 30px;
-    margin-bottom: 20px; }
+    margin-bottom: 10px; }
   section.home-podcasts p {
     text-transform: uppercase;
     font-weight: 600;
     font-size: 20px;
     letter-spacing: 0.2em;
-    margin-bottom: 50px; }
+    margin-bottom: 30px;
+    color: white; }
 
 .home-podcasts-cont {
   width: 100vw;
@@ -1401,7 +1402,7 @@ section.home-projects {
         position: absolute;
         left: 0;
         top: 0;
-        background-color: rgba(0, 0, 0, 0.4);
+        background-color: rgba(0, 0, 0, 0.3);
         height: 100%;
         width: 100%;
         z-index: 1; }
@@ -1411,7 +1412,7 @@ section.home-projects {
         height: 0;
         position: relative;
         width: 100%;
-        padding-bottom: 175%; }
+        padding-bottom: 185%; }
         section.home-projects .home-projects-feed a .home-projects-image img {
           position: absolute;
           left: 0;
@@ -1472,7 +1473,7 @@ section.home-events {
         height: 100%;
         width: 100%;
         z-index: 1;
-        background-color: rgba(0, 0, 0, 0.4); }
+        background-color: rgba(0, 0, 0, 0.3); }
       section.home-events .home-events-feed a .home-events-desc {
         position: absolute;
         height: 100%;

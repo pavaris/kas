@@ -211,7 +211,7 @@ section.home-latest-videos {
 section.home-podcasts {
 	background-color: $anotherGray;
 	color: white;
-	padding: 60px 0;
+	padding: 40px 0;
 
 	h3 {
 		font-weight: 600;
@@ -220,14 +220,14 @@ section.home-podcasts {
 		letter-spacing: 0.2em;
 		color: white !important;
 		font-size: 30px;
-		margin-bottom: 20px;
+		margin-bottom: 10px;
 	}
 	p {
 		text-transform: uppercase;
 		font-weight: 600;
 		font-size: 20px;
 		letter-spacing: 0.2em;
-		margin-bottom: 50px;
+		margin-bottom: 30px;
 		color: white;
 	}
 }
@@ -397,7 +397,7 @@ section.home-events {
 				height: 100%;
 				width: 100%;
 				z-index: 1;
-				background-color: rgba(0, 0, 0, 0.4);
+				background-color: rgba(0, 0, 0, 0.3);
 			}
 			.home-events-desc {
 				position: absolute;
