@@ -85,8 +85,8 @@ get_header();
           
                       <section class="home-mission">
                         <h3>Our Mission</h3>
-                        <h5>To capture, createm preserve and share the stoires of the Korean American experience</h5>
-                        <a href="" class="button">Learn More</a>
+                        <h5>To capture, create, preserve and share<br> the stories of the Korean American experience</h5>
+                        <a href="<?php echo get_home_url(); ?>/about" class="button">Learn More</a>
                       </section>
                       
                       <?php $podcasts = get_field('podcasts'); 
