@@ -11,11 +11,9 @@
 	width: 100%;
 
 	.header-inner {
-		max-width: 1440px;
 		display: flex;
 		justify-content: space-around;
 		align-items: center;
-		margin: 0 auto;
 	}
 
 	a {
@@ -28,25 +26,18 @@
 			font-size: 13px;
 		}
 	}
-	a.donate-button {
-		border: 0px;
-		border-radius: 25px;
-		padding: 12px 40px;
-		@media (max-width: $tablet_width) {
-			padding: 12px 25px;
-		}
-	}
 
 	.site-branding {
-		display: flex;
-		margin-right: 40px;
-		align-items: flex-end;
-		margin-left: 4%;
+		margin-right: 50px;
+		position: relative;
+		width: 150px;
 		img {
-			height: 90px;
-			width: auto;
+			top: 0px;
+			width: 100%;
+			height: auto;
 			display: block;
 			box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px 4px;
+			position: absolute;
 		}
 		@media (max-width: $tablet_width) {
 			margin-right: 10px;
@@ -56,30 +47,44 @@
 
 #site-navigation {
 	width: 100%;
-	position: relative;
-	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	padding: 20px 30px;
+	background-color: $anotherGray;
+	box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px 4px;
 	@media (max-width: 767px) {
 		display: none;
 	}
+
+	.main-nav-inner {
+		display: flex;
+		max-width: 95%;
+		margin: 0 auto;
+	}
 	.menu-header-menu-container {
 		width: 100%;
+		display: flex;
+		align-items: center;
 	}
-	.site-nav-cont {
-		width: 100%;
-	}
+
 	#menu-header-menu {
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-evenly;
+		align-items: center;
+		width: 100%;
 		.menu-item {
 			margin-right: 25px;
-			width: 100%;
 		}
 		.menu-item-has-children {
 			position: relative;
-			padding-right: 10px;
-			margin-right: 35px;
+			padding: 0 10px;
 			> a {
 				position: relative;
+				font-size: 18px;
+				letter-spacing: 0.2rem;
+				font-weight: 500;
+				z-index: 1;
 				&:after {
 					content: "";
 					height: 7px;
@@ -97,18 +102,21 @@
 
 			.sub-menu {
 				position: absolute;
-				top: 0;
-				padding-top: 35px;
+				top: 100%;
 				left: 0;
 				transform: translateY(-20px);
 				opacity: 0;
 				pointer-events: none;
 				transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+				background-color: $anotherGray;
+				padding: 20px 10px 0;
 				li {
 					margin-bottom: 15px;
 					margin-right: 0px;
 					a {
-						font-size: 13px;
+						font-size: 15px;
+						font-weight: 600;
+						letter-spacing: 0.2rem;
 					}
 				}
 			}
@@ -129,44 +137,6 @@
 		align-items: center;
 		@media (max-width: $tablet_width) {
 			padding-right: 4%;
-		}
-	}
-	.nav-search {
-		height: 50px;
-		display: flex;
-		align-items: center;
-		background-color: $darkGray;
-		position: relative;
-		width: 100%;
-		&:before {
-			content: "";
-			position: absolute;
-			right: 100%;
-			width: 100vw;
-			top: 0;
-			height: 100%;
-			background-color: $darkGray;
-			z-index: -1;
-		}
-		.search-form {
-			width: 100%;
-			height: 100%;
-			label {
-				width: 100%;
-				height: 100%;
-			}
-		}
-	}
-	.nav-social {
-		height: 100%;
-		.social-nav {
-			padding: 0 15px;
-			height: 50px;
-			display: flex;
-			align-items: center;
-			li {
-				margin: 0 10px;
-			}
 		}
 	}
 
@@ -193,12 +163,78 @@
 	}
 }
 
-.site-nav-top {
+.donate-search {
 	display: flex;
+	align-items: center;
+	.search-toggle {
+		border: 0px;
+		padding: 0;
+		background-color: transparent;
+		outline: none;
+		img {
+			filter: invert(1);
+			height: 35px;
+		}
+	}
 }
 
-.site-nav-bottom {
-	padding: 0 5% 0 0;
+.nav-search {
+	position: fixed;
+	z-index: 2;
+	height: 100%;
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.95);
+	display: flex;
+	justify-content: center;
+	padding-top: 200px;
+	// display: none;
+	opacity: 0;
+	transform: translateY(-100%);
+	@include cubic;
+	.nav-search-close {
+		position: absolute;
+		right: 50px;
+		top: 25px;
+		button {
+			font-size: 75px;
+			line-height: 0px;
+			background-color: transparent;
+			border: 0px;
+			outline: none;
+		}
+	}
+	form {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		.search-field {
+			width: 400px;
+			font-size: 40px;
+			background-color: transparent;
+			border: 0;
+			border-bottom: 1px solid $darkGray;
+			padding: 15px;
+			font-weight: 800;
+			text-align: center;
+			outline: none;
+		}
+		label {
+			margin-bottom: 30px;
+		}
+		input[type="submit"] {
+			@include button;
+			text-transform: uppercase;
+			color: white;
+			background-color: $skyBlue;
+		}
+	}
+}
+
+.site-header.show-search {
+	.nav-search {
+		transform: none;
+		opacity: 1;
+	}
 }
 
 #mobile-nav {
@@ -243,7 +279,7 @@
 		text-align: center;
 		transform: translateY(-100%);
 		z-index: -1;
-		transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+		@include cubic;
 		&.active {
 			transform: none;
 		}
@@ -274,21 +310,10 @@
 			}
 		}
 	}
-	.donate-button {
-		background-color: $skyBlue;
-		padding: 5px 25px;
-		font-size: 20px;
-		font-weight: 100;
-		margin-bottom: 30px;
-		display: inline-block;
-	}
-	.social-nav {
-		max-width: 250px;
-		margin: 0 auto;
-	}
+
 	.mobile-search {
 		margin: 0 auto 25px;
-		// width: 300px;
+
 		width: 100%;
 		form {
 			display: flex;

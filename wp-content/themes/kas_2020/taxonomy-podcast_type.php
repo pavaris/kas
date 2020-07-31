@@ -75,7 +75,38 @@ get_header();
 					<?php } ?>
 
 
-					<?php
+					
+
+					<section class="podcast-feed">
+						<h3 class="section-title"><?php echo get_the_archive_title(); ?> Episodes</h3>
+
+
+							<div class="posts-feed">
+								<?php
+								while ( have_posts() ) :
+									the_post();
+
+									/*
+									 * Include the Post-Type-specific template for the content.
+									 * If you want to override this in a child theme, then include a file
+									 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
+									 */
+
+									 podcast_article(get_the_ID());
+
+									 ?>
+
+								<?php endwhile;
+								 ?>
+							</div>
+
+					</section>
+
+			<?php wpbeginner_numeric_posts_nav(); ?>
+
+
+
+<?php
 						$hosts = get_field('hosts', $term);
 						if($hosts){ ?>
 							<section class="podcast-hosts">
@@ -112,37 +143,12 @@ get_header();
 							</section>
 					<?php } ?>
 
-					<section class="podcast-feed">
-						<h3 class="section-title"><?php echo get_the_archive_title(); ?> Episodes</h3>
-
-
-							<div class="posts-feed">
-								<?php
-								while ( have_posts() ) :
-									the_post();
-
-									/*
-									 * Include the Post-Type-specific template for the content.
-									 * If you want to override this in a child theme, then include a file
-									 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-									 */
-
-									 podcast_article(get_the_ID());
-
-									 ?>
-
-								<?php endwhile;
-								 ?>
-							</div>
-
-					</section>
 
 
 					<?php
 				endif;
 				?>
 
-			<?php wpbeginner_numeric_posts_nav(); ?>
 
 				</div>
 		</main><!-- #main -->

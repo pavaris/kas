@@ -28,26 +28,40 @@
 	<header id="masthead" class="site-header">
 
 			<nav id="site-navigation" class="main-navigation">
-				<div class="site-branding">
-					<?php echo get_custom_logo(); ?>
-				</div><!-- .site-branding -->
-				<div class="site-nav-cont">
-					<div class="site-nav-top">
-						<div class="nav-search">
-							<?php get_search_form();?>
-						</div>
-						<div class="nav-social">
-							<?php include get_template_directory() . '/components/social-nav.php'; ?>
-						</div>
-					</div>	
-					<div class="site-nav-bottom">
-						<div class="nav-links">
+				<div class="main-nav-inner">
+					<div class="site-branding">
+						<?php echo get_custom_logo(); ?>
+					</div><!-- .site-branding -->
+					
 							<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-							<a href="<?php echo get_home_url(); ?>/donate" class='donate-button'>Donate</a>
-						</div>
-					</div>	
+					
+					<div class="donate-search">
+						<a href="<?php echo get_home_url(); ?>/donate" class='donate-button button'>Donate</a>
+						
+						<button class="search-toggle">
+							<img src="<?php echo get_template_directory_uri(); ?>/img/search.svg" alt="search">
+						</button>
+					</div>
 				</div>
+			
 			</nav><!-- #site-navigation -->
+
+
+
+			<div class="nav-search">
+				<div class="nav-search-close">
+					<button>×</button>
+				</div>
+				<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
+				<label>
+					<span class="screen-reader-text">Search</span>
+					<input type="search" class="search-field" placeholder="type here" value="" name="s">
+				</label>
+				<input type="submit" class="search-submit" value="Search">
+			</form>
+			</div>
+
+
 
 			<nav id="mobile-nav">
 				<div id="mobile-header">
@@ -57,9 +71,6 @@
 					</button>
 				</div>	
 				<div id="mobile-nav-links">
-					<div class="mobile-search">
-						<?php get_search_form();?>
-					</div>
 					<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
 					<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
 					<?php include get_template_directory() . '/components/social-nav.php'; ?>

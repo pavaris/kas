@@ -91,6 +91,11 @@ $(document).ready(function () {
 		ev.preventDefault();
 	});
 
+	$(".donate-search .search-toggle, .nav-search-close button").click(function (e) {
+		e.preventDefault();
+		$(".site-header").toggleClass("show-search");
+	});
+
 	$("#mobile-ham").click(function () {
 		$("#mobile-nav-links").toggleClass("active");
 	});

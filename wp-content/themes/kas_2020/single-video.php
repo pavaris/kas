@@ -52,7 +52,8 @@ get_header();
 								<div class="video-single-embed home-latest-videos-feed">
 									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">
-										<?php echo get_the_post_thumbnail(); ?>
+										<?php $image = get_field('poster_image'); ?>
+										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
 									</a>
 								</div>
 
@@ -72,7 +73,11 @@ get_header();
 										<?php foreach($videos->posts as $video){ ?>
 											<a href="<?php echo get_the_permalink($video->ID); ?>" class="<?php echo $video->ID == $thisID ? 'active' : ''; ?>">
 												<div class="video-img-cont">
-													<?php echo get_the_post_thumbnail($video->ID); ?>
+										
+
+	<?php $poster_image = get_field('poster_image', $video->ID); ?>
+										<?php echo wp_get_attachment_image($poster_image['ID'], 'large'); ?>
+
 												</div>
 												<h5>
 													<?php echo get_the_title($video->ID); ?>
@@ -86,6 +91,17 @@ get_header();
 								
 							<section class='page-content <?php echo $videos->have_posts() ? 'playlist-padding' : ''; ?>'>
 								<?php the_content(); ?>
+
+
+									<?php if(get_the_tags(get_the_ID())){ ?>
+									<div class="single-tags">
+										<?php foreach(get_the_tags(get_the_ID()) as $tag){
+											?> 
+											<a href="<?php echo get_tag_link($tag); ?>"><?php echo $tag->name; ?></a>
+											<?php 
+										} ?>
+									</div>
+									<?php } ?>
 							</section>	
 						
 						

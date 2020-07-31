@@ -74,7 +74,10 @@ get_header();
 
 
                                 <a id="play-video" href="#">
-                                  <?php echo get_the_post_thumbnail($videoFeed[0]->ID); ?>
+                                  
+                                  <?php $poster_image = get_field('poster_image', $videoFeed[0]->ID); ?>
+										<?php echo wp_get_attachment_image($poster_image['ID'], 'large'); ?>
+
                                 </a>
                               
                             </div>

@@ -103,19 +103,28 @@ em {
 	margin-bottom: 60px;
 }
 
+@mixin button {
+	border: 1px solid $skyBlue;
+	border-radius: 25px;
+	padding: 8px 25px;
+	background-color: transparent;
+	font-size: 18px;
+	letter-spacing: 0.2rem;
+	font-weight: 500;
+	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+	margin-right: 30px;
+	cursor: pointer;
+	&:hover {
+		background-color: $skyBlue;
+	}
+	@media (max-width: $tablet_width) {
+		padding: 12px 25px;
+	}
+}
+
 .button,
 button {
-	background-color: $skyBlue;
-	border: 0px;
-	border-radius: 70px;
-	padding: 20px 70px;
-	color: white;
-	font-style: normal;
-	text-transform: uppercase;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 20px;
-	font-weight: 700;
+	@include button;
 }
 
 .button-cnt {
@@ -199,4 +208,8 @@ button {
 
 .center {
 	text-align: center;
+}
+
+@mixin cubic {
+	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
 }

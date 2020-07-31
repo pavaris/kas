@@ -82,7 +82,7 @@ function add_posttype() {
 
 	register_post_type( 'video' , $args );
 
-	$thisName = 'Pocast';
+	$thisName = 'Podcast';
 	$labels = array(
 		'name' => _x($thisName . 's', 'post type general name'),
 		'singular_name' => _x($thisName, 'post type singular name'),
