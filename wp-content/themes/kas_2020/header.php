@@ -40,7 +40,18 @@
 						
 						<button class="search-toggle">
 							<img src="<?php echo get_template_directory_uri(); ?>/img/search.svg" alt="search">
+							<span>×</span>
 						</button>
+								<div class="nav-search">
+				
+									<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
+									<label>
+										<span class="screen-reader-text">Search</span>
+										<input type="search" class="search-field" placeholder="type here" value="" name="s">
+									</label>
+									<input type="submit" class="search-submit" value="Search">
+								</form>
+							</div>
 					</div>
 				</div>
 			
@@ -48,18 +59,7 @@
 
 
 
-			<div class="nav-search">
-				<div class="nav-search-close">
-					<button>×</button>
-				</div>
-				<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
-				<label>
-					<span class="screen-reader-text">Search</span>
-					<input type="search" class="search-field" placeholder="type here" value="" name="s">
-				</label>
-				<input type="submit" class="search-submit" value="Search">
-			</form>
-			</div>
+	
 
 
 

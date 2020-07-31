@@ -139,28 +139,6 @@
 			padding-right: 4%;
 		}
 	}
-
-	.search-field {
-		width: 100%;
-		border: 0px;
-		padding: 10px 20px;
-		outline: none;
-		font-size: 14px;
-		height: 100%;
-		background-color: $darkGray;
-		color: white;
-		letter-spacing: 0.1em;
-		font-size: 15px;
-		&::placeholder {
-			text-transform: uppercase;
-			letter-spacing: 0.2em;
-			font-weight: 600;
-			color: white;
-		}
-	}
-	.search-submit {
-		display: none;
-	}
 }
 
 .donate-search {
@@ -171,15 +149,27 @@
 		padding: 0;
 		background-color: transparent;
 		outline: none;
+		position: relative;
+		z-index: 4;
 		img {
 			filter: invert(1);
 			height: 35px;
+		}
+		span {
+			position: absolute;
+			right: 0;
+			top: 0;
+			display: none;
+			font-size: 75px;
+			line-height: 35px;
 		}
 	}
 }
 
 .nav-search {
 	position: fixed;
+	left: 0;
+	top: 0;
 	z-index: 2;
 	height: 100%;
 	width: 100%;
@@ -231,6 +221,16 @@
 }
 
 .site-header.show-search {
+	.search-toggle {
+		z-index: 3;
+		img {
+			opacity: 0;
+			pointer-events: none;
+		}
+		span {
+			display: block;
+		}
+	}
 	.nav-search {
 		transform: none;
 		opacity: 1;
@@ -307,27 +307,6 @@
 					font-family: $mrEaves;
 					font-size: 13px;
 				}
-			}
-		}
-	}
-
-	.mobile-search {
-		margin: 0 auto 25px;
-
-		width: 100%;
-		form {
-			display: flex;
-			label {
-				width: 100%;
-			}
-			input[type="search"] {
-				width: 100%;
-				font-size: 20px;
-				padding: 5px 10px;
-			}
-			input[type="submit"] {
-				font-size: 15px;
-				display: none;
 			}
 		}
 	}

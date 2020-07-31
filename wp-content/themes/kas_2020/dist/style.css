@@ -605,24 +605,6 @@ button {
     @media (max-width: 1056px) {
       #site-navigation .nav-links {
         padding-right: 4%; } }
-  #site-navigation .search-field {
-    width: 100%;
-    border: 0px;
-    padding: 10px 20px;
-    outline: none;
-    font-size: 14px;
-    height: 100%;
-    background-color: #4c5154;
-    color: white;
-    letter-spacing: 0.1em;
-    font-size: 15px; }
-    #site-navigation .search-field::placeholder {
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      font-weight: 600;
-      color: white; }
-  #site-navigation .search-submit {
-    display: none; }
 
 .donate-search {
   display: flex;
@@ -631,13 +613,24 @@ button {
     border: 0px;
     padding: 0;
     background-color: transparent;
-    outline: none; }
+    outline: none;
+    position: relative;
+    z-index: 4; }
     .donate-search .search-toggle img {
       filter: invert(1);
       height: 35px; }
+    .donate-search .search-toggle span {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: none;
+      font-size: 75px;
+      line-height: 35px; }
 
 .nav-search {
   position: fixed;
+  left: 0;
+  top: 0;
   z-index: 2;
   height: 100%;
   width: 100%;
@@ -693,6 +686,14 @@ button {
       @media (max-width: 1056px) {
         .nav-search form input[type="submit"] {
           padding: 12px 25px; } }
+
+.site-header.show-search .search-toggle {
+  z-index: 3; }
+  .site-header.show-search .search-toggle img {
+    opacity: 0;
+    pointer-events: none; }
+  .site-header.show-search .search-toggle span {
+    display: block; }
 
 .site-header.show-search .nav-search {
   transform: none;
@@ -754,20 +755,6 @@ button {
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu a {
       font-family: "mr-eaves-sans";
       font-size: 13px; }
-  #mobile-nav .mobile-search {
-    margin: 0 auto 25px;
-    width: 100%; }
-    #mobile-nav .mobile-search form {
-      display: flex; }
-      #mobile-nav .mobile-search form label {
-        width: 100%; }
-      #mobile-nav .mobile-search form input[type="search"] {
-        width: 100%;
-        font-size: 20px;
-        padding: 5px 10px; }
-      #mobile-nav .mobile-search form input[type="submit"] {
-        font-size: 15px;
-        display: none; }
 
 #mobile-ham {
   background-color: transparent;
