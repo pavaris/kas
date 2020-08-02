@@ -19,6 +19,7 @@ class WPLPInstall
 
         //Update option when update plugin
         add_action('admin_init', array($this, 'wplpUpdateVersion'));
+        add_action('admin_init', array($this, 'addPostMetaTrackViews'));
     }
 
 
@@ -56,7 +57,34 @@ class WPLPInstall
         );
     }
 
-
+    /**
+     * Add post_meta to track post view
+     *
+     * @return void
+     */
+    public function addPostMetaTrackViews()
+    {
+        $hasViewsCountPostMetaKey = get_option('has_views_count_post_meta_key', false);
+        if (!$hasViewsCountPostMetaKey) {
+            $postQueryArgs = array(
+                'post_type'      => 'post',
+                'post_status'    => 'publish',
+                'posts_per_page' => -1
+            );
+            $posts         = get_posts($postQueryArgs);
+            $postIDs       = wp_list_pluck($posts, 'ID');
+            $numPosts = count($postIDs);
+            for ($i = 0; $i < $numPosts; $i ++) {
+                $count = get_post_meta($postIDs[$i], WPLP_POST_VIEWS_COUNT_META_KEY, true);
+                if ($count === '') {
+                    $count = 0;
+                    delete_post_meta($postIDs[$i], WPLP_POST_VIEWS_COUNT_META_KEY);
+                    add_post_meta($postIDs[$i], WPLP_POST_VIEWS_COUNT_META_KEY, $count);
+                }
+            }
+            add_option('has_views_count_post_meta_key', true);
+        }
+    }
 
     /**
      * Check user

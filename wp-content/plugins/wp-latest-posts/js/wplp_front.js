@@ -163,7 +163,33 @@ $(document).ready(function(){
             }    
       
         $(window).load(function() {
-            $("#wplp_widget_"+widget_params.id).flexslider(options);
+            if ($("#wplp_widget_" + widget_params.id).is(':visible')) {
+                $("#wplp_widget_" + widget_params.id).flexslider(options);
+            }
+
+            $('.et_pb_tabs_controls li').on('click', function () {
+                setTimeout(function () {
+                    $(".et-pb-active-slide #wplp_widget_" + widget_params.id).flexslider(options);
+                },500);
+            });
+
+            $('.elementor-tab-title').on('click', function () {
+                setTimeout(function () {
+                    $(".elementor-tab-content.elementor-active #wplp_widget_" + widget_params.id).flexslider(options);
+                },500);
+            });
+
+            $('.vc_tta-tabs-list li').on('click', function () {
+                setTimeout(function () {
+                    $(".vc_active #wplp_widget_" + widget_params.id).flexslider(options);
+                },500);
+            });
+
+            $('.listing-tab-toggle').on('click', function () {
+                setTimeout(function () {
+                    $(".profile-body.tab-active #wplp_widget_" + widget_params.id).flexslider(options);
+                },500);
+            });
             });
         });
     })(jQuery);

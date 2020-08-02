@@ -500,7 +500,7 @@ if ( $BPSoptions['bps_login_security_OnOff'] == 'On' && $BPSoptions['bps_login_s
 				$bps_jtc_custom_form_error = $BPSoptionsJTC['bps_jtc_custom_form_error'];
 			}
 
-			if ( $_POST['reference'] != $BPSoptionsJTC['bps_tooltip_captcha_key'] || $_POST['captcha'] != '' ) {
+			if ( @$_POST['reference'] != $BPSoptionsJTC['bps_tooltip_captcha_key'] || @$_POST['captcha'] != '' ) {
 				$error = new WP_Error();
 				$error->add( 'captcha_error', __($bps_jtc_custom_form_error, 'bulletproof-security') );
 				return $error;

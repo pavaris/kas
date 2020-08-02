@@ -1778,7 +1778,7 @@ bpsPro_MScan_LogSize();
     <label for="QLog"><strong><?php _e('MScan Log Last Modified Time:', 'bulletproof-security'); ?></strong></label><br />
 	<label for="QLog"><strong><?php echo bpsPro_MScan_ModTimeDiff(); ?></strong><?php echo $MScanLogoptions['bps_mscan_log_date_mod']; ?></label><br />
 	<label for="QLog" style="vertical-align:top;"><strong><?php _e('Last Modified Time in File:', 'bulletproof-security'); ?></strong></label>
-    <input type="text" name="bulletproof_security_options_MScan_log[bps_mscan_log_date_mod]" style="color:#2ea2cc;font-size:13px;width:200px;padding-left:4px;font-weight:600;border:none;background:none;outline:none;-webkit-box-shadow:none;box-shadow:none;-webkit-transition:none;transition:none;" value="<?php echo bpsPro_MScan_Log_LastMod(); ?>" /><br />
+    <input type="text" name="bulletproof_security_options_MScan_log[bps_mscan_log_date_mod]" style="color:#2ea2cc;font-size:13px;width:200px;margin-top:-6px;padding-left:4px;font-weight:600;border:none;background:none;outline:none;-webkit-box-shadow:none;box-shadow:none;-webkit-transition:none;transition:none;" value="<?php echo bpsPro_MScan_Log_LastMod(); ?>" /><br />
 	<input type="submit" name="Submit-MScan-Mod" class="button bps-button" style="margin:10px 0px 0px 0px;" value="<?php esc_attr_e('Reset Last Modified Time in DB', 'bulletproof-security') ?>" />
 </form>
 

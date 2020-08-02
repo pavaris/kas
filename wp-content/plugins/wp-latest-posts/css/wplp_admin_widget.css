@@ -12,7 +12,7 @@
     font-family: 'Material Icons';
     font-weight: normal;
     font-style: normal;
-    font-size: 24px;  /* Preferred icon size */
+    font-size: 14px;  /* Preferred icon size */
     display: inline-block;
     line-height: 1;
     text-transform: none;
@@ -60,6 +60,8 @@
 .widget-header {
     margin-bottom: 15px;
     padding: 10px 0;
+    display: inline-block;
+    width: 100%;
 }
 
 .widget-header .header-title {
@@ -85,95 +87,6 @@
 
 .widget-search-wrapper.focused {
     border: 1px solid #ff8726;
-}
-
-.widget-search-wrapper .widget-search-input {
-    display: inline-block;
-    width: calc(100% - 30px);
-    border: none;
-    font-size: 16px;
-}
-
-.widget-search-wrapper .widget-search-input:focus {
-    border: none;
-    box-shadow: none;
-}
-
-
-#blocks-list {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #e1e1e1;
-}
-
-#delete-blocks {
-    padding: 14px 15px;
-}
-
-#blocks-list th {
-    text-align: left;
-}
-
-#blocks-list th {
-    padding: 10px;
-}
-
-#blocks-list th span {
-    color: #568095;
-}
-
-#blocks-list tbody td {
-    padding: 20px 10px;
-}
-
-#blocks-list thead th, #blocks-list tfoot th {
-    border-top: 1px solid #e1e1e1;
-    border-bottom: 1px solid #e1e1e1;
-}
-
-#blocks-list .block-header-title {
-    width: 70%;
-}
-
-#blocks-list .block-header-shortcode {
-    width: 15%;
-}
-
-#blocks-list .block-header-date {
-    width: 15%;
-}
-
-.wplp-block .block-title .block-delete {
-    visibility: hidden;
-    cursor: pointer;
-    font-size: 20px;
-    vertical-align: sub;
-    margin-left: 10px;
-    color: #ff0000;
-}
-
-.wplp-block:hover .block-delete {
-    visibility: visible;
-}
-
-#blocks-list .sorting-header {
-    cursor: pointer;
-}
-
-#blocks-list .sorting-header i {
-    vertical-align: bottom;
-}
-
-.sorting-header.desc i.dashicons:before {
-    content: "\f140";
-}
-
-.sorting-header.asc i.dashicons:before {
-    content: "\f142";
-}
-
-.wplp-block .block-title a {
-    text-decoration: none;
 }
 
 .widget-search-wrapper .widget-search-input {
@@ -227,6 +140,18 @@
     background-color: #fff;
 }
 
+#blocks-list input[type="checkbox"],
+.wplp-content input[type="checkbox"] {
+    border-radius: 0;
+    box-shadow: 0 0 0 1px #49bf88;
+    border: 1px solid #49bf88;
+}
+
+#blocks-list input[type="checkbox"]:checked::before,
+.wplp-content input[type="checkbox"]:checked::before {
+    content: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%23ffffff%27%2F%3E%3C%2Fsvg%3E");
+}
+
 .wplp-block td {
     border-bottom: 10px solid #f3f6fa;
 }
@@ -235,12 +160,23 @@
     visibility: hidden;
     cursor: pointer;
     font-size: 20px;
-    vertical-align: sub;
-    margin-left: 10px;
+    vertical-align: middle;
+    margin-left: 5px;
     color: #F98436;
 }
 
-.wplp-block:hover .block-delete {
+.wplp-duplicate-block {
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 20px;
+    vertical-align: middle;
+    color: #F98436;
+    visibility: hidden;
+}
+
+.wplp-block:hover .block-delete,
+.wplp-block:hover .wplp-duplicate-block {
     visibility: visible;
 }
 
@@ -264,10 +200,12 @@
     text-decoration: none;
     color: #000;
     font-weight: bold;
+    vertical-align: middle;
 }
 
 .ju-right-panel #wplp-translation,
-.wplp-check{
+.wplp-check,
+.wplp-tools {
     padding : 30px 5px;
 }
 
@@ -665,4 +603,8 @@
 
 input[name="wplp_colorpicker_clone"] {
     display: none;
+}
+
+.wplp-add * {
+    vertical-align: middle;
 }

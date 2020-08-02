@@ -183,7 +183,7 @@ class MLASettings_Documentation {
 		);
 
 		$page_values = array(
-			'results' => ! empty( $_REQUEST['s'] ) ? ' - ' . __( 'Displaying search results for', 'media-library-assistant' ) . ': "' . $_REQUEST['s'] . '"' : '',
+			'results' => ! empty( $_REQUEST['s'] ) ? ' - ' . __( 'Displaying search results for', 'media-library-assistant' ) . ': "' . esc_html( stripslashes( trim( $_REQUEST['s'] ) ) ) . '"' : '',
 			'In this tab' => __( 'In this tab you can browse the list of MLA example plugins, install or update them in the Plugins/Installed Plugins area and see which examples you have already installed. <strong>To activate, deactivate or delete</strong> the plugins you must go to the Plugins/Installed Plugins admin submenu.' ),
 			/* translators: 1: Documentation hyperlink */
 			'You can find' => sprintf( __( 'You can find more information about using the example plugins in the %1$s section of the Documentation or by clicking the <strong>"Help"</strong> tab in the upper-right corner of this screen.', 'media-library-assistant' ), '<a href="[+settingsURL+]?page=mla-settings-menu-documentation&amp;mla_tab=documentation#mla_example_plugins" title="' . __( 'Example plugin documentation', 'media-library-assistant' ) . '">' . __( 'The Example Plugins', 'media-library-assistant' ) . '</a>' ),
@@ -193,7 +193,7 @@ class MLASettings_Documentation {
 			'_wpnonce' => wp_nonce_field( MLACore::MLA_ADMIN_NONCE_ACTION, MLACore::MLA_ADMIN_NONCE_NAME, true, false ),
 			'Example Plugins' => __( 'Example Plugins', 'media-library-assistant' ),
 			'Search Example Plugins' => __( 'Search Example Plugins', 'media-library-assistant' ),
-			's' => isset( $_REQUEST['s'] ) ? esc_attr( stripslashes( $_REQUEST['s'] ) ) : '',
+			's' => isset( $_REQUEST['s'] ) ? esc_attr( stripslashes( trim( $_REQUEST['s'] ) ) ) : '',
 			'Search Plugins' => __( 'Search Plugins', 'media-library-assistant' ),
 			'Search help' => __( 'Searches Name, Description, File Name and Tags', 'media-library-assistant' ),
 			'Cancel' => __( 'Cancel', 'media-library-assistant' ),

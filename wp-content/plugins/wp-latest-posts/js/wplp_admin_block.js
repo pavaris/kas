@@ -1,19 +1,26 @@
 /** WPLP back-end jQuery script v.0.1 **/
 
-(function($){
-    $( document ).ready(function() {
+(function ($) {
+    $(document).ready(function () {
         $('.wplp_datepicker').pickadate();
+        $('#default_img').dropify();
         $('select#theme').change(function (e) {
-            var theme_img = themes[$(this).val()]['theme_url'] + '/screenshot.png';
+            var theme_img = themes[$(this).val()]['theme_url'] + '/screenshot.svg';
             var bgcolor = '#ff0000';
             if (theme_img.indexOf('portfolio') > -1) {
                 bgcolor = 'transparent';
             } else if (theme_img.indexOf('masonry-category') > -1 || theme_img.indexOf('timeline') > -1) {
                 bgcolor = '#444444';
-            } else if (theme_img.indexOf('masonry') > -1) {
-                bgcolor = '#fafafa';
+            } else if (theme_img.indexOf('masonry') > -1 || theme_img.indexOf('material-vertical') > -1) {
+                bgcolor = '#32323c';
             } else if (theme_img.indexOf('smooth-effect') > -1) {
                 bgcolor = '#eeeeee';
+            }
+
+            if (theme_img.indexOf('masonry') > -1) {
+                $('#overlayBackground').val('0.7').change();
+            } else {
+                $('#overlayBackground').val('0.2').change();
             }
 
             $('input#colorpicker').attr('value', bgcolor).change();
@@ -23,52 +30,29 @@
         $("#colorPicker .colorInner").unbind("mousedown");
 
         // /** Theme preview drop-down **/
-        $('select#theme').change( function(e){
+        $('select#theme').change(function (e) {
             ThemeChange($(this));
         });
 
-        ThemeChange($('select#theme'),true);
+        ThemeChange($('select#theme'), true);
 
-        function ThemeChange(object,first){
-            var theme_img = themes[object.val()]['theme_url']+'/screenshot.png';
+        function ThemeChange(object, first) {
+            var theme_img = themes[object.val()]['theme_url'] + '/screenshot.svg';
             /*
              *
              * If theme is Premium > disable Option
              * else theme is defautl > enable Option
              *
              */
-            if (!first){
-                $('.wplp-theme-preview img').fadeOut(200, function(){
-                    $(this).attr('src',theme_img).bind('onreadystatechange load', function(){
+            if (!first) {
+                $('.wplp-theme-preview img').fadeOut(200, function () {
+                    $(this).attr('src', theme_img).bind('onreadystatechange load', function () {
                         if (this.complete) $(this).fadeIn(400);
                     });
                 });
             }
 
-            if ($('#wplp_force_icon').is(':checked')) {
-                var current = $('#theme :selected').val();
-
-                if ( current  === 'masonry-category'){
-                    $('.select-hover-icon').show();
-                    $('#masory_icon').hide();
-                    $('#dashicons_selector').show();
-                    $('#masory_category_icon').show();
-                    $('#masory-category-icon-box').show();
-                    $('.select-hover-icon .dropify-wrapper').hide();
-                }
-                if ( current === "masonry"){
-                    $('.select-hover-icon').show();
-                    $('#dashicons_selector').hide();
-                    $('#masory_category_icon').hide();
-                    $('#masory_icon').show();
-                    $('#masory-category-icon-box').hide();
-                    $('.select-hover-icon .dropify-wrapper').show();
-                }
-            } else {
-                $('.select-hover-icon').hide();
-            }
-
-            if (object.val().indexOf("masonry") > -1) {
+            if (object.val().indexOf("masonry") > -1 || object.val().indexOf("material-vertical") > -1) {
                 $("#animation").children(".settings-wrapper").hide();
 
                 $("#wplp-arrow-color, #wplp-readmore-config, #wplp-overlay-config").hide();
@@ -101,7 +85,7 @@
 
                 $("#wplp-arrow-color, #wplp-readmore-config, #wplp-overlay-config").hide();
 
-                $(".select-hover-icon, .theme-new-item, .force-icon-hover, .more-btn-property, .number-columns , .number-rows, .pagination, .theme-image-position, .image-position , .default-color-theme").hide();
+                $(".theme-new-item, .force-icon-hover, .more-btn-property, .number-columns , .number-rows, .pagination, .theme-image-position, .image-position , .default-color-theme").hide();
 
                 // Show
                 $("#animation").children(".white-content").show();
@@ -110,12 +94,12 @@
 
                 $(".crop-text").show();
 
-            } else if(object.val().indexOf("portfolio") > -1) {
+            } else if (object.val().indexOf("portfolio") > -1) {
                 $('#animation').children('.settings-wrapper').hide();
 
                 $("#wplp-arrow-color, #wplp-readmore-config, #wplp-overlay-config ").hide();
 
-                $(".select-hover-icon, .crop-text, .theme-new-item, .pagination, .number-rows, .more-btn-property, .theme-image-position, .image-position, .force-icon-hover").hide();
+                $(".crop-text, .theme-new-item, .pagination, .number-rows, .more-btn-property, .theme-image-position, .image-position, .force-icon-hover").hide();
 
                 // Show
                 $("#animation").children(".white-content").show();
@@ -127,7 +111,7 @@
             } else {
                 $("#wplp-default-color").hide();
 
-                $(".load-more-btn, .force-icon-hover, .select-hover-icon").hide();
+                $(".load-more-btn, .force-icon-hover").hide();
 
                 $("#animation").children(".white-content").hide();
 
@@ -143,106 +127,117 @@
 
                 $(".crop-text , .lazyloading-btn").hide();
             }
+
+            showIconConfig();
         }
 
-        $('.dropify').dropify();
-
-        //
         // // poup icon for overlay
-        $('#overlayIcon').click(function(){
+        $('#overlayIcon').click(function () {
             $('#overlayIconList').toggle('show');
         });
-        $('.wplp-overlay-close').click(function(){
+        $('.wplp-overlay-close').click(function () {
             $('#overlayIconList').toggle('hide');
-            $('#overlayIconSelected').attr('value','');
+            $('#overlayIconSelected').attr('value', '');
         });
 
-        $('#overlayIconList .dashicons').click(function(){
+        $('#overlayIconList .dashicons').click(function () {
             var alt = $(this).attr("alt");
             var iconClass = $(this).attr("class");
-            $('#overlayIconSelected').attr('value',alt);
+            $('#overlayIconSelected').attr('value', alt);
             $('#overlayIconList').toggle('hide');
             $('.overlay-icon #verlay-icon-box').removeClass().addClass(iconClass);
         });
-        //
+
         //force
-        $('#wplp_force_icon').change(function(){
-            icon_selector();
+        $('#wplp_force_icon').change(function () {
+            showIconConfig();
         });
-        icon_selector();
+        showIconConfig();
         // //popup list icon
-        $('#masory_category_icon').click(function(){
+        $('#wplp_choose_icon_btn').click(function () {
             $('#iconlist').toggle('show');
         });
-        $('.wplp-close').click(function(){
+        $('.wplp-close').click(function () {
             $('#iconlist').toggle('hide');
-            $('#dashicons_selector').attr('value','');
+            $('#dashicons_selector').attr('value', '');
         });
-        $('#iconlist .dashicons').click(function(){
-            var alt = $(this).attr("alt");
-            var iconClass = $(this).attr("class");
-            $('#dashicons_selector').attr('value',alt);
+
+        $('#iconlist .dashicons, #iconlist .material-icons').click(function () {
+            var content;
+            var iconClass;
+            if ($(this).hasClass('dashicons')) {
+                content = $(this).attr("alt");
+                iconClass = $(this).attr("class");
+                $('.select-hover-icon #masonry-category-icon-box').removeClass().addClass(iconClass);
+                $('#dashicons_selector').attr('value', content);
+            } else {
+                content = $(this).data("content");
+                iconClass = $(this).data("class");
+                $('.select-hover-icon #material-icon-box').html(iconClass).attr('data-before', '');
+                $('#material_icon_selector').val(content);
+            }
+
             $('#iconlist').toggle('hide');
-            $('.select-hover-icon #masory-category-icon-box').removeClass().addClass(iconClass);
+        });
+
+        // remove icon
+        $('.wplp_remove_icon_btn').click(function () {
+            $('.select-hover-icon #masonry-category-icon-box').removeClass();
+            $('.select-hover-icon #material-icon-box').html('').attr('data-before', '');
+            $('#material_icon_selector, #dashicons_selector').val('');
         });
 
         // slider overlay
-        $('.overlay-slider').slider({
-            min: 0,
-            max: 1,
-            step: 0.1,
-            slide: function (event, ui) {
-                field = event.target.id;
-                $("#" + field).val(ui.value);
-            }
-        });
-
-        $('#slider_overlay_transparent').each(function () {
+        $('.overlay-slider').each(function () {
+            var field = $(this).data('option');
+            var value = $("#" + field).val();
             $(this).slider({
                 min: 0,
                 max: 1,
                 step: 0.1,
-                value: $("#overlayTransparent").val(),
+                value: value,
                 slide: function (event, ui) {
-                    $("#overlayTransparent").val(ui.value);
+                    $("#" + field).val(ui.value);
                 }
             });
         });
-        $('#overlayTransparent').change(function () {
-            $('.overlay-slider').slider('value', $(this).val());
+
+        $('.wplp-slider-input').change(function () {
+            var id = $(this).attr('id');
+            $('.' + id).slider('value', $(this).val());
         });
 
-        $("select.mutilsite_select").change(function(){
+        $("select.mutilsite_select").change(function () {
             var content_language = $('#selected_content_language').val();
             var val_blog = $(this).val();
             var type = $(this).attr('id');
             $.ajax({
-                url : ajaxurl,
-                dataType :'json',
-                method : 'POST',
-                data:{
-                    action : 'change_cat_multisite',
-                    val_blog : val_blog,
-                    type : type,
+                url: ajaxurl,
+                dataType: 'json',
+                method: 'POST',
+                data: {
+                    action: 'change_cat_multisite',
+                    val_blog: val_blog,
+                    type: type,
                     content_language: content_language,
-                    ajaxnonce : wpsolBackJS.ajaxnonce
+                    ajaxnonce: wpsolBackJS.ajaxnonce
                 },
-                success : function(res){
+                success: function (res) {
                     var type = res.type;
 
-                    if(type.indexOf('post') > -1){
+                    if (type.indexOf('post') > -1) {
                         parent = $('.postcat');
                         parent.find('ul').remove();
                         parent.append(res.output);
-                    }else if(type.indexOf('page') > -1){
+                    } else if (type.indexOf('page') > -1) {
                         parent = $('.pagecat');
                         parent.find('ul').remove();
                         parent.append(res.output);
-                    }else if(type.indexOf('tag') > -1){
+                    } else if (type.indexOf('tag') > -1) {
                         parent = $('.tagcat');
                         parent.find('ul').remove();
                         parent.append(res.output);
-                    } else if(type.indexOf('cat_list') > -1){
+                    } else if (type.indexOf('cat_list') > -1) {
                         parent = $('.catlistcat');
                         parent.find('ul').remove();
                         parent.append(res.output);
@@ -252,18 +247,18 @@
             });
         });
 
-        $('.wplp_close_notification').click(function(){
+        $('.wplp_close_notification').click(function () {
             $.ajax({
                 url: ajaxurl,
                 method: 'POST',
                 dataType: 'json',
-                data:{
+                data: {
                     action: 'wplp_set_close_notification',
-                    task : 'wplp_cookie',
-                    ajaxnonce : wpsolBackJS.ajaxnonce
+                    task: 'wplp_cookie',
+                    ajaxnonce: wpsolBackJS.ajaxnonce
                 },
-                success: function(res){
-                    if(res){
+                success: function (res) {
+                    if (res) {
                         $('.wplp_notification.wplp_wrap_notification').remove();
                     }
                 }
@@ -271,27 +266,27 @@
         });
 
 
-        if($('select[name="wplp_source_date_min_switch"]').val() == 'between'){
+        if ($('select[name="wplp_source_date_min_switch"]').val() == 'between') {
             $('.source_date_max').show();
-        }else{
+        } else {
             $('.source_date_max').hide();
         }
         // change option Show articles created
-        $('select[name="wplp_source_date_min_switch"]').change(function(){
+        $('select[name="wplp_source_date_min_switch"]').change(function () {
             var val = $(this).val();
-            if(val === 'between'){
+            if (val === 'between') {
                 $('.source_date_max').show();
-            }else{
+            } else {
                 $('.source_date_max').hide();
             }
         });
 
-        $('#overlayIconList').scroll(function(){
+        $('#overlayIconList').scroll(function () {
             pos = $(this).scrollTop();
-            $('.wplp-overlay-close').css('margin-top', pos+ 'px');
+            $('.wplp-overlay-close').css('margin-top', pos + 'px');
         });
 
-        $('.color-box').click(function(){
+        $('.color-box').click(function () {
             var color = $(this).data('id');
             $('.colorPicker-text').attr('value', color).change();
             $('.color-list-box ul li').removeClass('color-selected');
@@ -299,28 +294,28 @@
         });
 
         // Transition theme
-        $('input[name=wplp_autoanimation_trans]').click(function(){
+        $('input[name=wplp_autoanimation_trans]').click(function () {
             var id = $(this).data('id');
 
             $('.list-animation-transition li').removeClass();
             $(this).closest('li').addClass(id);
 
             $('.list-animation-transition li label').removeClass('transition-label-checked');
-            $('.list-animation-transition li.'+id+' label').addClass('transition-label-checked')
+            $('.list-animation-transition li.' + id + ' label').addClass('transition-label-checked')
         });
         // Slide Transition
-        $('input[name=wplp_autoanimation_slidedir]').click(function(){
+        $('input[name=wplp_autoanimation_slidedir]').click(function () {
             var id = $(this).data('id');
 
             $('.list-slide-transition li').removeClass();
             $(this).closest('li').addClass(id);
 
             $('.list-slide-transition li label').removeClass('transition-label-checked');
-            $('.list-slide-transition li.'+id+' label').addClass('transition-label-checked')
+            $('.list-slide-transition li.' + id + ' label').addClass('transition-label-checked')
         });
 
         // Select visibility
-        $('#post-visibility-select').change(function(){
+        $('#post-visibility-select').change(function () {
             var val = $(this).val();
             if (val === 'password') {
                 $('#password-visibility').show();
@@ -335,9 +330,9 @@
             $('#password-visibility').hide();
         }
 
-        const monthNames = ["1", "2", "3", "4", "5", "6","7", "8", "9", "10", "11", "12"];
+        const monthNames = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
         // console.log($("#post-date").datepicker( 'getDate' ));
-        $('#post-date').change(function(){
+        $('#post-date').change(function () {
             var val = $(this).val();
             var date = new Date(val);
 
@@ -351,7 +346,7 @@
             var search = $(this).val().trim().toLowerCase();
             var active_tab = $("input[name=wplp_source_type]").val();
             var type;
-            switch(active_tab) {
+            switch (active_tab) {
                 case 'src_category' :
                     type = '.postcat';
                     break;
@@ -366,7 +361,7 @@
                     break;
             }
             // Check per content source with source type
-            $(type+' ul li').each(function(){
+            $(type + ' ul li').each(function () {
                 var text = $(this).children('label').text().trim().toLowerCase();
 
                 if (text.indexOf(search) < 0) {
@@ -375,40 +370,78 @@
                     $(this).show();
                 }
             });
-
-
-
         });
+
         $('.content-search-input').on('focus', function () {
             $(this).parent('.content-search-field').addClass('focused');
         }).on('blur', function () {
             $(this).parent('.content-search-field').removeClass('focused');
         });
+
+        function showIconConfig() {
+            var current = $('#theme :selected').val();
+            if (current === 'masonry-category') {
+                $('#masonry-category-icon-box, .wplp-dashicons-list').show();
+                $('#hover_img_icon, .select-hover-icon .dropify-wrapper, .wplp-material-icons-list').hide();
+            }
+
+            if (current === "masonry") {
+                $('#hover_img_icon, .select-hover-icon .dropify-wrapper, .wplp-material-icons-list').show();
+                $('#masonry-category-icon-box, .wplp-dashicons-list').hide();
+            }
+
+            if (current === "material-vertical") {
+                $('#hover_img_icon, .dropify-wrapper, .wplp-material-icons-list').show();
+                $('.wplp-dashicons-list, #masonry-category-icon-box').hide();
+            }
+
+            if (current !== "material-vertical" && current !== "masonry") {
+                $('#material-icon-box, .overlay-background').hide();
+            } else {
+                $('#material-icon-box, .overlay-background').show();
+            }
+
+            if (current === "portfolio" || current === "smooth-effect" || current === "timeline") {
+                $('#wplp_force_icon').closest('.fit-block').hide();
+            } else {
+                $('#wplp_force_icon').closest('.fit-block').show();
+            }
+
+            if (current === "default") {
+                $('#layzyload_default').closest('.fit-block').show();
+            } else {
+                $('#layzyload_default').closest('.fit-block').hide();
+            }
+
+            if (current === "masonry" || current === "material-vertical" || current === "masonry-category") {
+                $('#wplp_load_more').closest('.fit-block').show();
+                if ($('#wplp_force_icon').is(':checked')) {
+                    $('.select-hover-icon').show();
+                } else {
+                    $('.select-hover-icon').hide();
+                }
+
+                if (current === 'masonry-category') {
+                    $('.wplp-hover-custom-image-label, .wplp-icon-background').hide();
+                } else {
+                    $('.wplp-hover-custom-image-label, .wplp-icon-background').show();
+                }
+
+                $('#hover_img_icon').dropify();
+                $('#hover_img_icon').on('change', function () {
+                    $('.wplp-hover-img-input').val(1);
+                });
+                $('#hover_img_icon').on('dropify.afterClear', function () {
+                    $('.wplp-hover-img-input').val(0);
+                });
+            } else {
+                $('#wplp_load_more').closest('.fit-block').hide();
+                $('.select-hover-icon').hide();
+            }
+        }
+
+        //Tool options
+
     });
-  
-})( jQuery );
 
-function icon_selector(){
-     if (jQuery('#wplp_force_icon').is(':checked')) {
-         var current = jQuery('#theme :selected').val();
-
-            if ( current  === 'masonry-category'){
-                jQuery('.select-hover-icon').show();
-                jQuery('#masory_icon').hide();
-                jQuery('#dashicons_selector').show();
-                jQuery('#masory_category_icon').show();
-                jQuery('#masory-category-icon-box').show();
-                jQuery('.select-hover-icon .dropify-wrapper').hide();
-            }
-            if ( current === "masonry"){
-                jQuery('.select-hover-icon').show();
-                jQuery('#dashicons_selector').hide();
-                jQuery('#masory_category_icon').hide();
-                jQuery('#masory-category-icon-box').hide();
-                jQuery('#masory_icon').show();
-                jQuery('.select-hover-icon .dropify-wrapper').show();
-            }
-     } else {
-         jQuery('.select-hover-icon').hide();
-     }
-}
+})(jQuery);

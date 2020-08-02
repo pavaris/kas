@@ -25,6 +25,7 @@ class WPLPFront
     const TIMELINE_TEXT_EM_SIZE = 1.6875;
     const SMOOTH_TEXT_EM_SIZE = 1.4;
     const MASONRY_GID_TEXT_EM_SIZE = 1.21;
+    const MASONRY_MATERIAL_TEXT_EM_SIZE = 1.6875;
     const MASONRY_CATEGORY_TEXT_EM_SIZE = 1.23;
     const PORTFOLIO_TEXT_EM_SIZE = 1.1;
     /**
@@ -72,6 +73,8 @@ class WPLPFront
             $this->widget->settings['theme'] = 'masonry-category';
         } elseif (strpos($this->widget->settings['theme'], 'masonry') !== false) {
             $this->widget->settings['theme'] = 'masonry';
+        } elseif (strpos($this->widget->settings['theme'], 'material-vertical') !== false) {
+            $this->widget->settings['theme'] = 'material-vertical';
         } elseif (strpos($this->widget->settings['theme'], 'smooth') !== false) {
             $this->widget->settings['theme'] = 'smooth-effect';
         } elseif (strpos($this->widget->settings['theme'], 'timeline') !== false) {
@@ -84,6 +87,7 @@ class WPLPFront
          */
         if ($this->widget->settings['theme'] === 'portfolio'
             || $this->widget->settings['theme'] === 'masonry'
+            || $this->widget->settings['theme'] === 'material-vertical'
             || $this->widget->settings['theme'] === 'masonry-category'
             || $this->widget->settings['theme'] === 'smooth-effect'
             || $this->widget->settings['theme'] === 'timeline'
@@ -239,7 +243,7 @@ class WPLPFront
      *
      * @return void
      */
-    private function resetsettingsPremium()
+    private function resetSettingsPremium()
     {
         $top_box    = array();
         $bottom_box = array();
@@ -253,6 +257,8 @@ class WPLPFront
             $top_box = array('Category', 'Date');
         } elseif ($this->widget->settings['theme'] === 'timeline') {
             $top_box = array('Thumbnail');
+        } elseif ($this->widget->settings['theme'] === 'material-vertical') {
+            $top_box = array('Thumbnail', 'Category', 'Title', 'Text', 'Custom_Fields');
         } else {
             $top_box = array('Thumbnail', 'Title', 'Date', 'Text', 'Custom_Fields');
         }
@@ -273,6 +279,8 @@ class WPLPFront
                 'Read more',
                 'Date'
             );
+        } elseif ($this->widget->settings['theme'] === 'material-vertical') {
+            $bottom_box = array('Author', 'Read more');
         } else {
             $bottom_box = array('Read more');
         }
@@ -341,6 +349,7 @@ class WPLPFront
                 $content_include = 'category__and';
             }
         }
+        $posts = array();
 
         /**
          * For posts and page source_types *
@@ -365,10 +374,19 @@ class WPLPFront
             /**
              * Source_order (order_by) *
              */
-            $order_by = 'date';
+            if (defined('WPLP_ORDER_BY_MODIFY')) {
+                $order_by = WPLP_ORDER_BY_MODIFY;
+            } else {
+                $order_by = 'date';
+            }
+
             if ('src_category' === $this->widget->settings['source_type']) {
                 if ('date' === $this->widget->settings['cat_post_source_order']) {
-                    $order_by = 'date';
+                    if (defined('WPLP_ORDER_BY_MODIFY')) {
+                        $order_by = WPLP_ORDER_BY_MODIFY;
+                    } else {
+                        $order_by = 'date';
+                    }
                 }
                 if ('title' === $this->widget->settings['cat_post_source_order']) {
                     $order_by = 'title';
@@ -379,10 +397,20 @@ class WPLPFront
                 if ('random' === $this->widget->settings['cat_post_source_order']) {
                     $order_by = 'rand';
                 }
+                if ('modified' === $this->widget->settings['cat_post_source_order']) {
+                    $order_by = 'modified';
+                }
+                if ('view' === $this->widget->settings['cat_post_source_order']) {
+                    $order_by = 'meta_value_num';
+                }
             }
             if ('src_page' === $this->widget->settings['source_type']) {
                 if ('date' === $this->widget->settings['pg_source_order']) {
-                    $order_by = 'date';
+                    if (defined('WPLP_ORDER_BY_MODIFY')) {
+                        $order_by = WPLP_ORDER_BY_MODIFY;
+                    } else {
+                        $order_by = 'date';
+                    }
                 }
                 if ('title' === $this->widget->settings['pg_source_order']) {
                     $order_by = 'title';
@@ -393,10 +421,17 @@ class WPLPFront
                 if ('random' === $this->widget->settings['pg_source_order']) {
                     $order_by = 'rand';
                 }
+                if ('modified' === $this->widget->settings['pg_source_order']) {
+                    $order_by = 'modified';
+                }
             }
             if ('src_custom_post_type' === $this->widget->settings['source_type']) {
                 if ('date' === $this->widget->settings['cat_source_order']) {
-                    $order_by = 'date';
+                    if (defined('WPLP_ORDER_BY_MODIFY')) {
+                        $order_by = WPLP_ORDER_BY_MODIFY;
+                    } else {
+                        $order_by = 'date';
+                    }
                 }
                 if ('title' === $this->widget->settings['cat_source_order']) {
                     $order_by = 'title';
@@ -406,6 +441,12 @@ class WPLPFront
                 }
                 if ('random' === $this->widget->settings['cat_source_order']) {
                     $order_by = 'rand';
+                }
+                if ('modified' === $this->widget->settings['cat_source_order']) {
+                    $order_by = 'modified';
+                }
+                if ('view' === $this->widget->settings['cat_source_order']) {
+                    $order_by = 'meta_value_num';
                 }
             }
             /**
@@ -455,30 +496,64 @@ class WPLPFront
                 'posts_per_page' => $limit,
                 'offset'         => $offSet
             );
-
+            //add meta key to query
+            if ('src_category' === $this->widget->settings['source_type']) {
+                if ('view' === $this->widget->settings['cat_post_source_order']) {
+                    $args['meta_key'] = WPLP_POST_VIEWS_COUNT_META_KEY;
+                }
+            }
+            //add meta key to query custom post
+            if ('src_custom_post_type' === $this->widget->settings['source_type']) {
+                if ('view' === $this->widget->settings['cat_source_order']) {
+                    $args['meta_key'] = WPLP_POST_VIEWS_COUNT_META_KEY;
+                }
+            }
             if (is_multisite()) {
                 if ('src_category' === $this->widget->settings['source_type']) {
                     if (isset($this->widget->settings['mutilsite_cat'])
                         && 'all_blog' === $this->widget->settings['mutilsite_cat']
                     ) {
-                        $blogs = get_sites();
+                        if ('_all' === $this->widget->settings['source_category'][0]) {
+                            $blogs = get_sites();
+                        } else {
+                            $source = $this->widget->settings['source_category'];
+                            $blocks = array();
+                            $all_blogs = get_sites();
+                            foreach ($source as $v) {
+                                $explode = explode('_blog', $v);
+                                $blocks[] = (int) $explode[1];
+                            }
+
+                            $blogs = array();
+                            foreach ($all_blogs as $all_blog) {
+                                if (in_array($all_blog->blog_id, $blocks)) {
+                                    $blogs[] = $all_blog;
+                                }
+                            }
+                        }
+
+                        $posts = array();
                         foreach ($blogs as $blog) {
                             switch_to_blog((int) $blog->blog_id);
-                            if ('src_category' === $this->widget->settings['source_type']
-                                && '_all' === $this->widget->settings['source_category'][0]
+                            if ('_all' === $this->widget->settings['source_category'][0]
                             ) {
                                 $cat_all = get_categories();
                                 foreach ($cat_all as $cat) {
                                     $args[$content_include][] = (string) ($cat->term_id);
                                 }
-                            } elseif ('src_category' === $this->widget->settings['source_type']) {
-                                $source = $this->widget->settings['source_category'];
+                            } else {
+                                $cat_in = array();
                                 foreach ($source as $v) {
-                                    $sour                     = substr($v, strpos($v, '_') + 1);
-                                    $args[$content_include][] = $sour;
+                                    $explode = explode('_blog', $v);
+                                    if (isset($explode[1]) && (int) $explode[1] === (int) $blog->blog_id) {
+                                        $explode1 = explode('_', $explode[0]);
+                                        $cat_in[] = (int) $explode1[1];
+                                    }
                                 }
+
+                                $args[$content_include] = $cat_in;
                             }
-                            $settings = $this->widget->settings;
+
                             /**
                              * Filter list argument to get posts.
                              *
@@ -487,7 +562,7 @@ class WPLPFront
                              *
                              * @return array
                              */
-                            $args     = apply_filters('wplp_src_category_args', $args, $settings);
+                            $args     = apply_filters('wplp_src_category_args', $args, $this->widget->settings);
                             $allposts = get_posts($args);
                             foreach ($allposts as $post) {
                                 $post->curent_blog_id = (int) $blog->blog_id;
@@ -708,7 +783,6 @@ class WPLPFront
                     }
                 }
 
-
                 /**
                  * Filter by category *
                  */
@@ -766,12 +840,32 @@ class WPLPFront
                     && !empty($this->widget->settings['mutilsite_tag'])
                 ) {
                     if ('all_blog' === $this->widget->settings['mutilsite_tag']) {
-                        $blogs = get_sites();
+                        if ('_all' === $this->widget->settings['source_tags'][0]) {
+                            $blogs = get_sites();
+                        } else {
+                            $source = $this->widget->settings['source_tags'];
+                            $blocks = array();
+                            $all_blogs = get_sites();
+                            foreach ($source as $v) {
+                                $explode = explode('_blog', $v);
+                                $blocks[] = (int) $explode[1];
+                            }
+
+                            $blogs = array();
+                            foreach ($all_blogs as $all_blog) {
+                                if (in_array($all_blog->blog_id, $blocks)) {
+                                    $blogs[] = $all_blog;
+                                }
+                            }
+                        }
+
+                        $posts = array();
                         foreach ($blogs as $blog) {
                             switch_to_blog((int) $blog->blog_id);
                             if (isset($this->widget->settings['source_tags'])
                                 && !empty($this->widget->settings['source_tags'])
                             ) {
+                                $source_tag = array();
                                 foreach ($this->widget->settings['source_tags'] as $tag) {
                                     if ($tag === '_all') {
                                         $tags = get_tags();
@@ -779,16 +873,19 @@ class WPLPFront
                                             $source_tag[] = $tag->term_id;
                                         }
                                     } else {
-                                        $tag          = substr($tag, strpos($tag, '_') + 1);
-                                        $source_tag[] = $tag;
+                                        $explode = explode('_blog', $tag);
+                                        if (isset($explode[1]) && (int) $explode[1] === (int) $blog->blog_id) {
+                                            $explode1 = explode('_', $explode[0]);
+                                            $source_tag[] = (int) $explode1[1];
+                                        }
                                     }
                                 }
                             }
                             $args     = array(
+                                'posts_per_page' => -1,
                                 'post_type'      => $post_type,
                                 'orderby'        => $order_by,
                                 'order'          => isset($order) ? $order : '',
-                                'posts_per_page' => $limit,
                                 'tax_query'      => array(
                                     array(
                                         'taxonomy' => 'post_tag',
@@ -797,6 +894,11 @@ class WPLPFront
                                     )
                                 )
                             );
+
+                            if (is_plugin_active('polylang/polylang.php')) {
+                                $args['lang'] = $language;
+                            }
+
                             $allposts = get_posts($args);
                             foreach ($allposts as $post) {
                                 $post->curent_blog_id = (int) $blog->blog_id;
@@ -804,11 +906,14 @@ class WPLPFront
                             }
                             restore_current_blog();
                         }
+                        $posts = array_slice($posts, $this->widget->settings['off_set'], $limit);
                     } else {
+                        $posts = array();
                         switch_to_blog((int) $this->widget->settings['mutilsite_tag']);
                         if (isset($this->widget->settings['source_tags'])
                             && !empty($this->widget->settings['source_tags'])
                         ) {
+                            $source_tag = array();
                             foreach ($this->widget->settings['source_tags'] as $tag) {
                                 if ($tag === '_all') {
                                     $tags = get_tags();
@@ -816,16 +921,19 @@ class WPLPFront
                                         $source_tag[] = $tagg->term_id;
                                     }
                                 } else {
-                                    $tag          = substr($tag, strpos($tag, '_') + 1);
-                                    $source_tag[] = $tag;
+                                    $explode = explode('_blog', $tag);
+                                    if (isset($explode[1]) && (int) $explode[1] === (int) $this->widget->settings['mutilsite_tag']) {
+                                        $explode1 = explode('_', $explode[0]);
+                                        $source_tag[] = (int) $explode1[1];
+                                    }
                                 }
                             }
                         }
                         $args = array(
+                            'posts_per_page' => -1,
                             'post_type'      => $post_type,
                             'orderby'        => $order_by,
                             'order'          => isset($order) ? $order : '',
-                            'posts_per_page' => $limit,
                             'tax_query'      => array(
                                 array(
                                     'taxonomy' => 'post_tag',
@@ -835,11 +943,17 @@ class WPLPFront
                             )
                         );
 
-                        $posts = get_posts($args);
-                        foreach ($posts as $post) {
+                        if (is_plugin_active('polylang/polylang.php')) {
+                            $args['lang'] = $language;
+                        }
+
+                        $allposts = get_posts($args);
+                        foreach ($allposts as $post) {
                             $post->curent_blog_id = (int) $this->widget->settings['mutilsite_tag'];
+                            $posts[]              = $post;
                         }
                         restore_current_blog();
+                        $posts = array_slice($posts, $this->widget->settings['off_set'], $limit);
                     }
                 }
             } else {
@@ -869,20 +983,26 @@ class WPLPFront
                     )
                 );
 
+                if (is_plugin_active('polylang/polylang.php')) {
+                    $args['lang'] = $language;
+                }
                 $posts = get_posts($args);
             }
-            /**
-             * Get Posts by language via WPML.
-             *
-             * @param array|object List         of posts
-             * @param string       Type of post
-             * @param array        Language to translate
-             *
-             * @internal
-             *
-             * @return array|object
-             */
-            $posts = apply_filters('wplp_get_posts_by_language', $posts, $post_type, $language);
+
+            if (!is_plugin_active('polylang/polylang.php')) {
+                /**
+                 * Get Posts by language via WPML.
+                 *
+                 * @param array|object List         of posts
+                 * @param string       Type of post
+                 * @param array        Language to translate
+                 *
+                 * @internal
+                 *
+                 * @return array|object
+                 */
+                $posts = apply_filters('wplp_get_posts_by_language', $posts, $post_type, $language);
+            }
         } elseif ('src_category_list' === $this->widget->settings['source_type']) {
             // Display list category
             $order_by = 'id';
@@ -1214,7 +1334,9 @@ class WPLPFront
     public function loadThemeScript()
     {
         global $wpcu_wpfn;
+        wp_enqueue_script('jquery');
         if ($this->widget->settings['theme'] === 'masonry'
+            || $this->widget->settings['theme'] === 'material-vertical'
             || $this->widget->settings['theme'] === 'masonry-category'
             || $this->widget->settings['theme'] === 'smooth-effect'
             || $this->widget->settings['theme'] === 'timeline'
@@ -1236,7 +1358,8 @@ class WPLPFront
             $theme = dirname(plugin_dir_path(__FILE__)) . '/themes/' . $this->widget->settings['theme'];
         }
         $theme_dir = basename($theme);
-        if ($theme_dir === 'masonry' || $theme_dir === 'masonry-category') {
+        if ($theme_dir === 'masonry' || $theme_dir === 'masonry-category' || $theme_dir === 'material-vertical') {
+            wp_enqueue_script('jquery-masonry');
             wp_enqueue_script(
                 'wplp_addon_front',
                 plugins_url('wp-latest-posts-addon/js') . '/wplp_addon_front.js',
@@ -1306,7 +1429,7 @@ class WPLPFront
                 plugins_url('wp-latest-posts/js/') . '/wplp_front.js',
                 array('jquery'),
                 '1.0',
-                true
+                false
             );
             $data_array = array(
                 'id'               => $id,
@@ -1333,6 +1456,7 @@ class WPLPFront
     public function loadThemeStyle()
     {
         if ($this->widget->settings['theme'] === 'masonry'
+            || $this->widget->settings['theme'] === 'material-vertical'
             || $this->widget->settings['theme'] === 'masonry-category'
             || $this->widget->settings['theme'] === 'smooth-effect'
             || $this->widget->settings['theme'] === 'timeline'
@@ -1540,7 +1664,7 @@ class WPLPFront
             $portfolio_Class = 'portfolioContainer_' . $this->widget->ID;
         }
 
-        if ($theme_class === ' masonry' || $theme_class === ' masonry-category') {
+        if ($theme_class === ' masonry' || $theme_class === ' material-vertical' || $theme_class === ' masonry-category') {
             $theme_classpro = ' pro';
             $masonry_class  = 'masonrycontainer_' . $this->widget->ID;
         }
@@ -1583,7 +1707,7 @@ class WPLPFront
         $this->loop($theme_class);
         $this->html .= '</ul>';
         if (is_plugin_active('wp-latest-posts-addon/wp-latest-posts-addon.php')) {
-            if ($theme_class === ' masonry' || $theme_class === ' masonry-category') {
+            if ($theme_class === ' masonry' || $theme_class === ' material-vertical' || $theme_class === ' masonry-category') {
                 if (isset($this->widget->settings['load_more']) && (int) $this->widget->settings['load_more'] === 1) {
                     $this->html .= '<div id="wplp_front_loadmore" >';
                     $this->html .= '<input type="button" id="wplp_front_load_element" class="wplp_front_load_element"';
@@ -1640,6 +1764,7 @@ class WPLPFront
 
         if ($themeclass === ' masonry'
             || $themeclass === ' masonry-category'
+            || $themeclass === ' material-vertical'
             || $themeclass === ' smooth-effect'
             || $themeclass === ' timeline'
             || $themeclass === ' portfolio'
@@ -1655,10 +1780,6 @@ class WPLPFront
         if ($themeclass === ' smooth-effect') {
             $backgroundimageLI = true;
         }
-
-        //$themeclass
-        //if( isset( $this->widget->settings['amount_rows'] ) && ( $this->widget->settings['amount_rows'] > 1 ) ) {
-
 
         if ($themeclass === ' default') {
             $i           = 0;
@@ -1907,6 +2028,9 @@ class WPLPFront
                 $cropTextSize  = self::MASONRY_GID_TEXT_EM_SIZE;
                 $cropTitleSize = self::MASONRY_GID_TITLE_EM_SIZE;
             }
+        } elseif (strpos($this->widget->settings['theme'], 'material-vertical') !== false) {
+            $cropTextSize  = self::MASONRY_MATERIAL_TEXT_EM_SIZE;
+            $cropTitleSize = self::MASONRY_GID_TITLE_EM_SIZE;
         } elseif ($this->widget->settings['theme'] === 'smooth-effect') {
             $cropTextSize  = self::SMOOTH_TEXT_EM_SIZE;
             $cropTitleSize = self::SMOOTH_TITLE_EM_SIZE;
@@ -1940,7 +2064,7 @@ class WPLPFront
                 }
                 if ((int) $this->widget->settings['crop_title'] === 1) {  // char cropping
                     $title = strip_tags($title);
-                    $title = mb_substr($title, 0, $this->widget->settings['crop_title_len']);
+                    $title = mb_substr($title, 0, $this->widget->settings['crop_title_len'], 'UTF-8');
                 }
                 if ((int) $this->widget->settings['crop_title'] === 2) { // line limitting
                     $style = 'height:' . ($this->widget->settings['crop_title_len'] * $cropTitleSize) . 'em';
@@ -1974,12 +2098,11 @@ class WPLPFront
             $before = '';
             $after  = '';
 
-            $text = $post->post_content;
-
+            $text = strip_shortcodes($post->post_content);
             if (is_multisite()) {
                 switch_to_blog($post->curent_blog_id);
                 if (isset($this->widget->settings['text_content']) && $this->widget->settings['text_content'] === '0') {
-                    $text = $post->post_content;
+                    $text = strip_shortcodes($post->post_content);
                 } elseif (isset($this->widget->settings['text_content'])
                           && $this->widget->settings['text_content'] === '1'
                 ) {
@@ -1989,7 +2112,7 @@ class WPLPFront
                 restore_current_blog();
             } else {
                 if (isset($this->widget->settings['text_content']) && $this->widget->settings['text_content'] === '0') {
-                    $text = $post->post_content;
+                    $text = strip_shortcodes($post->post_content);
                 } elseif (isset($this->widget->settings['text_content'])
                           && $this->widget->settings['text_content'] === '1'
                 ) {
@@ -2017,7 +2140,6 @@ class WPLPFront
             if (!defined('WPLP_CONTENT_ALL_TAGS')) {
                 $text   = wp_strip_all_tags($text);
             }
-
             $strlen = $text;
 
             $croplength = (int) $this->widget->settings['crop_text_len'];
@@ -2031,14 +2153,14 @@ class WPLPFront
             }
             if ((int) $this->widget->settings['crop_text'] === 1) {  // char cropping
                 $text = strip_tags($text);
-                $text = mb_substr($text, 0, $this->widget->settings['crop_text_len']);
-                $text = mb_substr($text, 0, mb_strripos($text, ' '));
+                $text = mb_substr($text, 0, $this->widget->settings['crop_text_len'], 'UTF-8');
+                $text = mb_substr($text, 0, mb_strripos($text, ' ', 0, 'UTF-8'), 'UTF-8');
                 if ($croplength < strlen($strlen)) {
                     $text .= '...';
                 }
             }
             if ((int) $this->widget->settings['crop_text'] === 2) {  // line limitting
-                $before = '<span style="max-height:' . ($this->widget->settings['crop_text_len'] * $cropTextSize);
+                $before = '<span style="max-height:' . ((int) $this->widget->settings['crop_text_len'] * $cropTextSize);
                 $before .= 'em" class="line_limit">';
                 $after  = '</span>';
                 $text   .= '...';
@@ -2122,9 +2244,8 @@ class WPLPFront
                 $imgsrc[0] = $this->widget->settings['default_img'];
             }
 
-
             $img    = '<img src="' . $imgsrc[0] . '"  alt="';
-            $img    .= htmlentities($post->post_title) . '"  class="wplp_default" />';
+            $img    .= htmlentities($post->post_title, null, 'UTF-8') . '"  class="wplp_default" />';
             $before = '<span class="img_cropper ' . get_post_format() . '">';
             $after  = '</span>';
 
@@ -2360,10 +2481,9 @@ class WPLPFront
                     /**
                      * Get post content
                      */
-                    if (preg_match('/<img[^>]+src=[\'"]([^\'"]+)[\'"][^>]*>/i', $post->post_content, $matches)) {
+                    if (preg_match('/< *img[^>]+src=[\'"]([^\'"]+)[\'"][^>]*>/i', $post->post_content, $matches)) {
                         $imageTag = $matches[0];
                     }
-
                     $class = '';
                     $src   = '';
                     /**
@@ -2654,9 +2774,19 @@ class WPLPFront
          */
         if ('Read more' === $field) {
             if (isset($this->widget->settings['read_more']) && $this->widget->settings['read_more']) {
-                $readmore = esc_html($this->widget->settings['read_more']);
+                if ($this->widget->settings['theme'] === 'material-vertical') {
+                    $readmore = '<span>' . esc_html($this->widget->settings['read_more']) . '</span>';
+                    $readmore .= ' <svg class="icon" width="24" height="24" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <polygon class="shape" points="18.5,7.6 17.8,8.3 21.5,12 13,12 13,13 21.5,13 17.8,16.7 18.5,17.4 23.4,12.5"></polygon> </svg>';
+                } else {
+                    $readmore = esc_html($this->widget->settings['read_more']);
+                }
             } else {
-                $readmore = esc_html__('Read more...', 'wp-latest-posts');
+                if ($this->widget->settings['theme'] === 'material-vertical') {
+                    $readmore = '<span>' . esc_html__('View', 'wp-latest-posts') . '</span>';
+                    $readmore .= ' <svg class="icon" width="24" height="24" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"> <polygon class="shape" points="18.5,7.6 17.8,8.3 21.5,12 13,12 13,13 21.5,13 17.8,16.7 18.5,17.4 23.4,12.5"></polygon> </svg>';
+                } else {
+                    $readmore = esc_html__('Read more...', 'wp-latest-posts');
+                }
             }
 
             /**
@@ -2674,39 +2804,43 @@ class WPLPFront
         if (is_plugin_active('advanced-custom-fields/acf.php')) {
             //advanced custom fields
             if ('Custom_Fields' === $field) {
-                $post_groups = array();
-                $idPost      = get_the_ID();
-                $p_type = 'post';
-                if ('src_category' === $this->widget->settings['source_type']) {
-                    $post_groups = acf_get_field_groups(array('post_type' => 'post'));
-                } elseif ('src_page' === $this->widget->settings['source_type']) {
-                    $p_type = 'page';
-                    $post_groups = acf_get_field_groups(array('post_type' => 'page'));
-                } elseif ('src_custom_post_type' === $this->widget->settings['source_type']) {
-                    $p_type = $this->widget->settings['custom_post_type'];
-                    $post_groups = acf_get_field_groups(array('post_type' => $this->widget->settings['custom_post_type']));
-                }
+                if (function_exists('acf_get_field_groups')) {
+                    $post_groups = array();
+                    $idPost      = get_the_ID();
+                    $p_type = 'post';
+                    if ('src_category' === $this->widget->settings['source_type']) {
+                        $post_groups = acf_get_field_groups(array('post_type' => 'post'));
+                    } elseif ('src_page' === $this->widget->settings['source_type']) {
+                        $p_type = 'page';
+                        $post_groups = acf_get_field_groups(array('post_type' => 'page'));
+                    } elseif ('src_custom_post_type' === $this->widget->settings['source_type']) {
+                        $p_type = $this->widget->settings['custom_post_type'];
+                        $post_groups = acf_get_field_groups(array('post_type' => $this->widget->settings['custom_post_type']));
+                    }
 
-                if (empty($this->widget->settings['advanced_fields_taxonomy_' . $p_type])) {
-                    return '';
-                }
+                    if (empty($this->widget->settings['advanced_fields_taxonomy_' . $p_type])) {
+                        return '';
+                    }
 
-                $outputHtml = array();
-                foreach ($post_groups as $post_group) {
-                    $child_fields = get_posts(array(
-                        'posts_per_page' => - 1,
-                        'post_type'      => 'acf-field',
-                        'post_parent'    => (int) $post_group['ID']
-                    ));
+                    $outputHtml = array();
+                    foreach ($post_groups as $post_group) {
+                        $child_fields = get_posts(array(
+                            'posts_per_page' => - 1,
+                            'post_type'      => 'acf-field',
+                            'post_parent'    => (int) $post_group['ID']
+                        ));
 
-                    foreach ($child_fields as $child_field) {
-                        if (in_array($child_field->ID, $this->widget->settings['advanced_fields_taxonomy_' . $p_type]) || in_array('all_fields', $this->widget->settings['advanced_fields_taxonomy_' . $p_type])) {
-                            $outputHtml[] = $this->displayCustomField($this->widget->settings, $idPost, $child_field);
+                        foreach ($child_fields as $child_field) {
+                            if (in_array($child_field->ID, $this->widget->settings['advanced_fields_taxonomy_' . $p_type]) || in_array('all_fields', $this->widget->settings['advanced_fields_taxonomy_' . $p_type])) {
+                                $outputHtml[] = $this->displayCustomField($this->widget->settings, $idPost, $child_field);
+                            }
                         }
                     }
-                }
 
-                return implode('<br/>', $outputHtml);
+                    return implode('<br/>', $outputHtml);
+                } else {
+                    return '';
+                }
             }
         }
 
@@ -2760,7 +2894,11 @@ class WPLPFront
                 $count_cats = count($cats);
                 for ($i = 0; $i < $count_cats; $i ++) {
                     if ($i > 0) {
-                        $listcat .= ' / ';
+                        if ($this->widget->settings['theme'] === 'material-vertical') {
+                            $listcat .= ', ';
+                        } else {
+                            $listcat .= ' / ';
+                        }
                     }
                     $listcat .= $cats[$i]->name;
                 }
@@ -2777,7 +2915,11 @@ class WPLPFront
                 $count_cats = count($cats);
                 for ($i = 0; $i < $count_cats; $i ++) {
                     if ($i > 0) {
-                        $listcat .= ' / ';
+                        if ($this->widget->settings['theme'] === 'material-vertical') {
+                            $listcat .= ', ';
+                        } else {
+                            $listcat .= ' / ';
+                        }
                     }
                     $listcat .= $cats[$i]->cat_name;
                 }
@@ -2888,7 +3030,7 @@ class WPLPFront
                         $url = $fields['value'];
                     }
 
-                    $result = '<img src="' . esc_url($url) . '"  alt="' . htmlentities($fields['name']);
+                    $result = '<img src="' . esc_url($url) . '"  alt="' . htmlentities($fields['name'], null, 'UTF-8');
                     $result .= '"  class="custom-fields-image" />';
                     break;
                 case 'date_picker':

@@ -1,56 +1,73 @@
-=== Auto Post Thumbnail ===
+=== Auto Featured Image (Auto Post Thumbnail) ===
 Contributors: creativemotion
-Tags: post thumbnail, post thumbnails, featured image, thumbnail, thumbnails
+Tags: post thumbnails, featured image, elementor, thumbnails, featured image from title
 Requires at least: 4.2
-Tested up to: 5.2
+Tested up to: 5.4.2
 Requires PHP: 5.4
 Stable tag: trunk
 License: GPLv2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Automatically generate the Post Thumbnail (Featured Thumbnail) from the first image in post or any custom post type only if Post Thumbnail is not set manually. 
+Automatically generate the Featured Image from the first image in post or any custom post type only if Featured Image is not set manually. Featured Image Generation From Title. Native image search for Elementor, Gutenberg, Classic Editor.
 
 == Description ==
 
-Thousands of people already use the APT plugin (Auto Post
-Thumbnail). This universal and free tool automatically generates
-and searches for featured images for your posts or pages.
+Automatically generate the Featured Image from the first image in post or any custom post type only if Featured Image is not set manually. Featured Image Generation From Title. Native image search for Elementor, Gutenberg, Classic Editor.
 
 CREATE A FEATURED IMAGE IN 5 SECONDS
 1. Generate or remove featured images in one click.
 2. Customize the process – generate or remove featured images
 from the list of posts or pages.
-3. Use filters – generate or remove featured images based on the
+3. Native image search for Elementor, Gutenberg, Classic Editor.
+4. Use filters – generate or remove featured images based on the
 post type, status, category, or the creation date.
-4. Search &amp; upload featured images from popular stock
+5. Automatically generates an image for each post from the post title and sets it as the featured image. NEW!
+6. Search &amp; upload featured images from popular stock
 platforms instantly.
-5. Native compatibility with Elementor, Gutenberg, Classic Editor.
  
-APT users save up to 20 minutes per hour on generating content for a website.
+AFI (APT) users save up to 20 minutes per hour on generating content for a website.
 Let’s go through the process of creating a post and see how timesaving APT can be.
 
 1. Enter a post title.
 2. Add a text.
 3. Search for images with the Creative Commons license.
 Download images from a search page or a stock service.
-4. Upload images. Place them within a post in the right order.
+4. Upload images.  Add them to a post accordingly.
 5. Upload a featured image.
 6. Publish a post.
 
-It takes 6 steps to create a post.
-Now imagine that APT turns 3 steps in one! Learn how to save up to 30% time for more engaging activities!
+It takes six steps to create a post.
+Now imagine that APT turns three steps into one! Learn how to save up to 30% time for more engaging activities!
  
 This plugin is a must-have for every WordPress blog. Don’t
 hesitate to install this content maker tool on your website.
 Recommend it to your friends and colleagues; maximize their
 time and make their websites better!
 
-#### APT PRO ####
+New features of AFI automatically generates an image for each post from the post title and sets it as the featured image. The image will then be included in your theme wherever the featured image for the post is called for.
+It’s good to have an image in every post and page that you create. It helps for things like search engine optimization, social sharing, and just the attractiveness of your website or blog. But sometimes it can take longer to find a good image for a particular blog post than to write the post itself. And often, quality images are expensive.
+This features of APT simplifies the process of publishing content and saves you money. It will automatically create a customized image for each post or page that you write. You can select a background image to match the look and feel of your blog, and the plugin will automatically write the title (or other text of your choosing) of a new or updated post or page on top of this background image to create a unique featured image for each post.
+
+
+#### AFI PRO(APT) ####
 1. Filters to generate or remove featured images based on the post type, status, category, or the creation date
 2. Generate or remove featured images from the list of posts or pages
-3. Unlimited search & upload featured images from Google, Unsplash, Pixabay
+3. Featured Image Generation From Title.
+4. Upload your own background images.
+5. Upload your own fonts.
+6. Position the text on the image.
+7. Unlimited search & upload featured images from Google, Unsplash, Pixabay
 
 [learn more](https://cm-wp.com/apt/pricing/).
+
+== What’s Next ==
+
+If you like this plugin, then consider checking out our other projects:
+[Clearfy](https://clearfy.pro/) - WordPress optimization plugin and disable ultimate tweaker
+[Robin image optimizer](https://robinoptimizer.com/) - Make your WordPress site blazingly fast and rank higher in search engines.
+[Woody ad snippets](https://woodysnippet.com/) - Save up to 70 hours of routine work on your WordPress website monthly!
+[Social Slider Widget](https://cm-wp.com/instagram-slider-widget/) - Display Instagram feeds in widgets, posts, pages, or anywhere else using shortcodes
+[AntiSpam](https://anti-spam.space/) - Stop spam form submissions on your WordPress
 
 THANKS TO THE PLUGIN DEVELOPERS
 We’ve used some of the powerful features from the
@@ -59,7 +76,7 @@ plugins:  Dynamic Featured Image ,  Featured Image from URL, Regenerate Thumb
 TRANSLATIONS:
 · Default: English (always enabled);
 · Russian.
-We need your help with translation APT to your language. Our goal is to make APT an international and user-friendly tool for everyone. If you want to help with the translation, contact us through the contact form in the plugin or send a message at the support forum. In return, we will give you a premium license for free!
+We need your help with translation AFI (APT) to your language. Our goal is to make APT an international and user-friendly tool for everyone. If you want to help with the translation, contact us through the contact form in the plugin or send a message at the support forum. In return, we will give you a premium license for free!
 
 https://cm-wp.com/apt/
 
@@ -79,8 +96,32 @@ This section describes how to install the plugin and get it working.
 4. Manual Featured Images Selection
 5. Image search in Google, Unsplash, Pixabay
 6. Compatibility with Elementor and Gutenberg
+7. Feature image generation from title
+8. Font settings
+9. Text settings
+10. Text settings
+11. Text settings
 
 == Changelog ==
+
+= 3.7.2 =
+* Fixed: generation of featured images
+
+
+= 3.7.1 =
+* Added: "Commercial and derived use" checkbox for Google search
+* Fixed: Divi theme compatible
+
+= 3.7.0 =
+* Added: Automatically generation an image for each post from the post title and sets it as the featured image
+* Added: Settings for featured image generation
+* Added: Support for Wordpress mobile apps (automatic add featured image when creating/updating a post)
+* Redesigned Settings page
+* Fixed: "Metadata error" when trying to download an image from photobank
+* Fixed: In some cases the plugin did not find images in the post text
+* Fixed: (PRO) In the automatic generation filter, you can select a custom post type if it is displayed on the frontend
+* Many other minor changes and bugfixes
+
 = 3.6.0 =
 * New: Bulk delete thumbnails
 * New: Before searching images in the text of the post, the shortcodes are executed
@@ -133,7 +174,7 @@ This section describes how to install the plugin and get it working.
 Added support for creating featured thumbnails for custom post types as well. Batch processing will also generate thumbnails for any type of post.
 
 = 3.1 =
-Renamed **Gen. Post Thumbnails** to **Auto Post Thumbnail** and moved it under Settings menu.
+Renamed **Gen. Post Thumbnails** to **Auto Featured Image** and moved it under Settings menu.
 
 = 3.0 =
 * Added Batch Processing capability to generate post thumbnails for already published posts.

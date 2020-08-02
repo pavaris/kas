@@ -668,17 +668,19 @@ $file = ABSPATH . '.htaccess';
 // 2.3: Revert: Remove R from the dumbed downed Request Methods Filtered 405 htaccess code in Root Custom Code.
 // Add additional https scheme conditions to 3 htaccess security rules and combine 2 rules into 1 rule in Root and wp-admin Custom Code.
 // Note: htmlspecialchars_decode() is not necessary.
+// 3.9: removed the obsolete RMF code
 function bpsPro_upgrade_CC_automatic_fix() {
 	
 	$CC_Options_root = get_option('bulletproof_security_options_customcode');
 	$bps_get_wp_root_secure = bps_wp_get_root_folder();
 	$bps_plugin_dir = str_replace( ABSPATH, '', WP_PLUGIN_DIR );
-	$pattern1 = '/RewriteRule\s\^\(\.\*\)\$(.*)\/bulletproof-security\/405\.php\s\[R,L\]/';
+	//$pattern1 = '/RewriteRule\s\^\(\.\*\)\$(.*)\/bulletproof-security\/405\.php\s\[R,L\]/';
 	$pattern2 = '/RewriteCond\s%\{THE_REQUEST\}\s\(\\\?.*%2a\)\+\(%20.*HTTP\(:\/.*\[NC,OR\]/';
 	$pattern3 = '/RewriteCond\s%\{QUERY_STRING\}\s\[a-zA-Z0-9_\]=http:\/\/\s\[NC,OR\]/';
 	$pattern4 = '/RewriteCond\s%\{QUERY_STRING\}\s\^\(\.\*\)cPath=http:\/\/\(\.\*\)\$\s\[NC,OR\]/';
 	$pattern5 = '/RewriteCond\s%\{QUERY_STRING\}\shttp\\\:\s\[NC,OR\](.*\s*){1}.*RewriteCond\s%\{QUERY_STRING\}\shttps\\\:\s\[NC,OR\]/';
 
+	/*
 	if ( $CC_Options_root['bps_customcode_bpsqse'] != '' ) {
 
 		if ( preg_match( $pattern1, $CC_Options_root['bps_customcode_request_methods'] ) ) {
@@ -688,6 +690,7 @@ function bpsPro_upgrade_CC_automatic_fix() {
 	} else {
 		$bps_customcode_request_methods = $CC_Options_root['bps_customcode_request_methods'];
 	}
+	*/
 
 	if ( $CC_Options_root['bps_customcode_bpsqse'] != '' ) {
 
@@ -742,7 +745,7 @@ function bpsPro_upgrade_CC_automatic_fix() {
 		'bps_customcode_deny_dot_folders' 	=> $CC_Options_root['bps_customcode_deny_dot_folders'], 
 		'bps_customcode_admin_includes' 	=> $CC_Options_root['bps_customcode_admin_includes'], 
 		'bps_customcode_wp_rewrite_start' 	=> $CC_Options_root['bps_customcode_wp_rewrite_start'], 
-		'bps_customcode_request_methods' 	=> $bps_customcode_request_methods, 
+		'bps_customcode_request_methods' 	=> $CC_Options_root['bps_customcode_request_methods'], 
 		'bps_customcode_two' 				=> $CC_Options_root['bps_customcode_two'], 
 		'bps_customcode_timthumb_misc' 		=> $CC_Options_root['bps_customcode_timthumb_misc'], 
 		'bps_customcode_bpsqse' 			=> $bps_customcode_bpsqse_replace, 
@@ -761,7 +764,7 @@ function bpsPro_upgrade_CC_automatic_fix() {
 		'bps_customcode_deny_dot_folders' 	=> $CC_Options_root['bps_customcode_deny_dot_folders'], 
 		'bps_customcode_admin_includes' 	=> $CC_Options_root['bps_customcode_admin_includes'], 
 		'bps_customcode_wp_rewrite_start' 	=> $CC_Options_root['bps_customcode_wp_rewrite_start'], 
-		'bps_customcode_request_methods' 	=> $bps_customcode_request_methods, 
+		'bps_customcode_request_methods' 	=> $CC_Options_root['bps_customcode_request_methods'], 
 		'bps_customcode_two' 				=> $CC_Options_root['bps_customcode_two'], 
 		'bps_customcode_timthumb_misc' 		=> $CC_Options_root['bps_customcode_timthumb_misc'], 
 		'bps_customcode_bpsqse' 			=> $bps_customcode_bpsqse_replace, 

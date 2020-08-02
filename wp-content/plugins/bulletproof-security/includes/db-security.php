@@ -250,7 +250,7 @@ $time_start = microtime( true );
 							$entry[$key] = "NULL";
 						elseif ( "" === $value || false === $value )
 							$entry[$key] = "''";
-						elseif ( is_numeric( $value ) && preg_match( '/[0-9]{17}/', $value ) ) // special condition for PayPal numeric Transaction Codes
+						elseif ( is_numeric( $value ) && preg_match( '/[0-9A-Za-z]{17}/', $value ) ) // special condition for PayPal numeric Transaction Codes
 							$entry[$key] = "'" . esc_sql($value) . "'";
 						elseif ( ! is_numeric( $value ) )
 							if ( method_exists( $wpdb, 'remove_placeholder_escape' ) ) { // since WP 4.8.3

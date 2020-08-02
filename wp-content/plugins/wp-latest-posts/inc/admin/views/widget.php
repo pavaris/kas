@@ -6,12 +6,12 @@ if (isset($_GET['view']) && $_GET['view'] === 'block') { // phpcs:ignore WordPre
         array(
             'id' => 'content-source',
             'title' => __('Content source', 'wp-latest-posts'),
-            'icon' => 'library-books',
+            'icon' => 'library_books',
         ),
         array(
             'id' => 'theme',
             'title' => __('Display and theme', 'wp-latest-posts'),
-            'icon' => 'color-lens',
+            'icon' => 'color_lens',
         ),
         array(
             'id' => 'image-source',
@@ -34,22 +34,27 @@ if (isset($_GET['view']) && $_GET['view'] === 'block') { // phpcs:ignore WordPre
         array(
             'id' => 'list-blocks',
             'title' => __('All news blocks', 'wp-latest-posts'),
-            'icon' => 'account-circle',
+            'icon' => 'account_circle',
         ),
         array(
             'id' => 'wplp-translation',
             'title' => __('Translation', 'wp-latest-posts'),
-            'icon' => 'text-format',
+            'icon' => 'text_format',
         ),
         array(
             'id' => 'system-check',
             'title' => __('System check', 'wp-latest-posts'),
-            'icon' => 'verified-user',
+            'icon' => 'verified_user',
+        ),
+        array(
+            'id' => 'settings',
+            'title' => __('Settings', 'wp-latest-posts'),
+            'icon' => 'settings',
         ),
         array(
             'id' => 'advanced-news',
             'title' => __('Advanced news', 'wp-latest-posts'),
-            'icon' => 'new-releases',
+            'icon' => 'new_releases',
         ),
     );
 }
@@ -72,7 +77,7 @@ $systemCheck = WPLPAdmin::systemCheck();
         if (isset($_GET['view']) && $_GET['view'] === 'block') : // phpcs:ignore WordPress.CSRF.NonceVerification.NoNonceVerification -- view only
             ?>
         <div class="ju-menu-search">
-            <i class="mi mi-search ju-menu-search-icon .material-icons"></i>
+            <i class="material-icons ju-menu-search-icon">search</i>
             <input type="text" class="ju-menu-search-input"
                    placeholder="<?php esc_html_e('Search settings', 'wp-latest-posts') ?>"
             >
@@ -80,7 +85,7 @@ $systemCheck = WPLPAdmin::systemCheck();
         <ul class="back-menu-tabs">
             <li class="tab" data-tab-title="<?php esc_html_e('Back To Block List', 'wp-latest-posts'); ?>">
                 <a href="<?php echo esc_url(admin_url('admin.php?page=wplp-widget')); ?>" class="link-tab white-text waves-effect waves-light">
-                    <i class="mi mi-keyboard-backspace menu-tab-icon"></i>
+                    <i class="material-icons menu-tab-icon"> keyboard_backspace </i>
                     <span class="tab-title"><?php esc_html_e('Back To Block List', 'wp-latest-posts'); ?></span>
                 </a>
             </li>
@@ -100,7 +105,8 @@ $systemCheck = WPLPAdmin::systemCheck();
                         <?php if ($v['id'] === 'advanced') :  ?>
                             <img src="<?php echo esc_url($v['icon'])?>" class="menu-advanced-icon">
                         <?php else : ?>
-                        <i class="mi mi-<?php echo esc_attr($v['icon']) ?> menu-tab-icon"></i>
+                            <i class="material-icons menu-tab-icon"> <?php echo esc_html($v['icon']) ?> </i>
+
                         <?php endif; ?>
                         <span class="tab-title" <?php echo (($v['id'] === 'advanced') ? 'style="vertical-align:baseline"' : '') ?>><?php echo esc_html($v['title']) ?></span>
                     </a>

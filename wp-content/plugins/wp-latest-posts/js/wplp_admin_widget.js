@@ -131,6 +131,39 @@
             }
         });
 
+        $('.wplp-duplicate-block').unbind('click').click(function () {
+            var blocksNonce = $('#wplp_blocks_nonce').val();
+            var blockID = $(this).data('block-id');
+            $.ajax({
+                url: ajaxurl,
+                method: 'POST',
+                data: {
+                    action: 'wplp_duplicate_block',
+                    ajaxNonce: blocksNonce,
+                    id: blockID
+                },
+                beforeSend: function () {
+                    wplpSnackbarModule.show({
+                        id: 'wplp-duplicate-block',
+                        content: wplp_trans.l18n.copying_block,
+                        auto_close: false,
+                        is_progress: true
+                    });
+                },
+                success: function (res) {
+                    if (res.status) {
+                        let $snack = wplpSnackbarModule.getFromId('wplp-duplicate-block');
+                        wplpSnackbarModule.close($snack);
+                        wplpSnackbarModule.show({
+                            content: wplp_trans.l18n.copy_block_success,
+                            auto_close_delay: 3000
+                        });
+                        location.reload();
+                    }
+                }
+            })
+        });
+
         // DELETE block
         // Click delete single block
         $('.block-delete').unbind('click').click(function () {

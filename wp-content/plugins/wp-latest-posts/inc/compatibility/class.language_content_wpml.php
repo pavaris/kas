@@ -133,8 +133,8 @@ class WPLPLanguageContent
                         if (empty($language)) {
                             continue;
                         }
-                        $id = icl_object_id($post->ID, $post_type, $return_original_if_missing, $language);
 
+                        $id = icl_object_id($post->ID, $post_type, $return_original_if_missing, $language);
                         if (is_multisite()) {
                             $blog_id = '_BLOG_ID_' . $post->curent_blog_id;
                         }
@@ -435,6 +435,7 @@ class WPLPLanguageContent
                         switch_to_blog((int)$blog->blog_id);
                         $allcats = get_categories();
                         foreach ($allcats as $allcat) {
+                            $allcat->blog = (int) $blog_post;
                             $cats[] = $allcat;
                         }
                         restore_current_blog();
@@ -442,6 +443,9 @@ class WPLPLanguageContent
                 } else {
                     switch_to_blog((int)$blog_post);
                     $cats = get_categories();
+                    foreach ($cats as $cat) {
+                        $cat->blog = (int) $blog_post;
+                    }
                     restore_current_blog();
                 }
                 /**
@@ -459,7 +463,7 @@ class WPLPLanguageContent
                 foreach ($cats as $k => $cat) {
                     $html .= '<li>';
                     $html .= '<input id="ccb_' . $k . '" type="checkbox" name="wplp_source_category[]" value="';
-                    $html .= $k . '_' . $cat->term_id . '"  class="post_cb ju-checkbox wplp_change_content" />';
+                    $html .= $k . '_' . $cat->term_id . '_blog'. $cat->blog . '"  class="post_cb ju-checkbox wplp_change_content" />';
                     $html .= '<label for="ccb_' . $k . '" class="post_cb">' . $cat->name . '</label>';
                     $html .= '</li>';
                 }

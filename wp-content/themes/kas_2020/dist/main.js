@@ -100,6 +100,14 @@ $(document).ready(function () {
 		$("#mobile-nav-links").toggleClass("active");
 	});
 
+	$(".header-slides").slick({
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		fade: true,
+		dots: true,
+		arrows: false
+	});
+
 	$(".single-written .posts-feed").slick({
 		slidesToShow: 3,
 		arrows: false,

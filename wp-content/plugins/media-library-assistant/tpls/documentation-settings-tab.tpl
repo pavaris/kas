@@ -649,7 +649,7 @@ The Link parameter specifies the target and type of link from the gallery item t
 </tr>
 <tr>
 <td class="mla-doc-table-label">download</td>
-<td>Link to the MLA file downloader for this attachment. Forces a file download instead of opening the file in the browser.  See also the "Transfer by Item Name" section just below.</td>
+<td>Link to the MLA "Transfer by Item Name" feature for this attachment with <code>mla_disposition=attachment</code>. Forces a file download instead of opening the file in the browser.  See the "Transfer by Item Name" section just below.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">thumbnail,&nbsp;medium,<br />large</td>
@@ -965,6 +965,18 @@ Searching for keywords within the names of taxonomy terms is a completely differ
 <td class="mla-doc-table-label">mla_term_connector</td>
 <td>If you enter multiple terms (separated by the <code>mla_term_delimiter</code>) in the <code>mla_terms_phrases</code> parameter, this parameter controls how they are connected. Choose from <strong>OR (the default)</strong> to require that any one of the terms must match for the search to succeed, or AND to require that all of the terms must match.</td>
 </tr>
+<tr>
+<td class="mla-doc-table-label">whole_word</td>
+<td>Add <code>whole_word=true</code> to require that each of the words entered must match a whole word in taxonomy terms. This is equivalent to putting quotes around each of the words in your search.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">sentence</td>
+<td>Add <code>sentence=true</code> to require that all of the words entered must match in sequence. This is equivalent to putting quotes around all of the words in your search.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">exact</td>
+<td>Add <code>exact=true</code> to require that each phrase must match the entire text of a term name.</td>
+</tr>
 </table>
 <p>
 <a name="post_mime_type_parameter"></a>
@@ -1124,7 +1136,7 @@ Remember to use <code>post_parent=current</code> if you want to restrict your qu
 The search parameter ("s=keyword") will perform a keyword search. By default, the search includes the "post_title" and "post_content" (Description) fields but not the "post_excerpt" (Caption) field. All of the words you enter in the parameter must match for the search to succeed. An SQL "LIKE" clause for each word is composed and added to the search criteria.
 </p>
 <p>
-You can match on multi-word phrases in a variety of ways. These are described in detail, with examples, in the "Entering Words and Phrases" portion of the "<a href="#terms_search">Terms Search - filtering on taxonomy term names</a>" Documentation section. You can also use the <code>sentence=true</code> and <code>exact=true</code> parameters to change the matching logic used in the <code>[mla_gallery]</code> shortcode.
+You can match on multi-word phrases in a variety of ways. These are described in detail, with examples, in the "Entering Words and Phrases" portion of the "<a href="#terms_search">Terms Search - filtering on taxonomy term names</a>" Documentation section. You can also use the <code>whole_word=true</code>, <code>sentence=true</code> and <code>exact=true</code> parameters to change the matching logic used in the <code>[mla_gallery]</code> shortcode.
 </p>
 <p>
 You can search for Media Library items and parent posts/pages by their ID value(s). If <strong>all of the values</strong> in the search field are numeric (and unquoted) they will be interpreted as ID values. To search for items attached to one or more parent posts/pages, enter the ID of the parent(s). If you want to search for a numeric value in the text fields, surround it with quotes.
@@ -1152,6 +1164,10 @@ You can use the <code>mla_search_connector</code> and <code>mla_search_fields</c
 <tr>
 <td class="mla-doc-table-label">mla_search_connector</td>
 <td>Choose from OR to require that any one of the phrases must match for the search to succeed, or AND (the default) to require that all of the phrases must match.</td>
+</tr>
+<tr>
+<td class="mla-doc-table-label">whole_word</td>
+<td>Add <code>whole_word=true</code> to require that each of the words entered must match a whole word in taxonomy terms. This is equivalent to putting quotes around each of the words in your search. <strong>Note that this option only affects the "terms" portion of the search.</strong> WordPress does not support a whole word search in any of the other search fields.</td>
 </tr>
 <tr>
 <td class="mla-doc-table-label">sentence</td>
@@ -5504,6 +5520,10 @@ If you choose the 'or'/'Any phrase' connector and enter 'man "bites dog"' in the
 <h4>Exact phrase matching</h4>
 <p>
 The Search Terms popup window has an additional capability, "Exact match" and a checkbox to activate it. When you check the "Exact" box, each phrase must match the entire text of a term name. For example, if you check "Exact", the phrase "man" will match a term of the same name but not a term named "big man". If you check "Exact" and enter "big man" you will match terms named "big" or "man" <strong>but not</strong> "big man". If you want an exact match on a multi-word term such as "big man", put quotes around the name, i.e., ' "big man" '.
+</p>
+<h4>Whole word matching</h4>
+<p>
+The Search Terms popup window has an additional capability, "Whole word match" and a checkbox to activate it. When you check the "Whole Word" box, each word in the phrase must match a whole word of a term name. For example, if you check "Whole Word", the phrase "man" will match a term that contains "man" but not the word "woman". If you check "Whole Word" and enter "big man" it is as if you put quotes around each of the words, i.e., ` "big" "man" `. If you want an exact match on a multi-word term such as "big man", put quotes around the name, i.e., ' "big man" '.
 </p>
 <h4>Excluding phrases</h4>
 <p>

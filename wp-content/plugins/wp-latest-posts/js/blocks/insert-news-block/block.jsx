@@ -256,6 +256,13 @@
                     });
                 }
 
+                if (settings.theme === 'material-vertical') {
+                    $(`#block-${clientId} .wplp_listposts`).masonry({
+                        gutter: 20,
+                        itemSelector: '.material-vertical'
+                    });
+                }
+
                 if (settings.theme === 'portfolio') {
                     let $portfolio = $(`#block-${clientId} .wplp_listposts`);
                     $portfolio.isotope({
@@ -403,7 +410,7 @@
                 <Fragment>
                     {controls}
                     {
-                        typeof cover !== "undefined" && <div class="wplp-cover"><img src={cover} /></div>
+                        typeof cover !== "undefined" && <div className="wplp-cover"><img src={cover} /></div>
                     }
                     {
                         typeof cover === "undefined" &&
@@ -426,6 +433,7 @@
                                         {
                                             newsList.map((post) =>
                                                 <li className={(newsID.toString() === post.value.toString()) ? 'news_post_item news_post_item_active' : 'news_post_item'}
+                                                    data-id={post.value}
                                                     key={post.value}
                                                     onClick={this.selectPost.bind(this, post.value)}>{post.label}</li>
                                             )
@@ -462,7 +470,8 @@
         icon: iconblock,
         category: 'common',
         keywords: [
-            __('post', 'wp-latest-posts')
+            __('post', 'wp-latest-posts'),
+            __('wplp', 'wp-latest-posts')
         ],
         example: {
             attributes: {

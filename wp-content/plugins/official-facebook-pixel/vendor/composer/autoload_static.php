@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitb9cf5c8bb919825a3eea054dd314fa5b
+class ComposerStaticInitf86f03e642fb38d360aec66970fd23ac
 {
     public static $prefixLengthsPsr4 = array (
         'F' => 
@@ -12,6 +12,7 @@ class ComposerStaticInitb9cf5c8bb919825a3eea054dd314fa5b
             'FacebookPixelPlugin\\Integration\\' => 32,
             'FacebookPixelPlugin\\Core\\' => 25,
             'FacebookPixelPlugin\\' => 20,
+            'FacebookAds\\' => 12,
         ),
     );
 
@@ -28,13 +29,22 @@ class ComposerStaticInitb9cf5c8bb919825a3eea054dd314fa5b
         array (
             0 => __DIR__ . '/../..' . '/',
         ),
+        'FacebookAds\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/php-business-sdk/src/FacebookAds',
+        ),
+    );
+
+    public static $classMap = array (
+        'WP_Async_Task' => __DIR__ . '/..' . '/techcrunch/wp-async-task/wp-async-task.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitb9cf5c8bb919825a3eea054dd314fa5b::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitb9cf5c8bb919825a3eea054dd314fa5b::$prefixDirsPsr4;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitf86f03e642fb38d360aec66970fd23ac::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitf86f03e642fb38d360aec66970fd23ac::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInitf86f03e642fb38d360aec66970fd23ac::$classMap;
 
         }, null, ClassLoader::class);
     }

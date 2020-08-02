@@ -88,6 +88,18 @@ class FacebookWordpressSettingsPage {
       array($this, 'usePiiFormField'),
       FacebookPluginConfig::ADMIN_MENU_SLUG,
       FacebookPluginConfig::ADMIN_SECTION_ID);
+    add_settings_field(
+      FacebookPluginConfig::USE_S2S_KEY,
+      'Use Server-Side API?',
+      array($this, 'useS2SFormField'),
+      FacebookPluginConfig::ADMIN_MENU_SLUG,
+      FacebookPluginConfig::ADMIN_SECTION_ID);
+    add_settings_field(
+      FacebookPluginConfig::ACCESS_TOKEN_KEY,
+      'Access Token',
+      array($this, 'accessTokenFormField'),
+      FacebookPluginConfig::ADMIN_MENU_SLUG,
+      FacebookPluginConfig::ADMIN_SECTION_ID);
   }
 
   public function sanitizeInput($input) {
@@ -107,7 +119,8 @@ class FacebookWordpressSettingsPage {
   public function sectionSubTitle() {
     printf(
       esc_html__(
-        'Please note that we are now also supporting lower funnel pixel events for Contact Form 7, Easy Digital Downloads, Ninja Forms and WP Forms',
+        'Please note that we are now also supporting lower funnel pixel events
+          for Contact Form 7, Easy Digital Downloads, Ninja Forms and WP Forms',
         FacebookPluginConfig::TEXT_DOMAIN));
   }
 
@@ -122,7 +135,8 @@ class FacebookWordpressSettingsPage {
 <input name="%s" id="%s" value="%s" />
 <p class="description">%s</p>
       ',
-      FacebookPluginConfig::SETTINGS_KEY . '[' . FacebookPluginConfig::PIXEL_ID_KEY . ']',
+      FacebookPluginConfig::SETTINGS_KEY . '[' .
+        FacebookPluginConfig::PIXEL_ID_KEY . ']',
       FacebookPluginConfig::PIXEL_ID_KEY,
       isset($pixel_id)
         ? esc_attr($pixel_id)
@@ -130,11 +144,37 @@ class FacebookWordpressSettingsPage {
       $description);
   }
 
+
+  public function accessTokenFormField() {
+    $description = esc_html__(
+      '',
+      FacebookPluginConfig::TEXT_DOMAIN);
+
+    $access_token = FacebookWordpressOptions::getAccessToken();
+    $existing_access_token_value =
+      isset($access_token) ? esc_attr($access_token) : '';
+    $input_name = FacebookPluginConfig::SETTINGS_KEY .
+                  '[' . FacebookPluginConfig::ACCESS_TOKEN_KEY . ']';
+
+    printf(
+      '
+<textarea name="%s" id="%s" rows=4 cols=60 maxlength=250>%s</textarea>
+<p class="description">%s</p>
+      ',
+      $input_name,
+      FacebookPluginConfig::ACCESS_TOKEN_KEY,
+      $existing_access_token_value,
+      $description);
+  }
+
   public function usePiiFormField() {
     $link = sprintf(
       wp_kses(
         __(
-          'For businesses that operate in the European Union, you may need to take additional action. Read the <a href="%s" target="_blank">Cookie Consent Guide for Sites and Apps</a> for suggestions on complying with EU privacy requirements.',
+          'For businesses that operate in the European Union, you may need to
+            take additional action. Read the <a href="%s" target="_blank">
+            Cookie Consent Guide for Sites and Apps</a> for suggestions on
+            complying with EU privacy requirements.',
           FacebookPluginConfig::TEXT_DOMAIN),
         array('a' => array('href' => array(), 'target' => array()))),
       esc_url(FacebookPluginConfig::ADMIN_PRIVACY_URL));
@@ -148,7 +188,8 @@ class FacebookWordpressSettingsPage {
     value="1"
       ',
       FacebookPluginConfig::USE_PII_KEY,
-      FacebookPluginConfig::SETTINGS_KEY . '[' . FacebookPluginConfig::USE_PII_KEY . ']',
+      FacebookPluginConfig::SETTINGS_KEY . '[' .
+        FacebookPluginConfig::USE_PII_KEY . ']',
       FacebookPluginConfig::USE_PII_KEY);
     checked(1, FacebookWordpressOptions::getUsePii());
     printf(
@@ -164,33 +205,81 @@ class FacebookWordpressSettingsPage {
       $link);
   }
 
-  public function registerNotices() {
-    // Update class field
-    $pixel_id = FacebookWordpressOptions::getPixelId();
-    $current_screen_id = get_current_screen()->id;
-    if (
-      !FacebookPluginUtils::isPositiveInteger($pixel_id)
-      && current_user_can(FacebookPluginConfig::ADMIN_CAPABILITY)
-      && in_array(
-        $current_screen_id,
-        array('dashboard', 'plugins', $this->optionsPage),
-        true)
-      && !get_user_meta(
-        get_current_user_id(),
-        FacebookPluginConfig::ADMIN_IGNORE_PIXEL_ID_NOTICE,
-        true)
-    ) {
-      add_action('admin_notices', array($this, 'pixelIdNotSetNotice'));
-    }
-  }
-
-  public function pixelIdNotSetNotice() {
-    $url = admin_url('options-general.php?page='.FacebookPluginConfig::ADMIN_MENU_SLUG);
+    // Allow to the Plugin to send S2S Events
+   public function useS2SFormField() {
     $link = sprintf(
       wp_kses(
         __(
-          'The Facebook Pixel plugin requires a Pixel ID. Click <a href="%s">here</a> to configure the plugin.',
+          'An access token is required to use the server-side API.<br>
+          <a href="%s" target="_blank"> Generate Access Token</a>',
           FacebookPluginConfig::TEXT_DOMAIN),
+        array('a' => array('href' => array(), 'target' => array()))),
+      esc_url(FacebookPluginConfig::ADMIN_S2S_URL));
+    printf(
+      '
+<label for="%s">
+  <input
+    type="checkbox"
+    name="%s"
+    id="%s"
+    value="1"
+      ',
+      FacebookPluginConfig::USE_S2S_KEY,
+      FacebookPluginConfig::SETTINGS_KEY . '[' .
+        FacebookPluginConfig::USE_S2S_KEY . ']',
+      FacebookPluginConfig::USE_S2S_KEY);
+    checked(1, FacebookWordpressOptions::getUseS2S());
+    printf(
+      '
+  />
+  %s
+</label>
+<p class="description">%s</p>
+      ',
+      esc_html__(
+        'Also send events directly from your web server to Facebook through the
+        server-side API. This can help you capture more events.',
+        FacebookPluginConfig::TEXT_DOMAIN),
+      $link);
+  }
+
+
+  public function registerNotices() {
+    // Update class field
+    $pixel_id = FacebookWordpressOptions::getPixelId();
+    $use_s2s = FacebookWordpressOptions::getUseS2S();
+    $access_token = FacebookWordpressOptions::getAccessToken();
+    $current_screen_id = get_current_screen()->id;
+
+    if (current_user_can(FacebookPluginConfig::ADMIN_CAPABILITY) &&
+        in_array($current_screen_id, array('dashboard', 'plugins'), true))
+    {
+      if (!FacebookPluginUtils::isPositiveInteger($pixel_id)
+        && !get_user_meta(
+          get_current_user_id(),
+          FacebookPluginConfig::ADMIN_IGNORE_PIXEL_ID_NOTICE,
+          true))
+      {
+        add_action('admin_notices', array($this, 'pixelIdNotSetNotice'));
+      } else if ((!$use_s2s || empty($access_token))
+          && !get_user_meta(
+        get_current_user_id(),
+        FacebookPluginConfig::ADMIN_IGNORE_SSAPI_NOTICE,
+        true))
+      {
+        add_action('admin_notices',
+          array($this, 'serverSideApiNotEnabledNotice'));
+      }
+    }
+  }
+
+  public function setNotice($notice, $dismiss_config) {
+    $url = admin_url('options-general.php?page=' .
+        FacebookPluginConfig::ADMIN_MENU_SLUG);
+
+    $link = sprintf(
+      wp_kses(
+        $notice,
         array('a' => array('href' => array()))),
       esc_url($url));
     printf(
@@ -206,16 +295,41 @@ class FacebookWordpressSettingsPage {
 </div>
       ',
       $link,
-      esc_url(add_query_arg(FacebookPluginConfig::ADMIN_DISMISS_PIXEL_ID_NOTICE, '')),
+      esc_url(add_query_arg($dismiss_config, '')),
       esc_html__(
         'Dismiss this notice.',
         FacebookPluginConfig::TEXT_DOMAIN));
   }
 
+  public function pixelIdNotSetNotice() {
+    $this->setNotice(
+      __('The Facebook Pixel plugin requires a Pixel ID.
+          Click <a href="%s">here</a> to configure the plugin.',
+        FacebookPluginConfig::TEXT_DOMAIN),
+      FacebookPluginConfig::ADMIN_DISMISS_PIXEL_ID_NOTICE);
+  }
+
+  public function serverSideApiNotEnabledNotice() {
+    $this->setNotice(
+      __('The Facebook Pixel plugin now includes support for the Server-Side
+          API, which lets you send events directly from your page\'s website.
+          Click <a href="%s">here</a> to configure the plugin.',
+        FacebookPluginConfig::TEXT_DOMAIN),
+      FacebookPluginConfig::ADMIN_DISMISS_SSAPI_NOTICE);
+  }
+
   public function dismissNotices() {
     $user_id = get_current_user_id();
     if (isset($_GET[FacebookPluginConfig::ADMIN_DISMISS_PIXEL_ID_NOTICE])) {
-      update_user_meta($user_id, FacebookPluginConfig::ADMIN_IGNORE_PIXEL_ID_NOTICE, true);
+      update_user_meta($user_id,
+        FacebookPluginConfig::ADMIN_IGNORE_PIXEL_ID_NOTICE,
+        true);
+    }
+
+    if (isset($_GET[FacebookPluginConfig::ADMIN_DISMISS_SSAPI_NOTICE])) {
+      update_user_meta($user_id,
+        FacebookPluginConfig::ADMIN_IGNORE_SSAPI_NOTICE,
+        true);
     }
   }
 
@@ -230,7 +344,8 @@ class FacebookWordpressSettingsPage {
     $settings = array(
       'settings' => sprintf(
         '<a href="%s">%s</a>',
-        admin_url('options-general.php?page='.FacebookPluginConfig::ADMIN_MENU_SLUG),
+        admin_url('options-general.php?page=' .
+          FacebookPluginConfig::ADMIN_MENU_SLUG),
         'Settings')
     );
     return array_merge($settings, $links);

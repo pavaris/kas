@@ -1,10 +1,10 @@
 === WP Latest Posts ===
 Contributors: JoomUnited
 Tags: latest post, news widget, recent posts, posts, recent post widget, news posts, latest page, custom content, previous posts, page, featured posts, article display, news display, news slider, page display, post display, article display, frontpage news, news
-Requires at least: 4.0
-Tested up to: 5.3.0
-Stable tag: 4.6.4
-Requires PHP: 5.3
+Requires at least: 4.7
+Tested up to: 5.4.2
+Stable tag: 4.8.2
+Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,9 +55,9 @@ Get any WordPress content like posts, pages, tagged content or custom post type 
 
 
 ## Latest posts plugin Addon features (optional)
-      
-* 4 responsive premium themes
-* 2 Masonry type themes
+
+* 5 responsive premium themes
+* 3 Masonry type themes
 * Time line theme
 * Portfolio theme
 * Color picker for themes elements
@@ -150,6 +150,27 @@ Yes, the support has been added since the 3.5.2 version.
  
 
 == Changelog ==
+
+= 4.8.2 =
+ * Fix : Blank page with multiple shortcodes
+ * Fix : Add default option for widget
+
+= 4.8.1 =
+ * Fix : Conflict with Elementor tabs, Divi tabs
+
+= 4.8.0 =
+ * Add : Add the possibility to display the most popular posts
+
+= 4.7.1 =
+ * Fix : Translation sharing issue in some browsers
+
+= 4.7.0 =
+ * Add : Possibility to duplicate news block
+ * Add : Selection of material icon for the hover icon
+ * Add : Hexadecimal to rgba (add transparency) color selection
+ * Add : Improve setting style and texts in backend
+ * Add : Automatic testing for PHP versions, features...
+ * Add : Material vertical theme compatibility for Pro Addon
 
 = 4.6.4 =
  * Fix : Show/Hide icon on default theme mouse hover

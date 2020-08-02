@@ -61,7 +61,7 @@ if (isset($settings['theme'])) {
     if (strpos($settings['theme'], 'timeline')) {
         $classdisabledsmooth = ' disabled';
     }
-    if (strpos($settings['theme'], 'masonry') || strpos($settings['theme'], 'portfolio')) {
+    if (strpos($settings['theme'], 'masonry') || strpos($settings['theme'], 'material-vertical') || strpos($settings['theme'], 'portfolio')) {
         $classdisabled = ' disabled';
     }
     $theme_selected[$settings['theme']] = ' selected="selected"';
@@ -77,7 +77,7 @@ if (isset($settings['theme'])) {
             </li>
             <li class="tab">
                 <a href="#text-settings" class="link-tab">
-                    <?php esc_html_e('Text Settings', 'wp-latest-posts') ?>
+                    <?php esc_html_e('Theme setup', 'wp-latest-posts') ?>
                 </a>
             </li>
             <?php if (class_exists('WPLPAddonAdmin')) : ?>
@@ -116,11 +116,11 @@ if (isset($settings['theme'])) {
                     }
 
                     if (isset($all_themes[$settings['theme']]['theme_url'])) {
-                        $screenshot_file_url = $all_themes[$settings['theme']]['theme_url'] . '/screenshot.png';
-                        $screenshot_file_path = $all_themes[$settings['theme']]['theme_root'] . '/screenshot.png';
+                        $screenshot_file_url = $all_themes[$settings['theme']]['theme_url'] . '/screenshot.svg';
+                        $screenshot_file_path = $all_themes[$settings['theme']]['theme_root'] . '/screenshot.svg';
                     }
                     if (isset($screenshot_file_path) && file_exists($screenshot_file_path)) {
-                        echo '<img alt="preview" src="' . esc_url($screenshot_file_url) . '" style="width:100%;height:100%;" />';
+                        echo '<img alt="preview" src="' . esc_url($screenshot_file_url) . '" />';
                     }
                     ?>
                 </div>
@@ -523,10 +523,10 @@ if (isset($settings['theme'])) {
                     </div>
                     <div class="overlay-tranparancy float">
                         <label class="settings-wrapper-title"><?php esc_html_e('Overlay Transparency', 'wp-latest-posts') ?></label>
-                        <span id="slider_overlay_transparent" class="overlay-slider" style="margin-left: 12px"></span>
+                        <span data-option="overlayTransparent" class="overlay-slider overlayTransparent" style="margin-left: 12px"></span>
                         <input id="overlayTransparent" type="text" name="wplp_overlay_transparent" style="width: 25%;"
                                value="<?php echo esc_html(htmlspecialchars(isset($settings['overlay_transparent']) ? $settings['overlay_transparent'] : '0.7')) ?>"
-                               class="wplp-short-text wplp-font-style center-text" />
+                               class="wplp-short-text wplp-font-style center-text wplp-slider-input" />
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -615,7 +615,7 @@ if (isset($settings['theme'])) {
                 echo '</div>';
             }
             ?>
-            <hr>
+
             <div class="number-element settings-wrapper-field">
                 <div class="number-columns float col-li-4">
                     <label class="settings-wrapper-title"><?php esc_html_e('Number of columns', 'wp-latest-posts') ?></label>

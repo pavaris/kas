@@ -15,6 +15,7 @@ $class_enabled_default = '';
 $disabled_image_postion = '';
 if (strpos($settings['theme'], 'masonry-category') !== false
     || strpos($settings['theme'], 'masonry') !== false
+    || strpos($settings['theme'], 'material-vertical') !== false
     || strpos($settings['theme'], 'smooth-effect') !== false
     || strpos($settings['theme'], 'portfolio') !== false
     || strpos($settings['theme'], 'timeline') !== false
@@ -86,7 +87,7 @@ if (isset($settings['full_height'])) {
             </div>
             <div class="image-position float half-width">
                 <label class="settings-wrapper-title"><?php esc_html_e('Image position', 'wp-latest-posts') ?></label>
-                <input id="image_position_width" size="20" type="text" style="width:15%;text-align: center"
+                <input id="image_position_width" size="20" type="text" style="width:25%;text-align: center"
                        name="wplp_image_position_width" maxlength="4"
                        value="<?php echo esc_html(htmlspecialchars(isset($settings['image_position_width']) ? $settings['image_position_width'] : '30')) ?>"
                        class="wplp-short-text wplp-font-style <?php esc_attr($class_enabled_default) ?>" />

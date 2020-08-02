@@ -137,6 +137,16 @@ class WPLPAdmin
     );
 
     /**
+     * Default settings value of WPLP
+     *
+     * @var array
+     */
+    private $default_settings = array(
+        'data_cache' => '0',
+        'cache_interval_value' => '1'
+    );
+
+    /**
      * Switch button checkbox
      *
      * @var array
@@ -153,6 +163,13 @@ class WPLPAdmin
      * @var integer
      */
     public $widget_count = 0;
+
+    /**
+     * Settings of WPLP
+     *
+     * @var array
+     */
+    private $wplp_settings = array();
 
     /**
      * Constructor
@@ -180,6 +197,8 @@ class WPLPAdmin
             $this->plugin_dir . '/languages'
         );
 
+        $this->wplp_settings = get_option('wplp_settings', $this->default_settings);
+
         /**
          * Register our widget (implemented in separate wplp-widget.inc.php class file)
          */
@@ -206,7 +225,7 @@ class WPLPAdmin
             add_action('admin_menu', array($this, 'setupWPLPMenu'));
             add_action('load-toplevel_page_wplp-widget', array($this, 'saveWPLPData'));
 
-            add_action('admin_enqueue_scripts', array($this, 'loadAdminScripts'));
+            add_action('admin_enqueue_scripts', array($this, 'loadAdminScripts'), 100);
             add_action('enqueue_block_editor_assets', array($this, 'addEditorAssets'));
             if (isset($_GET['page']) && $_GET['page'] === 'wplp-widget') { // phpcs:disable WordPress.Security.NonceVerification.Recommended -- view only
                 add_action('wp_print_scripts', array($this, 'dequeueAdminScripts'));
@@ -238,6 +257,7 @@ class WPLPAdmin
                 array('WPLPLanguageContent', 'changeSourceTypeByLanguage')
             );
             add_action('wp_ajax_wplp_delete_blocks', array($this, 'deleteBlocks'));
+            add_action('wp_ajax_wplp_duplicate_block', array($this, 'duplicateBlock'));
             add_action('wp_ajax_wplp_set_close_notification', array($this, 'setCookieNotification'));
             add_action('wp_ajax_wplp_get_count_posts', array($this, 'getCountPosts'));
 
@@ -258,7 +278,13 @@ class WPLPAdmin
                     }
                 }
             });
+            add_action('save_post', array($this, 'addPostMetaKey'), 10, 3);
         } else {
+            if ($this->wplp_settings['data_cache'] === '0') {
+                add_action('wp_head', array($this, 'setPostViews'));
+            } else {
+                add_action('wp_head', array($this, 'savePostTransient'));
+            }
             /**
              * Load our theme stylesheet on the front if necessary
              */
@@ -274,6 +300,14 @@ class WPLPAdmin
              */
             add_action('the_posts', array($this, 'prefixEnqueue'), 100);
         }
+        add_filter('cron_schedules', array($this, 'addCronSchedules'));
+        // Schedule update post views
+        $time = intval($this->wplp_settings['cache_interval_value']) ? (int) $this->wplp_settings['cache_interval_value'] : 2;
+        if (! wp_next_scheduled('wplp_update_post_views')) {
+            wp_schedule_event(time(), $time.'min', 'wplp_update_post_views');
+        }
+
+        add_action('wplp_update_post_views', array($this, 'updatePostViews'));
     }
 
     /**
@@ -361,7 +395,16 @@ class WPLPAdmin
     public function loadInlineStyle($settings, $idWidget)
     {
         $colorTheme          = (isset($settings['defaultColor']) ? $settings['defaultColor'] : '');
-        $color               = $this->hex2rgba((isset($settings['colorpicker']) ? $settings['colorpicker'] : ''), 0.7);
+        if ($settings['theme'] === 'material-vertical') {
+            $overlay_background          = (isset($settings['overlay_background']) ? $settings['overlay_background'] : '0.2');
+            $color               = $this->hex2rgba((isset($settings['colorpicker']) ? $settings['colorpicker'] : ''), $overlay_background);
+        } else {
+            $overlay_background          = (isset($settings['overlay_background']) ? $settings['overlay_background'] : '0.7');
+            $color               = $this->hex2rgba((isset($settings['colorpicker']) ? $settings['colorpicker'] : ''), $overlay_background);
+        }
+
+        $icon_color = (isset($settings['addon_icon_color']) ? $settings['addon_icon_color'] : '#ffffff');
+        $bg_icon_color = (isset($settings['addon_bg_icon_color']) ? $settings['addon_bg_icon_color'] : 'transparent');
 
         if (isset($settings['colorpicker']) && $settings['colorpicker'] !== 'transparent') {
             $colorfull           = $this->hex2rgba((isset($settings['colorpicker']) ? $settings['colorpicker'] : ''), 1);
@@ -378,29 +421,104 @@ class WPLPAdmin
             $width1         = $widthtotal / $nbcol;
             $width2         = $widthtotal;
             $margin_element = 10;
-            $gui            = ($margin_element * ($nbcol + 1));
+            if ($theme_classDashicon === ' material-vertical') {
+                $margin_element = 20;
+            }
+            $gui            = ($margin_element * ($nbcol - 1));
 
             if ($theme_classDashicon === ' masonry-category') {
                 $css .= '#wplp_widget_' . $idWidget .
-                    ' .wplp_listposts li .img_cropper:before{background: center center no-repeat ' . $colorfull . '} ';
+                    ' .wplp_listposts li .img_cropper:before{color: '. $icon_color .';background: center center no-repeat ' . $colorfull . '} ';
                 $css .= '#wplp_widget_' . $idWidget .
                     ' .masonry-category .wpcu-front-box.bottom .category:before{background:' . $color . '}';
-                $css .= '.wplp_widget_masonry-category .wplp_listposts{left:' . $margin_element . 'px}
-                #wplp_widget_' . $idWidget .
+                $css .= '#wplp_widget_' . $idWidget .
                     ' .read-more{border-top:1px solid ' . $color . '}';
                 $css .= '#wplp_widget_' . $idWidget .
                     ' .wplp_listposts li{ width: calc((' . $widthtotal . '% - ' . $gui . 'px)/' . $nbcol . ');}';
                 $css .= '@media screen and (max-width: 640px) {#wplp_widget_' . $idWidget .
                     ' .wplp_listposts li {width: calc(' . $width2 . '% - ' . (2 * $margin_element) . 'px) !important; }}';
             } elseif ($theme_classDashicon === ' masonry') {
-                $img_dir = plugins_url('wp-latest-posts-addon') . '/themes/masonry/img/overimage.png';
-                $css     .= '#wplp_widget_' . $idWidget .
-                    " .wplp_listposts li .img_cropper:before{background: url('" .
-                    $img_dir . "') center center no-repeat " . $color . ';}';
-                $css     .= '#wplp_widget_' . $idWidget .
-                    ' .read-more{border-top:1px solid ' . $color . ';}';
-                $css     .= '.wplp_widget_masonry .wplp_listposts{left:' . $margin_element . 'px}
-                #wplp_widget_' . $idWidget . ' .wplp_listposts li{
+                wp_enqueue_style(
+                    'wplp-settings-google-icon',
+                    'https://fonts.googleapis.com/icon?family=Material+Icons'
+                );
+
+                if (isset($settings['force_icon']) && (int) $settings['force_icon'] === 1) {
+                    if (isset($settings['material_icon_selector']) && $settings['material_icon_selector'] !== '') {
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:after {';
+                        $css .= "content:'\\". $settings['material_icon_selector'] ."';";
+                        $css .= '}';
+
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                        $css .= 'background-color: '. $color .';';
+                        $css .= '}';
+
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:after {';
+                        $css .= 'background-color: '. $bg_icon_color .';';
+                        $css .= 'color: '. $icon_color .';';
+                        $css .= '}';
+                    } elseif (isset($settings['icon_selector']) && $settings['icon_selector'] !== '') {
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                        $css .= 'background: url(' .
+                            $settings['icon_selector'] . ') center no-repeat '. $color .';';
+                        $css .= '}';
+                    } else {
+                        $img_dir = plugins_url('wp-latest-posts-addon') . '/themes/masonry/img/overimage.png';
+                        $css     .= '#wplp_widget_' . $idWidget .
+                            " .wplp_listposts li .img_cropper:before{background: url('" .
+                            $img_dir . "') center center no-repeat " . $color . ';}';
+                    }
+                } else {
+                    $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                    $css .= 'background: '. $color .';';
+                    $css .= '}';
+                }
+
+                $css     .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li{
+                width: calc((' . $widthtotal . '% - ' . $gui . 'px)/' . $nbcol . ');}';
+                $css     .= '@media screen and (max-width: 640px) {#wplp_widget_' . $idWidget .
+                    ' .wplp_listposts li {width: calc(' . $width2 . '% - ' . (2 * $margin_element) . 'px) !important;}}';
+            } elseif ($theme_classDashicon === ' material-vertical') {
+                if (isset($settings['force_icon']) && (int) $settings['force_icon'] === 1) {
+                    if (isset($settings['material_icon_selector']) && $settings['material_icon_selector'] !== '') {
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                        $css .= 'background-color: '. $color .';';
+                        $css .= '}';
+
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:hover:before {';
+                        $css .= 'content:"\\'. $settings['material_icon_selector'] .'";';
+                        $css .= 'background-color: '. $bg_icon_color .';';
+                        $css .= 'color: '. $icon_color .';';
+                        $css .= '}';
+                    } elseif (isset($settings['icon_selector']) && $settings['icon_selector'] !== '') {
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                        $css .= 'background: '. $color .';';
+                        $css .= '}';
+
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:hover:before {';
+                        $css .= "background: url('" .
+                            $settings['icon_selector'] . "')  center no-repeat;";
+                        $css .= '}';
+                    } else {
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                        $css .= 'background-color: '. $color .';';
+                        $css .= '}';
+
+                        $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:hover:before {';
+                        $css .= 'background-color: transparent;';
+                        $css .= '}';
+                    }
+                } else {
+                    $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
+                    $css .= 'background-color: '. $color .';';
+                    $css .= '}';
+
+                    $css .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:hover:before {';
+                    $css .= 'background-color: transparent;';
+                    $css .= '}';
+                }
+
+                $css     .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li{
                 width: calc((' . $widthtotal . '% - ' . $gui . 'px)/' . $nbcol . ');}';
                 $css     .= '@media screen and (max-width: 640px) {#wplp_widget_' . $idWidget .
                     ' .wplp_listposts li {width: calc(' . $width2 . '% - ' . (2 * $margin_element) . 'px) !important;}}';
@@ -454,22 +572,6 @@ class WPLPAdmin
                     }
                 }
             }
-            if ($theme_classDashicon === ' masonry') {
-                if (isset($settings['force_icon']) && (int) $settings['force_icon'] === 1) {
-                    if (isset($settings['icon_selector'])) {
-                        if ($settings['icon_selector'] === '') {
-                            $str .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
-                            $str .= 'background-image: none ;';
-                            $str .= '}';
-                        } else {
-                            $str .= '#wplp_widget_' . $idWidget . ' .wplp_listposts li .img_cropper:before {';
-                            $str .= "background: url('" .
-                                $settings['icon_selector'] . "')  center no-repeat rgba(255,0,0,0.7);";
-                            $str .= '}';
-                        }
-                    }
-                }
-            }
 
             return array('css' => $css, 'str' => $str);
         }
@@ -490,6 +592,10 @@ class WPLPAdmin
             }
         }
 
+        if (isset($_POST['wplp_save_tool_settings'])) {
+            $this->saveToolOptions();
+        }
+
         if (isset($_POST['wplp_addnew_settings'])) {
             $this->saveCustomPost('', 'addnew');
         }
@@ -505,6 +611,42 @@ class WPLPAdmin
             }
         }
         // phpcs:enable
+    }
+
+    /**
+     * Save our custom setting fields Tools into the options table
+     *
+     * @return boolean
+     */
+    public function saveToolOptions()
+    {
+        if (!wp_verify_nonce($_POST['_wplp_nonce'], 'wplp_tool_settings')) {
+            return false;
+        }
+        $wplp_settings = get_option('wplp_settings');
+        $options = array();
+        foreach ($_POST as $field_name => $field_value) {
+            if (preg_match('/^wplp_/', $field_name)) {
+                if (preg_match('/_none$/', $field_name) || preg_match('/_save_tool_settings$/', $field_name)) {
+                    continue;
+                }
+                $field_name = preg_replace('/^wplp_/', '', $field_name);
+                if ($field_name === 'cache_interval_value') {
+                    $options[$field_name] = intVal($field_value) > 0 ? intVal($field_value) : 1;
+                } else {
+                    $options[$field_name] = sanitize_text_field($field_value);
+                }
+            }
+        }
+        if ($wplp_settings === false) {
+            add_option('wplp_settings', $options);
+        } else {
+            update_option('wplp_settings', $options);
+        }
+
+        wp_safe_redirect(admin_url('admin.php?page=wplp-widget&save_tool=success'));
+
+        return true;
     }
 
     /**
@@ -570,12 +712,18 @@ class WPLPAdmin
                     if (isset($_POST[$field_name . '_previous'])) {
                         $my_settings[$new_field_name] = $_POST[$field_name . '_previous'];
                     }
+
                     if (isset($_POST[$field_name . '_id_previous'])) {
                         $my_settings[$new_field_name . '_id'] = $_POST[$field_name . '_id_previous'];
                     }
                 }
             }
         }
+
+        if (empty($_POST['wplp_hover_img_check'])) {
+            $my_settings['icon_selector'] = '';
+        }
+
         /**
          * Normal fields
          */
@@ -744,12 +892,94 @@ class WPLPAdmin
                 'post_date'     => $post_date,
                 'post_date_gmt' => gmdate('Y-m-d H:i:s', strtotime($post_date))
             ));
+
             update_post_meta($post_id, '_wplp_settings', $my_settings);
         }
 
         wp_safe_redirect(admin_url('admin.php?page=wplp-widget&view=block&id=' . $post_id . '&save_block=success'));
 
         return true;
+    }
+
+    /**
+     * Duplicate block
+     *
+     * @return void
+     */
+    public function duplicateBlock()
+    {
+        if (empty($_POST['ajaxNonce'])
+            || !wp_verify_nonce($_POST['ajaxNonce'], 'wplp_blocks_nonce')) {
+            die();
+        }
+
+        if (isset($_POST['id'])) {
+            $original_id  = $_POST['id'];
+            // Duplicate the post
+            $duplicate_id = $this->duplicatePost($original_id);
+            if ($duplicate_id) {
+                wp_send_json(array('status' => true));
+            }
+        }
+
+        wp_send_json(array('status' => false));
+    }
+
+    /**
+     * Duplicate block
+     *
+     * @param integer $original_id Block ID
+     *
+     * @return integer|WP_Error
+     */
+    public function duplicatePost($original_id)
+    {
+        // Get access to the database
+        global $wpdb;
+        // Get the post as an array
+        $duplicate = get_post($original_id, 'ARRAY_A');
+        // Modify some of the elements
+        $duplicate['post_title'] = $duplicate['post_title'].' Copy';
+        $duplicate['post_name'] = sanitize_title($duplicate['post_name'].'-copy');
+
+        // Set the post date
+        $timestamp = current_time('timestamp', 0);
+        $timestamp_gmt = current_time('timestamp', 1);
+        $duplicate['post_date'] = date('Y-m-d H:i:s', $timestamp);
+        $duplicate['post_date_gmt'] = date('Y-m-d H:i:s', $timestamp_gmt);
+        $duplicate['post_modified'] = date('Y-m-d H:i:s', current_time('timestamp', 0));
+        $duplicate['post_modified_gmt'] = date('Y-m-d H:i:s', current_time('timestamp', 1));
+
+        // Remove some of the keys
+        unset($duplicate['ID']);
+        unset($duplicate['guid']);
+        unset($duplicate['comment_count']);
+
+        // Insert the post into the database
+        $duplicate_id = wp_insert_post($duplicate);
+
+        // Duplicate all the taxonomies/terms
+        $taxonomies = get_object_taxonomies($duplicate['post_type']);
+        foreach ($taxonomies as $taxonomy) {
+            $terms = wp_get_post_terms($original_id, $taxonomy, array('fields' => 'names'));
+            wp_set_object_terms($duplicate_id, $terms, $taxonomy);
+        }
+
+        // Duplicate all the custom fields
+        $custom_fields = get_post_custom($original_id);
+        foreach ($custom_fields as $key => $value) {
+            if (is_array($value) && count($value) > 0) {
+                foreach ($value as $i => $v) {
+                    $result = $wpdb->insert($wpdb->prefix . 'postmeta', array(
+                        'post_id' => $duplicate_id,
+                        'meta_key' => $key,
+                        'meta_value' => $v
+                    ));
+                }
+            }
+        }
+
+        return $duplicate_id;
     }
 
     /**
@@ -1089,7 +1319,7 @@ class WPLPAdmin
             $output .= '<label for="cat_all" class="post_cb">All</li>';
             foreach ($cats as $k => $cat) {
                 $output .= '<li><input id="ccb_' . $k . '" type="checkbox" name="wplp_source_category[]" class="ju-checkbox wplp_change_content"';
-                $output .= 'value="' . $k . '_' . $cat->term_id . '" class="post_cb" />';
+                $output .= 'value="' . $k . '_' . $cat->term_id . '_blog'. $cat->blog .'" class="post_cb" />';
                 $output .= '<label for="ccb_' . $k . '" class="post_cb">' . $cat->name . '</label></li>';
             }
             $output .= '</ul>';
@@ -1245,6 +1475,7 @@ class WPLPAdmin
         wp_enqueue_style('wplpStyleDefault', plugins_url('themes/default/style.css', dirname(__FILE__)));
         if (defined('WPLP_ADDON_VERSION')) {
             wp_enqueue_style('wplpStyleMasonry', WPLPADDON_PLUGIN_DIR . 'themes/masonry/style.css');
+            wp_enqueue_style('wplpStyleMaterialVertical', WPLPADDON_PLUGIN_DIR . 'themes/material-vertical/style.css');
             wp_enqueue_style('wplpStyleMasonryCategory', WPLPADDON_PLUGIN_DIR . 'themes/masonry-category/style.css');
             wp_enqueue_style('wplpStyleSmooth', WPLPADDON_PLUGIN_DIR . 'themes/smooth-effect/style.css');
             wp_enqueue_style('wplpStyleTimeline', WPLPADDON_PLUGIN_DIR . 'themes/timeline/style.css');
@@ -1341,16 +1572,15 @@ class WPLPAdmin
             );
 
             // CSS
-            //
-            //
+            wp_enqueue_style(
+                'wplp-material-icon',
+                'https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined'
+            );
             wp_register_style('wplp_framework_css', plugins_url('wordpress-css-framework/css/style.css', dirname(__FILE__)));
             wp_enqueue_style('wplp_framework_css');
 
             wp_register_style('wplp_framework_waves', plugins_url('wordpress-css-framework/css/waves.css', dirname(__FILE__)));
             wp_enqueue_style('wplp_framework_waves');
-
-            wp_register_style('wplp_material_icons', plugins_url('wordpress-css-framework/fonts/material-icons.min.css', dirname(__FILE__)));
-            wp_enqueue_style('wplp_material_icons');
         }
 
         if ($current_page->base === 'latest-posts_page_wplp-configuration') {
@@ -1370,7 +1600,8 @@ class WPLPAdmin
             wp_enqueue_script('jquery-ui');
             wp_enqueue_script('jquery-ui-core');
             wp_enqueue_script('jquery-ui-slider');
-
+            // fix conflict with Capella theme
+            wp_dequeue_script('jslider');
             wp_enqueue_script(
                 'wplp-dropify',
                 plugins_url('js/dropify/js/dropify.min.js', dirname(__FILE__)),
@@ -1491,7 +1722,9 @@ class WPLPAdmin
             wp_localize_script('wplp_widget_admin_js', 'wplp_trans', array(
                 'l18n' => array(
                     'copy_error' => esc_html__('Copy failed!', 'wp-latest-posts'),
-                    'copy_success' => esc_html__('Shortcode copied!', 'wp-latest-posts')
+                    'copy_success' => esc_html__('Shortcode copied!', 'wp-latest-posts'),
+                    'copying_block' => esc_html__('Block copying...', 'wp-latest-posts'),
+                    'copy_block_success' => esc_html__('Block copied!', 'wp-latest-posts')
                 )
             ));
 
@@ -1965,11 +2198,12 @@ class WPLPAdmin
                 $widget = get_post($widgetIDitem);
                 if (isset($widget) && !empty($widget)) {
                     $widget->settings = get_post_meta($widget->ID, '_wplp_settings', true);
-
-                    $front = new WPLPFront($widget);
-                    add_action('wp_print_styles', array($front, 'loadThemeStyle'));
-                    add_action('wp_head', array($front, 'customCSS'));
-                    add_action('wp_print_scripts', array($front, 'loadThemeScript'));
+                    if (isset($widget->settings) && is_array($widget->settings)) {
+                        $front = new WPLPFront($widget);
+                        add_action('wp_print_styles', array($front, 'loadThemeStyle'));
+                        add_action('wp_head', array($front, 'customCSS'));
+                        add_action('wp_print_scripts', array($front, 'loadThemeScript'));
+                    }
                 }
             }
         }
@@ -2096,6 +2330,153 @@ class WPLPAdmin
             wp_send_json(true);
         }
         wp_send_json(false);
+    }
+
+    /**
+     * Set post views
+     *
+     * @return void
+     */
+    public function setPostViews()
+    {
+        $args     = array(
+            'public'   => true,
+            '_builtin' => false
+        );
+        $output   = 'names'; // names or objects, note names is the default
+        $operator = 'and'; // 'and' or 'or'
+        $custom_post_types = get_post_types($args, $output, $operator);
+        if (!is_single()) {
+            return;
+        }
+        global $post;
+        $postID = $post->ID;
+
+        $count = get_post_meta($postID, WPLP_POST_VIEWS_COUNT_META_KEY, true);
+        if ($count === '') {
+            $count = 0;
+            delete_post_meta($postID, WPLP_POST_VIEWS_COUNT_META_KEY);
+            add_post_meta($postID, WPLP_POST_VIEWS_COUNT_META_KEY, $count);
+        } else {
+            $count++;
+            update_post_meta($postID, WPLP_POST_VIEWS_COUNT_META_KEY, $count);
+        }
+    }
+
+    /**
+     * Add post meta key to count views when save_post
+     *
+     * @param integer $post_ID Post ID
+     * @param object  $post    Post Data
+     * @param boolean $update  Update
+     *
+     * @return void
+     */
+    public function addPostMetaKey($post_ID, $post, $update)
+    {
+        $args     = array(
+            'public'   => true,
+            '_builtin' => false
+        );
+        $output   = 'names'; // names or objects, note names is the default
+        $operator = 'and'; // 'and' or 'or'
+        $custom_post_types = get_post_types($args, $output, $operator);
+        /*var_dump('post' !== $post->post_type,in_array($post->post_type, $custom_post_types) === false);exit;*/
+        if ('post' !== $post->post_type && in_array($post->post_type, $custom_post_types) === false) {
+            return;
+        }
+        $count = get_post_meta($post_ID, WPLP_POST_VIEWS_COUNT_META_KEY, true);
+        if ($count === '') {
+            $count = 0;
+            delete_post_meta($post_ID, WPLP_POST_VIEWS_COUNT_META_KEY);
+            add_post_meta($post_ID, WPLP_POST_VIEWS_COUNT_META_KEY, $count);
+        }
+    }
+
+    /**
+     * Add transient from each post
+     *
+     * @return void
+     */
+    public function savePostTransient()
+    {
+        global $post;
+        if (!isset($post)) {
+            return;
+        }
+        $args     = array(
+            'public'   => true,
+            '_builtin' => false
+        );
+        $output   = 'names'; // names or objects, note names is the default
+        $operator = 'and'; // 'and' or 'or'
+        $custom_post_types = get_post_types($args, $output, $operator);
+        if (is_single() === false) {
+            return;
+        }
+        if ('post' !== $post->post_type && !in_array($post->post_type, $custom_post_types)) {
+            return;
+        }
+        $key = WPLP_POST_VIEW_TRANSIENT_KEY;
+        $transientData = WPLPCache::get($key);
+
+        if (false === $transientData) {
+            $transientData = array(
+                    $post->ID => 1
+            );
+        } else {
+            if (!isset($transientData[$post->ID])) {
+                $transientData[$post->ID] = 1;
+            } else {
+                $transientData[$post->ID] = $transientData[$post->ID]+1;
+            }
+        }
+        $time = intval($this->wplp_settings['cache_interval_value']) ? (int) $this->wplp_settings['cache_interval_value'] : 2;
+        $timeValue = $time + 2;
+        $timeUnit = 'minute';
+        WPLPCache::set($key, $transientData, $timeValue, $timeUnit);
+    }
+
+    /**
+     * Add cron
+     *
+     * @param string $schedules Schedules name
+     *
+     * @return mixed
+     */
+    public function addCronSchedules($schedules)
+    {
+        $time = intval($this->wplp_settings['cache_interval_value']) ? (int) $this->wplp_settings['cache_interval_value'] : 2;
+        if (!isset($schedules[$time . 'min'])) {
+            $schedules[$time . 'min'] = array(
+                'interval' => $time*60,
+                'display' => sprintf(__('Once every %d minutes', 'wp-latest-posts'), $time)
+            );
+        }
+        return $schedules;
+    }
+
+    /**
+     * Update post views using schedule
+     *
+     * @return void
+     */
+    public function updatePostViews()
+    {
+        $key = WPLP_POST_VIEW_TRANSIENT_KEY;
+        $data = WPLPCache::get($key);
+        if ($data !== false) {
+            foreach ($data as $dataKey => $dataVal) {
+                $count = get_post_meta($dataKey, WPLP_POST_VIEWS_COUNT_META_KEY, true);
+                if ($count === '') {
+                    $count = $dataVal;
+                } else {
+                    $count += $dataVal;
+                }
+                update_post_meta($dataKey, WPLP_POST_VIEWS_COUNT_META_KEY, $count);
+            }
+            delete_transient($key);
+        }
     }
 }
 

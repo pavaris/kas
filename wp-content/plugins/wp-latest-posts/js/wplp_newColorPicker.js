@@ -8,11 +8,11 @@
             // a callback to fire whenever the color changes to a valid color
             change: function(event, ui){
                 var color = ui.color.toString();
-                $('.colorPicker-text').val(color).change();
+                $(event.target).val(color).change();
             },
             // a callback to fire when the input is emptied or an invalid color
-            clear: function() {
-                $('.colorPicker-text').val('transparent').change();
+            clear: function(event) {
+                $(event.target).val('transparent').change();
             },
             // hide the color picker controls on load
             hide: true,
@@ -31,7 +31,6 @@
 
         $('.wplp-pick-color button[type=button]').click(function(event){
             var id = $(this).closest('.wplp-pick-color').data('id');
-
             $('#'+id+' .wp-color-result span.wp-color-result-text').hide();
             event.stopPropagation();
         });

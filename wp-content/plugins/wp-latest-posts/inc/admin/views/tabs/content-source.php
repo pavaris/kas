@@ -243,7 +243,7 @@ $content_type = array(
             <div class="content-search-field">
                 <input type="text" class="content-search-input search-input"
                        placeholder="<?php esc_html_e('Search content', 'wp-latest-posts') ?>">
-                <i class="mi mi-search"></i>
+                <i class="material-icons">search</i>
             </div>
             <div class="list-selector-field settings-wrapper-field postcat">
                 <ul class="craft">
@@ -268,6 +268,7 @@ $content_type = array(
                                     );
                                 }
                                 foreach ($allcats as $allcat) {
+                                    $allcat->blog = (int) $blog->blog_id;
                                     $cats[] = $allcat;
                                 }
                                 restore_current_blog();
@@ -278,14 +279,18 @@ $content_type = array(
                             if (isset($settings['content_language'])) {
                                 $cats = apply_filters('wplp_get_category_by_language', $cats, $settings['content_language']);
                             }
+
+                            foreach ($cats as $cat_obj) {
+                                $cat_obj->blog = (int) $settings['mutilsite_cat'];
+                            }
                             restore_current_blog();
                         }
 
                         foreach ($cats as $k => $cat_source) {
                             echo '<li><input id="ccb_' . esc_html($k) . '" type="checkbox" name="wplp_source_category[]" 
-                            value="' . esc_html($k . '_' . $cat_source->term_id) . '" ' .
-                                 (isset($source_cat_checked[$k . '_' . $cat_source->term_id]) ?
-                                     esc_html($source_cat_checked[$k . '_' . $cat_source->term_id]) : '') .
+                            value="' . esc_html($k . '_' . $cat_source->term_id . '_blog' . $cat_source->blog) . '" ' .
+                                 (isset($source_cat_checked[$k . '_' . $cat_source->term_id . '_blog' . $cat_source->blog]) ?
+                                     esc_html($source_cat_checked[$k . '_' . $cat_source->term_id . '_blog' . $cat_source->blog]) : '') .
                                  ' class="post_cb ju-checkbox wplp_change_content" />';
                             echo '<label for="ccb_' . esc_html($k) . '" class="radio-label post_cb">' . esc_html($cat_source->name) . '</label></li>';
                         }
@@ -329,11 +334,18 @@ $content_type = array(
             <div class="order-by-field settings-wrapper-field">
                 <label class="settings-wrapper-title"><?php esc_html_e('Order by', 'wp-latest-posts') ?></label>
                 <ul class="un-craft">
-                    <li><input type="radio" name="wplp_cat_post_source_order" id="cat_post_source_order1" value="date"
+                    <li>
+                        <input type="radio" name="wplp_cat_post_source_order" id="cat_post_source_order1" value="date"
                                class="ju-radiobox"
                             <?php echo(isset($source_order_selected['date']) ? esc_html($source_order_selected['date']) : '') ?> />
                         <label for="cat_post_source_order1"
-                               class="radio-label"><?php esc_html_e('By date', 'wp-latest-posts') ?></label></li>
+                               class="radio-label"><?php echo class_exists('WPLPAddonAdmin') ? esc_html__('Creation date', 'wp-latest-posts') : esc_html__('By date', 'wp-latest-posts') ?></label>
+                    </li>
+                    <?php
+                    if (class_exists('WPLPAddonAdmin')) {
+                        do_action('wplp_addon_contentsource_display_post_order_by', $settings);
+                    }
+                    ?>
                     <li><input type="radio" name="wplp_cat_post_source_order" id="cat_post_source_order2" value="title"
                                class="ju-radiobox"
                             <?php echo(isset($source_order_selected['title']) ? esc_html($source_order_selected['title']) : '') ?> />
@@ -344,6 +356,11 @@ $content_type = array(
                             <?php echo(isset($source_order_selected['random']) ? esc_html($source_order_selected['random']) : '') ?> />
                         <label for="cat_post_source_order3"
                                class="radio-label"><?php esc_html_e('By random', 'wp-latest-posts') ?></label></li>
+                    <li><input type="radio" name="wplp_cat_post_source_order" id="cat_post_source_order4" value="view"
+                               class="ju-radiobox"
+                            <?php echo(isset($source_order_selected['view']) ? esc_html($source_order_selected['view']) : '') ?> />
+                        <label for="cat_post_source_order4"
+                               class="radio-label"><?php esc_html_e('Most popular', 'wp-latest-posts') ?></label></li>
                 </ul>
                 <div class="clearfix"></div>
             </div>
@@ -409,7 +426,7 @@ $content_type = array(
             <div class="content-search-field">
                 <input type="text" class="content-search-input search-input"
                        placeholder="<?php esc_html_e('Search content', 'wp-latest-posts') ?>">
-                <i class="mi mi-search"></i>
+                <i class="material-icons">search</i>
             </div>
             <div class="list-selector-field settings-wrapper-field catlistcat">
                 <ul class="craft">
@@ -566,7 +583,7 @@ $content_type = array(
                 <div class="content-search-field">
                     <input type="text" class="content-search-input search-input"
                            placeholder="<?php esc_html_e('Search content', 'wp-latest-posts') ?>">
-                    <i class="mi mi-search"></i>
+                    <i class="material-icons">search</i>
                 </div>
             <?php endif; ?>
             <div class="list-selector-field settings-wrapper-field pagecat">
@@ -618,16 +635,21 @@ $content_type = array(
                             <?php echo(isset($source_page_order_selected['title']) ? esc_html($source_page_order_selected['title']) : '') ?> />
                         <label for="pg_source_order2"
                                class="radio-label"><?php esc_html_e('By title', 'wp-latest-posts') ?></label></li>
-                    <li><input type="radio" name="wplp_pg_source_order" id="pg_source_order3" value="date"
-                               class="ju-radiobox"
-                            <?php echo(isset($source_page_order_selected['date']) ? esc_html($source_page_order_selected['date']) : '') ?> />
-                        <label for="pg_source_order3"
-                               class="radio-label"><?php esc_html_e('By date', 'wp-latest-posts') ?></label></li>
                     <li><input type="radio" name="wplp_pg_source_order" id="pg_source_order4" value="random"
                                class="ju-radiobox"
                             <?php echo(isset($source_page_order_selected['random']) ? esc_html($source_page_order_selected['random']) : '') ?> />
                         <label for="pg_source_order4"
                                class="radio-label"><?php esc_html_e('By random', 'wp-latest-posts') ?></label></li>
+                    <li><input type="radio" name="wplp_pg_source_order" id="pg_source_order3" value="date"
+                               class="ju-radiobox"
+                            <?php echo(isset($source_page_order_selected['date']) ? esc_html($source_page_order_selected['date']) : '') ?> />
+                        <label for="pg_source_order3"
+                               class="radio-label"><?php echo class_exists('WPLPAddonAdmin') ? esc_html__('Creation date', 'wp-latest-posts') : esc_html__('By date', 'wp-latest-posts') ?></label></li>
+                    <?php
+                    if (class_exists('WPLPAddonAdmin')) {
+                        do_action('wplp_addon_contentsource_display_page_order_by', $settings);
+                    }
+                    ?>
                 </ul>
                 <div class="clearfix"></div>
             </div>

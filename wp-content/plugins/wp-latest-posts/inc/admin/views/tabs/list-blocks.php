@@ -16,10 +16,10 @@ wp_nonce_field('wplp_blocks_nonce', 'wplp_blocks_nonce');
 <div class="widget-header" style="padding-top: 40px">
     <h1 class="header-title"><?php esc_html_e('All News Blocks', 'wp-latest-posts') ?></h1>
     <div class="inline-button-wrapper">
-        <a class="ju-rect-button waves-effect waves-light action-button"
+        <a class="ju-rect-button waves-effect waves-light action-button wplp-add"
            href="<?php echo esc_attr(admin_url('admin.php?page=wplp-widget&view=block&id=addnew')) ?>"
         >
-            <i class="mi mi-add"></i>
+            <i class="material-icons">add</i>
             <span><?php esc_html_e('New block', 'wp-latest-posts') ?></span>
         </a>
     </div>
@@ -34,7 +34,7 @@ wp_nonce_field('wplp_blocks_nonce', 'wplp_blocks_nonce');
         <input type="text" class="block-search-input widget-search-input"
                placeholder="<?php esc_html_e('Search blocks by title or author', 'wp-latest-posts') ?>"
         >
-        <i class="mi mi-search"></i>
+        <i class="material-icons">search</i>
     </div>
     <table id="blocks-list">
         <thead>
@@ -82,14 +82,16 @@ wp_nonce_field('wplp_blocks_nonce', 'wplp_blocks_nonce');
                         <a href="<?php echo esc_html(admin_url('admin.php?page=wplp-widget&view=block&id=' . $block->ID)) ?>">
                             <?php echo esc_html($block->post_title ? $block->post_title : __('(untitled)', 'wp-latest-posts')) ?>
                         </a>
-                        <i class="mi mi-delete-forever block-delete"
-                           title="<?php esc_attr_e('Delete', 'wp-latest-posts') ?>"
-                           data-block-id="<?php echo esc_html($block->ID) ?>">
-                        </i>
+
+                        <i class="material-icons-outlined wplp-duplicate-block" title="<?php esc_attr_e('Duplicate this block', 'wp-latest-posts') ?>" data-block-id="<?php echo esc_html($block->ID) ?>">file_copy</i>
+                        <i class="material-icons-outlined block-delete" title="<?php esc_attr_e('Delete', 'wp-latest-posts') ?>"
+                           data-block-id="<?php echo esc_html($block->ID) ?>"> delete_outline </i>
                     </td>
                     <td class="block-author">
                         <?php echo esc_html($shortcode); ?>
-                        <i class="mi mi-content-copy wplp-shortcode-copy" data-value="<?php echo esc_attr($shortcode) ?>"></i>
+                        <i class="material-icons-outlined wplp-shortcode-copy" data-value="<?php echo esc_attr($shortcode) ?>">
+                            file_copy
+                        </i>
                     </td>
                     <td class="block-date"><?php echo get_the_date('Y/m/d - H:i', $block->ID) ?></td>
                     <td class="block-status"><?php echo esc_html($block->post_status) ?></td>

@@ -4,7 +4,7 @@
  *
  * @author        Webcraftic <wordpress.webraftic@gmail.com>
  * @copyright (c) 02.12.2018, Webcraftic
- * @see           Wbcr_FactoryPages421_AdminPage
+ * @see           Wbcr_FactoryPages429_AdminPage
  *
  * @version       1.0.0
  */
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-class WAPT_Page extends Wbcr_FactoryPages421_AdminPage {
+class WAPT_Page extends Wbcr_FactoryPages429_AdminPage {
 
 	/**
 	 * Name of the template to get content of. It will be based on plugins /admin/views/ dir.
@@ -30,8 +30,10 @@ class WAPT_Page extends Wbcr_FactoryPages421_AdminPage {
 	 *
 	 * @return mixed Content of the page
 	 */
-	public function render ($name = '') {
-		if($name == '')	$name = $this->template_name;
+	public function render( $name = '' ) {
+		if ( $name == '' ) {
+			$name = $this->template_name;
+		}
 		ob_start();
 		if ( is_callable( $name ) ) {
 			echo call_user_func( $name );
@@ -59,7 +61,10 @@ class WAPT_Page extends Wbcr_FactoryPages421_AdminPage {
 
 		$this->scripts->request( [
 			'control.checkbox',
-			'control.dropdown'
+			'control.dropdown',
+			'control.integer',
+			'plugin.nouislider',
+			'bootstrap.dropdown'
 		], 'bootstrap' );
 
 		$this->styles->request( [
@@ -68,14 +73,15 @@ class WAPT_Page extends Wbcr_FactoryPages421_AdminPage {
 			'bootstrap.separator',
 			'control.dropdown',
 			'control.checkbox',
+			'control.integer',
+			'plugin.nouislider',
 		], 'bootstrap' );
 	}
 
 	/**
 	 * Show rendered template - $template_name
 	 */
-	public function indexAction()
-	{
+	public function indexAction() {
 		echo $this->render();
 	}
 

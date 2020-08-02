@@ -19,7 +19,7 @@ get_header();
  		<main id="main" class="site-main">
 
 
- 				<div id="content">
+
            
            					<?php
            					while ( have_posts() ) :
@@ -29,28 +29,21 @@ get_header();
                         <?php $slides = get_field('featured_post'); ?>
                           <div class="header-slides">
                             <?php foreach($slides as $slide){ ?>
-                              <div class="header-slide">
-                                <div class="header-slide-img">
-                                  <?php echo get_the_post_thumbnail($slide->ID); ?>
-                                </div>
-                                <div class="header-slide-info">
-                                  <div class="content-margins">
-                                    <div class="header-slide-inner">
-                                      <h3><?php echo get_the_title($slide->ID); ?></h3>
-                                      <?php echo get_field('short_description', $slide->ID); ?>
-                                      <div class="header-slide-cta">
-                                        <a href="<?php echo get_the_permalink($slide->ID); ?>" class='button'>
-                                          <?php if(get_field('cta', $slide->ID)){
-                                            the_field('cta', $slide->ID);
-                                          }else{
-                                            echo 'Learn More';
-                                          } ?>
-                                        </a>
+                              <a href="<?php echo get_the_permalink($slide->ID); ?>">
+                                <div class="header-slide">
+                                  <div class="header-slide-img">
+                                    <?php echo get_the_post_thumbnail($slide->ID); ?>
+                                  </div>
+                                  <div class="header-slide-info">
+                                    <div class="content-margins wide flex">
+                                      <div class="header-slide-inner">
+                                        <h3><?php echo get_the_title($slide->ID); ?></h3>
+                                        <?php echo get_field('short_description', $slide->ID); ?>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
-                              </div>
+                              </a>
                             <?php } ?>
                           </div>
                        </section>
@@ -217,7 +210,7 @@ get_header();
            					endwhile; // End of the loop.
            					?>
            				
-         </div>
+
 
  		</main><!-- #main -->
  	</div><!-- #primary -->

@@ -40,6 +40,7 @@
 		public static function cloudflare_disable_rocket_loader($email = false, $key = false, $zoneid = false){
 			if($email && $key && $zoneid){
 				$header = array("method" => "PATCH",
+								'timeout' => 10,
 								'headers' => array(
 												"X-Auth-Email" => $email,
 												"X-Auth-Key" => $key,
@@ -72,6 +73,7 @@
 		public static function cloudflare_set_browser_caching($email = false, $key = false, $zoneid = false){
 			if($email && $key && $zoneid){
 				$header = array("method" => "PATCH",
+								'timeout' => 10,
 								'headers' => array(
 												"X-Auth-Email" => $email,
 												"X-Auth-Key" => $key,
@@ -83,7 +85,7 @@
 				$response = wp_remote_request('https://api.cloudflare.com/client/v4/zones/'.$zoneid.'/settings/browser_cache_ttl', $header);
 
 				if(!$response || is_wp_error($response)){
-					return array("success" => false, "error_message" => "Unable to disable rocket loader option");
+					return array("success" => false, "error_message" => "Unable to set the browser caching option");
 				}else{
 					$body = json_decode(wp_remote_retrieve_body($response));
 
@@ -103,6 +105,7 @@
 		public static function cloudflare_disable_minify($email = false, $key = false, $zoneid = false){
 			if($email && $key && $zoneid){
 				$header = array("method" => "PATCH",
+								'timeout' => 10,
 								'headers' => array(
 												"X-Auth-Email" => $email,
 												"X-Auth-Key" => $key,
@@ -253,6 +256,10 @@
 				if(!preg_match("/^http/", $_GET["url"])){
 					$_GET["url"] = "http://".$_GET["url"];
 				}
+
+				if(preg_match("/^https/i", site_url()) && preg_match("/^https/i", home_url())){
+					$_GET["url"] = preg_replace("/http\:\/\//i", "https://", $_GET["url"]);
+				}
 				
 				$response = wp_remote_get($_GET["url"], array('timeout' => 20, 'user-agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.11; rv:64.0) Gecko/20100101 Firefox/64.0"));
 
@@ -264,6 +271,9 @@
 					if($response->get_error_code() == "http_request_failed"){
 						if($response->get_error_message() == "Failure when receiving data from the peer"){
 							$res = array("success" => true);
+						}else if(preg_match("/cURL\serror\s60/i", $response->get_error_message())){
+							//cURL error 60: SSL: no alternative certificate subject name matches target host name
+							$res = array("success" => false, "error_message" => "<a href='https://www.wpfastestcache.com/warnings/how-to-use-cdn-on-ssl-sites/' target='_blank'>Please Read: https://www.wpfastestcache.com/warnings/how-to-use-cdn-on-ssl-sites/</a>");
 						}else if(preg_match("/cURL\serror\s6/i", $response->get_error_message())){
 							//cURL error 6: Couldn't resolve host
 							if(preg_match("/".preg_quote($host, "/")."/i", $_GET["url"])){
@@ -292,6 +302,10 @@
 
 						if(($response_code == 403) && (preg_match("/stackpathdns\.com/i", $_GET["url"]))){
 							$res = array("success" => true);
+						}
+
+						if(($response_code == 403) && (preg_match("/cloudfront\.net/i", $_GET["url"]))){
+							$res = array("success" => false, "error_message" => "<a href='https://www.wpfastestcache.com/warnings/amazon-s3-cloudfront-access-denied-403-forbidden/' target='_blank'>Please Read: https://www.wpfastestcache.com/warnings/amazon-s3-cloudfront-access-denied-403-forbidden</a>");
 						}
 					}
 				}

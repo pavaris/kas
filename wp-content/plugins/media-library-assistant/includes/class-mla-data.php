@@ -430,7 +430,7 @@ class MLAData {
 	 */
 	private static function _evaluate_template_array_node( $node, $markup_values = array() ) {
 		$result = array();
-		
+
 		// Check for an array of sub-nodes
 		if ( ! isset( $node['type'] ) ) {
 			foreach ( $node as $value ) {
@@ -1633,6 +1633,7 @@ class MLAData {
 	 * ['mla_search_fields'] => 'title', 'name', 'alt-text', 'excerpt', 'content', 'file' ,'terms'
 	 * Note: 'alt-text' and 'file' are not supported in [mla_gallery]
 	 * ['mla_search_connector'] => AND/OR
+	 * ['whole_word'] => each word must match as one "keyword", e.g. "man" won't match "woman"
 	 * ['sentence'] => entire string must match as one "keyword"
 	 * ['exact'] => entire string must match entire field value
 	 * ['debug'] => internal element, console/log/shortcode/none
@@ -2203,12 +2204,12 @@ class MLAData {
 					} elseif ( is_array( $value ) ) {
 						$value = self::_parse_xmp_array( $value );
 					}
-	
+
 					if ( false !== ($colon = strpos( $key, ':' ) ) ) {
 						$array_name = substr( $key, 0, $colon );
 						$array_index = substr( $key, $colon + 1 );
 						$namespace_arrays[ $array_name ][ $array_index ] = $value;
-	
+
 						if ( ! isset( $results[ $array_index ] ) && in_array( $array_name, array( 'xmp', 'xmpMM', 'xmpRights', 'xap', 'xapMM', 'dc', 'pdf', 'pdfx', 'mwg-rs' ) ) ) {
 							if ( is_array( $value ) && 1 == count( $value ) && isset( $value[0] ) ) {
 								$results[ $array_index ] = $value[0];
@@ -2232,12 +2233,12 @@ class MLAData {
 					} elseif ( is_array( $value ) ) {
 						$value = self::_parse_xmp_array( $value );
 					}
-	
+
 					if ( false !== ($colon = strpos( $key, ':' ) ) ) {
 						$array_name = substr( $key, 0, $colon );
 						$array_index = substr( $key, $colon + 1 );
 						$namespace_arrays[ $array_name ][ $array_index ] = $value;
-	
+
 						if ( ! isset( $results[ $array_index ] ) && in_array( $array_name, array( 'cp', 'dc', 'dcterms' ) ) ) {
 							if ( is_array( $value ) && 1 == count( $value ) && isset( $value[0] ) ) {
 								$results[ $array_index ] = $value[0];
@@ -2248,7 +2249,7 @@ class MLAData {
 					// found namespace
 					} elseif ( $is_app_xml ) {
 						$namespace_arrays[ 'app' ][ $key ] = $value;
-	
+
 						if ( ! isset( $results[ $key ] ) ) {
 							if ( is_array( $value ) && 1 == count( $value ) && isset( $value[0] ) ) {
 								$results[ $key ] = $value[0];
@@ -2293,7 +2294,7 @@ class MLAData {
 			} else {
 				$replacement = self::_nonempty_value( $namespace_arrays, 'dc', 'subject' );
 			}
-			
+
 			if ( ! empty( $replacement ) ) {
 				$results['Subject'] = $replacement;
 			}
@@ -3417,7 +3418,16 @@ class MLAData {
 			);
 
 		if ( 0 != $post_id ) {
-			$path = get_attached_file($post_id);
+			$path = false;
+
+			// WP 5.3+ produces "scaled" images without metadata; we need the original.
+			if ( function_exists( 'wp_get_original_image_path' ) ) {
+				$path = wp_get_original_image_path( $post_id );
+			}
+
+			if ( false === $path ) {
+				$path = get_attached_file($post_id);
+			}
 		}
 
 		if ( ! empty( $path ) ) {
@@ -3982,7 +3992,7 @@ class MLAData {
 			}
 
 			// mla_fetch_attachment_metadata doesn't return "hidden" fields
-			if ( '_' === $meta_key{0} ) {
+			if ( '_' === $meta_key[0] ) {
 				$old_meta_value = get_post_meta( $post_id, $meta_key );
 
 				if ( !empty( $old_meta_value ) ) {

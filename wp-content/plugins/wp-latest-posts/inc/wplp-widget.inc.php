@@ -68,21 +68,22 @@ class WPLPWidget extends WP_Widget
         //phpcs:ignore WordPress.Security.EscapeOutput -- Render widget directly
         echo $args['before_widget'];
 
-        $widget = get_post($instance['news_widget_id']);
-        if (isset($widget) && !empty($widget)) {
-            $widget->settings = get_post_meta($widget->ID, '_wplp_settings', true);
-            $front            = new WPLPFront($widget);
-            //$front->loadThemeStyle();
+        if (isset($instance['news_widget_id'])) {
+            $widget = get_post($instance['news_widget_id']);
+            if (isset($widget) && !empty($widget)) {
+                $widget->settings = get_post_meta($widget->ID, '_wplp_settings', true);
+                $front            = new WPLPFront($widget);
 
-            if (isset($front->widget->settings['show_title'])
-                && (int) $front->widget->settings['show_title'] === 1
-            ) {
-                //phpcs:ignore WordPress.Security.EscapeOutput -- Content escaped after line
-                echo $args['before_title'] . esc_html($front->widget->post_title) . $args['after_title'];
+                if (isset($front->widget->settings['show_title'])
+                    && (int) $front->widget->settings['show_title'] === 1
+                ) {
+                    //phpcs:ignore WordPress.Security.EscapeOutput -- Content escaped after line
+                    echo $args['before_title'] . esc_html($front->widget->post_title) . $args['after_title'];
+                }
+                $front->display(true, true);
+                //phpcs:ignore WordPress.Security.EscapeOutput -- Render widget directly
+                echo $args['after_widget'];
             }
-            $front->display(true, true);
-            //phpcs:ignore WordPress.Security.EscapeOutput -- Render widget directly
-            echo $args['after_widget'];
         }
     }
 
@@ -126,6 +127,7 @@ class WPLPWidget extends WP_Widget
                 <?php esc_html_e('News Widget:', 'wp-latest-posts'); ?></label>
             <select id="<?php echo esc_attr($this->get_field_id('news_widget_id')); ?>"
                     name="<?php echo esc_attr($this->get_field_name('news_widget_id')); ?>">
+                <option value="0"><?php esc_html_e('Select a block', 'wp-latest-posts'); ?></option>
                 <?php foreach ($widgets as $widget) : ?>
                     <option value="<?php echo esc_attr($widget->ID); ?>"
                         <?php echo esc_attr(isset($selected[$widget->ID]) ? $selected[$widget->ID] : ''); ?>>

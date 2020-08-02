@@ -8,6 +8,7 @@ if ( ! function_exists ('add_action') ) {
 
 // HUD Alerts in WP Dashboard
 // Reset|Recheck Dismiss Notices is in core-forms.php
+## 3.9: Commented out the Bonus Custom Code Dismiss Notice function and ModSecurity Check function.
 function bps_HUD_WP_Dashboard() {
 	
 	if ( current_user_can('manage_options') ) { 
@@ -16,7 +17,7 @@ function bps_HUD_WP_Dashboard() {
 		bps_check_permalinks_error();
 		bps_check_iis_supports_permalinks();
 		bps_hud_check_bpsbackup();
-		bpsPro_bonus_custom_code_dismiss_notices();
+		//bpsPro_bonus_custom_code_dismiss_notices();
 		bps_hud_PhpiniHandlerCheck();
 		bps_hud_check_sucuri();
 		bps_hud_check_wordpress_firewall2();
@@ -27,7 +28,7 @@ function bps_HUD_WP_Dashboard() {
 		bpsPro_hud_mscan_notice();
 		bpsPro_hud_jtc_lite_notice();
 		bpsPro_hud_rate_notice();
-		bpsPro_hud_mod_security_check();
+		//bpsPro_hud_mod_security_check();
 		bpsPro_hud_gdpr_compliance();
 		//bps_hud_check_public_username();
 	}
@@ -316,7 +317,8 @@ $user_id = $current_user->ID;
 function bps_hud_PhpiniHandlerCheck() {
 global $current_user;
 $user_id = $current_user->ID;
-$file = ABSPATH . '.htaccess';	
+$file = ABSPATH . '.htaccess';
+$pre_background_image_url = site_url( '/wp-content/plugins/bulletproof-security/admin/images/pre_bg.png' );
 
 	if ( esc_html($_SERVER['QUERY_STRING']) == 'page=bulletproof-security/admin/wizard/wizard.php' && ! get_user_meta($user_id, 'bps_ignore_PhpiniHandler_notice') ) {
 	
@@ -349,7 +351,7 @@ $file = ABSPATH . '.htaccess';
 				
 				$text = '<div class="update-nag" style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:2px 5px;margin-top:2px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('HUD Check: PHP/php.ini handler htaccess code check', 'bulletproof-security').'</font><br>'.__('PHP/php.ini handler htaccess code was found in your root .htaccess file, but was NOT found in BPS Custom Code.', 'bulletproof-security').'<br>'.__('To automatically fix this click here: ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php' ).'">'.esc_attr__('Setup Wizard Pre-Installation Checks', 'bulletproof-security').'</a><br>'.__('The Setup Wizard Pre-Installation Checks feature will automatically fix this just by visiting the Setup Wizard page.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice button below. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Custom Code page.', 'bulletproof-security').'<br><div style="float:left;margin:3px 0px 3px 0px;padding:2px 6px 2px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'bps_PhpiniHandler_nag_ignore=0'.'" style="text-decoration:none;font-weight:600;">'.__('Dismiss Notice', 'bulletproof-security').'</a></div></div>';
 				echo $text;			
-				echo '<pre style="margin:5px 0px 0px 5px;">';
+				echo '<pre id="shown" style="overflow:auto;white-space:pre-wrap;height:65px;width:66%;margin:5px 0px 0px 2px;padding:5px;background:#fff url('.$pre_background_image_url.') top left repeat;border:1px solid #999;color:#000;display:block;font-family:"Courier New", Courier, monospace;font-size:11px;line-height:14px;">';
 				echo '# PHP/php.ini handler htaccess code<br>';				
 				
 				foreach ( $h_matches[0] as $Key => $Value ) {
@@ -392,7 +394,7 @@ $file = ABSPATH . '.htaccess';
 
 					$text = '<div class="update-nag" style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:2px 5px;margin-top:2px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('HUD Check: PHP/php.ini handler htaccess code check', 'bulletproof-security').'</font><br>'.__('PHP/php.ini handler htaccess code was found in your root .htaccess file, but was NOT found in BPS Custom Code.', 'bulletproof-security').'<br>'.__('To automatically fix this click here: ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php' ).'">'.esc_attr__('Setup Wizard Pre-Installation Checks', 'bulletproof-security').'</a><br>'.__('The Setup Wizard Pre-Installation Checks feature will automatically fix this just by visiting the Setup Wizard page.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice button below. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Custom Code page.', 'bulletproof-security').'<br><div style="float:left;margin:3px 0px 3px 0px;padding:2px 6px 2px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'bps_PhpiniHandler_nag_ignore=0'.'" style="text-decoration:none;font-weight:600;">'.__('Dismiss Notice', 'bulletproof-security').'</a></div></div>';
 					echo $text;			
-					echo '<pre style="margin:5px 0px 0px 5px;">';
+					echo '<pre id="shown" style="overflow:auto;white-space:pre-wrap;height:65px;width:66%;margin:5px 0px 0px 2px;padding:5px;background:#fff url('.$pre_background_image_url.') top left repeat;border:1px solid #999;color:#000;display:block;font-family:"Courier New", Courier, monospace;font-size:11px;line-height:14px;">';
 					echo '# PHP/php.ini handler htaccess code<br>';				
 				
 					foreach ( $h_matches[0] as $Key => $Value ) {

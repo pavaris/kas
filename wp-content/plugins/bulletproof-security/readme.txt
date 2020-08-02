@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: https://wordpress.org/support/view/plugin-reviews/bulletproof-security?rate=5#postform
 Tags: security, secure, malware scanner, login security, firewall, security plugin, wordpress security, login, bruteforce, backup, exploit, infection, protection, virus, anti-virus, logout, spam, anti-spam
 Requires at least: 3.8 
-Tested up to: 5.3
-Stable tag: 3.8
+Tested up to: 5.4
+Stable tag: 4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

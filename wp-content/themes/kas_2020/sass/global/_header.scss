@@ -50,7 +50,7 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	padding: 20px 30px;
+	padding: 15px 30px;
 	background-color: $anotherGray;
 	box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px 4px;
 	@media (max-width: 767px) {
@@ -79,6 +79,7 @@
 		.menu-item-has-children {
 			position: relative;
 			padding: 0 10px;
+			width: 100%;
 			> a {
 				position: relative;
 				font-size: 18px;

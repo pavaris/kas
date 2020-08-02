@@ -280,6 +280,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                         });
                     }
 
+                    if (settings.theme === 'material-vertical') {
+                        $('#block-' + clientId + ' .wplp_listposts').masonry({
+                            gutter: 20,
+                            itemSelector: '.material-vertical'
+                        });
+                    }
+
                     if (settings.theme === 'portfolio') {
                         var $portfolio = $('#block-' + clientId + ' .wplp_listposts');
                         $portfolio.isotope({
@@ -455,7 +462,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                     controls,
                     typeof cover !== "undefined" && React.createElement(
                         'div',
-                        { 'class': 'wplp-cover' },
+                        { className: 'wplp-cover' },
                         React.createElement('img', { src: cover })
                     ),
                     typeof cover === "undefined" && React.createElement(
@@ -486,6 +493,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
                                     return React.createElement(
                                         'li',
                                         { className: newsID.toString() === post.value.toString() ? 'news_post_item news_post_item_active' : 'news_post_item',
+                                            'data-id': post.value,
                                             key: post.value,
                                             onClick: _this3.selectPost.bind(_this3, post.value) },
                                         post.label
@@ -520,7 +528,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
         description: __('Load your content from posts, page, tags or custom post type and display them as a slider', 'wp-latest-posts'),
         icon: iconblock,
         category: 'common',
-        keywords: [__('post', 'wp-latest-posts')],
+        keywords: [__('post', 'wp-latest-posts'), __('wplp', 'wp-latest-posts')],
         example: {
             attributes: {
                 cover: wplp_blocks.vars.block_cover

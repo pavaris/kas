@@ -3,7 +3,7 @@
  * Plugin Name: WP Latest Posts
  * Plugin URI: http://www.joomunited.com/wordpress-products/wp-latest-posts
  * Description: Advanced frontpage and widget news slider
- * Version: 4.6.4
+ * Version: 4.8.2
  * Text Domain: wp-latest-posts
  * Domain Path: /languages
  * Author: JoomUnited
@@ -40,11 +40,16 @@ define('STRING_UNSET', 'string_unset');  //Unset settings with checkbox
 define('WPLP_PREFIX', 'wplp_');
 define('MAIN_FRONT_STYLESHEET', 'css/wplp_front.css');  //Main front-end stylesheet
 define('MAIN_FRONT_SCRIPT', 'js/wplp_front.js');  //Main front-end jQuery script
-define('DEFAULT_IMG', 'img/default-image-fpnp.png'); //Default thumbnail image
+define('DEFAULT_IMG', 'img/default-image.svg'); //Default thumbnail image
 define('WPLP_PLUGIN_DIR', plugin_dir_url(__FILE__));
 define('WPLP_PLUGIN_PATH', dirname(__FILE__));
+define('WPLP_POST_VIEWS_COUNT_META_KEY', 'wplp_post_views_count');
+if (!defined('WPLP_TRANSIENT_KEY_PREFIX')) {
+    define('WPLP_TRANSIENT_KEY_PREFIX', '');
+}
+define('WPLP_POST_VIEW_TRANSIENT_KEY', WPLP_TRANSIENT_KEY_PREFIX . 'wp:wplp_post_view_' . md5('post_view_transient_key'));
 //Check plugin requirements
-if (version_compare(PHP_VERSION, '5.3', '<')) {
+if (version_compare(PHP_VERSION, '5.6', '<')) {
     if (!function_exists('wplp_disable_plugin')) {
         /**
          * Disable plugin function
@@ -62,14 +67,14 @@ if (version_compare(PHP_VERSION, '5.3', '<')) {
 
     if (!function_exists('wplp_show_error')) {
         /**
-         * Show error when active plugin at least PHP 5.3 version
+         * Show error when active plugin at least PHP 5.6 version
          *
          * @return void
          */
         function wplp_show_error()
         {
             $echo = '<div class="error"><p><strong>WP Latest Posts</strong>';
-            $echo .= 'need at least PHP 5.3 version, please update php before installing the plugin.</p></div>';
+            $echo .= ' need at least PHP 5.6 version, please update php before installing the plugin.</p></div>';
             //phpcs:ignore WordPress.Security.EscapeOutput -- Plain text html, no variables to escape
             echo $echo;
         }
@@ -94,7 +99,7 @@ if (class_exists('\Joomunited\WPLP\JUCheckRequirements')) {
         'plugin_path' => 'wp-latest-posts/wp-latest-posts.php',
         'plugin_textdomain' => 'wp-latest-posts',
         'requirements' => array(
-            'php_version' => '5.3',
+            'php_version' => '5.6',
             // Minimum addons version
             'addons_version' => array(
                 'wplpAddons' => '4.4.0'
@@ -139,6 +144,7 @@ require_once dirname(__FILE__) . '/inc/install.php';
 require_once dirname(__FILE__) . '/inc/wplp-admin.inc.php';            // custom classes
 require_once dirname(__FILE__) . '/inc/wplp-widget.inc.php';        // custom classes
 require_once dirname(__FILE__) . '/inc/wplp-front.inc.php';            // custom classes
+require_once dirname(__FILE__) . '/inc/wplp-cache.php';            // custom classes
 // WPML installed
 // Polylang installed
 require_once dirname(__FILE__) . '/inc/compatibility/class.language_content_wpml.php';
@@ -155,7 +161,7 @@ new WPLPCategoryImage();
 global $wpcu_wpfn;
 $wpcu_wpfn = new WPLPAdmin(
     array(
-        'version' => '4.6.4',
+        'version' => '4.8.2',
         'translation_domain' => 'wp-latest-posts', // must be copied in the widget class!!!
         'plugin_file' => __FILE__,
     )

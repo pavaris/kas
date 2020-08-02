@@ -424,6 +424,8 @@ switch ( $bps_version ) {
 		
 		// .53: Create new block of Request Methods Filtered code & help text.
 		// .53.1: Old RMF Code exists: Conditional host check added to create either R=405 for Go Daddy or dumbed down code for all other hosts.
+		// 3.9: removing this RMF cleanup code. Only dumbed down RMF code is created now.		
+		/*
 		if ( preg_match( $pattern18, $stringReplace, $matches ) && preg_match( '/secureserver\.net/', $hostaddress, $matches ) ) {
 			$stringReplace = preg_replace( $pattern18, "# REQUEST METHODS FILTERED\n# If you want to allow HEAD Requests use BPS Custom Code and copy\n# this entire REQUEST METHODS FILTERED section of code to this BPS Custom Code\n# text box: CUSTOM CODE REQUEST METHODS FILTERED.\n# See the CUSTOM CODE REQUEST METHODS FILTERED help text for additional steps.\nRewriteCond %{REQUEST_METHOD} ^(TRACE|DELETE|TRACK|DEBUG) [NC]\nRewriteRule ^(.*)$ - [F]\nRewriteCond %{REQUEST_METHOD} ^(HEAD) [NC]\nRewriteRule ^(.*)$ - [R=405,L]", $stringReplace);
 		} elseif ( preg_match( $pattern18, $stringReplace, $matches ) && ! preg_match( '/secureserver\.net/', $hostaddress, $matches ) ) {
@@ -440,7 +442,8 @@ switch ( $bps_version ) {
 		if ( preg_match( $pattern20, $stringReplace, $matches ) ) {			
 			$stringReplace = preg_replace( $pattern20, "RewriteRule ^(.*)$ " . $bps_get_wp_root_secure . $bps_plugin_dir . "/bulletproof-security/405.php [L]", $stringReplace);
 		}
-
+		*/
+		
 		// 2.0: Add additional https scheme conditions to 3 htaccess security rules and combine 2 rules into 1 rule.
 		if ( preg_match( $pattern21, $stringReplace, $matches ) ) {			
 			$stringReplace = preg_replace( $pattern21, "RewriteCond %{THE_REQUEST} (\?|\*|%2a)+(%20+|\\\\\s+|%20+\\\\\s+|\\\\\s+%20+|\\\\\s+%20+\\\\\s+)(http|https)(:/|/) [NC,OR]", $stringReplace);	
