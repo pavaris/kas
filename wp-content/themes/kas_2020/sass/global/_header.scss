@@ -145,6 +145,9 @@
 .donate-search {
 	display: flex;
 	align-items: center;
+	.button {
+		margin-right: 30px;
+	}
 	.search-toggle {
 		border: 0px;
 		padding: 0;

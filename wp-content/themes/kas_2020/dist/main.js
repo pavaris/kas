@@ -108,6 +108,27 @@ $(document).ready(function () {
 		arrows: false
 	});
 
+	$(".home-legacy-feed-inner").slick({
+		slidesToShow: 3,
+		slidesToScroll: 3,
+		prevArrow: $(".legacy-arrow-left"),
+		nextArrow: $(".legacy-arrow-right"),
+		infinite: false,
+		responsive: [{
+			breakpoint: 876,
+			settings: {
+				slidesToShow: 2,
+				slidesToScroll: 2
+			}
+		}, {
+			breakpoint: 667,
+			settings: {
+				slidesToShow: 1,
+				slidesToScroll: 1
+			}
+		}]
+	});
+
 	$(".single-written .posts-feed").slick({
 		slidesToShow: 3,
 		arrows: false,

@@ -1,6 +1,16 @@
 $mobile_width: 767px;
 $tablet_width: 1056px;
 
+@mixin cubic {
+	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+}
+
+@mixin mobile {
+	@media (max-width: 767px) {
+		@content;
+	}
+}
+
 body {
 	font-family: $mrEaves;
 }
@@ -55,6 +65,9 @@ em {
 
 #content {
 	padding-top: 70px;
+	@include mobile {
+		padding-top: 50px;
+	}
 }
 
 .content-margins {
@@ -112,10 +125,15 @@ em {
 	letter-spacing: 0.2rem;
 	font-weight: 500;
 	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-	margin-right: 30px;
+
 	cursor: pointer;
+	text-decoration: none;
 	&:hover {
 		background-color: $skyBlue;
+	}
+	&.filled {
+		background-color: $skyBlue;
+		color: white;
 	}
 	@media (max-width: $tablet_width) {
 		padding: 12px 25px;
@@ -210,6 +228,6 @@ button {
 	text-align: center;
 }
 
-@mixin cubic {
-	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+.flex {
+	display: flex;
 }

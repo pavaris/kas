@@ -27,128 +27,147 @@ get_header();
            					?>
            						<section>
                         <?php $slides = get_field('featured_post'); ?>
+                        <!-- <?php print_r($slides); ?> -->
                           <div class="header-slides">
                             <?php foreach($slides as $slide){ ?>
-                              <a href="<?php echo get_the_permalink($slide->ID); ?>">
+                            
+                              <a href="<?php echo get_the_permalink($slide['post'][0]->ID); ?>">
                                 <div class="header-slide">
                                   <div class="header-slide-img">
-                                    <?php echo get_the_post_thumbnail($slide->ID); ?>
+                                    <?php echo get_the_post_thumbnail($slide['post'][0]->ID); ?>
                                   </div>
-                                  <div class="header-slide-info">
-                                    <div class="content-margins wide flex">
-                                      <div class="header-slide-inner">
-                                        <h3><?php echo get_the_title($slide->ID); ?></h3>
-                                        <?php echo get_field('short_description', $slide->ID); ?>
+                                  <?php if(!$slide['hide_title']){ ?>
+                                    <div class="header-slide-info">
+                                      <div class="content-margins wide flex">
+                                        <div class="header-slide-inner">
+                                          <h3><?php echo get_the_title($slide['post'][0]->ID); ?></h3>
+                                          <?php echo get_field('short_description', $slide['post'][0]->ID); ?>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
+                                  <?php } ?>
                                 </div>
                               </a>
                             <?php } ?>
                           </div>
                        </section>
-                      <?php
-                        $args = ['post_type' => 'post', 'posts_per_page' => 3];
-                        $latestPosts = new WP_Query($args);
-                      ?>
-                      <section class="homepage-content">
-          
-                      <?php $videoFeed = get_field('video_feed'); 
-                      if($videoFeed){
-                      ?>
-                        <section class="home-latest-videos">
-                          <div class="content-margins">
-                            <h3>Watch Our Latest Video</h3>
-                            <div class="home-latest-videos-feed">
-                            
-                              <iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $videoFeed[0]->ID); ?>" frameborder="0"  class="superembed-force"></iframe>
+                      
 
-
-
-
-                                <a id="play-video" href="#">
-                                  
-                                  <?php $poster_image = get_field('poster_image', $videoFeed[0]->ID); ?>
-										<?php echo wp_get_attachment_image($poster_image['ID'], 'large'); ?>
-
-                                </a>
-                              
-                            </div>
-                          </div>
+                      <?php if(get_field('our_mission')){ ?> 
+                        <section class="home-mission">
+                          <?php echo get_field('our_mission'); ?>
+                          <a href="<?php echo get_home_url(); ?>/about/" class="button filled">Learn More</a>
                         </section>
                       <?php } ?>
-          <?php wp_reset_query(); ?>
-          
-                      <section class="home-mission">
-                        <h3>Our Mission</h3>
-                        <h5>To capture, create, preserve and share<br> the stories of the Korean American experience</h5>
-                        <a href="<?php echo get_home_url(); ?>/about" class="button">Learn More</a>
-                      </section>
                       
-                      <?php $podcasts = get_field('podcasts'); 
-                        if($podcasts){ ?>
-                          <section class="home-podcasts">
-                            <div class="content-margins">
-                              <h3>Listen</h3>
-                              <p>KAS Podcast Series</p>
-                            </div>
-                            <div class="home-podcasts-cont">
-                              <div class='content-margins'>
-                                <div class="home-podcast-feed">
-                                  <?php foreach($podcasts as $podcast){ ?> 
-                                    <a href="<?php echo get_the_permalink($podcast->ID); ?>">
+                      
+                      <section class="homepage-content">
+                        <?php $legacy =  get_page_by_path( 'legacy-project' ); ?>
+                        <?php 
+                            $legacyPosts = get_posts(array('numberposts' => 6, 'post_type' => 'video',   'tax_query' => array(
+                              array(
+                                  'taxonomy' => 'video_type',
+                                  'field'    => 'slug',
+                                  'terms'    => 'legacy-project'
+                              )
+                              ))); ?>
+                        <section class="home-legacy-project">
+                          <a href="<?php echo get_the_permalink( $legacy ); ?>">
+                              <div class="header-slide">
+                                <div class="header-slide-img">
+                                  <?php echo wp_get_attachment_image(get_field('poster_image', $legacyPosts[0]->ID)["ID"], 'large'); ?>
+                                </div>
+                                
+                                  <div class="header-slide-info">
+                                    <div class="content-margins wide flex">
+                                      <div class="header-slide-inner">
+                                        <h3>Legacy Project</h3>
+                                        <p><?php echo get_field('short_description', $legacy); ?></p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
+                              </div>
+                            </a>
+                        
+                            <div class="home-legacy-feed ">
+                              <div class="content-margins wide">
+                                <div class="legacy-arrow legacy-arrow-left">
+                                  <button>
+                                    <img src="<?php echo get_template_directory_uri(  ); ?>/img/chevron.svg" alt="arrow">
+                                  </button>
+                                </div>
+                                <div class="home-legacy-feed-inner">
+                                  <?php foreach($legacyPosts as $legacyPost){ ?> 
+                                    <a href="<?php echo get_the_permalink($legacyPost->ID); ?>">
                                       <div class="home-podcast-image">
-                                        <?php echo get_the_post_thumbnail($podcast->ID); ?>
+                                        <?php echo get_the_post_thumbnail($legacyPost->ID); ?>
                                       </div>
                                       <h4>
-                                        <?php 
-                                          $tax = get_the_terms($podcast->ID, 'podcast_type'); 
-                                          if($tax){
-                                            echo $tax[0]->name . '<br>';
-                                          }
-                                        ?>
-                                        <?php echo $podcast->post_title; ?>
+                                        <?php echo $legacyPost->post_title; ?>
                                       </h4>
+                                      <?php echo get_field('short_description',$legacyPost->ID) ?></p>
                                     </a>
                                   <?php } ?>
-                                  <a style='width: 30px;'></a>
+                                </div>
+                                <div class="legacy-arrow legacy-arrow-right">
+                                  <button class="">
+                                    <img src="<?php echo get_template_directory_uri(  ); ?>/img/chevron.svg" alt="arrow">
+                                  </button>
                                 </div>
                               </div>
                             </div>
-                          </section>
-                        <?php } ?>
-          
-          
-                      <?php 
-                        $writtenArgs = array('post_type' => 'written', 'posts_per_page' => 6 ); 
-                        $writtenQuery = new WP_Query($writtenArgs);
-          
-                        if($writtenQuery->have_posts()){
-                      ?>
-                        <section class="home-latest-stories">
-                          <div class="content-margins">
-                            <h3>Latest Stories</h3>
-                            <div class="posts-feed">
-                              <?php foreach($writtenQuery->posts as $post){ ?>
-                                
-                                <a href="<?php echo get_the_permalink($post->ID); ?>">
-                                  <div class="post-feed-image">
-                                    <?php echo get_the_post_thumbnail($post->ID); ?>
-                                  </div>
-                                  <div class="post-feed-info">
-                                    <div class="post-category">
-                                      Article
-                                    </div>
-                                    <?php echo get_the_title($post->ID); ?>
-                                  </div>
-                                </a>
-                              <?php } ?>
-                            </div>
-                          </div>
                         </section>
-                      <?php } ?>
-          <?php wp_reset_query(); ?>
           
+                      
+          
+                    <?php $feed = get_field('feed'); ?>
+                    <?php if($feed){ ?> 
+                      <section class="home-feed">
+                        
+                        <?php foreach($feed as $post){ ?> 
+                          <a href="<?php echo $post['link']['url']; ?>" class="home-feed-post">
+                            <div class="home-feed-post-img">
+                              <?php echo wp_get_attachment_image($post['image']['ID'], 'large'); ?>
+                            </div>
+                            <div class="home-feed-post-info">
+                              <div class="home-feed-post-info-inner">
+                                <h4><?php echo $post['title']; ?></h4>
+                                <p><?php echo $post['description']; ?></p>
+                              </div>
+                            </div>
+                          </a>
+                        <?php } ?>
+                      </section>
+                    <?php } ?>
+                      
+                                    
+                  
+                    <?php $projects = get_field('projects'); ?>
+                    <?php if($projects){ ?>
+                    <section class="home-projects">
+                      <div class="content-margins">
+                        <h3>Our Projects</h3>
+                        <div class="home-projects-feed">
+                          <?php foreach($projects as $project){ ?> 
+                            <a href="<?php echo get_term_link($project->term_id); ?>">
+                              <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
+                                <div class="home-projects-image">
+                                  <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'medium');  ?>
+                                </div>
+                              <?php } ?>
+                              <h5><?php echo $project->name; ?></h5>
+                            </a>
+                          <?php } ?>
+                        </div>
+                        <div class="center ">
+                          <a href="<?php echo get_home_url(); ?>/explore" class="button filled">All Projects</a>
+                        </div>
+                      </div>
+                    </section>
+                    <?php } ?>
+          
+
                   <section class="newsletter-container">
                     <div class="content-margins">
                       <h3>Stay Connected</h3>
@@ -156,54 +175,7 @@ get_header();
                       <?php echo do_shortcode('[contact-form-7 id="11424" title="Newsletter"]'); ?>
                     </div>
                   </section>
-              
-                  
-                  <?php $projects = get_field('projects'); ?>
-                  <?php if($projects){ ?>
-                  <section class="home-projects">
-                    <div class="content-margins">
-                      <h3>Our Projects</h3>
-                      <div class="home-projects-feed">
-                        <?php foreach($projects as $project){ ?> 
-                          <a href="<?php echo get_term_link($project->term_id); ?>">
-                            <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
-                              <div class="home-projects-image">
-                                <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'medium');  ?>
-                              </div>
-                            <?php } ?>
-                            <h5><?php echo $project->name; ?></h5>
-                          </a>
-                        <?php } ?>
-                      </div>
-                      <div class="center ">
-                        <a href="<?php echo get_home_url(); ?>/explore" class="button">All Projects</a>
-                      </div>
-                    </div>
-                  </section>
-                  <?php } ?>
           
-          
-                  <?php $events = get_field('events'); ?>
-                  <?php if($events){ ?>
-                    <section class="home-events">
-                      <div class="content-margins">
-                        <h3>Events</h3>
-                        <div class="home-events-feed">
-                          <?php foreach($events as $event){ ?>
-                            <a href="<?php echo get_the_permalink($event->ID); ?>">
-                              <div class="home-events-image">
-                                <?php echo get_the_post_thumbnail($event->ID); ?>
-                              </div>
-                              <div class="home-events-desc">
-                                <h5><?php echo $event->post_title; ?></h5>
-                                <?php echo get_field('short_description', $event->ID); ?>
-                              </div>
-                            </a>
-                          <?php } ?>
-                        </div>
-                      </div>
-                    </section>
-                  <?php } ?>
                       </section>
           
            					<?php
