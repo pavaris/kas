@@ -5,6 +5,13 @@
 .page {
 	.page-content {
 		padding-top: 60px;
+		color: $ughGray;
+		h1 {
+			text-transform: uppercase;
+			font-weight: 600;
+			letter-spacing: 0.3em;
+			font-size: 34px;
+		}
 		.section-title {
 			margin-top: 20px;
 			margin-bottom: 30px;

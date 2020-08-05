@@ -3,8 +3,8 @@ var $ = jQuery.noConflict();
 $(document).ready(function () {
 	console.log("ready? ok!");
 
-	$(".home-latest-videos-feed #play-video").on("click", function (ev) {
-		$(".home-latest-videos-feed iframe")[0].src += "?autoplay=1";
+	$(".video-play-wrapper #play-video").on("click", function (ev) {
+		$(".video-play-wrapper iframe")[0].src += "?autoplay=1";
 		$(this).fadeOut();
 		ev.preventDefault();
 	});

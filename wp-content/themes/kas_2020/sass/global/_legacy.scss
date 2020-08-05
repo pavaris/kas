@@ -1,0 +1,61 @@
+.page-template-page-legacy-project {
+	.page-header-container {
+		height: 70vh;
+		padding-top: 0px;
+		h2 {
+			font-family: $mrEaves;
+			font-size: 60px;
+			margin: 0px;
+			@include mobile {
+				font-size: 40px;
+			}
+		}
+	}
+}
+
+.legacy-page-nav-cont {
+	text-align: center;
+	.page-content {
+		text-align: left;
+	}
+}
+
+.legacy-page-nav {
+	margin-top: 30px;
+	padding: 10px 0;
+	text-align: center;
+	border-bottom: 2px solid $ughGray;
+	display: inline-flex;
+	align-self: center;
+
+	a {
+		color: $ughGray;
+		text-decoration: none;
+		margin-right: 40px;
+		text-transform: uppercase;
+		font-size: 20px;
+		font-weight: 600;
+		letter-spacing: 0.2em;
+		@include cubic;
+		padding: 0 5px;
+		&:hover,
+		&.active {
+			color: $skyBlue;
+		}
+		&:last-child {
+			margin-right: 0px;
+		}
+	}
+	@include mobile {
+		flex-wrap: wrap;
+		justify-content: center;
+		a {
+			text-align: center;
+			margin: 0px;
+			margin-bottom: 20px;
+			&:last-child {
+				margin-bottom: 0px;
+			}
+		}
+	}
+}

@@ -16,7 +16,7 @@ body {
 }
 
 h1 {
-	margin-bottom: 15px;
+	margin-bottom: 35px;
 	font-size: 65px;
 }
 
@@ -48,11 +48,11 @@ h6 {
 }
 
 p {
-	margin-bottom: 15px;
+	margin-bottom: 20px;
 	font-size: 20px;
 	line-height: 1.4em;
-	color: $darkGray;
-	// letter-spacing: 0.1em;
+	color: $ughGray;
+	letter-spacing: 0.03em;
 }
 
 a {
@@ -230,4 +230,14 @@ button {
 
 .flex {
 	display: flex;
+}
+
+.page-video-container {
+	background-color: $darkGray;
+	padding: 30px 0;
+}
+
+.footer-margin-padding {
+	padding-bottom: 120px;
+	margin-bottom: -120px;
 }
