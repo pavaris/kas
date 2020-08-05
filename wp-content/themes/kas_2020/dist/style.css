@@ -562,12 +562,12 @@ button {
     justify-content: space-evenly;
     align-items: center;
     width: 100%; }
-    #site-navigation #menu-header-menu .menu-item {
-      margin-right: 25px; }
-    #site-navigation #menu-header-menu .menu-item-has-children {
-      position: relative;
+    #site-navigation #menu-header-menu > .menu-item {
+      margin-right: 25px;
       padding: 0 10px;
       width: 100%; }
+    #site-navigation #menu-header-menu .menu-item-has-children {
+      position: relative; }
       #site-navigation #menu-header-menu .menu-item-has-children > a {
         position: relative;
         font-size: 18px;

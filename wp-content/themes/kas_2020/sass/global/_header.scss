@@ -73,13 +73,15 @@
 		justify-content: space-evenly;
 		align-items: center;
 		width: 100%;
-		.menu-item {
+		> .menu-item {
 			margin-right: 25px;
-		}
-		.menu-item-has-children {
-			position: relative;
 			padding: 0 10px;
 			width: 100%;
+		}
+
+		.menu-item-has-children {
+			position: relative;
+
 			> a {
 				position: relative;
 				font-size: 18px;
