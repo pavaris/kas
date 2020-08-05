@@ -566,6 +566,10 @@ button {
       margin-right: 25px;
       padding: 0 10px;
       width: 100%; }
+      #site-navigation #menu-header-menu > .menu-item a {
+        font-size: 18px;
+        letter-spacing: 0.2rem;
+        font-weight: 500; }
     #site-navigation #menu-header-menu .menu-item-has-children {
       position: relative; }
       #site-navigation #menu-header-menu .menu-item-has-children > a {
