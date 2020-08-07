@@ -14,22 +14,9 @@ get_header();
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<header id="page-header">
-				<div class="page-header-container">
-					<h2 class='archive-title'>
-						<?php if($terms){ ?>
-							<a href="<?php echo get_term_link($terms[0], 'podcast_type'); ?>"><?php echo $terms[0]->name; ?></a>
-						<?php }else{
-							the_title();
-						} ?>
-					</h2>
+			
+		
 
-
-					<div class="page-header-image">
-						<?php echo get_the_post_thumbnail(); ?>
-					</div>
-				</div>
-			</header><!-- .page-header -->
 			<div class="content-margins">
 				<article class="">
 					<?php

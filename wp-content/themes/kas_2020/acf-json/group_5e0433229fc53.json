@@ -24,6 +24,25 @@
             "step": ""
         },
         {
+            "key": "field_5f2cc814cf4f6",
+            "label": "Creator Title",
+            "name": "creator_title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5eade48bcc70d",
             "label": "Podcast Embed",
             "name": "podcast_embed",
@@ -79,5 +98,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1590111463
+    "modified": 1596770333
 }

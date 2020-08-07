@@ -233,11 +233,10 @@ section.home-latest-videos {
 			outline: none;
 		}
 		img {
-			height: 50px;
-			filter: invert(1);
+			height: 60px;
 			margin-top: -50px;
 			@include mobile {
-				height: 30px;
+				height: 50px;
 			}
 		}
 		&.slick-disabled {
@@ -247,13 +246,19 @@ section.home-latest-videos {
 			}
 		}
 		&.legacy-arrow-left {
-			right: calc(100% - 30px);
+			right: calc(100% - 10px);
+			@include mobile {
+				right: calc(100% - 20px);
+			}
 			img {
 				transform: rotate(180deg);
 			}
 		}
 		&.legacy-arrow-right {
-			left: calc(100% - 30px);
+			left: calc(100% - 10px);
+			@include mobile {
+				left: calc(100% - 20px);
+			}
 		}
 	}
 }
