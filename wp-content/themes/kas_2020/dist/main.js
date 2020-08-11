@@ -134,6 +134,8 @@ $(document).ready(function () {
 		const $this = $(this);
 		const scrollTop = $(window).scrollTop();
 		const offset = parseInt($this.attr("offset"));
+
+		console.log(`${siteURL}/wp-json/kas_posts/${$this.attr("type")}/${$this.attr("term")}/${offset}`);
 		fetch(`${siteURL}/wp-json/kas_posts/${$this.attr("type")}/${$this.attr("term")}/${offset}`).then(response => response.json()).then(data => {
 			if (data.length) {
 				$(".posts-feed").append(data);

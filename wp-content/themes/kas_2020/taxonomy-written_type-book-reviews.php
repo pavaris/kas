@@ -108,9 +108,11 @@ get_header();
 				endif;
 				?>
 				</div>
-				<?php wpbeginner_numeric_posts_nav(); ?>
 			</div>
-				</section>
+			<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+				<button id='see-more' class='filled' type='written' offset='10' term="<?php echo $obj->slug; ?>">More</button>
+			</div>
+		</section>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

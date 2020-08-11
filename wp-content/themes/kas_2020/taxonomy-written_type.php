@@ -16,7 +16,7 @@ get_header();
 ?>
 <?php $obj = get_queried_object(); ?>
 <?php $loop = 0; ?>
-<!-- <?php print_r($obj); ?> -->
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -100,7 +100,11 @@ get_header();
 				endif;
 				?>
 				</div>
-				<?php wpbeginner_numeric_posts_nav(); ?>
+
+				<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+							<button id='see-more' class='filled' type='written' offset='9' term="<?php echo $obj->slug; ?>">More</button>
+						</div>
+				
 				</section>
 
 		</main><!-- #main -->

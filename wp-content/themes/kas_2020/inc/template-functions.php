@@ -279,7 +279,6 @@ function create_topics_hierarchical_taxonomy() {
     'show_admin_column' => true,
 		'show_in_nav_menus' => true,
     'query_var' => true,
-    'rewrite' => array( 'slug' => 'written-work' ),
 		'show_in_rest' => true,
   ));
 
@@ -377,6 +376,26 @@ function my_acf_init() {
 			);
 
 	}
+}
+
+function postStructReview($ID){
+	?> 
+		<a href="<?php echo get_the_permalink($ID); ?>">
+				<div class="post-feed-image">
+					<?php echo get_the_post_thumbnail($ID); ?>
+				</div>
+				<div class="post-feed-info">
+						<div class="post-category">
+							Review
+						</div>
+					<h6>
+						<?php echo get_the_title($ID); ?>
+					</h6>
+					<?php echo get_field('short_description', $ID); ?>
+
+				</div>
+			</a>
+	<?php 
 }
 
 
@@ -619,7 +638,6 @@ function my_awesome_func( $data ) {
 
 	if($posts->have_posts()){
 
-
 		if($data['post_type'] == 'podcast'){
 			ob_start();
 			
@@ -628,8 +646,14 @@ function my_awesome_func( $data ) {
 			}
 			return ob_get_clean();
 		}
-
-
+		if($data['tax'] == 'book-reviews'){
+			ob_start();
+			
+			foreach($posts->posts as $post){
+				postStructReview($post->ID);
+			}
+			return ob_get_clean();
+		}
 
 	}
 
