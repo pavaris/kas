@@ -64,7 +64,6 @@ $(document).ready(function () {
 		)
 			.then((response) => response.json())
 			.then((data) => {
-				console.log(data);
 				if (data.length) {
 					$(".posts-feed").append(data);
 					$("html, body").scrollTop(scrollTop);

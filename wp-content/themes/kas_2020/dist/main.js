@@ -135,7 +135,6 @@ $(document).ready(function () {
 		const scrollTop = $(window).scrollTop();
 		const offset = parseInt($this.attr("offset"));
 		fetch(`${siteURL}/wp-json/kas_posts/${$this.attr("type")}/${$this.attr("term")}/${offset}`).then(response => response.json()).then(data => {
-			console.log(data);
 			if (data.length) {
 				$(".posts-feed").append(data);
 				$("html, body").scrollTop(scrollTop);
