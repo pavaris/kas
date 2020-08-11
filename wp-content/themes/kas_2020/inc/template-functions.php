@@ -378,7 +378,7 @@ function my_acf_init() {
 	}
 }
 
-function postStructReview($ID){
+function postStruct($ID, $type){
 	?> 
 		<a href="<?php echo get_the_permalink($ID); ?>">
 				<div class="post-feed-image">
@@ -386,7 +386,7 @@ function postStructReview($ID){
 				</div>
 				<div class="post-feed-info">
 						<div class="post-category">
-							Review
+							<?php echo $type; ?>
 						</div>
 					<h6>
 						<?php echo get_the_title($ID); ?>
@@ -650,10 +650,18 @@ function my_awesome_func( $data ) {
 			ob_start();
 			
 			foreach($posts->posts as $post){
-				postStructReview($post->ID);
+				postStruct($post->ID, "Review");
 			}
 			return ob_get_clean();
 		}
+
+		ob_start();
+			
+		foreach($posts->posts as $post){
+			postStruct($post->ID, "Written");
+		}
+		return ob_get_clean();
+
 
 	}
 
