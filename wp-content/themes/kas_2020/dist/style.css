@@ -2177,7 +2177,8 @@ section.newsletter-container {
   margin-bottom: 60px; }
 
 .single-podcast .article-header {
-  max-width: unset; }
+  max-width: unset;
+  margin-bottom: 30px; }
   .single-podcast .article-header h5 {
     text-transform: uppercase;
     font-size: 25px;
