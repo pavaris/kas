@@ -3,7 +3,7 @@
 		h3 {
 			text-transform: uppercase;
 			letter-spacing: 0.3em;
-			color: $darkGray;
+			color: $ughGray;
 			font-weight: 700;
 		}
 	}
@@ -275,7 +275,7 @@ section.home-mission {
 		font-size: 25px;
 		margin: 0 auto 30px auto;
 		text-align: center;
-		color: $darkGray;
+		color: $ughGray;
 		letter-spacing: 0.2em;
 		line-height: 1.4em;
 		padding: 0 20px;
@@ -306,7 +306,7 @@ section.home-feed {
 		align-items: center;
 		width: 100%;
 		margin-bottom: 60px;
-		color: $darkGray;
+		color: $ughGray;
 		h4 {
 			font-size: 50px;
 			text-transform: uppercase;
@@ -342,6 +342,11 @@ section.home-feed {
 			flex-direction: column;
 			width: 50%;
 			padding: 0 20px;
+
+			h4 {
+				color: $ughGray;
+				letter-spacing: 0.1em;
+			}
 			.home-feed-post-info-inner {
 				max-width: 500px;
 				text-align: center;
@@ -369,7 +374,8 @@ section.home-projects {
 		font-family: $mrEaves;
 		font-size: 50px;
 		font-weight: 600;
-		letter-spacing: 0.2em;
+		letter-spacing: 0.1em;
+		margin-bottom: 35px;
 		@include mobile {
 			font-size: 40px;
 		}
@@ -383,7 +389,7 @@ section.home-projects {
 		}
 		a {
 			width: 100%;
-			margin-right: 25px;
+			margin-right: 35px;
 			margin-bottom: 25px;
 			position: relative;
 

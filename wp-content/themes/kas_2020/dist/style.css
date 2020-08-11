@@ -403,10 +403,13 @@ em {
 .section-title {
   text-transform: uppercase;
   font-size: 20px;
-  color: #414a57;
-  letter-spacing: 0.3em;
+  color: #757f87;
+  letter-spacing: 0.15em;
   font-weight: 500;
   margin-bottom: 60px; }
+
+h1.section-title {
+  font-size: 50px; }
 
 .button,
 button {
@@ -427,6 +430,9 @@ button {
   button.filled {
     background-color: #6cb5ce;
     color: white; }
+  .button.wide,
+  button.wide {
+    padding: 10px 35px; }
   @media (max-width: 1056px) {
     .button,
     button {
@@ -510,6 +516,12 @@ button {
 .footer-margin-padding {
   padding-bottom: 120px;
   margin-bottom: -120px; }
+
+.top-padding {
+  padding-top: 150px; }
+  @media (max-width: 767px) {
+    .top-padding {
+      padding-top: 65px; } }
 
 #masthead {
   position: absolute;
@@ -714,6 +726,8 @@ button {
       .nav-search form input[type="submit"].filled {
         background-color: #6cb5ce;
         color: white; }
+      .nav-search form input[type="submit"].wide {
+        padding: 10px 35px; }
       @media (max-width: 1056px) {
         .nav-search form input[type="submit"] {
           padding: 12px 25px; } }
@@ -1004,16 +1018,28 @@ button {
 .wp-block-buttons .wp-block-button {
   text-align: center; }
   .wp-block-buttons .wp-block-button .wp-block-button__link {
-    background-color: #6cb5ce;
-    border: 0px;
-    border-radius: 70px;
-    padding: 20px 70px;
-    color: white;
-    font-style: normal;
-    text-transform: uppercase;
+    border: 1px solid #6cb5ce;
+    border-radius: 25px;
+    padding: 8px 25px;
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: 0.2rem;
+    font-weight: 500;
+    transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+    cursor: pointer;
     text-decoration: none;
-    display: inline-block;
-    font-size: 20px; }
+    text-transform: uppercase;
+    font-weight: 600; }
+    .wp-block-buttons .wp-block-button .wp-block-button__link:hover {
+      background-color: #6cb5ce; }
+    .wp-block-buttons .wp-block-button .wp-block-button__link.filled {
+      background-color: #6cb5ce;
+      color: white; }
+    .wp-block-buttons .wp-block-button .wp-block-button__link.wide {
+      padding: 10px 35px; }
+    @media (max-width: 1056px) {
+      .wp-block-buttons .wp-block-button .wp-block-button__link {
+        padding: 12px 25px; } }
 
 .social-nav {
   flex-grow: 1;
@@ -1045,7 +1071,9 @@ button {
       font-size: 30px; } }
 
 .latest-articles .section-title {
-  font-weight: 700; }
+  font-weight: 700;
+  font-size: 50px;
+  color: #757f87; }
 
 .all-articles .section-title {
   font-size: 32px;
@@ -1063,10 +1091,25 @@ h1.section-title {
   object-fit: cover;
   background-color: #39414d; }
 
+#see-more {
+  text-transform: uppercase;
+  font-weight: 600; }
+
 .single .site-header:before {
   transform: translateY(0%);
   opacity: 1;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.8); }
+
+.single .article-header {
+  margin-bottom: 0px; }
+  .single .article-header h1 {
+    font-weight: 600;
+    line-height: 1.1em;
+    font-size: 50px;
+    margin-bottom: 30px; }
+    @media (max-width: 767px) {
+      .single .article-header h1 {
+        font-size: 35px; } }
 
 .article-tag {
   background-color: #d8d8d8;
@@ -1126,14 +1169,14 @@ h1.section-title {
       height: auto; }
 
 .single-meta {
-  display: flex;
-  justify-content: center;
   font-size: 18px;
   text-transform: uppercase;
-  font-style: italic;
   font-weight: 600;
-  color: #414a57;
-  margin-bottom: 20px; }
+  color: #757f87;
+  margin-bottom: 30px;
+  text-align: center; }
+  .single-meta p {
+    margin-bottom: 15px; }
 
 .single-tags {
   display: flex;
@@ -1148,9 +1191,9 @@ h1.section-title {
     padding: 5px 20px;
     margin: 0 10px 20px;
     text-decoration: none; }
-
-.single-meta-cont {
-  margin-top: 100px; }
+    @media (max-width: 767px) {
+      .single-tags a {
+        font-size: 24px; } }
 
 .single-author {
   display: flex; }
@@ -1163,12 +1206,6 @@ h1.section-title {
       width: 100%;
       height: auto; }
 
-.single-post .article-header {
-  padding-top: 60px; }
-  .single-post .article-header h1 {
-    font-weight: 600;
-    line-height: 2em; }
-
 .author-social {
   margin-top: 40px; }
   .author-social a {
@@ -1180,16 +1217,24 @@ h1.section-title {
 
 .book-review-content {
   display: flex; }
+  @media (max-width: 767px) {
+    .book-review-content {
+      flex-direction: column; } }
   .book-review-content .book-image {
     width: 30%;
     min-width: 30%;
     margin-right: 50px; }
+    @media (max-width: 767px) {
+      .book-review-content .book-image {
+        width: 100%;
+        margin-right: 0px;
+        margin-bottom: 20px; } }
     .book-review-content .book-image img {
       width: 100%;
       height: auto;
       position: sticky;
       position: -webkit-sticky;
-      top: 20px; }
+      top: 150px; }
 
 .alignleft {
   float: left;
@@ -1202,7 +1247,7 @@ h1.section-title {
 .home section h3 {
   text-transform: uppercase;
   letter-spacing: 0.3em;
-  color: #414a57;
+  color: #757f87;
   font-weight: 700; }
 
 .header-slides .slick-track {
@@ -1408,7 +1453,7 @@ section.home-mission {
     font-size: 25px;
     margin: 0 auto 30px auto;
     text-align: center;
-    color: #414a57;
+    color: #757f87;
     letter-spacing: 0.2em;
     line-height: 1.4em;
     padding: 0 20px;
@@ -1433,7 +1478,7 @@ section.home-feed {
     align-items: center;
     width: 100%;
     margin-bottom: 60px;
-    color: #414a57; }
+    color: #757f87; }
     section.home-feed a h4 {
       font-size: 50px;
       text-transform: uppercase; }
@@ -1464,6 +1509,9 @@ section.home-feed {
       flex-direction: column;
       width: 50%;
       padding: 0 20px; }
+      section.home-feed a .home-feed-post-info h4 {
+        color: #757f87;
+        letter-spacing: 0.1em; }
       section.home-feed a .home-feed-post-info .home-feed-post-info-inner {
         max-width: 500px;
         text-align: center; }
@@ -1485,7 +1533,8 @@ section.home-projects {
     font-family: "mr-eaves-sans";
     font-size: 50px;
     font-weight: 600;
-    letter-spacing: 0.2em; }
+    letter-spacing: 0.1em;
+    margin-bottom: 35px; }
     @media (max-width: 767px) {
       section.home-projects h3 {
         font-size: 40px; } }
@@ -1498,7 +1547,7 @@ section.home-projects {
         flex-wrap: wrap; } }
     section.home-projects .home-projects-feed a {
       width: 100%;
-      margin-right: 25px;
+      margin-right: 35px;
       margin-bottom: 25px;
       position: relative; }
       section.home-projects .home-projects-feed a:before {
@@ -1601,6 +1650,8 @@ section.newsletter-container {
     section.newsletter-container .wpcf7-submit.filled {
       background-color: #6cb5ce;
       color: white; }
+    section.newsletter-container .wpcf7-submit.wide {
+      padding: 10px 35px; }
     @media (max-width: 1056px) {
       section.newsletter-container .wpcf7-submit {
         padding: 12px 25px; } }
@@ -1882,14 +1933,13 @@ section.newsletter-container {
   padding-top: 0px; }
 
 .page-header-container {
-  height: 30vh;
+  height: 60vh;
   min-height: 400px;
   width: 100%;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-top: 50px; }
+  align-items: center; }
   .page-header-container:before {
     content: "";
     position: absolute;
@@ -1901,13 +1951,13 @@ section.newsletter-container {
     z-index: 0; }
   .page-header-container h1 {
     position: relative;
-    z-index: 2; }
+    z-index: 2;
+    font-family: "mr-eaves-sans"; }
   .page-header-container h2 {
     position: relative;
     z-index: 2;
     color: white;
     text-align: center;
-    font-family: "mrs-eaves";
     letter-spacing: 0.25em;
     text-transform: uppercase;
     font-weight: 700;
@@ -2118,20 +2168,42 @@ section.newsletter-container {
 
 .single-podcast .section-title {
   font-weight: 700;
-  margin-bottom: 40px;
-  font-size: 22px; }
+  margin-bottom: 30px;
+  color: #757f87;
+  font-size: 50px;
+  letter-spacing: 0.1em; }
 
 .single-podcast .podcast-embed-cont {
   margin-bottom: 60px; }
 
+.single-podcast .article-header {
+  max-width: unset; }
+  .single-podcast .article-header h5 {
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #757f87;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 50px; }
+  .single-podcast .article-header .single-tags a {
+    font-weight: 500; }
+  .single-podcast .article-header img {
+    width: 100%;
+    height: auto; }
+
 .more-podcasts-feed {
-  background-color: #d8d8d8;
+  background-color: #f8f8f8;
   padding: 40px 0 80px;
   margin-bottom: -120px; }
   .more-podcasts-feed .section-title {
-    font-size: 30px; }
+    font-size: 40px;
+    margin-bottom: 40px;
+    letter-spacing: 0.15em; }
   .more-podcasts-feed .posts-feed {
     justify-content: space-between; }
+  .more-podcasts-feed .button-cnt .button {
+    text-transform: uppercase;
+    font-weight: 700; }
 
 .podcast-author {
   padding: 30px 0 60px;
@@ -2191,20 +2263,27 @@ section.newsletter-container {
       width: 100%; } }
 
 .term-book-reviews .lead-article-content p {
-  margin-bottom: 30px; }
+  margin-bottom: 20px; }
 
 .term-book-reviews .lead-article-content .button {
-  padding: 10px 30px;
-  border-radius: 10px; }
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 25px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 12px 25px; }
+
+.term-book-reviews .page-header-container {
+  height: 60vh; }
 
 .single-written .all-articles,
 .term-book-reviews .all-articles {
   margin-top: 60px;
-  background-color: #414a57;
+  background-color: #f8f8f8;
   padding: 60px 0 100px; }
   .single-written .all-articles .section-title,
   .term-book-reviews .all-articles .section-title {
-    color: white; }
+    color: #757f87; }
   .single-written .all-articles .posts-feed,
   .term-book-reviews .all-articles .posts-feed {
     justify-content: space-between; }
@@ -2265,48 +2344,33 @@ section.newsletter-container {
     .single-written .all-articles .posts-feed a {
       margin-right: 0px; } }
 
-section.home-projects .explore-repeater {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-  width: 100%; }
-  section.home-projects .explore-repeater a {
-    margin-right: 0px;
-    margin-bottom: 0px; }
-  section.home-projects .explore-repeater a:nth-child(1),
-  section.home-projects .explore-repeater a:nth-child(2),
-  section.home-projects .explore-repeater a:nth-child(3) {
-    grid-column: auto / span 4;
+.page-template-page-explore section.home-projects {
+  padding: 0px; }
+  .page-template-page-explore section.home-projects .explore-repeater {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
     width: 100%; }
-    section.home-projects .explore-repeater a:nth-child(1) p,
-    section.home-projects .explore-repeater a:nth-child(2) p,
-    section.home-projects .explore-repeater a:nth-child(3) p {
-      display: none; }
-    @media (max-width: 767px) {
-      section.home-projects .explore-repeater a:nth-child(1),
-      section.home-projects .explore-repeater a:nth-child(2),
-      section.home-projects .explore-repeater a:nth-child(3) {
-        grid-column: auto / span 12; } }
-  section.home-projects .explore-repeater a:nth-child(n + 4) {
-    grid-column: auto / span 3;
-    text-decoration: none; }
-    @media (max-width: 767px) {
-      section.home-projects .explore-repeater a:nth-child(n + 4) {
-        grid-column: auto / span 6; } }
-    section.home-projects .explore-repeater a:nth-child(n + 4) .home-projects-image {
-      padding-bottom: 100%;
-      margin-bottom: 15px; }
-    section.home-projects .explore-repeater a:nth-child(n + 4):before {
-      display: none; }
-    section.home-projects .explore-repeater a:nth-child(n + 4) h5 {
+    .page-template-page-explore section.home-projects .explore-repeater a {
+      grid-column: auto / span 3;
+      text-decoration: none;
+      width: 100%; }
+      .page-template-page-explore section.home-projects .explore-repeater a:before {
+        display: none; }
+      @media (max-width: 767px) {
+        .page-template-page-explore section.home-projects .explore-repeater a {
+          grid-column: auto / span 6; } }
+      .page-template-page-explore section.home-projects .explore-repeater a .home-projects-image {
+        padding-bottom: 100%;
+        margin-bottom: 15px; }
+    .page-template-page-explore section.home-projects .explore-repeater h5 {
       position: initial;
-      color: #414a57;
+      color: #757f87;
       padding: 0px;
       margin-bottom: 10px;
       font-size: 22px; }
-    section.home-projects .explore-repeater a:nth-child(n + 4) p {
-      letter-spacing: 0.06em;
+    .page-template-page-explore section.home-projects .explore-repeater p {
       font-weight: 100; }
 
 .search .page-header-container,

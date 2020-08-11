@@ -1,12 +1,19 @@
 .term-book-reviews {
 	.lead-article-content {
 		p {
-			margin-bottom: 30px;
+			margin-bottom: 20px;
 		}
 		.button {
-			padding: 10px 30px;
-			border-radius: 10px;
+			margin-top: 20px;
+			display: inline-block;
+			border-radius: 25px;
+			text-transform: uppercase;
+			font-weight: 600;
+			padding: 12px 25px;
 		}
+	}
+	.page-header-container {
+		height: 60vh;
 	}
 }
 
@@ -14,10 +21,10 @@
 .term-book-reviews {
 	.all-articles {
 		margin-top: 60px;
-		background-color: $darkGray;
+		background-color: $offWhite;
 		padding: 60px 0 100px;
 		.section-title {
-			color: white;
+			color: $ughGray;
 		}
 
 		.posts-feed {

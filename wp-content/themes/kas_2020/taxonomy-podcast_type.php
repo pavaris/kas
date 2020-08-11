@@ -1,5 +1,7 @@
 <?php
 get_header();
+$hosts = get_field('hosts', $term);
+
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -98,7 +100,10 @@ get_header();
 									<?php endwhile;
 									 ?>
 								</div>
-								<?php wpbeginner_numeric_posts_nav(); ?>
+								
+						</div>
+						<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+							<button id='see-more' class='filled' type='podcast' offset='9' term="<?php echo $term->slug; ?>">More</button>
 						</div>
 					</section>
 
@@ -106,7 +111,6 @@ get_header();
 
 
 <?php
-						$hosts = get_field('hosts', $term);
 						if($hosts){ ?>
 							<section class="podcast-hosts">
 								<div class="content-margins">

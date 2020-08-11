@@ -146,7 +146,7 @@ get_header();
                     <?php $projects = get_field('projects'); ?>
                     <?php if($projects){ ?>
                     <section class="home-projects">
-                      <div class="content-margins">
+                      
                         <h3>Our Projects</h3>
                         <div class="home-projects-feed">
                           <?php foreach($projects as $project){ ?> 
@@ -163,7 +163,7 @@ get_header();
                         <div class="center ">
                           <a href="<?php echo get_home_url(); ?>/explore" class="button filled">All Projects</a>
                         </div>
-                      </div>
+                      
                     </section>
                     <?php } ?>
           

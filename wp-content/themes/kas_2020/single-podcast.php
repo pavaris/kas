@@ -13,28 +13,48 @@ get_header();
 <?php $terms = get_the_terms(get_the_ID(), 'podcast_type'); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main top-padding">
 			
 		
 
-			<div class="content-margins">
-				<article class="">
+				<article class="podcast-content">
 					<?php
 					while ( have_posts() ) :
 						the_post();
 					?>
 						<section class="article-header">
-							<h1 class='section-title'><?php the_title(); ?></h1>
+							<div class="content-margins wide">
+								<h1 class='section-title'><?php echo $terms[0]->name . ': '; ?><?php the_title(); ?></h1>
+								<h5><?php echo get_the_date('F jS, Y'); ?></h5>
+									<?php if(get_the_tags(get_the_ID())){ ?>
+										<div class="single-tags">
+											<?php foreach(get_the_tags(get_the_ID()) as $tag){
+												?> 
+												<a href="<?php echo get_tag_link($tag); ?>"><?php echo $tag->name; ?></a>
+												<?php 
+											} ?>
+										</div>
+								<?php } ?>
+
+								<?php if(!get_field('hide_image')){ ?>
+									<?php echo get_the_post_thumbnail(); ?>
+								<?php } ?>
+							</div>
 						</section>
 						<section class="podcast-embed-cont">
-							<div class="latest-podcast-embed">
-								<?php echo get_field('podcast_embed'); ?>
+							<div class="content-margins">
+								<div class="latest-podcast-embed">
+									<?php echo get_field('podcast_embed'); ?>
+								</div>
 							</div>
 						</section>
 						<section class='post-content'>  
-							<?php the_content(); ?>
+							<div class="content-margins">
+								<?php the_content(); ?>
+							</div>
 						</section>
-					<?php if($terms){ 
+						<div class="content-margins">
+										<?php if($terms){ 
 						if($terms[0]->slug == 'krb-podcast'){
 							?> 
 							<section class="podcast-author">
@@ -45,7 +65,8 @@ get_header();
 							<?php 
 						}
 					} ?>
-				
+						</div>
+									
 					<?php
 					endwhile; // End of the loop.
 					?>
@@ -90,10 +111,9 @@ get_header();
 						</section>
 					<?php } ?>
 				</article>
-			</div>
 			<?php if($terms){ ?>
 				<section class="more-podcasts-feed">
-					<div class="content-margins">
+					<div class="content-margins wide">
 						<h3 class="section-title"><?php echo $terms[0]->name; ?> Episodes</h3>
 						<div class="posts-feed">
 							<?php 
@@ -110,7 +130,7 @@ get_header();
 					
 						</div>
 						<div class="button-cnt">
-							<a href="<?php echo get_term_link($terms[0], 'podcast_type'); ?>" class="button">More</a>
+							<a href="<?php echo get_term_link($terms[0], 'podcast_type'); ?>" class="button filled wide">More</a>
 						</div>
 					</div>
 				</section>

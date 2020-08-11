@@ -12,30 +12,8 @@ get_header();
 <?php $terms = get_the_terms(get_the_ID(), 'written_type'); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
-			<div id="page-header">
-				<div class="page-header-container">
-						<?php if($terms){ ?>
-						<a href="<?php echo get_term_link($terms[0]); ?>"><h2><?php echo $terms[0]->name; ?></h2></a>
-						<?php } ?>
-					<div class="page-header-image">
-						<?php 
-							if($terms){
-								$image = get_field('banner_image', $terms[0]);
-										
-								if($image){
-									echo wp_get_attachment_image($image['ID'], 'large');
-								}else{
-									echo '<div class="blue-bg"></div>';
-								}
-							}else{
-								echo get_the_post_thumbnail();
-							}
-						?>
-						
-					</div>
-				</div>
-			</div>
+		<main id="main" class="site-main top-padding">
+
 			<div class="content-margins">
 				<article class="">
 					<?php
@@ -44,8 +22,42 @@ get_header();
 					?>
 						<section class="article-header">
 							<h1 class='section-title'><?php the_title(); ?></h1>
-							
 						</section>
+
+
+						<section class="single-meta-cont">
+							<div class="single-meta">
+									<p>
+										
+									</p>
+
+<?php
+$author = get_field('author_name');
+if($author) {
+	if($terms[0]->slug == 'book-reviews'){ ?> 
+		<p>Review by <?php echo $author; ?></p>
+		<?php 
+	}else{ ?> 
+		<p>By <?php echo $author; ?></p>
+	<?php }
+}
+?>
+
+									<p><?php the_date('F jS, Y'); ?></p>
+									
+							</div>
+							<?php if(get_the_tags(get_the_ID())){ ?>
+							<div class="single-tags">
+								<?php foreach(get_the_tags(get_the_ID()) as $tag){
+									?> 
+									<a href="<?php echo get_tag_link($tag); ?>"><?php echo $tag->name; ?></a>
+									<?php 
+								} ?>
+							</div>
+							<?php } ?>
+						</section>
+
+
 						<?php if($terms[0]->slug == 'book-reviews'){ ?>
 							<div class="book-review-content">
 								<div class="book-image">
@@ -62,21 +74,7 @@ get_header();
 						<?php } ?>
 						
 
-						<section class="single-meta-cont">
-							<div class="single-meta">
-									<?php echo get_field('author_name') ? 'By ' . get_field('author_name') . ' | ' : ''; ?>
-									Posted on <?php the_date('m/d/Y'); ?>
-							</div>
-							<?php if(get_the_tags(get_the_ID())){ ?>
-							<div class="single-tags">
-								<?php foreach(get_the_tags(get_the_ID()) as $tag){
-									?> 
-									<a href="<?php echo get_tag_link($tag); ?>"><?php echo $tag->name; ?></a>
-									<?php 
-								} ?>
-							</div>
-							<?php } ?>
-						</section>
+						
 
 						<?php if(get_field('author_name')){
 							?> 
@@ -111,7 +109,7 @@ get_header();
 			</div>
 						<?php
 					if($terms){ 
-						$args = array('post_type' => 'written', 'posts_per_page' => 6, 
+						$args = array('post_type' => 'written', 'posts_per_page' => 3, 
 						'tax_query' => array(
 							array(
 								'taxonomy' => 'written_type',
@@ -136,7 +134,9 @@ get_header();
 													<div class="post-category">
 														<?php echo $terms[0]->slug == 'book-reviews' ? 'Review' : 'Written';?>
 													</div>
-												<?php echo get_the_title($post->ID); ?>
+												<h5>
+													<?php echo get_the_title($post->ID); ?>
+												</h5>
 																						<?php echo get_field('short_description'); ?>
 
 											</div>

@@ -585,3 +585,55 @@ function wpa_cpt_tags( $query ) {
     }
 }
 add_action( 'pre_get_posts', 'wpa_cpt_tags' );
+
+
+
+add_action( 'rest_api_init', function () {
+  register_rest_route( 'kas_posts', '/(?P<post_type>[a-zA-Z0-9-]+)/(?P<tax>[a-zA-Z0-9-]+)/(?P<offset>\d+)', array(
+    'methods' => 'GET',
+    'callback' => 'my_awesome_func',
+  ) );
+} );
+
+// function my_awesome_func( $data ) {
+// 	return $data;
+
+// 	return null;
+ 
+  
+// }
+function my_awesome_func( $data ) {
+  $args = array(
+		'posts_per_page' => 3,
+		'offset' => $data['offset'],
+		'post_type' => $data['post_type'],
+		'tax_query' => array(
+			array(
+					'taxonomy' => $data['post_type'] . '_type',
+					'field'    => 'slug',
+					'terms'    => $data['tax'],
+			),
+		),
+	);
+	$posts = new WP_Query($args);
+
+	if($posts->have_posts()){
+
+
+		if($data['post_type'] == 'podcast'){
+			ob_start();
+			
+			foreach($posts->posts as $post){
+				podcast_article($post->ID);
+			}
+			return ob_get_clean();
+		}
+
+
+
+	}
+
+	return [];
+ 
+  
+}

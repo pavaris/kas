@@ -16,7 +16,7 @@ get_header();
 ?>
 <?php $obj = get_queried_object(); ?>
 <?php $loop = 0; ?>
-<!-- <?php print_r($obj); ?> -->
+
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
@@ -36,6 +36,7 @@ get_header();
 							</div>
 						</div>
 					</header><!-- .page-header -->
+
 					<div class="content-margins">
 
 						<section class="latest-articles">
@@ -57,8 +58,11 @@ get_header();
 									</div>
 									<div class="lead-article-content">
 										<h3 class='section-title'><?php the_title(); ?></h3>
+										<?php if(get_field('author_name')){ ?>
+											<p>by <?php echo get_field('author_name'); ?></p>
+										<?php } ?>
 										<?php echo get_field('short_description', get_the_ID()); ?>
-										<div class='button'>Read Review</div>
+										<div class='button filled'>Read Review</div>
 									</div>
 									
 									

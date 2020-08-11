@@ -112,10 +112,14 @@ em {
 .section-title {
 	text-transform: uppercase;
 	font-size: 20px;
-	color: $darkGray;
-	letter-spacing: 0.3em;
+	color: $ughGray;
+	letter-spacing: 0.15em;
 	font-weight: 500;
 	margin-bottom: 60px;
+}
+
+h1.section-title {
+	font-size: 50px;
 }
 
 @mixin button {
@@ -136,6 +140,9 @@ em {
 	&.filled {
 		background-color: $skyBlue;
 		color: white;
+	}
+	&.wide {
+		padding: 10px 35px;
 	}
 	@media (max-width: $tablet_width) {
 		padding: 12px 25px;
@@ -242,4 +249,11 @@ button {
 .footer-margin-padding {
 	padding-bottom: 120px;
 	margin-bottom: -120px;
+}
+
+.top-padding {
+	padding-top: 150px;
+	@include mobile {
+		padding-top: 65px;
+	}
 }

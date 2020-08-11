@@ -62,6 +62,25 @@
             "new_lines": ""
         },
         {
+            "key": "field_5f2ef6bb7fcab",
+            "label": "Hide Image",
+            "name": "hide_image",
+            "type": "true_false",
+            "instructions": "(hides image in post single)",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0,
+            "ui": 0,
+            "ui_on_text": "",
+            "ui_off_text": ""
+        },
+        {
             "key": "field_5eb0496fad5a0",
             "label": "Credits",
             "name": "credits",
@@ -98,5 +117,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1596770333
+    "modified": 1596913404
 }

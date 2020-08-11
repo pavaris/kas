@@ -24,14 +24,14 @@
 }
 
 .page-header-container {
-	height: 30vh;
+	height: 60vh;
 	min-height: 400px;
 	width: 100%;
 	position: relative;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding-top: 50px;
+
 	&:before {
 		content: "";
 		position: absolute;
@@ -45,13 +45,14 @@
 	h1 {
 		position: relative;
 		z-index: 2;
+		font-family: $mrEaves;
 	}
 	h2 {
 		position: relative;
 		z-index: 2;
 		color: white;
 		text-align: center;
-		font-family: $mrsEaves;
+
 		letter-spacing: 0.25em;
 		text-transform: uppercase;
 		font-weight: 700;

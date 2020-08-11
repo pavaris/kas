@@ -1,5 +1,5 @@
 var $ = jQuery.noConflict();
-
+const siteURL = document.location.origin + "/kas_new";
 $(document).ready(function () {
 	console.log("ready? ok!");
 
@@ -52,27 +52,26 @@ $(document).ready(function () {
 		],
 	});
 
-	$(".single-written .posts-feed").slick({
-		slidesToShow: 3,
-		arrows: false,
-		slidesToScroll: 3,
-		dots: true,
-		responsive: [
-			{
-				breakpoint: 876,
-				settings: {
-					slidesToShow: 2,
-					slidesToScroll: 2,
-				},
-			},
-			{
-				breakpoint: 667,
-				settings: {
-					slidesToShow: 1,
-					slidesToScroll: 1,
-				},
-			},
-		],
+	$("#see-more").click(function () {
+		const $this = $(this);
+		const scrollTop = $(window).scrollTop();
+		const offset = parseInt($this.attr("offset"));
+		fetch(
+			`${siteURL}/wp-json/kas_posts/${$this.attr("type")}/${$this.attr(
+				"term"
+			)}/${offset}`
+		)
+			.then((response) => response.json())
+			.then((data) => {
+				console.log(data);
+				if (data.length) {
+					$(".posts-feed").append(data);
+					$("html, body").scrollTop(scrollTop);
+					$this.attr("offset", offset + 3);
+				} else {
+					$this.hide();
+				}
+			});
 	});
 
 	// GALLERY

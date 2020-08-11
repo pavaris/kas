@@ -3,18 +3,16 @@
 <?php get_header(); ?>
 
  	<div id="primary" class="content-area">
- 		<main id="main" class="site-main">
-			<div class="page-header-container">
-				<h2>Explore</h2>
-				<div class="page-header-image">
-					<?php echo get_the_post_thumbnail(); ?>
-				</div>
-			</div>
+ 		<main id="main" class="site-main top-padding">
 
 		<?php $explore = get_field('projects'); ?>
 		<section class="home-projects">
 			<div class="explore-feed">
-				<div class="content-margins">
+				<div class="content-margins wide">
+						<section class="article-header">
+							<h1 class='section-title'><?php the_title(); ?></h1>
+						</section>
+
 					<div class="explore-repeater home-projects-feed">
 						<?php if($explore){ 
 							foreach($explore as $explorePost){
