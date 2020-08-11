@@ -2564,6 +2564,47 @@ section.newsletter-container {
       height: 100%;
       object-fit: cover; }
 
+.donate-footer-image {
+  position: relative;
+  margin-top: 80px;
+  z-index: -1;
+  margin-bottom: -120px; }
+  .donate-footer-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover; }
+  .donate-footer-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4); }
+  .donate-footer-image h5 {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+    text-transform: uppercase;
+    color: white;
+    z-index: 2;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    letter-spacing: 0.1em;
+    font-weight: 600; }
+
+.page-donate .page-header-container,
+.page-donate .donate-footer-image {
+  height: 75vh; }
+
 .page-template-page-legacy-project .page-header-container {
   height: 70vh;
   padding-top: 0px; }
