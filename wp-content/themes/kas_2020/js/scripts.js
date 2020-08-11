@@ -1,5 +1,6 @@
 var $ = jQuery.noConflict();
-const siteURL = document.location.origin + "/kas_new";
+const local = document.location.host.includes("local") ? "/kas_new" : "";
+const siteURL = document.location.origin + local;
 $(document).ready(function () {
 	console.log("ready? ok!");
 
