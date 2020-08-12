@@ -5,35 +5,32 @@
 <?php $aboutPage = get_page_by_title('About us'); ?>
 
  	<div id="primary" class="content-area">
- 		<main id="main" class="site-main">
-		 <div class="page-header-container">
-				<h2>About Us</h2>
-				<div class="page-header-image">
-					<?php echo get_the_post_thumbnail($aboutPage->ID); ?>
+ 		<main id="main" class="site-main top-padding">
+
+			
+			<div class="content-margins">
+				<div class="legacy-page-nav">
+					<?php  
+						$args = array(
+							'post_type'      => 'page',
+							'posts_per_page' => -1,
+							'post_parent'    => $aboutPage->ID,
+							'order'          => 'ASC',
+						);
+						$children = new WP_Query($args);
+					?>
+					<?php foreach($children->posts as $key=>$page){ ?>
+					
+						<a href="<?php echo get_the_permalink($page->ID); ?>" class="<?php  echo get_the_ID() == $page->ID ? 'active' : ''; ?>"><?php echo $page->post_title; ?></a>					
+						
+					<?php } ?>
 				</div>
 			</div>
-		<div class="about-page-nav-cont">
-				<div class="about-page-nav">
-				<?php  
-					$args = array(
-						'post_type'      => 'page',
-						'posts_per_page' => -1,
-						'post_parent'    => $aboutPage->ID,
-						'order'          => 'ASC',
-					);
-					$children = new WP_Query($args);
-				?>
-				<?php foreach($children->posts as $key=>$page){ ?>
-				
-					<a href="<?php echo get_the_permalink($page->ID); ?>" class="<?php  echo get_the_ID() == $page->ID ? 'active' : ''; ?>"><?php echo $page->post_title; ?></a>					
-					
-				<?php } ?>
-			</div>
-		</div>
+			
 			 <?php wp_reset_postdata(); ?>
 		 <div class="content-margins">
 			<div class="page-content">
-					<h1 style="text-align: center"><?php the_title(); ?></h1>
+					<h1 class="section-title center"><?php the_title(); ?></h1>
 
 
 <?php if(get_field('members')){ ?>
@@ -84,13 +81,24 @@
 		 	</div>
 		 </div>
 			<?php if($post->ID == $children->posts[0]->ID){ ?>
-				<div id="about-page-content">
+				<div id="about-page-video">
 					<div class="content-margins">
 						<h2>About koreanamericanstory.org</h2>
-						
-						<?php echo get_the_content(null, null, $aboutPage->ID); ?>
+						<div class="video-single-embed video-play-wrapper">
+									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
+									<a href="" id="play-video">
+										<?php $image = get_field('poster_image'); ?>
+										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
+									</a>
+								</div>
 					</div>
 				</div>
+				<div  class='about-page-content bottom-padding'>
+					<div class="content-margins content-wrap">
+						<?php echo get_field('content'); ?>
+					</div>
+				</div>
+
 			 <?php }else{
 				 ?> 
 				 <div class="bottom-padding"></div>

@@ -44,3 +44,55 @@ h1.section-title {
 	text-transform: uppercase;
 	font-weight: 600;
 }
+
+.page-header.archive-header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 75vh;
+	background-color: $skyBlue;
+	padding-bottom: 200px;
+	h1 {
+		color: white;
+		text-transform: uppercase;
+		font-weight: 100;
+		letter-spacing: 0.2em;
+		font-size: 80px;
+		@include mobile {
+			font-size: 60px;
+		}
+	}
+}
+
+.written-feeds {
+	.written-feed:first-child {
+		margin-top: -200px;
+		h5 {
+			color: white;
+		}
+	}
+
+	.written-feed {
+		margin-bottom: 50px;
+		a {
+			text-decoration: none;
+			display: inline;
+			color: $ughGray;
+		}
+		h5 {
+			text-transform: uppercase;
+			font-size: 40px;
+			font-weight: 600;
+			letter-spacing: 0.2em;
+			margin-bottom: 40px;
+
+			@include mobile {
+				font-size: 35px;
+				margin-bottom: 20px;
+			}
+		}
+		.posts-feed {
+			justify-content: space-between;
+		}
+	}
+}

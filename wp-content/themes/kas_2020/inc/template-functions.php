@@ -495,9 +495,9 @@ function podcast_article($postID){
 							} ?>
 						</div>
 
-					<h5>
+					<h6>
 						<?php echo get_the_title($postID); ?>
-					</h5>
+					</h6>
 					<?php if(get_field('creator_title', $postID)){ ?>
 						<p><?php echo get_field('creator_title', $postID); ?></p>
 					<?php } ?>

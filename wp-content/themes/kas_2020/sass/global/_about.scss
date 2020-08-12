@@ -5,12 +5,15 @@
 		margin-bottom: 50px;
 		h1 {
 			text-transform: uppercase;
-			font-family: $mrsEaves;
-			font-size: 20px;
-			color: $darkGray;
-			letter-spacing: 0.3em;
+			color: $ughGray;
+			letter-spacing: 0.2em;
 			font-weight: 500;
 			margin-bottom: 60px;
+			font-size: 50px;
+			line-height: 1.2em;
+			@include mobile {
+				font-size: 35px;
+			}
 		}
 		p {
 			line-height: 1em;
@@ -20,6 +23,11 @@
 	}
 	.site-footer {
 		padding-top: 0px;
+	}
+	.top-padding {
+		@include mobile {
+			padding-top: 0px;
+		}
 	}
 }
 
@@ -127,23 +135,33 @@
 	}
 }
 
-#about-page-content {
-	background-color: $darkGray;
-	padding: 30px 0 120px;
+#about-page-video {
+	background-color: $anotherGray;
+	padding: 50px 0;
 	color: white;
+	p {
+		color: inherit;
+	}
 	h2 {
 		text-transform: uppercase;
-		font-family: $mrsEaves;
-		font-size: 20px;
+		font-size: 25px;
 		color: white;
-		letter-spacing: 0.3em;
-		font-weight: 500;
+		letter-spacing: 0.2em;
+		font-weight: 600;
 		margin-bottom: 30px;
 		text-align: center;
+		line-height: 1.2em;
+		@include mobile {
+			font-size: 18px;
+		}
 	}
 	iframe {
 		width: 100%;
 	}
+}
+
+.about-page-content {
+	padding: 50px 0;
 }
 
 .bottom-padding {
@@ -275,7 +293,7 @@
 			left: 0;
 			margin: 0 auto;
 			color: white;
-			font-size: 20px;
+			font-size: 18px;
 			text-transform: uppercase;
 			letter-spacing: 0.15em;
 			z-index: 1;
@@ -291,6 +309,8 @@
 			h4 {
 				text-transform: uppercase;
 				font-size: 32px;
+				letter-spacing: 0.15em;
+				color: $ughGray;
 			}
 			p {
 				font-weight: 100;
