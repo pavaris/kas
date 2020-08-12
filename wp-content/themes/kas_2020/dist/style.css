@@ -1666,6 +1666,7 @@ section.newsletter-container {
   section.newsletter-container label .wpcf7-form-control-wrap {
     display: block; }
     section.newsletter-container label .wpcf7-form-control-wrap input {
+      width: 100%;
       padding: 10px 35px;
       font-size: 20px;
       text-align: center;
