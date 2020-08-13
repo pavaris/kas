@@ -10,32 +10,11 @@
 get_header();
 ?>
 <?php $terms = get_the_terms(get_the_ID(), 'video_type'); ?>
+
 <?php $thisID = get_the_ID(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
-			<div id="page-header">
-				<div class="page-header-container">
-						<?php if($terms){ ?>
-						<a href="<?php echo get_term_link($terms[0]); ?>"><h2><?php echo $terms[0]->name; ?></h2></a>
-						<?php } ?>
-					<div class="page-header-image">
-						<?php 
-							if($terms){
-								$image = get_field('banner_image', $terms[0]);
-										
-								if($image){
-									echo wp_get_attachment_image($image['ID'], 'large');
-								}else{
-									echo '<div class="blue-bg"></div>';
-								}
-							}else{
-								echo get_the_post_thumbnail();
-							}
-						?>
-						
-					</div>
-				</div>
-			</div>
+		
 			
 				<article class="video-content">
 					<div class="content-margins wide">
@@ -44,12 +23,18 @@ get_header();
 							the_post();
 						?>
 							<section class="article-header">
-								<h1 class='section-title'><?php the_title(); ?></h1>
+								<h2 class='section-title'>
+									<?php if($terms){
+										echo $terms[0]->name;
+									}else{
+										the_title();
+									} ?>
+								</h2>
 								
 							</section>
 							
 							<section class="video-playlist-container">
-								<div class="video-single-embed home-latest-videos-feed">
+								<div class="video-single-embed video-play-wrapper">
 									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">
 										<?php $image = get_field('poster_image'); ?>
@@ -90,6 +75,7 @@ get_header();
 							</section>
 								
 							<section class='page-content <?php echo $videos->have_posts() ? 'playlist-padding' : ''; ?>'>
+							<h1><?php the_title(); ?></h1>
 								<?php the_content(); ?>
 
 
@@ -113,6 +99,31 @@ get_header();
 						?>
 					</div>
 				</article>
+
+					<section class="more-podcasts-feed">
+					<div class="content-margins wide">
+						<h3 class="section-title"><?php echo $terms[0]->name; ?></h3>
+						<div class="posts-feed">
+							<?php 
+							
+							foreach($videos->posts as $index=>$postsss){
+								postStruct($postsss->ID, 'waht');
+								if($index == 2){break;}
+							}
+	?>
+					
+						</div>
+						<div class="button-cnt">
+							<?php $link = get_term_link($terms[0], 'video_type'); ?>
+							<?php if($terms[0]->slug == 'legacy-project'){
+								$page = get_page_by_path( 'legacy-project/all-videos' );
+								$link = get_the_permalink( $page );
+							} ?>		
+							<a href="<?php echo $link; ?>" class="button filled wide">More</a>
+						</div>
+					</div>
+				</section>
+
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

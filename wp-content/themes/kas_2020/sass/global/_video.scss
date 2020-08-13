@@ -16,14 +16,40 @@
 			margin-right: 20px;
 		}
 	}
+	.article-header {
+		h2 {
+			font-size: 50px;
+			font-weight: 600;
+			@include mobile {
+				font-size: 30px;
+			}
+		}
+	}
+	.more-podcasts-feed {
+		padding: 60px 0 80px;
+		.section-title {
+			font-weight: 600;
+		}
+	}
 }
 
 .video-content {
-	padding: 60px 0;
-	background-color: $anotherGray;
+	padding: 120px 0 60px;
+	background-color: $grayAgain;
 	color: white;
+	@include mobile {
+		padding: 60px 0;
+	}
 	* {
 		color: inherit;
+	}
+	.page-content {
+		h1 {
+			font-size: 40px;
+			font-weight: 600;
+			text-transform: uppercase;
+			letter-spacing: 0.15em;
+		}
 	}
 }
 

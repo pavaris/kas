@@ -34,12 +34,15 @@ get_header();
 <?php
 $author = get_field('author_name');
 if($author) {
+	if($terms){
 	if($terms[0]->slug == 'book-reviews'){ ?> 
 		<p>Review by <?php echo $author; ?></p>
 		<?php 
 	}else{ ?> 
 		<p>By <?php echo $author; ?></p>
-	<?php }
+	<?php	
+	}
+	 }
 }
 ?>
 

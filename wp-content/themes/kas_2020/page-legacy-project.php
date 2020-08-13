@@ -11,7 +11,7 @@
 				<div class="page-header-image">
 					<?php echo get_the_post_thumbnail($aboutPage->ID); ?>
 				</div>
-			 </div>
+			</div>
 		<div class="legacy-page-nav-cont">
 			<div class="content-margins">
 				<div class="legacy-page-nav">
@@ -39,9 +39,42 @@
 					<?php the_content(); ?>
 				</div>
 			</div>
-		
 		</div>
 
+<?php if($post->post_name == 'all-videos'){ ?>
+
+				<div class="content-margins">
+					<div class="posts-feed">
+						<?php 
+							$args = array(
+								'post_type' => 'video',
+								'posts_per_page' => 6,
+								'tax_query' => array(
+									array(
+											'taxonomy' => 'video_type',
+											'field'    => 'slug',
+											'terms'    => 'legacy-project',
+									)
+								)); 
+								$vids = new WP_Query($args);
+	
+						?>
+						<?php 
+							if($vids->have_posts()){
+								foreach($vids->posts as $post){
+									postStruct($post->ID, 'what');
+								} 
+							}
+						?>
+					</div>
+					<div class="center bottom-padding">
+						<button id='see-more' class='filled' type='video' offset='6' term="legacy-project">More</button>
+					</div>
+				</div>
+
+<?php } ?>
+
+	
 			<?php if(get_the_ID() == $children->posts[0]->ID){ ?>
 						<div class="page-video-container footer-margin-padding">
 							<div class="content-margins">

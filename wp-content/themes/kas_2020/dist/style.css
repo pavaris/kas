@@ -353,7 +353,7 @@ h6 {
 
 p {
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 1.4em;
   color: #757f87;
   letter-spacing: 0.03em; }
@@ -511,7 +511,7 @@ button {
 
 .page-video-container {
   background-color: #414a57;
-  padding: 30px 0; }
+  padding: 75px 0; }
 
 .footer-margin-padding {
   padding-bottom: 120px;
@@ -1878,6 +1878,8 @@ section.newsletter-container {
       padding-bottom: 65%; }
     .posts-feed a img {
       position: absolute;
+      left: 0;
+      top: 0;
       height: 100%;
       width: 100%;
       object-fit: cover;
@@ -1897,7 +1899,8 @@ section.newsletter-container {
         font-size: 20px;
         font-weight: 600;
         line-height: 1.3em;
-        margin-bottom: 10px; }
+        margin-bottom: 10px;
+        text-align: left; }
       .posts-feed a .post-feed-info p {
         font-weight: 100;
         line-height: 1.2em; }
@@ -2531,12 +2534,32 @@ section.newsletter-container {
     margin-left: 0px;
     margin-right: 20px; }
 
+.single-video .article-header h2 {
+  font-size: 50px;
+  font-weight: 600; }
+  @media (max-width: 767px) {
+    .single-video .article-header h2 {
+      font-size: 30px; } }
+
+.single-video .more-podcasts-feed {
+  padding: 60px 0 80px; }
+  .single-video .more-podcasts-feed .section-title {
+    font-weight: 600; }
+
 .video-content {
-  padding: 60px 0;
-  background-color: #39414d;
+  padding: 120px 0 60px;
+  background-color: #464f5b;
   color: white; }
+  @media (max-width: 767px) {
+    .video-content {
+      padding: 60px 0; } }
   .video-content * {
     color: inherit; }
+  .video-content .page-content h1 {
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em; }
 
 .video-playlist-container {
   display: flex;
@@ -2700,7 +2723,8 @@ section.newsletter-container {
   text-align: center;
   border-bottom: 2px solid #757f87;
   display: inline-flex;
-  align-self: center; }
+  align-self: center;
+  align-items: center; }
   .legacy-page-nav a {
     color: #757f87;
     text-decoration: none;
