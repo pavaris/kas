@@ -1666,7 +1666,7 @@ section.newsletter-container {
   section.newsletter-container label .wpcf7-form-control-wrap {
     display: block; }
     section.newsletter-container label .wpcf7-form-control-wrap input {
-      width: 100%;
+      max-width: 100%;
       padding: 10px 35px;
       font-size: 20px;
       text-align: center;
@@ -2260,7 +2260,7 @@ section.newsletter-container {
     color: #757f87;
     letter-spacing: 0.1em;
     font-weight: 700;
-    margin-bottom: 50px; }
+    margin-bottom: 40px; }
   .single-podcast .article-header .single-tags a {
     font-weight: 500; }
   .single-podcast .article-header img {
@@ -2659,6 +2659,12 @@ section.newsletter-container {
       width: 100%;
       height: 100%;
       object-fit: cover; }
+
+.podcast-in-video {
+  margin-top: 40px; }
+  .podcast-in-video p {
+    font-size: 18px;
+    text-transform: uppercase; }
 
 .donate-footer-image {
   position: relative;

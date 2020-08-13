@@ -75,7 +75,7 @@ get_header();
 							</section>
 								
 							<section class='page-content <?php echo $videos->have_posts() ? 'playlist-padding' : ''; ?>'>
-							<h1><?php the_title(); ?></h1>
+								<h1><?php the_title(); ?></h1>
 								<?php the_content(); ?>
 
 
@@ -88,6 +88,20 @@ get_header();
 										} ?>
 									</div>
 									<?php } ?>
+
+									<?php $podcastPost = get_field('associated_podcast') ?>
+									<?php if($podcastPost){
+										
+										 $embed = get_field('podcast_embed', $podcastPost[0]->ID);
+										 ?> 
+										 	<div class="podcast-in-video center">
+												 <p>This episode of not your average is also available as a podcast</p>
+												 <?php echo $embed; ?>
+											 </div>
+										 <?php 
+									} ?>
+
+
 							</section>	
 						
 						
