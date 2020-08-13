@@ -341,15 +341,18 @@ h4 {
   margin-bottom: 15px;
   font-size: 29px;
   font-weight: 600;
-  line-height: 1.2em; }
+  line-height: 1.2em;
+  font-family: "mr-eaves-sans"; }
 
 h5 {
   margin-bottom: 15px;
-  font-size: 20px; }
+  font-size: 20px;
+  font-family: "mr-eaves-sans"; }
 
 h6 {
   margin-bottom: 15px;
-  font-size: 15px; }
+  font-size: 15px;
+  font-family: "mr-eaves-sans"; }
 
 p {
   margin-bottom: 20px;
@@ -502,6 +505,15 @@ button {
   text-decoration: none;
   display: inline-block;
   font-size: 20px; }
+
+.page-content h2,
+.page-content h3,
+.page-content h4,
+.page-content h5,
+.page-content h6 {
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  text-transform: uppercase; }
 
 .center {
   text-align: center; }
@@ -1023,31 +1035,39 @@ button {
     margin-bottom: 30px;
     font-weight: 600; }
 
-.wp-block-buttons .wp-block-button {
-  text-align: center; }
-  .wp-block-buttons .wp-block-button .wp-block-button__link {
-    border: 1px solid #6cb5ce;
-    border-radius: 25px;
-    padding: 8px 25px;
-    background-color: transparent;
-    font-size: 18px;
-    letter-spacing: 0.2rem;
-    font-weight: 500;
-    transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-    cursor: pointer;
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 600; }
-    .wp-block-buttons .wp-block-button .wp-block-button__link:hover {
-      background-color: #6cb5ce; }
-    .wp-block-buttons .wp-block-button .wp-block-button__link.filled {
+.wp-block-buttons {
+  margin-bottom: 30px; }
+  .wp-block-buttons .wp-block-button {
+    text-align: center; }
+    .wp-block-buttons .wp-block-button .wp-block-button__link {
+      text-transform: uppercase;
+      font-weight: 600 !important;
       background-color: #6cb5ce;
       color: white; }
-    .wp-block-buttons .wp-block-button .wp-block-button__link.wide {
-      padding: 10px 35px; }
-    @media (max-width: 1056px) {
-      .wp-block-buttons .wp-block-button .wp-block-button__link {
-        padding: 12px 25px; } }
+    .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
+      border: 1px solid #6cb5ce;
+      border-radius: 25px;
+      padding: 8px 25px;
+      background-color: transparent;
+      font-size: 18px;
+      letter-spacing: 0.2rem;
+      font-weight: 500;
+      transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+      cursor: pointer;
+      text-decoration: none;
+      color: #6cb5ce; }
+      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
+        background-color: #6cb5ce; }
+      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.filled {
+        background-color: #6cb5ce;
+        color: white; }
+      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.wide {
+        padding: 10px 35px; }
+      @media (max-width: 1056px) {
+        .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
+          padding: 12px 25px; } }
+      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
+        color: white; }
 
 .social-nav {
   flex-grow: 1;
@@ -1293,6 +1313,13 @@ h1.section-title {
   float: right;
   margin-left: 15px; }
 
+.wp-block-cover {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin: 30px -50vw; }
+
 .home section h3 {
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -1521,58 +1548,58 @@ section.home-mission {
 
 section.home-feed {
   padding: 30px 0; }
-  section.home-feed a {
+  section.home-feed .home-feed-post {
     display: flex;
     text-decoration: none;
     align-items: center;
     width: 100%;
     margin-bottom: 60px;
     color: #757f87; }
-    section.home-feed a h4 {
+    section.home-feed .home-feed-post h4 {
       font-size: 50px;
       text-transform: uppercase; }
       @media (max-width: 1440px) {
-        section.home-feed a h4 {
+        section.home-feed .home-feed-post h4 {
           font-size: 40px; } }
-    section.home-feed a p {
+    section.home-feed .home-feed-post p {
       font-size: 30px; }
       @media (max-width: 1440px) {
-        section.home-feed a p {
+        section.home-feed .home-feed-post p {
           font-size: 20px; } }
-    section.home-feed a:nth-child(even) {
+    section.home-feed .home-feed-post:nth-child(even) {
       flex-direction: row-reverse; }
-    section.home-feed a .home-feed-post-img {
+    section.home-feed .home-feed-post .home-feed-post-img {
       width: 50%;
       position: relative;
       height: 0;
       padding-bottom: 25%; }
-      section.home-feed a .home-feed-post-img img {
+      section.home-feed .home-feed-post .home-feed-post-img img {
         width: 100%;
         position: absolute;
         height: 100%;
         object-fit: cover; }
-    section.home-feed a .home-feed-post-info {
+    section.home-feed .home-feed-post .home-feed-post-info {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
       width: 50%;
       padding: 0 20px; }
-      section.home-feed a .home-feed-post-info h4 {
+      section.home-feed .home-feed-post .home-feed-post-info h4 {
         color: #757f87;
         letter-spacing: 0.1em; }
-      section.home-feed a .home-feed-post-info .home-feed-post-info-inner {
+      section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner {
         max-width: 500px;
         text-align: center; }
     @media (max-width: 767px) {
-      section.home-feed a {
+      section.home-feed .home-feed-post {
         flex-direction: column !important;
         margin-bottom: 40px; }
-        section.home-feed a .home-feed-post-img {
+        section.home-feed .home-feed-post .home-feed-post-img {
           width: 100%;
           padding-bottom: 50%;
           margin-bottom: 20px; }
-        section.home-feed a .home-feed-post-info {
+        section.home-feed .home-feed-post .home-feed-post-info {
           width: 100%; } }
 
 section.home-projects {
@@ -2596,6 +2623,10 @@ section.newsletter-container {
       font-size: 20px;
       padding: 0 15px;
       margin-bottom: 10px; }
+    .video-playlist-container .video-playlist p {
+      margin-top: 5px;
+      margin-bottom: 0px;
+      font-size: 18px; }
     .video-playlist-container .video-playlist a {
       display: block;
       padding: 15px;
@@ -2762,6 +2793,120 @@ section.newsletter-container {
         text-align: center;
         margin: 0px;
         margin-bottom: 20px; } }
+
+.page-template-page-roar .page-header-container:before {
+  display: none; }
+
+.page-template-page-roar .page-header-container h1 {
+  visibility: hidden; }
+
+.page-template-page-roar section.home-feed .home-feed-post .home-feed-post-img {
+  padding-bottom: 40%; }
+  @media (max-width: 767px) {
+    .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-img {
+      padding-bottom: 75%; } }
+
+.page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info {
+  padding: 20px; }
+  .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h2 {
+    font-weight: 600;
+    letter-spacing: 0.1em; }
+  .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h4 {
+    font-weight: 100;
+    font-size: 30px; }
+  .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h5 {
+    line-height: 1.2em;
+    letter-spacing: 0.05em;
+    font-size: 23px; }
+
+.page-template-page-roar .donors h4 {
+  text-transform: uppercase;
+  color: #757f87;
+  text-align: center;
+  letter-spacing: 0.1em;
+  margin-bottom: 60px; }
+
+.page-template-page-roar .donors .donors-table {
+  margin: 20px auto; }
+
+.page-template-page-roar .donors .donor-row {
+  display: flex;
+  justify-content: space-evenly; }
+  @media (max-width: 767px) {
+    .page-template-page-roar .donors .donor-row {
+      flex-direction: column; } }
+  .page-template-page-roar .donors .donor-row .donor-column {
+    text-align: center;
+    width: 100%;
+    margin: 0 0 40px 0;
+    font-size: 20px;
+    color: #757f87;
+    text-transform: uppercase;
+    letter-spacing: 0.1em; }
+    .page-template-page-roar .donors .donor-row .donor-column:nth-child(2) {
+      margin: 0 20px 40px 20px; }
+      @media (max-width: 767px) {
+        .page-template-page-roar .donors .donor-row .donor-column:nth-child(2) {
+          margin: 0 0 40px; } }
+
+.storytellers {
+  padding: 60px 0 30px; }
+  .storytellers h3 {
+    color: #757f87;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    margin-bottom: 60px; }
+  .storytellers .storyteller-cont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; }
+    @media (max-width: 767px) {
+      .storytellers .storyteller-cont {
+        flex-direction: column; } }
+  .storytellers .storyteller {
+    display: flex;
+    align-items: center;
+    width: calc(50% - 20px);
+    margin-bottom: 20px; }
+    @media (max-width: 767px) {
+      .storytellers .storyteller {
+        width: 100%; } }
+    .storytellers .storyteller .storyteller-image {
+      position: relative;
+      height: 0;
+      width: 30%;
+      padding-bottom: 40%;
+      margin-right: 20px; }
+      .storytellers .storyteller .storyteller-image img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; }
+    .storytellers .storyteller .storyteller-info {
+      width: 60%; }
+      .storytellers .storyteller .storyteller-info h5 {
+        font-weight: 600;
+        margin-bottom: 10px; }
+      .storytellers .storyteller .storyteller-info p {
+        font-size: 20px;
+        margin-bottom: 0px; }
+
+.roar-single-feed .posts-feed a {
+  text-transform: uppercase;
+  color: #757f87;
+  font-weight: 600; }
+  .roar-single-feed .posts-feed a img {
+    position: initial;
+    margin-bottom: 20px;
+    display: block;
+    object-fit: initial;
+    object-position: initial;
+    height: auto;
+    width: 100%; }
 
 .post-feed-block .post-feed-block-inner {
   display: flex;

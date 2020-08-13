@@ -38,16 +38,19 @@ h4 {
 	font-size: 29px;
 	font-weight: 600;
 	line-height: 1.2em;
+	font-family: $mrEaves;
 }
 
 h5 {
 	margin-bottom: 15px;
 	font-size: 20px;
+	font-family: $mrEaves;
 }
 
 h6 {
 	margin-bottom: 15px;
 	font-size: 15px;
+	font-family: $mrEaves;
 }
 
 p {
@@ -230,6 +233,15 @@ button {
 				font-size: 20px;
 			}
 		}
+	}
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		letter-spacing: 0.1em;
+		font-weight: 600;
+		text-transform: uppercase;
 	}
 }
 

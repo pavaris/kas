@@ -21,12 +21,22 @@
 }
 
 .wp-block-buttons {
+	margin-bottom: 30px;
 	.wp-block-button {
 		text-align: center;
+
 		.wp-block-button__link {
-			@include button;
 			text-transform: uppercase;
-			font-weight: 600;
+			font-weight: 600 !important;
+			background-color: $skyBlue;
+			color: white;
+		}
+		&.is-style-outline .wp-block-button__link {
+			@include button;
+			color: $skyBlue;
+			&:hover {
+				color: white;
+			}
 		}
 	}
 }

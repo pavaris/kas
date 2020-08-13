@@ -1,0 +1,142 @@
+.page-template-page-roar {
+	.page-header-container {
+		&:before {
+			display: none;
+		}
+		h1 {
+			visibility: hidden;
+		}
+	}
+	section.home-feed .home-feed-post .home-feed-post-img {
+		padding-bottom: 40%;
+		@include mobile {
+			padding-bottom: 75%;
+		}
+	}
+	section.home-feed .home-feed-post .home-feed-post-info {
+		padding: 20px;
+		.home-feed-post-info-inner {
+			h2 {
+				font-weight: 600;
+				letter-spacing: 0.1em;
+			}
+			h4 {
+				font-weight: 100;
+				font-size: 30px;
+			}
+			h5 {
+				line-height: 1.2em;
+				letter-spacing: 0.05em;
+				font-size: 23px;
+			}
+		}
+	}
+	.donors {
+		h4 {
+			text-transform: uppercase;
+			color: $ughGray;
+			text-align: center;
+			letter-spacing: 0.1em;
+			margin-bottom: 60px;
+		}
+		.donors-table {
+			margin: 20px auto;
+		}
+		.donor-row {
+			display: flex;
+			justify-content: space-evenly;
+			@include mobile {
+				flex-direction: column;
+			}
+			.donor-column {
+				text-align: center;
+				width: 100%;
+				margin: 0 0 40px 0;
+				font-size: 20px;
+				color: $ughGray;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				&:nth-child(2) {
+					margin: 0 20px 40px 20px;
+					@include mobile {
+						margin: 0 0 40px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.storytellers {
+	padding: 60px 0 30px;
+	h3 {
+		color: $ughGray;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		font-weight: 600;
+		margin-bottom: 60px;
+	}
+	.storyteller-cont {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@include mobile {
+			flex-direction: column;
+		}
+	}
+	.storyteller {
+		display: flex;
+		align-items: center;
+		width: calc(50% - 20px);
+		margin-bottom: 20px;
+		@include mobile {
+			width: 100%;
+		}
+		.storyteller-image {
+			position: relative;
+			height: 0;
+			width: 30%;
+			padding-bottom: 40%;
+			margin-right: 20px;
+			img {
+				position: absolute;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+		.storyteller-info {
+			width: 60%;
+			h5 {
+				font-weight: 600;
+				margin-bottom: 10px;
+			}
+			p {
+				font-size: 20px;
+				margin-bottom: 0px;
+			}
+		}
+	}
+}
+
+.roar-single-feed {
+	.posts-feed {
+		a {
+			img {
+				position: initial;
+				margin-bottom: 20px;
+				display: block;
+				object-fit: initial;
+				object-position: initial;
+				height: auto;
+				width: 100%;
+			}
+			text-transform: uppercase;
+			color: $ughGray;
+			font-weight: 600;
+		}
+	}
+}

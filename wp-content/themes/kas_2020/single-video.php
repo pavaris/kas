@@ -11,6 +11,11 @@ get_header();
 ?>
 <?php $terms = get_the_terms(get_the_ID(), 'video_type'); ?>
 
+<?php if($terms[0]->slug == 'roar-story-slam'){
+	include "roar-single-template.php";
+	return;
+} ?>
+
 <?php $thisID = get_the_ID(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
