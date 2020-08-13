@@ -53,6 +53,18 @@ get_header();
 								<?php the_content(); ?>
 							</div>
 						</section>
+						
+						<?php $video = get_field('associated_video_id'); ?>
+<?php if($video){ ?>
+						<div class="video-in-podcast center">
+							<div class="content-margins">
+								<p>This episode of not your average is also available as a podcast</p>
+								<iframe src="https://www.youtube.com/embed/<?php echo $video; ?>" frameborder="0"  class="superembed-force"></iframe>
+							</div>
+						</div>
+
+<?php } ?>
+
 						<div class="content-margins">
 										<?php if($terms){ 
 						if($terms[0]->slug == 'krb-podcast'){

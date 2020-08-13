@@ -2289,6 +2289,13 @@ section.newsletter-container {
     font-size: 16px;
     letter-spacing: 0.1em; }
 
+.video-in-podcast {
+  margin-bottom: 100px; }
+  .video-in-podcast p {
+    font-size: 18px;
+    text-transform: uppercase;
+    font-weight: 600; }
+
 #page-header {
   margin-bottom: 60px; }
 
@@ -2664,7 +2671,8 @@ section.newsletter-container {
   margin-top: 40px; }
   .podcast-in-video p {
     font-size: 18px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-weight: 600; }
 
 .donate-footer-image {
   position: relative;

@@ -92,11 +92,10 @@ get_header();
 									<?php $podcastPost = get_field('associated_podcast') ?>
 									<?php if($podcastPost){
 										
-										 $embed = get_field('podcast_embed', $podcastPost[0]->ID);
 										 ?> 
 										 	<div class="podcast-in-video center">
 												 <p>This episode of not your average is also available as a podcast</p>
-												 <?php echo $embed; ?>
+												 <?php echo $podcastPost; ?>
 											 </div>
 										 <?php 
 									} ?>

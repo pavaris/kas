@@ -1,12 +1,12 @@
 {
-    "key": "group_5f34b1123c3e9",
-    "title": "Not Your Average Video Field",
+    "key": "group_5f34b70d9dcc8",
+    "title": "Not Your Average Podcast Field",
     "fields": [
         {
-            "key": "field_5f34b11be3d96",
-            "label": "Associated Podcast",
-            "name": "associated_podcast",
-            "type": "textarea",
+            "key": "field_5f34b7153a592",
+            "label": "Associated Video ID",
+            "name": "associated_video_id",
+            "type": "text",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -17,9 +17,9 @@
             },
             "default_value": "",
             "placeholder": "",
-            "maxlength": "",
-            "rows": "",
-            "new_lines": ""
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
         }
     ],
     "location": [
@@ -27,7 +27,7 @@
             {
                 "param": "post_taxonomy",
                 "operator": "==",
-                "value": "video_type:not-your-average"
+                "value": "podcast_type:not-your-average-podcast"
             }
         ]
     ],
@@ -39,5 +39,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1597290222
+    "modified": 1597290326
 }
