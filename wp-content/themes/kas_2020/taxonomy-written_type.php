@@ -80,18 +80,8 @@ get_header();
 						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 						 */
 							?> 
-									<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
-				<div class="post-feed-image">
-					<?php echo get_the_post_thumbnail(get_the_ID()); ?>
-				</div>
-				<div class="post-feed-info">
-						<div class="post-category">
-							Written
-						</div>
-					<?php echo get_the_title(get_the_ID()); ?>
-					<?php echo get_field('short_description', get_the_ID()); ?>
-				</div>
-			</a>
+									
+									<?php postStruct($post->ID, 'Written'); ?>
 
 							<?php 
 						}

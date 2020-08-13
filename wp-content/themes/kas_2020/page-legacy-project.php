@@ -62,7 +62,7 @@
 						<?php 
 							if($vids->have_posts()){
 								foreach($vids->posts as $post){
-									postStruct($post->ID, 'what');
+									postStruct($post->ID, 'Legacy Project');
 								} 
 							}
 						?>
