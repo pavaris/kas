@@ -3,7 +3,7 @@
 <?php $photos = get_field('photos'); ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main roar-single-template">
 		
 			
 				<article class="video-content">
@@ -18,15 +18,12 @@
 								</h2>
 								
 							</section>
-							
-
-<?php print_r($videos); ?>
-
+						
 							<section class="video-playlist-container">
 								<div class="video-single-embed video-play-wrapper">
 									<iframe src="https://www.youtube.com/embed/<?php echo $videos[0]['youtube_video_id']; ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">
-										<?php echo wp_get_attachment_image($videos[0]['poster_image']['ID'], 'large'); ?>
+										<img src="<?php echo wp_get_attachment_image_src($videos[0]['poster_image']['ID'], 'large')[0] ?>" alt="video poster">
 									</a>
 								</div>
 
@@ -36,7 +33,8 @@
 										<div class="video-playlist-inner">
 											<h4><?php the_title(); ?> Playlist</h4>
 										<?php foreach($videos as $index => $video){ ?>
-											<a href="" class="<?php echo $index == 0 ? 'active' : ''; ?>">
+											<a href="#" class="<?php echo $index == 0 ? 'active' : ''; ?>" vidID='<?php echo $video['youtube_video_id'] ?>' poster="<?php echo wp_get_attachment_image_src($video['poster_image']['ID'], 'large')[0] ?>">
+											
 												<div class="video-img-cont">
 													<?php echo wp_get_attachment_image($video['poster_image']['ID'], 'medium'); ?>
 												</div>
@@ -103,6 +101,23 @@
 						</div>
 					</div>
 				</section>
+
+
+				<?php if($photos){ ?> 
+					<section class="photo-gallery-grid">
+						<div class="content-margins">
+													<h3>Photos</h3>
+
+							<div class="photo-gallery-inner">
+								<?php foreach($photos as $photo){ ?>
+									<a href="#" class="blocks-gallery-item">
+										<?php echo wp_get_attachment_image($photo['ID'], 'medium'); ?>
+									</a>
+								<?php } ?>
+							</div>
+						</div>
+					</section>
+				<?php } ?>
 
 					<section class="more-podcasts-feed roar-single-feed">
 					<div class="content-margins wide">

@@ -92,6 +92,17 @@ $(document).ready(function () {
 		ev.preventDefault();
 	});
 
+	$(".roar-single-template .video-playlist a").click(function (e) {
+		e.preventDefault();
+		const $this = $(this);
+		$(".roar-single-template .video-playlist a").removeClass("active");
+		$this.addClass("active");
+		$(".roar-single-template #play-video img").attr("src", $this.attr("poster"));
+		setTimeout(function () {
+			$(".video-single-embed iframe").attr("src", "https://www.youtube.com/embed/" + $this.attr("vidid"));
+		}, 300);
+	});
+
 	$(".donate-search .search-toggle, .nav-search-close button").click(function (e) {
 		e.preventDefault();
 		$(".site-header").toggleClass("show-search");
@@ -148,10 +159,10 @@ $(document).ready(function () {
 	});
 
 	// GALLERY
-	if ($(".wp-block-gallery").length > 0) {
-		console.log("gallery");
+	if ($(".wp-block-gallery").length > 0 || $(".photo-gallery-grid").length > 0) {
 		$("body").append(`<div class="gallery-block-lightbox"><div class="gallery-block-lightbox-inner"></div></div>`);
-		$(".blocks-gallery-item").click(function () {
+		$(".blocks-gallery-item").click(function (e) {
+			e.preventDefault();
 			let href = $(this).find("img").attr("src");
 			console.log(href);
 			$(".gallery-block-lightbox").fadeIn();

@@ -113,12 +113,25 @@
 			h5 {
 				font-weight: 600;
 				margin-bottom: 10px;
+				color: $darkGray;
 			}
 			p {
 				font-size: 20px;
 				margin-bottom: 0px;
 			}
 		}
+	}
+}
+
+.photo-gallery-grid {
+	padding: 60px 0 30px;
+	h3 {
+		color: $ughGray;
+		text-align: center;
+		text-transform: uppercase;
+		letter-spacing: 0.2em;
+		font-weight: 600;
+		margin-bottom: 60px;
 	}
 }
 
