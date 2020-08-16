@@ -53,6 +53,7 @@
 	padding: 15px 30px;
 	background-color: $anotherGray;
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 4px;
+	z-index: 11;
 	@media (max-width: 1200px) {
 		display: none;
 	}

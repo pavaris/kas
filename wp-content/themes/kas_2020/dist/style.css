@@ -591,7 +591,8 @@ button {
   left: 0;
   padding: 15px 30px;
   background-color: #39414d;
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 4px; }
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 4px;
+  z-index: 11; }
   @media (max-width: 1200px) {
     #site-navigation {
       display: none; } }
