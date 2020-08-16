@@ -369,7 +369,7 @@ em {
 
 #content {
   padding-top: 70px; }
-  @media (max-width: 767px) {
+  @media (max-width: 1200px) {
     #content {
       padding-top: 50px; } }
 
@@ -592,7 +592,7 @@ button {
   padding: 15px 30px;
   background-color: #39414d;
   box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px 4px; }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     #site-navigation {
       display: none; } }
   #site-navigation .main-nav-inner {
@@ -788,7 +788,7 @@ button {
   background-color: #414a57;
   z-index: 10;
   display: none; }
-  @media (max-width: 1100px) {
+  @media (max-width: 1200px) {
     #mobile-nav {
       display: block; } }
   #mobile-nav #mobile-header {
@@ -1389,7 +1389,7 @@ h1.section-title {
 
 .header-slides .slick-track {
   height: calc(100vh - 70px); }
-  @media (max-width: 767px) {
+  @media (max-width: 1200px) {
     .header-slides .slick-track {
       height: calc(100vh - 50px); } }
 

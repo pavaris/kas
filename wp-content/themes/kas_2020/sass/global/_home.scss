@@ -12,7 +12,7 @@
 .header-slides {
 	.slick-track {
 		height: calc(100vh - 70px);
-		@include mobile {
+		@media (max-width: 1200px) {
 			height: calc(100vh - 50px);
 		}
 	}

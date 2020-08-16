@@ -71,7 +71,7 @@ em {
 
 #content {
 	padding-top: 70px;
-	@include mobile {
+	@media (max-width: 1200px) {
 		padding-top: 50px;
 	}
 }

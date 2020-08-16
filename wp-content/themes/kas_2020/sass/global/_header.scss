@@ -53,7 +53,7 @@
 	padding: 15px 30px;
 	background-color: $anotherGray;
 	box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 8px 4px;
-	@media (max-width: 1100px) {
+	@media (max-width: 1200px) {
 		display: none;
 	}
 
@@ -269,7 +269,7 @@
 	background-color: $darkGray;
 	z-index: 10;
 	display: none;
-	@media (max-width: 1100px) {
+	@media (max-width: 1200px) {
 		display: block;
 	}
 
