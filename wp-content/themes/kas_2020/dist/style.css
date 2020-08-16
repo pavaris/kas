@@ -380,6 +380,9 @@ em {
   .content-margins.wide {
     width: 95%;
     max-width: 1280px; }
+    @media (max-width: 767px) {
+      .content-margins.wide {
+        width: 90%; } }
 
 .bg-center {
   background-position: center;
