@@ -78,7 +78,7 @@
 											<input type="search" class="search-field" placeholder="Search" value="" name="s">
 										</label>
 										<button type='submit'>
-											<img src="//localhost:3000/kas_new/wp-content/themes/kas_2020/img/search.svg" alt="search">
+											<img src="<?php echo get_template_directory_uri(); ?>/img/search.svg" alt="search">
 										</button>
 									</form>
 					</div>
