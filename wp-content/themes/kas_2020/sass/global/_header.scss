@@ -192,6 +192,9 @@
 	opacity: 0;
 	transform: translateY(-100%);
 	@include cubic;
+	@include mobile {
+		display: none;
+	}
 	.nav-search-close {
 		position: absolute;
 		right: 50px;
@@ -218,6 +221,11 @@
 			font-weight: 800;
 			text-align: center;
 			outline: none;
+			@include mobile {
+				width: 90%;
+				margin: 0 auto;
+				display: block;
+			}
 		}
 		label {
 			margin-bottom: 30px;
@@ -279,6 +287,15 @@
 	}
 	.menu-header-menu-container {
 		margin-bottom: 30px;
+		> ul {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			> li {
+				text-align: left;
+				width: calc(50% - 10px);
+			}
+		}
 	}
 	#mobile-nav-links {
 		position: absolute;
@@ -296,18 +313,18 @@
 		}
 		#menu-header-menu-1 {
 			li {
-				margin-bottom: 18px;
+				margin-bottom: 20px;
 				a {
-					font-family: $mrsEaves;
 					font-size: 20px;
 					font-weight: 100;
-					letter-spacing: 0.07em;
+					letter-spacing: 0.1em;
 				}
 			}
 			.menu-item-has-children {
 				> a {
 					display: block;
 					margin-bottom: 12px;
+					font-weight: 600;
 				}
 			}
 			.sub-menu {
@@ -316,10 +333,15 @@
 				}
 				a {
 					font-family: $mrEaves;
-					font-size: 13px;
+					font-size: 14px;
 				}
 			}
 		}
+	}
+	.button {
+		display: inline-block;
+		margin-bottom: 20px;
+		font-size: 15px;
 	}
 }
 
@@ -331,10 +353,45 @@
 	align-items: center;
 	cursor: pointer;
 	border-radius: 0px;
+	border: 0px;
 	svg {
 		width: 25px;
 	}
 	line {
 		stroke: white;
+	}
+}
+
+.mobile-search {
+	margin-bottom: 30px;
+	width: 100%;
+	.search-form {
+		display: flex;
+		button {
+			border: 0px;
+			border-bottom: 1px solid white;
+			border-radius: 0px;
+			padding: 0px 10px;
+			img {
+				height: 20px;
+				filter: invert(1);
+			}
+		}
+	}
+	label {
+		width: 100%;
+		display: inline-block;
+		input {
+			width: 100%;
+			padding: 7px;
+			font-size: 15px;
+			background-color: transparent;
+			color: white;
+			border: 0px;
+			border-bottom: 1px solid white;
+		}
+		::placeholder {
+			color: white;
+		}
 	}
 }

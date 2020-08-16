@@ -42,23 +42,23 @@
 							<img src="<?php echo get_template_directory_uri(); ?>/img/search.svg" alt="search">
 							<span>×</span>
 						</button>
-								<div class="nav-search">
-				
-									<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
-									<label>
-										<span class="screen-reader-text">Search</span>
-										<input type="search" class="search-field" placeholder="type here" value="" name="s">
-									</label>
-									<input type="submit" class="search-submit" value="Search">
-								</form>
-							</div>
+							
 					</div>
 				</div>
 			
 			</nav><!-- #site-navigation -->
 
 
-
+	<div class="nav-search">
+				
+									<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
+										<label>
+											<span class="screen-reader-text">Search</span>
+											<input type="search" class="search-field" placeholder="type here" value="" name="s">
+										</label>
+										<input type="submit" class="search-submit" value="Search">
+									</form>
+							</div>
 	
 
 
@@ -71,8 +71,19 @@
 					</button>
 				</div>	
 				<div id="mobile-nav-links">
+					<div class="mobile-search">
+						<form role="search" method="get" class="search-form" action="<?php echo home_url(); ?>">
+										<label>
+											<span class="screen-reader-text">Search</span>
+											<input type="search" class="search-field" placeholder="Search" value="" name="s">
+										</label>
+										<button type='submit'>
+											<img src="//localhost:3000/kas_new/wp-content/themes/kas_2020/img/search.svg" alt="search">
+										</button>
+									</form>
+					</div>
 					<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-					<a href="<?php echo get_home_url(); ?>/about/support-us" class='donate-button'>Donate</a>
+					<a href="<?php echo get_home_url(); ?>/about/support-us" class='button filled'>Donate</a>
 					<?php include get_template_directory() . '/components/social-nav.php'; ?>
 
 				</div>
