@@ -1080,7 +1080,7 @@ button {
     font-size: 34px; }
   .page .page-content .section-title {
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
     font-weight: 600; }
 
 .page .page-nav-container {
@@ -2074,7 +2074,7 @@ section.newsletter-container {
         font-size: 35px; } }
   .page-template-page-about .page-content p {
     line-height: 1em;
-    font-size: 20px;
+    font-size: 23px;
     font-weight: 500; }
 
 .page-template-page-about .site-footer {
