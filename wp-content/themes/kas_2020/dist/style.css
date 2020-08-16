@@ -2000,7 +2000,8 @@ section.newsletter-container {
       margin-top: 20px;
       position: relative;
       z-index: 2; }
-      .posts-feed a .post-feed-info h6 {
+      .posts-feed a .post-feed-info h6,
+      .posts-feed a .post-feed-info h5 {
         text-transform: uppercase;
         color: #757f87;
         font-size: 20px;
