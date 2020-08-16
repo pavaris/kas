@@ -1976,7 +1976,8 @@ section.newsletter-container {
   .posts-feed a {
     width: calc(33% - 20px);
     margin-bottom: 25px;
-    text-decoration: none; }
+    text-decoration: none;
+    color: #757f87; }
     .posts-feed a .post-feed-image {
       position: relative;
       height: 0;
