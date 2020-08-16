@@ -1418,7 +1418,8 @@ h1.section-title {
 
 .header-slides a:nth-child(even) .header-slide .header-slide-info {
   left: auto;
-  right: 0; }
+  right: 0;
+  width: 45%; }
 
 .header-slide-container {
   height: calc(100vh - 70px); }
