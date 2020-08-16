@@ -611,7 +611,8 @@ button {
     #site-navigation #menu-header-menu > .menu-item {
       margin-right: 25px;
       padding: 0 10px;
-      width: 100%; }
+      width: 100%;
+      white-space: nowrap; }
       #site-navigation #menu-header-menu > .menu-item a {
         font-size: 18px;
         letter-spacing: 0.2rem;
@@ -1478,6 +1479,12 @@ h1.section-title {
     .header-slide .header-slide-info .header-slide-cta a {
       font-size: 18px;
       font-weight: 700; }
+    @media (max-width: 1280px) {
+      .header-slide .header-slide-info {
+        width: 60%; } }
+    @media (max-width: 920px) {
+      .header-slide .header-slide-info {
+        width: 100%; } }
     @media (max-width: 767px) {
       .header-slide .header-slide-info {
         padding-bottom: 0px;
