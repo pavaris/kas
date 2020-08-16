@@ -1606,6 +1606,9 @@ section.home-mission {
 
 section.home-feed {
   padding: 120px 0; }
+  @media (max-width: 767px) {
+    section.home-feed {
+      padding: 60px 0; } }
   section.home-feed .home-feed-post {
     display: flex;
     text-decoration: none;

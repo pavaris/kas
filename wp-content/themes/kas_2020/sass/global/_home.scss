@@ -304,6 +304,9 @@ section.home-mission {
 
 section.home-feed {
 	padding: 120px 0;
+	@include mobile {
+		padding: 60px 0;
+	}
 	.home-feed-post {
 		display: flex;
 		text-decoration: none;
