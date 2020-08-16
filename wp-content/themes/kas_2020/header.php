@@ -36,7 +36,7 @@
 							<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
 					
 					<div class="donate-search">
-						<a href="<?php echo get_home_url(); ?>/donate" class='donate-button button'>Donate</a>
+						<a href="<?php echo get_home_url(); ?>/donate/" class='donate-button button'>Donate</a>
 						
 						<button class="search-toggle">
 							<img src="<?php echo get_template_directory_uri(); ?>/img/search.svg" alt="search">
@@ -83,7 +83,7 @@
 									</form>
 					</div>
 					<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
-					<a href="<?php echo get_home_url(); ?>/about/support-us" class='button filled'>Donate</a>
+					<a href="<?php echo get_home_url(); ?>/donate/" class='button filled'>Donate</a>
 					<?php include get_template_directory() . '/components/social-nav.php'; ?>
 
 				</div>
