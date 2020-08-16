@@ -178,12 +178,14 @@
 	}
 }
 
-.alignleft {
+.alignleft,
+.wp-block-image .alignleft {
 	float: left;
 	margin-right: 15px;
 }
 
-.alignright {
+.alignright,
+.wp-block-image .alignleft {
 	float: right;
 	margin-left: 15px;
 }
