@@ -46,8 +46,11 @@
 	}
 	a {
 		&:nth-child(even) {
-			.flex {
-				justify-content: flex-end;
+			.header-slide {
+				.header-slide-info {
+					left: auto;
+					right: 0;
+				}
 			}
 		}
 	}
@@ -104,7 +107,7 @@
 		display: flex;
 		align-items: center;
 		color: white;
-
+		width: 60%;
 		p {
 			font-size: 27px;
 			font-weight: 100;
@@ -124,9 +127,7 @@
 			margin-bottom: 20px;
 			line-height: 1.1em;
 		}
-		.header-slide-inner {
-			width: 46%;
-		}
+
 		.header-slide-cta {
 			a {
 				font-size: 18px;

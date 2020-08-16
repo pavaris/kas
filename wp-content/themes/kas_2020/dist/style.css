@@ -1416,8 +1416,9 @@ h1.section-title {
   .header-slides .slick-dots li.slick-active button {
     background-color: #6cb5ce; }
 
-.header-slides a:nth-child(even) .flex {
-  justify-content: flex-end; }
+.header-slides a:nth-child(even) .header-slide .header-slide-info {
+  left: auto;
+  right: 0; }
 
 .header-slide-container {
   height: calc(100vh - 70px); }
@@ -1458,7 +1459,8 @@ h1.section-title {
     z-index: 1;
     display: flex;
     align-items: center;
-    color: white; }
+    color: white;
+    width: 60%; }
     .header-slide .header-slide-info p {
       font-size: 27px;
       font-weight: 100;
@@ -1476,8 +1478,6 @@ h1.section-title {
       letter-spacing: 0.2em;
       margin-bottom: 20px;
       line-height: 1.1em; }
-    .header-slide .header-slide-info .header-slide-inner {
-      width: 46%; }
     .header-slide .header-slide-info .header-slide-cta a {
       font-size: 18px;
       font-weight: 700; }
