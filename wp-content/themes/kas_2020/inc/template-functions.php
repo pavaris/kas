@@ -614,16 +614,10 @@ add_action( 'rest_api_init', function () {
   ) );
 } );
 
-// function my_awesome_func( $data ) {
-// 	return $data;
 
-// 	return null;
- 
-  
-// }
 function my_awesome_func( $data ) {
   $args = array(
-		'posts_per_page' => 3,
+		'posts_per_page' => 6,
 		'offset' => $data['offset'],
 		'post_type' => $data['post_type'],
 		'tax_query' => array(

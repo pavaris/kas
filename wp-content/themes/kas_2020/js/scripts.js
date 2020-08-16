@@ -93,7 +93,7 @@ $(document).ready(function () {
 				if (data.length) {
 					$(".posts-feed").append(data);
 					$("html, body").scrollTop(scrollTop);
-					$this.attr("offset", offset + 3);
+					$this.attr("offset", offset + 6);
 				} else {
 					$this.hide();
 				}
