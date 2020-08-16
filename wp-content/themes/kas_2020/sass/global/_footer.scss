@@ -95,7 +95,8 @@
 	margin-top: -60px;
 	.custom-logo-link {
 		margin-bottom: 30px;
-		display: block;
+		display: flex;
+		justify-content: center;
 	}
 	@media (max-width: 900px) {
 		text-align: center;
@@ -106,6 +107,7 @@
 }
 
 .footer-social {
+	margin-bottom: 30px;
 	.social-nav {
 		max-width: 225px;
 		margin: 0 auto;
@@ -119,6 +121,7 @@
 			}
 		}
 	}
+
 	@media (max-width: 900px) {
 		margin-bottom: 25px;
 	}
@@ -128,8 +131,9 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	@media (max-width: 900px) {
-		display: none;
+
+	.button {
+		text-transform: uppercase;
 	}
 }
 .footer-mobile-donate {

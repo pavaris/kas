@@ -21,8 +21,8 @@
 						<div class="footer-social">
 							<?php include get_template_directory() . '/components/social-nav.php'; ?>
 						</div>	
-						<div class="footer-mobile-donate">
-							<a href="<?php echo get_home_url(); ?>/donate" class='donate-button'>Donate</a>
+						<div class="footer-donate">
+							<a href="<?php echo get_home_url(); ?>/donate" class='button'>Donate</a>
 						</div>
 					</div>
 					
@@ -30,9 +30,7 @@
 						<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
 					</div>
 					
-					<div class="footer-donate">
-						<a href="<?php echo get_home_url(); ?>/donate" class='donate-button'>Donate</a>
-					</div>
+					
 				</div>
 			</div><!-- .site-info -->
 			

@@ -983,33 +983,34 @@ button {
   margin-top: -60px; }
   .footer-col-left .custom-logo-link {
     margin-bottom: 30px;
-    display: block; }
+    display: flex;
+    justify-content: center; }
   @media (max-width: 900px) {
     .footer-col-left {
       text-align: center; }
       .footer-col-left .custom-logo-link {
         display: inline-block; } }
 
-.footer-social .social-nav {
-  max-width: 225px;
-  margin: 0 auto;
-  background-color: transparent; }
-  .footer-social .social-nav ul li {
-    margin-right: 15px; }
-    .footer-social .social-nav ul li svg {
-      height: 16px; }
-
-@media (max-width: 900px) {
-  .footer-social {
-    margin-bottom: 25px; } }
+.footer-social {
+  margin-bottom: 30px; }
+  .footer-social .social-nav {
+    max-width: 225px;
+    margin: 0 auto;
+    background-color: transparent; }
+    .footer-social .social-nav ul li {
+      margin-right: 15px; }
+      .footer-social .social-nav ul li svg {
+        height: 16px; }
+  @media (max-width: 900px) {
+    .footer-social {
+      margin-bottom: 25px; } }
 
 .footer-donate {
   display: flex;
   align-items: center;
   justify-content: center; }
-  @media (max-width: 900px) {
-    .footer-donate {
-      display: none; } }
+  .footer-donate .button {
+    text-transform: uppercase; }
 
 .footer-mobile-donate {
   display: none; }
