@@ -1083,6 +1083,10 @@ button {
     margin-bottom: 30px;
     font-weight: 600; }
 
+.page .page-nav-container {
+  display: flex;
+  justify-content: center; }
+
 .wp-block-buttons {
   margin-bottom: 30px; }
   .wp-block-buttons .wp-block-button {

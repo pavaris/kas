@@ -8,7 +8,7 @@
  		<main id="main" class="site-main top-padding">
 
 			
-			<div class="content-margins">
+			<div class="content-margins page-nav-container">
 				<div class="legacy-page-nav">
 					<?php  
 						$args = array(
