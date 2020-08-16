@@ -65,7 +65,9 @@ get_header();
 									<?php endwhile;
 									 ?>
 								</div>
-											<?php wpbeginner_numeric_posts_nav(); ?>
+												<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+							<button id='see-more' class='filled' type='podcast' offset='9' term="<?php echo $term->slug; ?>">More</button>
+						</div>
 
 						</div>
 
