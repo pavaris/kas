@@ -84,10 +84,10 @@
                     "maxlength": ""
                 },
                 {
-                    "key": "field_5eb83b415ff5a",
+                    "key": "field_5f39bc62cf194",
                     "label": "Link",
                     "name": "link",
-                    "type": "url",
+                    "type": "link",
                     "instructions": "",
                     "required": 0,
                     "conditional_logic": 0,
@@ -96,8 +96,7 @@
                         "class": "",
                         "id": ""
                     },
-                    "default_value": "",
-                    "placeholder": ""
+                    "return_format": "array"
                 }
             ]
         }
@@ -119,5 +118,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1589132562
+    "modified": 1597619307
 }

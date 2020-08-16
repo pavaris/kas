@@ -17,7 +17,7 @@
 						<?php if($explore){ 
 							foreach($explore as $explorePost){
 								?>
-								<a href="<?php echo $explorePost['link']; ?>">
+								<a href="<?php echo $explorePost['link']['url']; ?>">
 									<div class="home-projects-image">
 										<?php echo wp_get_attachment_image($explorePost['image']['id'], 'large'); ?>
 									</div>
