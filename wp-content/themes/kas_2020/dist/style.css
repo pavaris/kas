@@ -534,6 +534,9 @@ button {
 
 .top-padding {
   padding-top: 150px; }
+  @media (max-width: 1200px) {
+    .top-padding {
+      padding-top: 80px; } }
   @media (max-width: 767px) {
     .top-padding {
       padding-top: 65px; } }
