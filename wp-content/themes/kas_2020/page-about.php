@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 <?php global $post; ?>
-<?php $aboutPage = get_page_by_title('About us'); ?>
+<?php $aboutPage = get_page_by_path('about'); ?>
 
  	<div id="primary" class="content-area">
  		<main id="main" class="site-main top-padding">
@@ -94,7 +94,7 @@
 					</div>
 				</div>
 				<div  class='about-page-content bottom-padding'>
-					<div class="content-margins content-wrap">
+					<div class="content-margins">
 						<?php echo get_field('content'); ?>
 					</div>
 				</div>
