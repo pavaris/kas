@@ -1364,7 +1364,7 @@ h1.section-title {
   margin-right: 15px; }
 
 .alignright,
-.wp-block-image .alignleft {
+.wp-block-image .alignright {
   float: right;
   margin-left: 15px; }
 
