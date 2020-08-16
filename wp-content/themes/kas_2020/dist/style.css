@@ -1989,7 +1989,7 @@ section.newsletter-container {
       height: 100%;
       width: 100%;
       object-fit: cover;
-      object-position: top; }
+      object-position: center; }
     .posts-feed a .post-feed-info {
       padding: 0 20px;
       display: flex;
