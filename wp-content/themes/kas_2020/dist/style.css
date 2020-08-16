@@ -932,7 +932,7 @@ button {
       text-decoration: none; }
     .site-footer .site-info .footer-menu {
       width: 100%;
-      padding: 30px; }
+      padding: 50px 30px 0 30px; }
       @media (max-width: 900px) {
         .site-footer .site-info .footer-menu {
           margin-top: 30px;
@@ -980,7 +980,7 @@ button {
       margin-bottom: 0px; }
 
 .footer-col-left {
-  margin-top: -70px; }
+  margin-top: -60px; }
   .footer-col-left .custom-logo-link {
     margin-bottom: 30px;
     display: block; }
@@ -1234,7 +1234,8 @@ h1.section-title {
     justify-content: center;
     align-items: center; }
     .gallery-block-lightbox .gallery-block-lightbox-inner img {
-      max-width: 80%;
+      max-width: 90%;
+      max-height: 70%;
       height: auto; }
 
 .single-meta {
@@ -1327,7 +1328,7 @@ h1.section-title {
   font-weight: 700; }
 
 .header-slides .slick-track {
-  height: 80vh; }
+  height: calc(100vh - 70px); }
 
 .header-slides .slick-dots {
   position: absolute;
@@ -1355,8 +1356,11 @@ h1.section-title {
 .header-slides a:nth-child(even) .flex {
   justify-content: flex-end; }
 
+.header-slide-container {
+  height: calc(100vh - 70px); }
+
 .header-slide {
-  height: 80vh;
+  height: 100%;
   position: relative;
   width: 100%; }
   .header-slide.slick-slide {
@@ -1404,7 +1408,7 @@ h1.section-title {
       text-transform: uppercase;
       font-family: "mr-eaves-sans";
       font-weight: 800;
-      font-size: 65px;
+      font-size: 55px;
       color: white;
       letter-spacing: 0.2em;
       margin-bottom: 20px;
@@ -1451,7 +1455,7 @@ section.home-latest-videos {
     padding: 0 30px; }
   .home-legacy-feed p {
     font-weight: 100;
-    font-size: 25px;
+    font-size: 22px;
     letter-spacing: 0.1em;
     margin-bottom: 30px;
     color: white;
@@ -1521,12 +1525,12 @@ section.home-latest-videos {
 section.home-mission {
   text-transform: uppercase;
   text-align: center;
-  padding: 70px 0; }
+  padding: 100px 0; }
   section.home-mission h3 {
     margin-bottom: 40px; }
   section.home-mission h5 {
     font-weight: 100;
-    font-size: 25px;
+    font-size: 30px;
     margin: 0 auto 30px auto;
     text-align: center;
     color: #757f87;
@@ -1547,14 +1551,16 @@ section.home-mission {
     display: inline-block; }
 
 section.home-feed {
-  padding: 30px 0; }
+  padding: 120px 0; }
   section.home-feed .home-feed-post {
     display: flex;
     text-decoration: none;
     align-items: center;
     width: 100%;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
     color: #757f87; }
+    section.home-feed .home-feed-post:last-child {
+      margin-bottom: 0px; }
     section.home-feed .home-feed-post h4 {
       font-size: 50px;
       text-transform: uppercase; }
@@ -1569,7 +1575,7 @@ section.home-feed {
     section.home-feed .home-feed-post:nth-child(even) {
       flex-direction: row-reverse; }
     section.home-feed .home-feed-post .home-feed-post-img {
-      width: 50%;
+      width: 52%;
       position: relative;
       height: 0;
       padding-bottom: 25%; }
@@ -1583,7 +1589,7 @@ section.home-feed {
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      width: 50%;
+      width: 48%;
       padding: 0 20px; }
       section.home-feed .home-feed-post .home-feed-post-info h4 {
         color: #757f87;
@@ -1676,7 +1682,7 @@ section.home-projects {
 
 section.newsletter-container {
   text-align: center;
-  background-color: #f3f3f3;
+  background-color: #f8f8f8;
   margin-bottom: -120px;
   padding-bottom: 120px !important; }
   section.newsletter-container h3 {
@@ -1694,10 +1700,10 @@ section.newsletter-container {
     display: block; }
     section.newsletter-container label .wpcf7-form-control-wrap input {
       max-width: 100%;
-      padding: 10px 35px;
+      padding: 15px 35px;
       font-size: 20px;
       text-align: center;
-      border-radius: 20px;
+      border-radius: 22px;
       border: 1px solid #414a57;
       background-color: transparent;
       outline: none;
@@ -2911,6 +2917,18 @@ section.newsletter-container {
     letter-spacing: 0.2em;
     font-weight: 600;
     margin-bottom: 60px; }
+
+.photo-gallery-inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .photo-gallery-inner a {
+    width: calc(20% - 5px);
+    margin-bottom: 10px; }
+    .photo-gallery-inner a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; }
 
 .roar-single-feed .posts-feed a {
   text-transform: uppercase;

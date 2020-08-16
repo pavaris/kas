@@ -27,7 +27,7 @@ get_header();
            					?>
            						<section>
                         <?php $slides = get_field('featured_post'); ?>
-                        <!-- <?php print_r($slides); ?> -->
+                        
                           <div class="header-slides">
                             <?php foreach($slides as $slide){ ?>
                             
@@ -73,20 +73,21 @@ get_header();
                               ))); ?>
                         <section class="home-legacy-project">
                           <a href="<?php echo get_the_permalink( $legacy ); ?>">
-                              <div class="header-slide">
-                                <div class="header-slide-img">
-                                  <?php echo wp_get_attachment_image(get_field('poster_image', $legacyPosts[0]->ID)["ID"], 'large'); ?>
-                                </div>
-                                
-                                  <div class="header-slide-info">
-                                    <div class="content-margins wide flex">
-                                      <div class="header-slide-inner">
-                                        <h3>Legacy Project</h3>
-                                        <p><?php echo get_field('short_description', $legacy); ?></p>
+                              <div class="header-slide-container">
+                                <div class="header-slide">
+                                  <div class="header-slide-img">
+                                    <?php echo wp_get_attachment_image(get_field('poster_image', $legacyPosts[0]->ID)["ID"], 'large'); ?>
+                                  </div>
+                                  
+                                    <div class="header-slide-info">
+                                      <div class="content-margins wide flex">
+                                        <div class="header-slide-inner">
+                                          <h3>Legacy Project</h3>
+                                          <p><?php echo get_field('short_description', $legacy); ?></p>
+                                        </div>
                                       </div>
                                     </div>
-                                  </div>
-                                
+                                </div>
                               </div>
                             </a>
                         

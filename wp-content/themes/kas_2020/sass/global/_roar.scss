@@ -135,6 +135,21 @@
 	}
 }
 
+.photo-gallery-inner {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	a {
+		width: calc(20% - 5px);
+		margin-bottom: 10px;
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}
+
 .roar-single-feed {
 	.posts-feed {
 		a {

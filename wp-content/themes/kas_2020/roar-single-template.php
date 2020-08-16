@@ -111,7 +111,7 @@
 							<div class="photo-gallery-inner">
 								<?php foreach($photos as $photo){ ?>
 									<a href="#" class="blocks-gallery-item">
-										<?php echo wp_get_attachment_image($photo['ID'], 'medium'); ?>
+										<?php echo wp_get_attachment_image($photo['ID'], 'large'); ?>
 									</a>
 								<?php } ?>
 							</div>
