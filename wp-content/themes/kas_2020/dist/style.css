@@ -1383,6 +1383,9 @@ h1.section-title {
 
 .header-slides .slick-track {
   height: calc(100vh - 70px); }
+  @media (max-width: 767px) {
+    .header-slides .slick-track {
+      height: calc(100vh - 50px); } }
 
 .header-slides .slick-dots {
   position: absolute;

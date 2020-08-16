@@ -12,6 +12,9 @@
 .header-slides {
 	.slick-track {
 		height: calc(100vh - 70px);
+		@include mobile {
+			height: calc(100vh - 50px);
+		}
 	}
 	.slick-dots {
 		position: absolute;
