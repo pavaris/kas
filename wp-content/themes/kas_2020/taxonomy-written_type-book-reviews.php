@@ -30,7 +30,7 @@ get_header();
 							<h1 class="archive-title"><?php echo $obj->name; ?></h1>
 							<div class="page-header-image">
 								<?php
-										$image = get_field('image', $obj);
+										$image = get_field('banner_image', $obj);
 										?>
 										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
 							</div>
