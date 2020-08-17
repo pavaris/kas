@@ -2,7 +2,7 @@
 
 <?php get_header(); ?>
 <?php global $post; ?>
-<?php $aboutPage = get_page_by_title('Happy Cleaners'); ?>
+<?php $aboutPage = get_page_by_slug('happy-cleaners'); ?>
 
  	<div id="primary" class="content-area">
  		<main id="main" class="site-main">
