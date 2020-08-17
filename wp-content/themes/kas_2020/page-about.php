@@ -95,7 +95,7 @@
 				</div>
 				<div  class='about-page-content bottom-padding'>
 					<div class="content-margins">
-						<?php echo get_field('content'); ?>
+						<?php echo get_field('content', $post->ID ); ?>
 					</div>
 				</div>
 
