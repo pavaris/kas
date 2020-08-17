@@ -2030,7 +2030,8 @@ section.newsletter-container {
         text-align: left; }
       .posts-feed a .post-feed-info p {
         font-weight: 100;
-        line-height: 1.2em; }
+        line-height: 1.2em;
+        font-size: 16px; }
       .posts-feed a .post-feed-info .post-category {
         line-height: initial;
         background-color: #6cb5ce;
