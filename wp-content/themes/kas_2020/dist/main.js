@@ -120,7 +120,9 @@ $(document).ready(function () {
 		slidesToScroll: 1,
 		fade: true,
 		dots: true,
-		arrows: false
+		arrows: false,
+		autoplay: true,
+		autoplaySpeed: 4000
 	});
 
 	$(".home-legacy-feed-inner").slick({

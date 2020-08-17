@@ -47,6 +47,8 @@ $(document).ready(function () {
 		fade: true,
 		dots: true,
 		arrows: false,
+		autoplay: true,
+		autoplaySpeed: 4000,
 	});
 
 	$(".home-legacy-feed-inner").slick({
