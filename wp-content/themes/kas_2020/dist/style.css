@@ -2031,7 +2031,7 @@ section.newsletter-container {
       .posts-feed a .post-feed-info p {
         font-weight: 100;
         line-height: 1.2em;
-        font-size: 16px; }
+        font-size: 18px; }
       .posts-feed a .post-feed-info .post-category {
         line-height: initial;
         background-color: #6cb5ce;
@@ -2090,7 +2090,7 @@ section.newsletter-container {
         height: 20px; }
 
 .tax-written_type .post-feed-info p {
-  font-size: 16px;
+  font-size: 18px;
   text-transform: initial;
   font-weight: 100; }
 
