@@ -38,7 +38,12 @@ $exclude = [];
 							<h5>Recent</h5>
 							<div class="written-feed-posts posts-feed">
 								<?php foreach($recent->posts as $post){
-									podcast_article($post->ID);
+												$label = '';
+									$postTerm = get_the_terms($post, $thisType->name. '_type');
+									if($postTerm){
+										$label = $postTerm[0]->name;
+									}
+									postStruct($post->ID, $label);
 									array_push($exclude, $post->ID);
 								} ?>
 							</div>

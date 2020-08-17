@@ -38,7 +38,12 @@ $exclude = [];
 							<h5>Recent</h5>
 							<div class="written-feed-posts posts-feed">
 								<?php foreach($recent->posts as $post){
-									postStruct($post->ID, "Written");
+									$label = '';
+									$postTerm = get_the_terms($post, $thisType->name. '_type');
+									if($postTerm){
+										$label = $postTerm[0]->name;
+									}
+									postStruct($post->ID, $label);
 									array_push($exclude, $post->ID);
 								} ?>
 							</div>
@@ -67,7 +72,7 @@ $exclude = [];
 							<h5><a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a></h5>
 							<div class="written-feed-posts posts-feed">
 								<?php foreach($posts as $post){
-									postStruct($post->ID, "Written");
+									postStruct($post->ID);
 								} ?>
 							</div>
 						</div>

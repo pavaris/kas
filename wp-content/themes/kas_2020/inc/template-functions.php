@@ -378,16 +378,18 @@ function my_acf_init() {
 	}
 }
 
-function postStruct($ID, $type){
+function postStruct($ID, $type = ''){
 	?> 
 		<a href="<?php echo get_the_permalink($ID); ?>">
 				<div class="post-feed-image">
 					<?php echo get_the_post_thumbnail($ID); ?>
 				</div>
 				<div class="post-feed-info">
+					<?php if($type){ ?>
 						<div class="post-category">
 							<?php echo $type; ?>
 						</div>
+					<?php } ?>
 					<h6>
 						<?php echo get_the_title($ID); ?>
 					</h6>
