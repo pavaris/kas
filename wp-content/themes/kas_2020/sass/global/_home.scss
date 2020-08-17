@@ -51,6 +51,12 @@
 					left: auto;
 					right: 0;
 					width: 45%;
+					@media (max-width: 1280px) {
+						width: 60%;
+					}
+					@media (max-width: 920px) {
+						width: 100%;
+					}
 				}
 			}
 		}
@@ -107,8 +113,11 @@
 		z-index: 1;
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		color: white;
-		width: 60%;
+		width: 70%;
+		@media (max-width: 1300px) {
+		}
 		p {
 			font-size: 27px;
 			font-weight: 100;
@@ -524,5 +533,12 @@ section.newsletter-container {
 		border: 0px;
 
 		text-transform: uppercase;
+	}
+}
+
+.header-slide-inner {
+	padding-left: 10%;
+	@include mobile {
+		padding-left: 0px;
 	}
 }

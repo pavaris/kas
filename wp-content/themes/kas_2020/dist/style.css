@@ -1426,6 +1426,12 @@ h1.section-title {
   left: auto;
   right: 0;
   width: 45%; }
+  @media (max-width: 1280px) {
+    .header-slides a:nth-child(even) .header-slide .header-slide-info {
+      width: 60%; } }
+  @media (max-width: 920px) {
+    .header-slides a:nth-child(even) .header-slide .header-slide-info {
+      width: 100%; } }
 
 .header-slide-container {
   height: calc(100vh - 70px); }
@@ -1466,8 +1472,9 @@ h1.section-title {
     z-index: 1;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: white;
-    width: 60%; }
+    width: 70%; }
     .header-slide .header-slide-info p {
       font-size: 27px;
       font-weight: 100;
@@ -1817,6 +1824,12 @@ section.newsletter-container {
     @media (max-width: 1056px) {
       section.newsletter-container .wpcf7-submit {
         padding: 12px 25px; } }
+
+.header-slide-inner {
+  padding-left: 10%; }
+  @media (max-width: 767px) {
+    .header-slide-inner {
+      padding-left: 0px; } }
 
 .taxonomy-description {
   padding: 60px 0 40px; }
