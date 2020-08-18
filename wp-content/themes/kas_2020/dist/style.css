@@ -549,6 +549,10 @@ button {
   max-width: 100%;
   height: auto; }
 
+article.footer-padding-gone {
+  margin-bottom: -120px;
+  padding-bottom: 100px; }
+
 #masthead {
   position: absolute;
   left: 0;
@@ -2654,32 +2658,41 @@ section.newsletter-container {
     text-transform: uppercase;
     font-weight: 600; }
 
-.single-video #page-header {
+.single-video #page-header,
+.single-event #page-header {
   margin-bottom: 0px; }
 
-.single-video .page-content.playlist-padding {
+.single-video .page-content.playlist-padding,
+.single-event .page-content.playlist-padding {
   padding-right: 250px; }
   @media (max-width: 920px) {
-    .single-video .page-content.playlist-padding {
+    .single-video .page-content.playlist-padding,
+    .single-event .page-content.playlist-padding {
       padding-right: 0px; } }
 
-.single-video .single-tags {
+.single-video .single-tags,
+.single-event .single-tags {
   margin-top: 40px;
   justify-content: flex-start; }
-  .single-video .single-tags a {
+  .single-video .single-tags a,
+  .single-event .single-tags a {
     margin-left: 0px;
     margin-right: 20px; }
 
-.single-video .article-header h2 {
+.single-video .article-header h2,
+.single-event .article-header h2 {
   font-size: 50px;
   font-weight: 600; }
   @media (max-width: 767px) {
-    .single-video .article-header h2 {
+    .single-video .article-header h2,
+    .single-event .article-header h2 {
       font-size: 30px; } }
 
-.single-video .more-podcasts-feed {
+.single-video .more-podcasts-feed,
+.single-event .more-podcasts-feed {
   padding: 60px 0 80px; }
-  .single-video .more-podcasts-feed .section-title {
+  .single-video .more-podcasts-feed .section-title,
+  .single-event .more-podcasts-feed .section-title {
     font-weight: 600; }
 
 .video-content {
