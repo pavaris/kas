@@ -210,7 +210,7 @@ $args = array(
 							} ?>		
 							
 								<div class="center bottom-padding">
-									<button id='see-more' class='filled' type='video' offset='3' term="roar-story-slam">More</button>
+									<button id='see-more' class='filled' type='event' offset='3' term="roar-story-slam">More</button>
 								</div>
 						</div>
 					</div>
