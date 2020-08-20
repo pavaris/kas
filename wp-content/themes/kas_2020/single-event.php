@@ -168,7 +168,7 @@ get_header();
 <?php if($terms){ ?>
 <?php 	
 $args = array(
-			'post_type' => 'video',
+			'post_type' => 'event',
 			'posts_per_page' => 3,
 			'tax_query' => array(
 				array(
