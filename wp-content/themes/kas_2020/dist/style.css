@@ -533,7 +533,6 @@ ul {
   list-style-type: disc; }
 
 .wp-block-columns {
-  flex-wrap: wrap;
   justify-content: center; }
   .wp-block-columns .wp-block-column ul li,
   .wp-block-columns .wp-block-column ol li {
