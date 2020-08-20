@@ -29,10 +29,11 @@ get_header();
 
 <?php if($term->slug == 'not-your-average'){ ?> 
 	<?php $podcast = get_term_link(get_term_by('slug', 'not-your-average-podcast', 'podcast_type')); ?>
-	
+	<?php if($podcast){ ?>
 	<div class="center">
 		<a href="<?php echo $podcast; ?>" class="button filled">Not Your Average Podcast</a>
 	</div>
+	<?php } ?>
 <?php } ?>
 
 					</section>
