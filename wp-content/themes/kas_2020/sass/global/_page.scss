@@ -34,6 +34,7 @@
 			font-weight: 600 !important;
 			background-color: $skyBlue;
 			color: white;
+			@include button;
 		}
 		&.is-style-outline .wp-block-button__link {
 			@include button;

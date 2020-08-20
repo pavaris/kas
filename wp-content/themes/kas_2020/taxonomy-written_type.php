@@ -92,8 +92,8 @@ get_header();
 				</div>
 
 				<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
-							<button id='see-more' class='filled' type='written' offset='10' term="<?php echo $obj->slug; ?>">More</button>
-						</div>
+					<button id='see-more' class='filled' type='written' offset='7' term="<?php echo $obj->slug; ?>">More</button>
+				</div>
 				
 				</section>
 

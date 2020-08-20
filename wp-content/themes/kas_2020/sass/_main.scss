@@ -22,8 +22,8 @@ h1 {
 }
 
 h2 {
-	margin-bottom: 15px;
-	font-size: 45px;
+	margin-bottom: 25px;
+	font-size: 40px;
 	font-family: $mrEaves;
 }
 
@@ -120,7 +120,7 @@ em {
 	font-size: 20px;
 	color: $ughGray;
 	letter-spacing: 0.15em;
-	font-weight: 500;
+	font-weight: 600;
 	margin-bottom: 60px;
 }
 
@@ -242,9 +242,56 @@ button {
 	h4,
 	h5,
 	h6 {
-		letter-spacing: 0.1em;
+		letter-spacing: 0.14em;
 		font-weight: 600;
 		text-transform: uppercase;
+	}
+}
+
+ul,
+ol {
+	padding-left: 20px;
+	li {
+		font-size: 25px;
+		margin-bottom: 20px;
+	}
+}
+
+ol {
+	list-style-type: decimal;
+}
+
+ul {
+	list-style-type: disc;
+}
+
+.wp-block-columns {
+	flex-wrap: wrap;
+	justify-content: center;
+	.wp-block-column {
+		ul,
+		ol {
+			li {
+				font-size: 22px;
+			}
+		}
+		@include mobile {
+			margin-bottom: 35px;
+		}
+		.wp-block-image img {
+			margin: 0 auto;
+			display: block;
+		}
+	}
+}
+
+.border-columns {
+	.wp-block-column {
+		border: 2px solid white;
+		border-radius: 5px;
+		padding: 15px;
+		margin: 10px;
+		min-width: 205px;
 	}
 }
 
@@ -291,4 +338,12 @@ button {
 article.footer-padding-gone {
 	margin-bottom: -120px;
 	padding-bottom: 100px;
+}
+
+.wp-block-image figcaption {
+	text-align: center;
+	text-transform: uppercase;
+	font-size: 28px;
+	letter-spacing: 0.14em;
+	margin-bottom: 15px;
 }

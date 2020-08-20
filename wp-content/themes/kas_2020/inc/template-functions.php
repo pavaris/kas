@@ -515,8 +515,8 @@ function podcast_article($postID){
 
 
     function customize_customtaxonomy_archive_display ( $query ) {
-        if (($query->is_main_query()) && (is_tax('podcast_type')))
-        	$query->set( 'posts_per_page', '9' );
+        if (($query->is_main_query()) )
+        	$query->set( 'posts_per_page', '6' );
     }
 
      add_action( 'pre_get_posts', 'customize_customtaxonomy_archive_display' );
@@ -664,4 +664,27 @@ function my_awesome_func( $data ) {
 	return [];
  
   
+}
+
+
+
+
+add_action('acf/init', 'my_acf_init_block_types');
+function my_acf_init_block_types() {
+
+    // Check function exists.
+    if( function_exists('acf_register_block_type') ) {
+
+        // register a testimonial block.
+        acf_register_block_type(array(
+            'name'              => 'Sponsors',
+            'title'             => __('Sponsors'),
+            'description'       => __('Sponsors block'),
+            'render_template'   => 'template-parts/blocks/sponsors.php',
+            'category'          => 'formatting',
+            'icon'              => 'admin-comments',
+						'keywords'          => array( 'sponsors' ),
+						'mode' => "edit"
+        ));
+    }
 }

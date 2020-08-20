@@ -1,0 +1,93 @@
+.page-template-page-gala {
+	.page-header-container {
+		&:before {
+			display: none;
+		}
+	}
+	.page-content {
+		background-color: $aBlue;
+		color: white;
+		p {
+			color: white;
+		}
+		.wp-block-buttons .wp-block-button .wp-block-button__link {
+			background-color: $anotherPink;
+			color: $aBlue;
+			border-color: $anotherPink;
+			padding: 16px 45px;
+			border-radius: 40px;
+			font-size: 23px;
+		}
+
+		.wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
+			background-color: transparent;
+			color: white;
+			border-color: $anotherPink;
+			&:hover {
+				background-color: $anotherPink;
+				color: $aBlue;
+			}
+		}
+	}
+	.all-articles {
+		padding: 60px 0 0;
+		.post-feed-image {
+			padding-bottom: 100%;
+		}
+	}
+}
+
+.sponsors-block {
+	display: flex;
+
+	.sponsor {
+		border: 2px solid white;
+		border-radius: 5px;
+		padding: 20px 20px 10px 20px;
+		margin-right: 20px;
+		margin-bottom: 20px;
+
+		p,
+		ol li,
+		ul li {
+			font-size: 22px;
+		}
+		&:last-child {
+			margin-right: 0px;
+		}
+		h4 {
+			text-align: center;
+			margin-bottom: 10px;
+			font-size: 25px;
+		}
+		h3 {
+			text-align: center;
+			margin-bottom: 15px;
+			font-size: 30px;
+		}
+		hr {
+			margin-bottom: 20px;
+		}
+	}
+	@media (max-width: 1135px) {
+		flex-wrap: wrap;
+		justify-content: space-evenly;
+		.sponsor {
+			margin-right: 0px;
+			margin-bottom: 35px;
+			width: calc(50% - 40px);
+		}
+	}
+	@include mobile {
+		justify-content: center;
+		.sponsor {
+			margin-right: 0px;
+			margin-bottom: 35px;
+			width: 100%;
+		}
+	}
+}
+
+sup {
+	font-size: 60%;
+}
