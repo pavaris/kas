@@ -1,7 +1,7 @@
 <?php
 get_header();
+$term = get_queried_object();
 $hosts = get_field('hosts', $term);
-
 ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
@@ -103,7 +103,7 @@ $hosts = get_field('hosts', $term);
 								
 						</div>
 						<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
-							<button id='see-more' class='filled' type='podcast' offset='9' term="<?php echo $term->slug; ?>">More</button>
+							<button id='see-more' class='filled' type='podcast' offset='6' term="<?php echo $term->slug; ?>">More</button>
 						</div>
 					</section>
 
@@ -121,7 +121,7 @@ $hosts = get_field('hosts', $term);
 											?>
 											<div class="team-member">
 												<div class="team-member-images">
-													<img src="<?php echo $host['image']['sizes']['medium']; ?>" alt="<?php echo $host['image']['alt']; ?>">
+													<img src="<?php echo $host['image']['sizes']['large']; ?>" alt="<?php echo $host['image']['alt']; ?>">
 												</div>
 												<div class="team-member-name">
 													<?php echo $host['name']; ?>

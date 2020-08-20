@@ -2915,6 +2915,15 @@ section.newsletter-container {
   .tax-video_type .podcast-feed .section-title {
     text-align: center; }
 
+.tax-video_type .podcast-hosts {
+  text-align: center; }
+  .tax-video_type .podcast-hosts h3 {
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: #757f87;
+    margin-bottom: 40px; }
+
 .nya-video {
   padding: 40px 0 60px;
   background-color: #464f5b;

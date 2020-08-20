@@ -515,7 +515,7 @@ function podcast_article($postID){
 
 
     function customize_customtaxonomy_archive_display ( $query ) {
-        if (($query->is_main_query()) )
+        if ( (($query->is_main_query()) && (is_tax('podcast_type'))) ||  ((is_tax('video_type')) && ($query->is_main_query())))
         	$query->set( 'posts_per_page', '6' );
     }
 
