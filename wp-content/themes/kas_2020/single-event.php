@@ -190,14 +190,7 @@ $args = array(
 
 
 							foreach($vids->posts as $index=>$postsss){
-								?> 
-									<a href="<?php echo get_the_permalink($postsss); ?>">
-										<?php echo get_the_post_thumbnail($postsss); ?>
-										<h5>
-											<?php the_title(); ?>
-										</h5>
-									</a>
-								<?php 
+								postStruct($postsss->ID);
 							}
 	?>
 					
@@ -210,7 +203,7 @@ $args = array(
 							} ?>		
 							
 								<div class="center bottom-padding">
-									<button id='see-more' class='filled' type='event' offset='3' term="<?php echo $terms[0]->slug; ?> ">More</button>
+									<button id='see-more' class='filled' type='event' offset='3' term="<?php echo $terms[0]->slug; ?>">More</button>
 								</div>
 						</div>
 					</div>

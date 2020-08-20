@@ -89,7 +89,21 @@
 								)); 
 								$vids = new WP_Query($args); ?>
 			
-			
+			<section class="all-articles">
+						<div class="content-margins ">
+							<h3 class='section-title'>Roar Story Slams</h3>
+							<div class=" posts-feed">
+								<?php foreach($vids->posts as $post){
+									postStruct($post->ID);
+								} ?>
+							</div>
+						</div>
+<div class="center">
+							<button id='see-more' class='filled' type='event' offset='6' term="roar-story-slam">More</button>
+						</div>
+					</section>
+
+						
 
 			<?php endwhile; // End of the loop. ?>
 		</main>
