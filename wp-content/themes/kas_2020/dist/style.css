@@ -543,7 +543,8 @@ ul {
       margin-bottom: 35px; } }
   .wp-block-columns .wp-block-column .wp-block-image img {
     margin: 0 auto;
-    display: block; }
+    display: block;
+    height: auto; }
 
 .border-columns .wp-block-column {
   border: 2px solid white;
