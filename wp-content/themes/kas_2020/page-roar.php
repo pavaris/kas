@@ -78,11 +78,11 @@
 
 <?php 
 	$args = array(
-								'post_type' => 'video',
+								'post_type' => 'event',
 								'posts_per_page' => 6,
 								'tax_query' => array(
 									array(
-											'taxonomy' => 'video_type',
+											'taxonomy' => 'event_type',
 											'field'    => 'slug',
 											'terms'    => 'roar-story-slam',
 									)
