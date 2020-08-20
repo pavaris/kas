@@ -1160,15 +1160,14 @@ article.footer-padding-gone {
   display: flex;
   justify-content: center; }
 
-.wp-block-buttons {
+.page .wp-block-buttons {
   margin-bottom: 30px; }
-  .wp-block-buttons .wp-block-button {
+  .page .wp-block-buttons .wp-block-button {
     text-align: center; }
-    .wp-block-buttons .wp-block-button .wp-block-button__link {
+    .page .wp-block-buttons .wp-block-button .wp-block-button__link {
       text-transform: uppercase;
       font-weight: 600 !important;
       background-color: #6cb5ce;
-      color: white;
       border: 1px solid #6cb5ce;
       border-radius: 25px;
       padding: 8px 25px;
@@ -1179,17 +1178,17 @@ article.footer-padding-gone {
       transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
       cursor: pointer;
       text-decoration: none; }
-      .wp-block-buttons .wp-block-button .wp-block-button__link:hover {
+      .page .wp-block-buttons .wp-block-button .wp-block-button__link:hover {
         background-color: #6cb5ce; }
-      .wp-block-buttons .wp-block-button .wp-block-button__link.filled {
+      .page .wp-block-buttons .wp-block-button .wp-block-button__link.filled {
         background-color: #6cb5ce;
         color: white; }
-      .wp-block-buttons .wp-block-button .wp-block-button__link.wide {
+      .page .wp-block-buttons .wp-block-button .wp-block-button__link.wide {
         padding: 10px 35px; }
       @media (max-width: 1056px) {
-        .wp-block-buttons .wp-block-button .wp-block-button__link {
+        .page .wp-block-buttons .wp-block-button .wp-block-button__link {
           padding: 12px 25px; } }
-    .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
+    .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
       border: 1px solid #6cb5ce;
       border-radius: 25px;
       padding: 8px 25px;
@@ -1201,17 +1200,17 @@ article.footer-padding-gone {
       cursor: pointer;
       text-decoration: none;
       color: #6cb5ce; }
-      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
+      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
         background-color: #6cb5ce; }
-      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.filled {
+      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.filled {
         background-color: #6cb5ce;
         color: white; }
-      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.wide {
+      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.wide {
         padding: 10px 35px; }
       @media (max-width: 1056px) {
-        .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
+        .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
           padding: 12px 25px; } }
-      .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
+      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
         color: white; }
 
 .social-nav {

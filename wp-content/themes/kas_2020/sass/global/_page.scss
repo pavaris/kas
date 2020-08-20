@@ -22,25 +22,23 @@
 		display: flex;
 		justify-content: center;
 	}
-}
+	.wp-block-buttons {
+		margin-bottom: 30px;
+		.wp-block-button {
+			text-align: center;
 
-.wp-block-buttons {
-	margin-bottom: 30px;
-	.wp-block-button {
-		text-align: center;
-
-		.wp-block-button__link {
-			text-transform: uppercase;
-			font-weight: 600 !important;
-			background-color: $skyBlue;
-			color: white;
-			@include button;
-		}
-		&.is-style-outline .wp-block-button__link {
-			@include button;
-			color: $skyBlue;
-			&:hover {
-				color: white;
+			.wp-block-button__link {
+				text-transform: uppercase;
+				font-weight: 600 !important;
+				background-color: $skyBlue;
+				@include button;
+			}
+			&.is-style-outline .wp-block-button__link {
+				@include button;
+				color: $skyBlue;
+				&:hover {
+					color: white;
+				}
 			}
 		}
 	}
