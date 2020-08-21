@@ -140,7 +140,7 @@ global $wp_query;
 		</main><!-- #main -->
 	</section><!-- #primary -->
 
-	<script>
+	<!-- <script>
 
 		fetch(
 			`<?php echo get_home_url(); ?>/wp-json/search/<?php echo rawurlencode(get_search_query()); ?>/`
@@ -203,7 +203,7 @@ global $wp_query;
 				})		
 
 		
-	</script>
+	</script> -->
 <?php
 
 get_footer();
