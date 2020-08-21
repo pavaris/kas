@@ -18,29 +18,14 @@ get_header();
 <?php $loop = 0; ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main top-padding">
 
 				
 				<?php
 				if ( have_posts() ) :
 
 				?>
-					<header id="page-header">
-						<div class="page-header-container">
-							<h1 class="archive-title"><?php echo $obj->name; ?></h1>
-							<div class="page-header-image">
-								<?php
-										$image = get_field('image', $obj);
-										if($image){
-											echo wp_get_attachment_image($image['ID'], 'large');
-										}else{
-											echo '<div class="blue-bg"></div>';
-										}
-									?>
-										
-							</div>
-						</div>
-					</header><!-- .page-header -->
+	
 					<div class="content-margins">
 
 					<section class="latest-articles">
