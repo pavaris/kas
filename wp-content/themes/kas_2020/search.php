@@ -87,11 +87,11 @@ global $wp_query;
 									 */
 									?> 
 									<a href="<?php the_permalink(); ?>">
-										<?php if(has_post_thumbnail()){ ?>
+										
 										<div class="search-result-img">
 											<?php the_post_thumbnail(); ?>
 										</div>	
-										<?php } ?>
+										
 										
 										<div class="search-result-desc">
 											<h5>
@@ -152,6 +152,10 @@ global $wp_query;
 
 				jQuery('.filter-container a').click(function(e){
 					e.preventDefault();
+					jQuery('html, body').animate({
+						scrollTop: 0
+					}, 500);
+					jQuery('.filter-dropdown').slideUp();
 					var $this = jQuery(this);
 					$this.parent().find('a').removeClass('active');
 					$this.addClass('active');

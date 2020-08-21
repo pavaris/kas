@@ -693,7 +693,7 @@ function search_func($data){
 			$vals = array(
 				'id' => $post->ID, 
 				'title' => $post->post_title, 
-				'image' => get_the_post_thumbnail_url( $post->ID, 'medium' ),
+				'image' => get_the_post_thumbnail_url( $post->ID, 'medium' ) ? get_the_post_thumbnail_url( $post->ID, 'medium' ) : '',
 				'url' => get_the_permalink($post->ID),
 				'desc' => get_field('short_description', $post->ID),
 				'type' => get_post_type($post->ID)
