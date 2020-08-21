@@ -76,6 +76,13 @@
                 "operator": "==",
                 "value": "written"
             }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
         ]
     ],
     "menu_order": 0,
@@ -86,5 +93,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1584655265
+    "modified": 1597977111
 }

@@ -613,7 +613,14 @@ add_action( 'rest_api_init', function () {
   register_rest_route( 'kas_posts', '/(?P<post_type>[a-zA-Z0-9-]+)/(?P<tax>[a-zA-Z0-9-]+)/(?P<offset>\d+)', array(
     'methods' => 'GET',
     'callback' => 'my_awesome_func',
-  ) );
+	) );
+	
+
+	register_rest_route( 'search', '/(?P<query>(.+|%20)+)(?:/(?P<post_type>[a-zA-Z0-9-]+))?', array(
+		'methods' => 'GET',
+		'callback' => 'search_func',
+	) );
+
 } );
 
 
@@ -668,6 +675,39 @@ function my_awesome_func( $data ) {
 
 
 
+function search_func($data){
+	if($data['post_type']){
+		$type = $data['post_type'];
+	}else{
+		$type = array('event', 'podcast', 'written', 'video', 'page');
+	}
+
+
+	$query = array( 's' => urldecode($data['query']), 'posts_per_page' => -1, 'post_type' => $type, 'post_status' => 'publish');
+	$response = new WP_Query($query);
+
+	if($response->post_count > 0){
+		$postProp = [];
+		foreach($response->posts as $post){
+			// print_r($post);
+			$vals = array(
+				'id' => $post->ID, 
+				'title' => $post->post_title, 
+				'image' => get_the_post_thumbnail_url( $post->ID, 'medium' ),
+				'url' => get_the_permalink($post->ID),
+				'desc' => get_field('short_description', $post->ID),
+				'type' => get_post_type($post->ID)
+			);
+			array_push($postProp, $vals);
+		}
+	}
+
+	$result = array('post_count' => $response->post_count, 'posts' => $postProp);
+	return wp_json_encode($result);
+}
+
+
+
 
 add_action('acf/init', 'my_acf_init_block_types');
 function my_acf_init_block_types() {
@@ -688,3 +728,11 @@ function my_acf_init_block_types() {
         ));
     }
 }
+
+add_action( 'pre_get_posts', function( $query ) {
+
+  if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
+    $query->set( 'posts_per_page', -1 );
+  }
+
+});
