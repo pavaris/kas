@@ -147,7 +147,11 @@ if($author) {
 										<?php } ?>
 									</div>
 								</div>
+								<div class="center">
+								<a href="<?php echo get_category_link($terms[0]->term_id); ?>" class='button filled'>MORE</a>
+							</div>
 							</section>
+							
 						<?php } ?>
 					<?php } ?>
 		</main><!-- #main -->
