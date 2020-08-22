@@ -597,6 +597,19 @@ article.footer-padding-gone {
 .mobile {
   display: none; }
 
+.wp-block-media-text {
+  margin-bottom: 30px; }
+  .wp-block-media-text img {
+    height: auto; }
+  .wp-block-media-text.is-stacked-on-mobile .wp-block-media-text__media {
+    margin-bottom: 20px; }
+
+.editor-styles-wrapper .has-normal-font-size,
+.editor-styles-wrapper .has-regular-font-size,
+.has-normal-font-size,
+.has-regular-font-size {
+  font-size: 20px; }
+
 #masthead {
   position: absolute;
   left: 0;
