@@ -42,7 +42,7 @@ $hosts = get_field('hosts', $term);
 					
 
 						<?php $listenOn = get_field('listen_on', $term); ?>
-						<?php if($listenOn){ ?>
+						<?php if($listenOn['apple_podcast'] || $listenOn['spotify'] || $listenOn['anchor'] || $listenOn['youtube']){ ?>
 							<section class="podcast-listen-on">
 									<h3>Listen on</h3>
 									<div class="podcast-platform-links">
