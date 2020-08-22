@@ -88,9 +88,9 @@ get_header();
 									<?php endwhile;
 									 ?>
 								</div>
-												<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
-							<button id='see-more' class='filled' type='podcast' offset='6' term="<?php echo $term->slug; ?>">More</button>
-						</div>
+							<div class="center">
+								<button id='see-more' class='filled' type='podcast' offset='6' term="<?php echo $term->slug; ?>">More</button>
+							</div>
 
 						</div>
 
