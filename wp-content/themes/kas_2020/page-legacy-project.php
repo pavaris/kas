@@ -81,7 +81,7 @@
 								<div class="video-single-embed video-play-wrapper">
 									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">
-										<?php $image = get_field('poster_image', $aboutPage->ID); ?>
+										<?php $image = get_field('poster_image'); ?>
 										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
 									</a>
 								</div>
