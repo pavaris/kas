@@ -102,7 +102,7 @@ $hosts = get_field('hosts', $term);
 								</div>
 								
 						</div>
-						<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+						<div class="center">
 							<button id='see-more' class='filled' type='podcast' offset='6' term="<?php echo $term->slug; ?>">More</button>
 						</div>
 					</section>
