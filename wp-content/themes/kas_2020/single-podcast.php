@@ -84,9 +84,11 @@ get_header();
 					?>
 					<?php if(get_field('credits')){ ?>
 						<section class="credits">
-							<h4 class='section-title'>Credits</h4>
-							<div class="credit-content">
-								<?php echo get_field('credits'); ?>
+							<div class="content-margins">
+								<h4 class='section-title'>Credits</h4>
+								<div class="credit-content">
+									<?php echo get_field('credits'); ?>
+								</div>
 							</div>
 						</section>
 					<?php } ?>
