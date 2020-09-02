@@ -156,7 +156,7 @@
             {
                 "param": "post_taxonomy",
                 "operator": "==",
-                "value": "video_type:roar-story-slam"
+                "value": "event_type:roar-story-slam"
             }
         ]
     ],
@@ -168,5 +168,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1597349284
+    "modified": 1599013205
 }
