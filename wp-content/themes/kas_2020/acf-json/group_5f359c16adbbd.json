@@ -1,6 +1,6 @@
 {
     "key": "group_5f359c16adbbd",
-    "title": "Roar Story Slam Fields",
+    "title": "Event Fields",
     "fields": [
         {
             "key": "field_5f359c25d0227",
@@ -158,6 +158,13 @@
                 "operator": "==",
                 "value": "event_type:roar-story-slam"
             }
+        ],
+        [
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "event_type:gala"
+            }
         ]
     ],
     "menu_order": 0,
@@ -168,5 +175,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1599013205
+    "modified": 1599014557
 }
