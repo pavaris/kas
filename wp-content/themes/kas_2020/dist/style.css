@@ -320,39 +320,39 @@ template {
   display: none; }
 
 body {
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 h1 {
   margin-bottom: 35px;
   font-size: 65px;
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 h2 {
   margin-bottom: 25px;
   font-size: 40px;
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 h3 {
   margin-bottom: 15px;
   font-size: 35px;
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 h4 {
   margin-bottom: 15px;
   font-size: 29px;
   font-weight: 600;
   line-height: 1.2em;
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 h5 {
   margin-bottom: 15px;
   font-size: 20px;
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 h6 {
   margin-bottom: 15px;
   font-size: 15px;
-  font-family: "sans"; }
+  font-family: "mr-eaves-modern"; }
 
 p {
   margin-bottom: 20px;
@@ -913,7 +913,7 @@ article.footer-padding-gone {
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu li {
       margin-bottom: 10px; }
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu a {
-      font-family: "sans";
+      font-family: "mr-eaves-modern";
       font-size: 14px; }
   #mobile-nav .button {
     display: inline-block;
@@ -1573,14 +1573,14 @@ h1.section-title {
     .header-slide .header-slide-info p {
       font-size: 27px;
       font-weight: 100;
-      font-family: "sans";
+      font-family: "mr-eaves-modern";
       letter-spacing: 0.04em;
       line-height: 1.2em;
       color: white;
       max-width: 65%; }
     .header-slide .header-slide-info h3 {
       text-transform: uppercase;
-      font-family: "sans";
+      font-family: "mr-eaves-modern";
       font-weight: 800;
       font-size: 55px;
       color: white;
@@ -1792,7 +1792,7 @@ section.home-projects {
   padding: 60px 0; }
   section.home-projects h3 {
     text-align: center;
-    font-family: "sans";
+    font-family: "mr-eaves-modern";
     font-size: 50px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -1866,7 +1866,7 @@ section.newsletter-container {
   margin-bottom: -120px;
   padding-bottom: 120px !important; }
   section.newsletter-container h3 {
-    font-family: "sans";
+    font-family: "mr-eaves-modern";
     font-size: 40px;
     letter-spacing: 0.2em;
     font-weight: 700;
@@ -2023,7 +2023,7 @@ section.newsletter-container {
     .podcast-header .podcast-description h1 {
       font-size: 50px;
       text-transform: uppercase;
-      font-family: "sans"; }
+      font-family: "mr-eaves-modern"; }
     .podcast-header .podcast-description p {
       max-width: 80%;
       color: inherit; }
@@ -2239,7 +2239,7 @@ section.newsletter-container {
   .page-header-container h1 {
     position: relative;
     z-index: 2;
-    font-family: "sans"; }
+    font-family: "mr-eaves-modern"; }
   .page-header-container h2 {
     position: relative;
     z-index: 2;
@@ -3187,7 +3187,7 @@ section.newsletter-container {
   height: 70vh;
   padding-top: 0px; }
   .page-template-page-legacy-project .page-header-container h2 {
-    font-family: "sans";
+    font-family: "mr-eaves-modern";
     font-size: 60px;
     margin: 0px; }
     @media (max-width: 767px) {
