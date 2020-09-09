@@ -120,7 +120,7 @@
 		}
 		p {
 			font-size: 27px;
-			font-weight: 100;
+			font-weight: 200;
 			font-family: $mrEaves;
 			letter-spacing: 0.04em;
 			line-height: 1.2em;
@@ -130,12 +130,12 @@
 		h3 {
 			text-transform: uppercase;
 			font-family: $mrEaves;
-			font-weight: 800;
-			font-size: 55px;
+			font-weight: 600;
+			font-size: 70px;
 			color: white;
-			letter-spacing: 0.2em;
+			letter-spacing: 0.15em;
 			margin-bottom: 20px;
-			line-height: 1.1em;
+			line-height: 1em;
 		}
 
 		.header-slide-cta {
@@ -159,7 +159,7 @@
 				width: 100%;
 			}
 			h3 {
-				font-size: 25px;
+				font-size: 30px;
 			}
 			p {
 				font-size: 20px;
@@ -169,24 +169,21 @@
 	}
 }
 
-section.home-latest-videos {
-	background-color: $anotherGray;
-	color: white;
-	text-align: center;
-	padding: 60px 0;
-	h3 {
-		font-size: 20px;
-		text-transform: uppercase;
-		letter-spacing: 0.3em;
-		margin-bottom: 40px;
-		color: white;
-	}
-}
-
 .home-legacy-project {
 	.header-slide-img {
 		img {
 			object-position: center;
+		}
+	}
+	.header-slide .header-slide-info {
+		h3 {
+			font-size: 60px;
+			@media (max-width: 767px) {
+				font-size: 30px;
+			}
+		}
+		p {
+			max-width: 600px;
 		}
 	}
 }
@@ -202,12 +199,12 @@ section.home-latest-videos {
 	}
 
 	p {
-		font-weight: 100;
-		font-size: 22px;
+		font-weight: 200;
+		font-size: 23px;
 		letter-spacing: 0.1em;
 		margin-bottom: 30px;
 		color: white;
-		line-height: 1em;
+		line-height: 1.1em;
 	}
 
 	a {
@@ -308,7 +305,8 @@ section.home-mission {
 	}
 	@media (max-width: 767px) {
 		h5 {
-			font-size: 25px;
+			font-size: 22px;
+			font-weight: 600;
 		}
 	}
 	.button {
@@ -346,7 +344,8 @@ section.home-feed {
 			}
 		}
 		p {
-			font-size: 30px;
+			font-size: 35px;
+			font-weight: 300;
 			@media (max-width: 1440px) {
 				font-size: 20px;
 			}
@@ -479,7 +478,12 @@ section.home-projects {
 		}
 	}
 	.button {
+		font-size: 20px;
 		text-transform: uppercase;
+		font-weight: 700;
+		padding: 15px 45px;
+		border-radius: 40px;
+		margin-top: 20px;
 	}
 }
 
@@ -494,6 +498,10 @@ section.newsletter-container {
 		letter-spacing: 0.2em;
 		font-weight: 700;
 		margin-bottom: 30px;
+	}
+	p {
+		margin-bottom: 0px;
+		font-weight: 200;
 	}
 	label {
 		span.form-label {
@@ -515,12 +523,13 @@ section.newsletter-container {
 				background-color: transparent;
 				outline: none;
 				margin-bottom: 20px;
+				width: 600px;
 			}
 		}
 
 		::placeholder {
 			text-transform: uppercase;
-			color: $darkGray;
+			color: $ughGray;
 			letter-spacing: 0.1em;
 			font-weight: 700;
 		}
@@ -530,8 +539,12 @@ section.newsletter-container {
 		background-color: $ughGray;
 		color: white;
 		border: 0px;
-
 		text-transform: uppercase;
+		font-size: 20px;
+		font-weight: 700;
+		padding: 15px 45px;
+		border-radius: 40px;
+		margin-top: 20px;
 	}
 }
 

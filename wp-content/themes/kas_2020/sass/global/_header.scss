@@ -19,12 +19,8 @@
 	a {
 		text-decoration: none;
 		text-transform: uppercase;
-		font-size: 15px;
+
 		color: white;
-		font-weight: 600;
-		@media (max-width: $tablet_width) {
-			font-size: 13px;
-		}
 	}
 
 	.site-branding {
@@ -292,7 +288,7 @@
 		background-color: inherit;
 		.mobile-home {
 			color: white;
-			font-weight: 100;
+			font-weight: 400;
 			text-transform: initial;
 			font-size: 22px;
 			span {
@@ -331,7 +327,7 @@
 				margin-bottom: 20px;
 				a {
 					font-size: 20px;
-					font-weight: 100;
+					font-weight: 400;
 					letter-spacing: 0.1em;
 				}
 			}

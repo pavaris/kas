@@ -70,7 +70,7 @@
 						display: block;
 						text-transform: uppercase;
 						letter-spacing: 0.08em;
-
+						font-weight: 400;
 						@media (max-width: 900px) {
 							display: inline-block;
 						}
@@ -78,7 +78,7 @@
 					> a {
 						font-size: 16px;
 						margin-bottom: 18px;
-						font-weight: 800;
+						font-weight: 600;
 					}
 				}
 			}
@@ -143,6 +143,7 @@
 
 	.button {
 		text-transform: uppercase;
+		font-weight: 600;
 	}
 }
 .footer-mobile-donate {

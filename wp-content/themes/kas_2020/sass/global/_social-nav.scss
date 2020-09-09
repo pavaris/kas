@@ -1,6 +1,10 @@
 .social-nav {
 	flex-grow: 1;
 	background-color: $darkGray;
+	@include mobile {
+		max-width: 250px;
+		margin: 0 auto;
+	}
 	ul {
 		display: flex;
 		justify-content: space-around;

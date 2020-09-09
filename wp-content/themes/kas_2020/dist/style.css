@@ -482,7 +482,7 @@ button {
   width: 100%;
   display: block;
   text-transform: uppercase;
-  font-weight: 800; }
+  font-weight: 600; }
   .page-content .wpcf7 label .wpcf7-form-control-wrap {
     width: 100%;
     display: block;
@@ -512,16 +512,34 @@ button {
   margin: 0 auto; }
 
 .page-content .wpcf7 .center input[type="submit"] {
-  background-color: #6cb5ce;
-  border: 0px;
-  border-radius: 70px;
-  padding: 20px 70px;
-  color: white;
-  font-style: normal;
-  text-transform: uppercase;
+  border: 1px solid #6cb5ce;
+  border-radius: 25px;
+  padding: 8px 25px;
+  background-color: transparent;
+  font-size: 18px;
+  letter-spacing: 0.2rem;
+  font-weight: 500;
+  transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+  cursor: pointer;
   text-decoration: none;
-  display: inline-block;
-  font-size: 20px; }
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 15px 45px;
+  border-radius: 40px;
+  margin-top: 20px;
+  color: white;
+  background-color: #6cb5ce; }
+  .page-content .wpcf7 .center input[type="submit"]:hover {
+    background-color: #6cb5ce; }
+  .page-content .wpcf7 .center input[type="submit"].filled {
+    background-color: #6cb5ce;
+    color: white; }
+  .page-content .wpcf7 .center input[type="submit"].wide {
+    padding: 10px 35px; }
+  @media (max-width: 1056px) {
+    .page-content .wpcf7 .center input[type="submit"] {
+      padding: 12px 25px; } }
 
 .page-content h2,
 .page-content h3,
@@ -627,12 +645,7 @@ article.footer-padding-gone {
   .site-header a {
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 15px;
-    color: white;
-    font-weight: 600; }
-    @media (max-width: 1056px) {
-      .site-header a {
-        font-size: 13px; } }
+    color: white; }
   .site-header .site-branding {
     margin-right: 50px;
     position: relative;
@@ -873,7 +886,7 @@ article.footer-padding-gone {
     background-color: inherit; }
     #mobile-nav #mobile-header .mobile-home {
       color: white;
-      font-weight: 100;
+      font-weight: 400;
       text-transform: initial;
       font-size: 22px; }
       #mobile-nav #mobile-header .mobile-home span {
@@ -904,7 +917,7 @@ article.footer-padding-gone {
       margin-bottom: 20px; }
       #mobile-nav #mobile-nav-links #menu-header-menu-1 li a {
         font-size: 20px;
-        font-weight: 100;
+        font-weight: 400;
         letter-spacing: 0.1em; }
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .menu-item-has-children > a {
       display: block;
@@ -1096,14 +1109,15 @@ article.footer-padding-gone {
             margin-bottom: 12px;
             display: block;
             text-transform: uppercase;
-            letter-spacing: 0.08em; }
+            letter-spacing: 0.08em;
+            font-weight: 400; }
             @media (max-width: 900px) {
               .site-footer .site-info .footer-menu ul.menu > li a {
                 display: inline-block; } }
           .site-footer .site-info .footer-menu ul.menu > li > a {
             font-size: 16px;
             margin-bottom: 18px;
-            font-weight: 800; }
+            font-weight: 600; }
   .site-footer a {
     color: white; }
   .site-footer .footer-copyright {
@@ -1146,7 +1160,8 @@ article.footer-padding-gone {
   align-items: center;
   justify-content: center; }
   .footer-donate .button {
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-weight: 600; }
 
 .footer-mobile-donate {
   display: none; }
@@ -1232,6 +1247,10 @@ article.footer-padding-gone {
 .social-nav {
   flex-grow: 1;
   background-color: #414a57; }
+  @media (max-width: 767px) {
+    .social-nav {
+      max-width: 250px;
+      margin: 0 auto; } }
   .social-nav ul {
     display: flex;
     justify-content: space-around; }
@@ -1572,7 +1591,7 @@ h1.section-title {
     width: 70%; }
     .header-slide .header-slide-info p {
       font-size: 27px;
-      font-weight: 100;
+      font-weight: 200;
       font-family: "mr-eaves-modern";
       letter-spacing: 0.04em;
       line-height: 1.2em;
@@ -1581,12 +1600,12 @@ h1.section-title {
     .header-slide .header-slide-info h3 {
       text-transform: uppercase;
       font-family: "mr-eaves-modern";
-      font-weight: 800;
-      font-size: 55px;
+      font-weight: 600;
+      font-size: 70px;
       color: white;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.15em;
       margin-bottom: 20px;
-      line-height: 1.1em; }
+      line-height: 1em; }
     .header-slide .header-slide-info .header-slide-cta a {
       font-size: 18px;
       font-weight: 700; }
@@ -1603,25 +1622,22 @@ h1.section-title {
         .header-slide .header-slide-info .header-slide-inner {
           width: 100%; }
         .header-slide .header-slide-info h3 {
-          font-size: 25px; }
+          font-size: 30px; }
         .header-slide .header-slide-info p {
           font-size: 20px;
           max-width: unset; } }
 
-section.home-latest-videos {
-  background-color: #39414d;
-  color: white;
-  text-align: center;
-  padding: 60px 0; }
-  section.home-latest-videos h3 {
-    font-size: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.3em;
-    margin-bottom: 40px;
-    color: white; }
-
 .home-legacy-project .header-slide-img img {
   object-position: center; }
+
+.home-legacy-project .header-slide .header-slide-info h3 {
+  font-size: 60px; }
+  @media (max-width: 767px) {
+    .home-legacy-project .header-slide .header-slide-info h3 {
+      font-size: 30px; } }
+
+.home-legacy-project .header-slide .header-slide-info p {
+  max-width: 600px; }
 
 .home-legacy-feed {
   background-color: #414a57;
@@ -1631,12 +1647,12 @@ section.home-latest-videos {
     position: relative;
     padding: 0 30px; }
   .home-legacy-feed p {
-    font-weight: 100;
-    font-size: 22px;
+    font-weight: 200;
+    font-size: 23px;
     letter-spacing: 0.1em;
     margin-bottom: 30px;
     color: white;
-    line-height: 1em; }
+    line-height: 1.1em; }
   .home-legacy-feed a {
     margin: 0 10px;
     color: white;
@@ -1717,7 +1733,8 @@ section.home-mission {
     font-weight: 700; }
   @media (max-width: 767px) {
     section.home-mission h5 {
-      font-size: 25px; } }
+      font-size: 22px;
+      font-weight: 600; } }
   section.home-mission .button {
     font-size: 20px;
     text-transform: uppercase;
@@ -1748,7 +1765,8 @@ section.home-feed {
         section.home-feed .home-feed-post h4 {
           font-size: 40px; } }
     section.home-feed .home-feed-post p {
-      font-size: 30px; }
+      font-size: 35px;
+      font-weight: 300; }
       @media (max-width: 1440px) {
         section.home-feed .home-feed-post p {
           font-size: 20px; } }
@@ -1858,7 +1876,12 @@ section.home-projects {
           section.home-projects .home-projects-feed a .home-projects-image {
             padding-bottom: 100%; } }
   section.home-projects .button {
-    text-transform: uppercase; }
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 15px 45px;
+    border-radius: 40px;
+    margin-top: 20px; }
 
 section.newsletter-container {
   text-align: center;
@@ -1871,6 +1894,9 @@ section.newsletter-container {
     letter-spacing: 0.2em;
     font-weight: 700;
     margin-bottom: 30px; }
+  section.newsletter-container p {
+    margin-bottom: 0px;
+    font-weight: 200; }
   section.newsletter-container label span.form-label {
     font-size: 0px;
     line-height: 0px; }
@@ -1887,10 +1913,11 @@ section.newsletter-container {
       border: 1px solid #414a57;
       background-color: transparent;
       outline: none;
-      margin-bottom: 20px; }
+      margin-bottom: 20px;
+      width: 600px; }
   section.newsletter-container label ::placeholder {
     text-transform: uppercase;
-    color: #414a57;
+    color: #757f87;
     letter-spacing: 0.1em;
     font-weight: 700; }
   section.newsletter-container .wpcf7-submit {
@@ -1907,7 +1934,12 @@ section.newsletter-container {
     background-color: #757f87;
     color: white;
     border: 0px;
-    text-transform: uppercase; }
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 15px 45px;
+    border-radius: 40px;
+    margin-top: 20px; }
     section.newsletter-container .wpcf7-submit:hover {
       background-color: #6cb5ce; }
     section.newsletter-container .wpcf7-submit.filled {
@@ -2202,13 +2234,12 @@ section.newsletter-container {
     letter-spacing: 0.2em;
     font-weight: 500;
     margin-bottom: 60px;
-    font-size: 50px;
+    font-size: 40px;
     line-height: 1.2em; }
     @media (max-width: 767px) {
       .page-template-page-about .page-content h1 {
         font-size: 35px; } }
   .page-template-page-about .page-content p {
-    line-height: 1em;
     font-size: 23px;
     font-weight: 500; }
 
@@ -2452,7 +2483,7 @@ section.newsletter-container {
       letter-spacing: 0.15em;
       color: #757f87; }
     .board-members .board-member .board-member-info p {
-      font-weight: 100; }
+      font-weight: 300; }
 
 .single-podcast .archive-title {
   font-size: 50px; }

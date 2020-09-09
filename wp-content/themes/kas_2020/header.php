@@ -65,7 +65,7 @@
 
 			<nav id="mobile-nav">
 				<div id="mobile-header">
-					<a href="<?php echo site_url(); ?>" class="mobile-home"><span>KoreanAmerican</span>story.org</a>
+					<a href="<?php echo site_url(); ?>" class="mobile-home"><span>KoreanAmerican</span>Story.org</a>
 					<button id="mobile-ham">
 						<?php include get_template_directory() . '/img/hamburger.svg'; ?>
 					</button>
