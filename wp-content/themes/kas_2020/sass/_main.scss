@@ -146,6 +146,11 @@ h1.section-title {
 	&.filled {
 		background-color: $skyBlue;
 		color: white;
+		&:hover {
+			background-color: transparent;
+			color: $skyBlue;
+			border: 1px solid $skyBlue;
+		}
 	}
 	&.wide {
 		padding: 10px 35px;

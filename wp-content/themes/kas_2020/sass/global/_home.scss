@@ -178,6 +178,10 @@
 	.header-slide .header-slide-info {
 		h3 {
 			font-size: 60px;
+			transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+			&:hover {
+				color: $skyBlue;
+			}
 			@media (max-width: 767px) {
 				font-size: 30px;
 			}
@@ -214,10 +218,18 @@
 		display: block;
 		width: 33%;
 		outline: none;
+		transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+
 		h4 {
 			font-size: 27px;
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
+		}
+		&:hover {
+			color: $skyBlue;
+			p {
+				color: inherit;
+			}
 		}
 	}
 	.home-podcast-image {
@@ -293,7 +305,6 @@ section.home-mission {
 		margin-bottom: 40px;
 	}
 	h5 {
-		font-weight: 100;
 		font-size: 30px;
 		margin: 0 auto 30px auto;
 		text-align: center;
@@ -339,10 +350,12 @@ section.home-feed {
 		h4 {
 			font-size: 50px;
 			text-transform: uppercase;
+
 			@media (max-width: 1440px) {
 				font-size: 40px;
 			}
 		}
+
 		p {
 			font-size: 35px;
 			font-weight: 300;
@@ -354,10 +367,10 @@ section.home-feed {
 			flex-direction: row-reverse;
 		}
 		.home-feed-post-img {
-			width: 52%;
+			width: 55%;
 			position: relative;
 			height: 0;
-			padding-bottom: 25%;
+			padding-bottom: 33%;
 			img {
 				width: 100%;
 				position: absolute;
@@ -376,6 +389,11 @@ section.home-feed {
 			h4 {
 				color: $ughGray;
 				letter-spacing: 0.1em;
+				transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+
+				&:hover {
+					color: $skyBlue;
+				}
 			}
 			.home-feed-post-info-inner {
 				max-width: 500px;
@@ -428,10 +446,18 @@ section.home-projects {
 				position: absolute;
 				left: 0;
 				top: 0;
-				background-color: rgba(0, 0, 0, 0.2);
+				background-color: black;
+				transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+
+				opacity: 0.2;
 				height: 100%;
 				width: 100%;
 				z-index: 1;
+			}
+			&:hover {
+				&:before {
+					background-color: $skyBlue;
+				}
 			}
 			&:last-child {
 				margin-right: 0px;
@@ -462,6 +488,7 @@ section.home-projects {
 				font-size: 25px;
 				font-weight: 700;
 			}
+
 			@media (max-width: 1280px) {
 				width: calc(50% - 25px);
 				&:nth-child(2) {

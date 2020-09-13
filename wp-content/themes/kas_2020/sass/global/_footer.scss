@@ -71,6 +71,10 @@
 						text-transform: uppercase;
 						letter-spacing: 0.08em;
 						font-weight: 400;
+						transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+						&:hover {
+							color: $skyBlue;
+						}
 						@media (max-width: 900px) {
 							display: inline-block;
 						}
@@ -123,9 +127,20 @@
 		ul {
 			li {
 				margin-right: 15px;
-
-				svg {
-					height: 16px;
+				a {
+					svg {
+						height: 16px;
+						path {
+							transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+						}
+					}
+					&:hover {
+						svg {
+							path {
+								fill: $skyBlue;
+							}
+						}
+					}
 				}
 			}
 		}
