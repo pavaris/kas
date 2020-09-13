@@ -21,11 +21,13 @@
 }
 
 .legacy-page-nav {
+	width: 100%;
 	margin-top: 30px;
 	padding: 10px 0;
 	text-align: center;
-	border-bottom: 2px solid $ughGray;
+	border-bottom: 1px solid $ughGray;
 	display: inline-flex;
+	justify-content: space-between;
 	align-self: center;
 	align-items: center;
 	a {

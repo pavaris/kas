@@ -431,10 +431,10 @@ section.home-projects {
 	.home-projects-feed {
 		display: flex;
 		justify-content: center;
-		margin-bottom: 30px;
-		@media (max-width: 1280px) {
-			flex-wrap: wrap;
-		}
+
+		max-width: 90%;
+		margin: 0 auto 30px auto;
+
 		a {
 			width: 100%;
 			margin-right: 35px;
@@ -489,17 +489,19 @@ section.home-projects {
 				font-weight: 700;
 			}
 
-			@media (max-width: 1280px) {
-				width: calc(50% - 25px);
-				&:nth-child(2) {
-					margin-right: 0px;
-				}
-			}
-			@media (max-width: 767px) {
+			@media (max-width: 1003px) {
 				width: 100%;
-				margin-right: 0px;
-				.home-projects-image {
-					padding-bottom: 100%;
+				margin-right: 15px;
+			}
+		}
+		@media (max-width: 767px) {
+			flex-wrap: wrap;
+			justify-content: space-between;
+			a {
+				margin: 0 0 14px 0;
+				width: calc(50% - 7px);
+				h5 {
+					padding: 0 15px;
 				}
 			}
 		}

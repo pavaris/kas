@@ -42,6 +42,9 @@ h1.section-title {
 #see-more {
 	text-transform: uppercase;
 	font-weight: 600;
+	padding: 15px 45px;
+	border-radius: 40px;
+	font-size: 20px;
 }
 
 .page-header.archive-header {
@@ -77,6 +80,10 @@ h1.section-title {
 			text-decoration: none;
 			display: inline;
 			color: $ughGray;
+			transition: ease 300ms all;
+			&:hover {
+				color: $skyBlue;
+			}
 		}
 		h5 {
 			text-transform: uppercase;

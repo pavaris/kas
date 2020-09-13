@@ -21,7 +21,7 @@
 .term-book-reviews {
 	.all-articles {
 		margin-top: 60px;
-		background-color: $offWhite;
+
 		padding: 60px 0 100px;
 		.section-title {
 			color: $ughGray;
@@ -41,15 +41,15 @@
 					padding-bottom: 10px;
 					h6 {
 						line-height: 1.3em;
-						font-size: 18px;
+						font-size: 24px;
 					}
 					.post-category {
 						top: -10px;
 					}
 					p {
-						font-size: 16px;
+						font-size: 20px;
 						text-transform: initial;
-						font-weight: 100;
+						font-weight: 200;
 					}
 				}
 			}

@@ -30,7 +30,7 @@
 			 <?php wp_reset_postdata(); ?>
 		 <div class="content-margins">
 			<div class="page-content">
-					<h1 class="section-title center"><?php the_title(); ?></h1>
+					
 
 
 <?php if(get_field('members')){ ?>

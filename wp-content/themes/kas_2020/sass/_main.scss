@@ -254,6 +254,10 @@ button {
 				margin-top: 20px;
 				color: white;
 				background-color: $skyBlue;
+				&:hover {
+					background-color: transparent;
+					color: $skyBlue;
+				}
 			}
 		}
 	}

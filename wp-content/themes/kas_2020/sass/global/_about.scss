@@ -5,20 +5,22 @@
 		margin-bottom: 50px;
 		h1 {
 			text-transform: uppercase;
-			color: $ughGray;
+			color: $howManyGrays;
 			letter-spacing: 0.2em;
-			font-weight: 500;
-			margin-bottom: 60px;
+			font-weight: 600;
+			margin-bottom: 30px;
 			font-size: 40px;
 			line-height: 1.2em;
+			text-align: center;
 			@include mobile {
 				font-size: 35px;
 			}
 		}
 		p {
-			// line-height: 1em;
+			color: $howManyGrays;
 			font-size: 23px;
 			font-weight: 500;
+			font-weight: 300;
 		}
 	}
 	.site-footer {
@@ -136,9 +138,10 @@
 }
 
 #about-page-video {
-	background-color: $anotherGray;
+	background-color: $grayAgain;
 	padding: 50px 0;
 	color: white;
+	margin-top: 100px;
 	p {
 		color: inherit;
 	}
@@ -162,6 +165,11 @@
 
 .about-page-content {
 	padding: 50px 0;
+	img,
+	figure {
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 .bottom-padding {

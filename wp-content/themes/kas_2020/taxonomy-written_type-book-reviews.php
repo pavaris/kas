@@ -18,33 +18,22 @@ get_header();
 <?php $loop = 0; ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main top-padding">
 
 				
 				<?php
 				if ( have_posts() ) :
 
 				?>
-					<header id="page-header">
-						<div class="page-header-container">
-							<h1 class="archive-title"><?php echo $obj->name; ?></h1>
-							<div class="page-header-image">
-								<?php
-										$image = get_field('banner_image', $obj);
-										?>
-										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
-							</div>
-						</div>
-					</header><!-- .page-header -->
-
+	
 					<div class="content-margins">
 
-						<section class="latest-articles">
-							
-							<h3 class="center section-title">Featured Book</h3>
+					<section class="latest-articles">
+						
+						<h3 class="center section-title">Latest from <?php echo $obj->name; ?></h3>
 
-						</section>
-					<?php
+					</section>
+				<?php
 					/* Start the Loop */
 					while ( have_posts() ) :
 						the_post();
@@ -58,22 +47,13 @@ get_header();
 									</div>
 									<div class="lead-article-content">
 										<h3 class='section-title'><?php the_title(); ?></h3>
-										<?php if(get_field('author_name')){ ?>
-											<p>by <?php echo get_field('author_name'); ?></p>
-										<?php } ?>
-										<?php echo get_field('short_description', get_the_ID()); ?>
-										<div class='button filled'>Read Review</div>
+										<?php echo get_field('short_description'); ?>
 									</div>
-									
-									
-									
 								</a>
 							</section>
-						</div>
-
+							
 							<section class="all-articles">
-								<div class='content-margins'>
-								<h3 class="section-title"><?php echo $obj->name; ?></h3>
+								<h3 class="section-title">All <?php echo $obj->name; ?></h3>
 								<div class="posts-feed">
 
 							<?php 
@@ -85,21 +65,8 @@ get_header();
 						 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 						 */
 							?> 
-								<a href="<?php echo get_the_permalink(get_the_ID()); ?>">
-									<div class="post-feed-image">
-										<?php echo get_the_post_thumbnail(get_the_ID()); ?>
-									</div>
-									<div class="post-feed-info">
-											<div class="post-category">
-												Review
-											</div>
-										<h6>
-											<?php echo get_the_title(get_the_ID()); ?>
-										</h6>
-										<?php echo get_field('short_description', get_the_ID()); ?>
-
-									</div>
-								</a>
+									
+									<?php postStruct($post->ID, 'Review'); ?>
 
 							<?php 
 						}
@@ -108,11 +75,12 @@ get_header();
 				endif;
 				?>
 				</div>
-			</div>
-			<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
-				<button id='see-more' class='filled' type='written' offset='10' term="<?php echo $obj->slug; ?>">More</button>
-			</div>
-		</section>
+
+				<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+					<button id='see-more' class='filled' type='written' offset='10' term="<?php echo $obj->slug; ?>">More</button>
+				</div>
+				
+				</section>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
