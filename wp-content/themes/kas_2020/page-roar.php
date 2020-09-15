@@ -31,13 +31,19 @@
 								?> 
 								<div class="home-feed-post">
 									<div class="home-feed-post-img">
-                              <?php echo wp_get_attachment_image($feed['image']['ID'], 'large'); ?>
-                            </div>
-                            <div class="home-feed-post-info">
-                              <div class="home-feed-post-info-inner">
-                                <?php echo $feed['content']; ?>
-                              </div>
-                            </div>
+										<?php echo wp_get_attachment_image($feed['image']['ID'], 'large'); ?>
+									</div>
+									<div class="home-feed-post-info">
+										<div class="home-feed-post-info-inner">
+											<?php echo $feed['content']; ?>
+										</div>
+									</div>
+									<?php if($feed['link']){
+										?>
+										<a href="<?php echo $feed['link']['url']; ?>" target="<?php echo $feed['link']['target']?>">
+										</a>
+										<?php
+									} ?>
 								</div>
 								
 								<?php 

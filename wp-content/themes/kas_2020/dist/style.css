@@ -359,7 +359,8 @@ p {
   font-size: 24px;
   line-height: 1.4em;
   color: #757f87;
-  letter-spacing: 0.03em; }
+  letter-spacing: 0.03em;
+  font-weight: 300; }
 
 a {
   color: #6cb5ce; }
@@ -590,7 +591,7 @@ button {
 
 .page-video-container {
   background-color: #414a57;
-  padding: 75px 0; }
+  padding: 75px 0 175px; }
 
 .footer-margin-padding {
   padding-bottom: 120px;
@@ -639,6 +640,9 @@ article.footer-padding-gone {
 .has-normal-font-size,
 .has-regular-font-size {
   font-size: 20px; }
+
+.wp-block-cover {
+  min-height: 600px; }
 
 #masthead {
   position: absolute;
@@ -706,7 +710,6 @@ article.footer-padding-gone {
     #site-navigation #menu-header-menu > .menu-item {
       margin-right: 25px;
       padding: 0 10px;
-      width: 100%;
       white-space: nowrap; }
       #site-navigation #menu-header-menu > .menu-item a {
         font-size: 18px;
@@ -1220,66 +1223,65 @@ article.footer-padding-gone {
   display: flex;
   justify-content: center; }
 
-.page .wp-block-buttons {
+.page .wp-block-button {
+  text-align: center;
   margin-bottom: 30px; }
-  .page .wp-block-buttons .wp-block-button {
-    text-align: center; }
-    .page .wp-block-buttons .wp-block-button .wp-block-button__link {
-      text-transform: uppercase;
-      font-weight: 600 !important;
+  .page .wp-block-button .wp-block-button__link {
+    border: 1px solid #6cb5ce;
+    border-radius: 25px;
+    padding: 8px 25px;
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: 0.2rem;
+    font-weight: 500;
+    transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+    cursor: pointer;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600 !important;
+    background-color: #6cb5ce; }
+    .page .wp-block-button .wp-block-button__link:hover {
+      background-color: #6cb5ce; }
+    .page .wp-block-button .wp-block-button__link.filled {
       background-color: #6cb5ce;
-      border: 1px solid #6cb5ce;
-      border-radius: 25px;
-      padding: 8px 25px;
-      background-color: transparent;
-      font-size: 18px;
-      letter-spacing: 0.2rem;
-      font-weight: 500;
-      transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-      cursor: pointer;
-      text-decoration: none; }
-      .page .wp-block-buttons .wp-block-button .wp-block-button__link:hover {
-        background-color: #6cb5ce; }
-      .page .wp-block-buttons .wp-block-button .wp-block-button__link.filled {
-        background-color: #6cb5ce;
-        color: white; }
-        .page .wp-block-buttons .wp-block-button .wp-block-button__link.filled:hover {
-          background-color: transparent;
-          color: #6cb5ce;
-          border: 1px solid #6cb5ce; }
-      .page .wp-block-buttons .wp-block-button .wp-block-button__link.wide {
-        padding: 10px 35px; }
-      @media (max-width: 1056px) {
-        .page .wp-block-buttons .wp-block-button .wp-block-button__link {
-          padding: 12px 25px; } }
-    .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
-      border: 1px solid #6cb5ce;
-      border-radius: 25px;
-      padding: 8px 25px;
-      background-color: transparent;
-      font-size: 18px;
-      letter-spacing: 0.2rem;
-      font-weight: 500;
-      transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-      cursor: pointer;
-      text-decoration: none;
-      color: #6cb5ce; }
-      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
-        background-color: #6cb5ce; }
-      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.filled {
-        background-color: #6cb5ce;
-        color: white; }
-        .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.filled:hover {
-          background-color: transparent;
-          color: #6cb5ce;
-          border: 1px solid #6cb5ce; }
-      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link.wide {
-        padding: 10px 35px; }
-      @media (max-width: 1056px) {
-        .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link {
-          padding: 12px 25px; } }
-      .page .wp-block-buttons .wp-block-button.is-style-outline .wp-block-button__link:hover {
-        color: white; }
+      color: white; }
+      .page .wp-block-button .wp-block-button__link.filled:hover {
+        background-color: transparent;
+        color: #6cb5ce;
+        border: 1px solid #6cb5ce; }
+    .page .wp-block-button .wp-block-button__link.wide {
+      padding: 10px 35px; }
+    @media (max-width: 1056px) {
+      .page .wp-block-button .wp-block-button__link {
+        padding: 12px 25px; } }
+  .page .wp-block-button.is-style-outline .wp-block-button__link {
+    border: 1px solid #6cb5ce;
+    border-radius: 25px;
+    padding: 8px 25px;
+    background-color: transparent;
+    font-size: 18px;
+    letter-spacing: 0.2rem;
+    font-weight: 500;
+    transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+    cursor: pointer;
+    text-decoration: none;
+    color: #6cb5ce; }
+    .page .wp-block-button.is-style-outline .wp-block-button__link:hover {
+      background-color: #6cb5ce; }
+    .page .wp-block-button.is-style-outline .wp-block-button__link.filled {
+      background-color: #6cb5ce;
+      color: white; }
+      .page .wp-block-button.is-style-outline .wp-block-button__link.filled:hover {
+        background-color: transparent;
+        color: #6cb5ce;
+        border: 1px solid #6cb5ce; }
+    .page .wp-block-button.is-style-outline .wp-block-button__link.wide {
+      padding: 10px 35px; }
+    @media (max-width: 1056px) {
+      .page .wp-block-button.is-style-outline .wp-block-button__link {
+        padding: 12px 25px; } }
+    .page .wp-block-button.is-style-outline .wp-block-button__link:hover {
+      color: white; }
 
 .social-nav {
   flex-grow: 1;
@@ -2304,7 +2306,6 @@ section.newsletter-container {
   .page-template-page-about .page-content p {
     color: #6a747c;
     font-size: 23px;
-    font-weight: 500;
     font-weight: 300; }
 
 .page-template-page-about .site-footer {
@@ -2585,9 +2586,6 @@ section.newsletter-container {
     margin-bottom: 40px; }
   .single-podcast .article-header .single-tags a {
     font-weight: 500; }
-  .single-podcast .article-header img {
-    width: 100%;
-    height: auto; }
 
 .more-podcasts-feed {
   background-color: #f8f8f8;
@@ -2617,6 +2615,19 @@ section.newsletter-container {
     font-size: 18px;
     text-transform: uppercase;
     font-weight: 600; }
+
+.podcast-image-mask {
+  width: 100%;
+  padding-bottom: 50%;
+  position: relative;
+  margin-bottom: 30px; }
+  .podcast-image-mask img {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    object-fit: cover; }
 
 #page-header {
   margin-bottom: 60px; }
@@ -3313,13 +3324,12 @@ section.newsletter-container {
   .legacy-page-nav a {
     color: #757f87;
     text-decoration: none;
-    margin-right: 40px;
     text-transform: uppercase;
     font-size: 20px;
     font-weight: 600;
     letter-spacing: 0.2em;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-    padding: 0 5px; }
+    padding: 0 15px; }
     .legacy-page-nav a:hover, .legacy-page-nav a.active {
       color: #6cb5ce; }
     .legacy-page-nav a:last-child {
@@ -3350,7 +3360,8 @@ section.newsletter-container {
   padding: 20px; }
   .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h2 {
     font-weight: 600;
-    letter-spacing: 0.1em; }
+    letter-spacing: 0.1em;
+    transition: ease 300ms all; }
   .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h4 {
     font-weight: 100;
     font-size: 30px; }
@@ -3400,6 +3411,18 @@ section.newsletter-container {
     .page-template-page-roar .all-articles .posts-feed a .post-feed-info {
       padding: 0px;
       margin-top: 15px; }
+
+.page-template-page-roar .home-feed-post {
+  position: relative; }
+  .page-template-page-roar .home-feed-post:hover h2 {
+    color: #6cb5ce; }
+  .page-template-page-roar .home-feed-post a {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 3; }
 
 .storytellers {
   padding: 60px 0 30px; }

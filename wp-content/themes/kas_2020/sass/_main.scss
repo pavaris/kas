@@ -59,6 +59,7 @@ p {
 	line-height: 1.4em;
 	color: $ughGray;
 	letter-spacing: 0.03em;
+	font-weight: 300;
 }
 
 a {
@@ -157,6 +158,23 @@ h1.section-title {
 	}
 	@media (max-width: $tablet_width) {
 		padding: 12px 25px;
+	}
+}
+
+@mixin filledButton {
+	border: 1px solid $skyBlue;
+	border-radius: 25px;
+	padding: 8px 25px;
+	font-size: 18px;
+	letter-spacing: 0.2rem;
+	font-weight: 500;
+	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+	background-color: $skyBlue;
+	color: white;
+	&:hover {
+		background-color: transparent;
+		color: $skyBlue;
+		border: 1px solid $skyBlue;
 	}
 }
 
@@ -312,7 +330,7 @@ button {
 
 .page-video-container {
 	background-color: $darkGray;
-	padding: 75px 0;
+	padding: 75px 0 175px;
 }
 
 .footer-margin-padding {
@@ -374,4 +392,8 @@ article.footer-padding-gone {
 .has-normal-font-size,
 .has-regular-font-size {
 	font-size: 20px;
+}
+
+.wp-block-cover {
+	min-height: 600px;
 }

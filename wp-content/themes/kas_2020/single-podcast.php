@@ -24,7 +24,7 @@ get_header();
 					?>
 						<section class="article-header">
 							<div class="content-margins wide">
-								<h1 class='section-title'><?php echo $terms[0]->name . ': '; ?><?php the_title(); ?></h1>
+								<h1 class='section-title'><?php the_title(); ?></h1>
 								<h5><?php echo get_the_date('F jS, Y'); ?></h5>
 									<?php if(get_the_tags(get_the_ID())){ ?>
 										<div class="single-tags">
@@ -37,7 +37,9 @@ get_header();
 								<?php } ?>
 
 								<?php if(!get_field('hide_image')){ ?>
-									<?php echo get_the_post_thumbnail(); ?>
+									<div class="podcast-image-mask">
+										<?php echo get_the_post_thumbnail(); ?>
+									</div>
 								<?php } ?>
 							</div>
 						</section>
@@ -48,6 +50,45 @@ get_header();
 								</div>
 							</div>
 						</section>
+						
+
+						<?php if($terms){ ?>
+						<?php $listenOn = get_field('listen_on', $terms[0]); ?>
+						<?php if($listenOn['apple_podcast'] || $listenOn['spotify'] || $listenOn['anchor'] || $listenOn['youtube']){ ?>
+							<section class="podcast-listen-on">
+									<h3>Listen on</h3>
+									<div class="podcast-platform-links">
+										<?php if($listenOn['apple_podcast']){ ?>
+											<a href="<?php echo $listenOn['apple_podcast']; ?>" class="platform-link apple-podcast" target="_blank">
+												<?php include get_template_directory( ) . '/img/apple.svg'; ?>
+												<p>Apple Podcast</p>
+											</a>
+										<?php } ?>
+										<?php if($listenOn['spotify']){ ?>
+											<a href="<?php echo $listenOn['spotify']; ?>" class="platform-link spotify-podcast" target="_blank">
+												<?php include get_template_directory( ) . '/img/spotify.svg'; ?>
+												<p>Spotify</p>
+											</a>
+										<?php } ?>
+										<?php if($listenOn['anchor']){ ?>
+											<a href="<?php echo $listenOn['anchor']; ?>" class="platform-link anchor-podcast" target="_blank">
+												<?php include get_template_directory( ) . '/img/anchor.svg'; ?>
+												<p>Anchor</p>
+											</a>
+										<?php } ?>
+										<?php if($listenOn['youtube']){ ?>
+											<a href="<?php echo $listenOn['youtube']; ?>" class="platform-link youtube-podcast" target="_blank">
+												<?php include get_template_directory( ) . '/img/youtube.svg'; ?>
+												<p>Youtube</p>
+											</a>
+										<?php } ?>
+									</div>
+							</section>
+						<?php } ?>
+						<?php } ?>
+
+
+
 						<section class='post-content'>  
 							<div class="content-margins">
 								<?php the_content(); ?>

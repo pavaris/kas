@@ -19,6 +19,7 @@
 			h2 {
 				font-weight: 600;
 				letter-spacing: 0.1em;
+				transition: ease 300ms all;
 			}
 			h4 {
 				font-weight: 100;
@@ -82,6 +83,23 @@
 					margin-top: 15px;
 				}
 			}
+		}
+	}
+
+	.home-feed-post {
+		position: relative;
+		&:hover {
+			h2 {
+				color: $skyBlue;
+			}
+		}
+		a {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 100%;
+			width: 100%;
+			z-index: 3;
 		}
 	}
 }
