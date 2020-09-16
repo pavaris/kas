@@ -128,7 +128,7 @@ get_header();
 							<?php 
 							
 							foreach($videos->posts as $index=>$postsss){
-								postStruct($postsss->ID, 'waht');
+								postStruct($postsss->ID, $terms[0]->name);
 								if($index == 2){break;}
 							}
 	?>
