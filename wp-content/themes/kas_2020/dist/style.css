@@ -1244,7 +1244,8 @@ article.footer-padding-gone {
     background-color: #6cb5ce;
     padding: 15px 45px;
     border-radius: 40px;
-    font-size: 20px; }
+    font-size: 20px;
+    color: white; }
     .page .wp-block-button .wp-block-button__link:hover {
       background-color: #6cb5ce; }
     .page .wp-block-button .wp-block-button__link.filled {
