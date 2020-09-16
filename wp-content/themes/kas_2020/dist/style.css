@@ -356,7 +356,7 @@ h6 {
 
 p {
   margin-bottom: 20px;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.4em;
   color: #757f87;
   letter-spacing: 0.03em;
@@ -384,6 +384,8 @@ em {
     @media (max-width: 767px) {
       .content-margins.wide {
         width: 90%; } }
+  .content-margins.narrow {
+    max-width: 950px; }
 
 .bg-center {
   background-position: center;
@@ -404,7 +406,7 @@ em {
   .full-width-title h4 {
     text-transform: uppercase;
     font-size: 20px;
-    font-weight: 100;
+    font-weight: 300;
     margin-bottom: 0px; }
 
 .section-title {
@@ -837,7 +839,7 @@ article.footer-padding-gone {
       border: 0;
       border-bottom: 1px solid #414a57;
       padding: 15px;
-      font-weight: 800;
+      font-weight: 500;
       text-align: center;
       outline: none; }
       @media (max-width: 767px) {
@@ -1066,7 +1068,7 @@ article.footer-padding-gone {
     color: white;
     text-transform: uppercase;
     font-size: 20px;
-    font-weight: 100;
+    font-weight: 300;
     text-align: center;
     margin-bottom: 0px; }
 
@@ -1239,7 +1241,10 @@ article.footer-padding-gone {
     text-decoration: none;
     text-transform: uppercase;
     font-weight: 600 !important;
-    background-color: #6cb5ce; }
+    background-color: #6cb5ce;
+    padding: 15px 45px;
+    border-radius: 40px;
+    font-size: 20px; }
     .page .wp-block-button .wp-block-button__link:hover {
       background-color: #6cb5ce; }
     .page .wp-block-button .wp-block-button__link.filled {
@@ -1254,6 +1259,9 @@ article.footer-padding-gone {
     @media (max-width: 1056px) {
       .page .wp-block-button .wp-block-button__link {
         padding: 12px 25px; } }
+    .page .wp-block-button .wp-block-button__link:hover {
+      background-color: transparent;
+      color: #6cb5ce; }
   .page .wp-block-button.is-style-outline .wp-block-button__link {
     border: 1px solid #6cb5ce;
     border-radius: 25px;
@@ -1353,7 +1361,7 @@ h1.section-title {
   .page-header.archive-header h1 {
     color: white;
     text-transform: uppercase;
-    font-weight: 100;
+    font-weight: 300;
     letter-spacing: 0.2em;
     font-size: 80px; }
     @media (max-width: 767px) {
@@ -1477,7 +1485,7 @@ h1.section-title {
   flex-wrap: wrap;
   margin-bottom: 30px; }
   .single-tags a {
-    font-size: 34px;
+    font-size: 25px;
     background-color: #6cb5ce;
     color: white;
     font-style: italic;
@@ -1532,12 +1540,12 @@ h1.section-title {
 .alignleft,
 .wp-block-image .alignleft {
   float: left;
-  margin-right: 15px; }
+  margin-right: 40px; }
 
 .alignright,
 .wp-block-image .alignright {
   float: right;
-  margin-left: 15px; }
+  margin-left: 40px; }
 
 .wp-block-cover {
   width: 100vw;
@@ -1920,7 +1928,10 @@ section.home-projects {
         text-transform: uppercase;
         z-index: 2;
         font-size: 25px;
-        font-weight: 700; }
+        font-weight: 700;
+        transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all; }
+        section.home-projects .home-projects-feed a h5:hover {
+          color: #6cb5ce; }
       @media (max-width: 1003px) {
         section.home-projects .home-projects-feed a {
           width: 100%;
@@ -2103,7 +2114,7 @@ section.newsletter-container {
       margin-bottom: 10px; }
     .podcast-feed .posts-feed a p {
       margin-bottom: 0px;
-      font-weight: 100;
+      font-weight: 300;
       font-size: 17px; }
 
 .podcast-header {
@@ -2218,7 +2229,7 @@ section.newsletter-container {
         margin-bottom: 10px;
         text-align: left; }
       .posts-feed a .post-feed-info p {
-        font-weight: 100;
+        font-weight: 300;
         line-height: 1.2em;
         font-size: 18px; }
       .posts-feed a .post-feed-info .post-category {
@@ -2281,7 +2292,7 @@ section.newsletter-container {
 .tax-written_type .post-feed-info p {
   font-size: 18px;
   text-transform: initial;
-  font-weight: 100; }
+  font-weight: 300; }
 
 .newsletter-container {
   text-align: center;
@@ -2316,7 +2327,7 @@ section.newsletter-container {
     padding-top: 0px; } }
 
 .page-header-container {
-  height: 60vh;
+  height: 75vh;
   min-height: 400px;
   width: 100%;
   position: relative;
@@ -2788,7 +2799,7 @@ section.newsletter-container {
       margin-bottom: 10px;
       font-size: 22px; }
     .page-template-page-explore section.home-projects .explore-repeater p {
-      font-weight: 100;
+      font-weight: 300;
       font-size: 20px; }
 
 .search h1,
@@ -2878,7 +2889,6 @@ section.newsletter-container {
         margin-bottom: 10px; } }
   .search .search-results-cont .results-container a p,
   .tag .search-results-cont .results-container a p {
-    font-weight: 100;
     line-height: 1.2em;
     font-size: 20px; }
 
@@ -2966,7 +2976,7 @@ section.newsletter-container {
       padding: 5px;
       border-bottom: 1px solid transparent; }
       .search-results-container .filter-container a span {
-        font-weight: 100; }
+        font-weight: 300; }
       .search-results-container .filter-container a:hover {
         color: white;
         background-color: #6cb5ce; }
@@ -3296,7 +3306,7 @@ section.newsletter-container {
   height: 75vh; }
 
 .page-template-page-legacy-project .page-header-container {
-  height: 70vh;
+  height: 75vh;
   padding-top: 0px; }
   .page-template-page-legacy-project .page-header-container h2 {
     font-family: "mr-eaves-modern";
@@ -3363,7 +3373,7 @@ section.newsletter-container {
     letter-spacing: 0.1em;
     transition: ease 300ms all; }
   .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h4 {
-    font-weight: 100;
+    font-weight: 300;
     font-size: 30px; }
   .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h5 {
     line-height: 1.2em;

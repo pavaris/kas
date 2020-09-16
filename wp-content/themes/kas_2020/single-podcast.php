@@ -44,7 +44,7 @@ get_header();
 							</div>
 						</section>
 						<section class="podcast-embed-cont">
-							<div class="content-margins">
+							<div class="content-margins narrow">
 								<div class="latest-podcast-embed">
 									<?php echo get_field('podcast_embed'); ?>
 								</div>
@@ -90,7 +90,7 @@ get_header();
 
 
 						<section class='post-content'>  
-							<div class="content-margins">
+							<div class="content-margins narrow">
 								<?php the_content(); ?>
 							</div>
 						</section>

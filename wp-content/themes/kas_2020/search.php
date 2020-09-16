@@ -16,7 +16,7 @@ global $wp_query;
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main top-padding">
 
-			<div class="content-margins wide">
+			<div class="content-margins ">
 			<?php if ( have_posts() ) : ?>
 				<?php 
 					$typeArr = ['event' => 0, 'podcast' => 0, 'written' => 0, 'video' => 0, 'page' => 0, 'post' => 0];

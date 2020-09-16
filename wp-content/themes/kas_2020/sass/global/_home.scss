@@ -487,6 +487,11 @@ section.home-projects {
 				z-index: 2;
 				font-size: 25px;
 				font-weight: 700;
+				transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+
+				&:hover {
+					color: $skyBlue;
+				}
 			}
 
 			@media (max-width: 1003px) {

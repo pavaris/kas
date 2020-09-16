@@ -15,7 +15,7 @@
 
 
 			<section class='page-content'>
-					<div class="content-margins">
+					<div class="content-margins narrow">
 						<?php the_content(); ?>
 					</div>
 			</section>

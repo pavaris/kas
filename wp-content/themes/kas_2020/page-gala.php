@@ -16,7 +16,7 @@
 
 
 			<section class='page-content'>
-					<div class="content-margins">
+					<div class="content-margins narrow">
 						<?php the_content(); ?>
 					</div>
 			</section>
@@ -39,7 +39,7 @@
 
 			<?php if($vids->have_posts()){ ?>
 					<section class="all-articles">
-						<div class="content-margins ">
+						<div class="content-margins narrow">
 							<h3 class='section-title'>Previous Galas</h3>
 							<div class=" posts-feed">
 								<?php foreach($vids->posts as $post){

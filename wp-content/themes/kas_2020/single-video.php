@@ -22,7 +22,7 @@ get_header();
 		
 			
 				<article class="video-content">
-					<div class="content-margins wide">
+					<div class="content-margins ">
 						<?php
 						while ( have_posts() ) :
 							the_post();

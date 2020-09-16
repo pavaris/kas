@@ -14,7 +14,7 @@ get_header();
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main top-padding">
 
-			<div class="content-margins">
+			<div class="content-margins narrow">
 				<article class="">
 					<?php
 					while ( have_posts() ) :

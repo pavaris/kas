@@ -55,7 +55,7 @@ h6 {
 
 p {
 	margin-bottom: 20px;
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 1.4em;
 	color: $ughGray;
 	letter-spacing: 0.03em;
@@ -88,6 +88,9 @@ em {
 			width: 90%;
 		}
 	}
+	&.narrow {
+		max-width: 950px;
+	}
 }
 
 .bg-center {
@@ -111,7 +114,7 @@ em {
 	h4 {
 		text-transform: uppercase;
 		font-size: 20px;
-		font-weight: 100;
+		font-weight: 300;
 		margin-bottom: 0px;
 	}
 }

@@ -115,7 +115,7 @@
 	flex-wrap: wrap;
 	margin-bottom: 30px;
 	a {
-		font-size: 34px;
+		font-size: 25px;
 		background-color: $skyBlue;
 		color: white;
 		font-style: italic;
@@ -181,13 +181,13 @@
 .alignleft,
 .wp-block-image .alignleft {
 	float: left;
-	margin-right: 15px;
+	margin-right: 40px;
 }
 
 .alignright,
 .wp-block-image .alignright {
 	float: right;
-	margin-left: 15px;
+	margin-left: 40px;
 }
 
 .wp-block-cover {

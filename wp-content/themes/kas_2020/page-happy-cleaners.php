@@ -13,7 +13,7 @@
 				</div>
 			 </div>
 		<div class="legacy-page-nav-cont">
-			<div class="content-margins">
+			<div class="content-margins narrow">
 				<div class="legacy-page-nav">
 					<?php  
 						$args = array(
@@ -40,7 +40,7 @@
 
 
 			 <?php wp_reset_postdata(); ?>
-		 <div class="content-margins">
+		 <div class="content-margins narrow">
 			<div class="page-content">
 
 					<?php the_content(); ?>

@@ -22,7 +22,7 @@ get_header();
 							</div>
 						</div>
 					</header><!-- .page-header -->
-					<div class="content-margins">
+					<div class="content-margins narrow">
 
 					<section class="taxonomy-description">
 						<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>

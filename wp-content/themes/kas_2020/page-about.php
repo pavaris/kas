@@ -8,7 +8,7 @@
  		<main id="main" class="site-main top-padding">
 
 			
-			<div class="content-margins page-nav-container">
+			<div class="content-margins narrow page-nav-container">
 				<div class="legacy-page-nav">
 					<?php  
 						$args = array(
@@ -28,7 +28,7 @@
 			</div>
 			
 			 <?php wp_reset_postdata(); ?>
-		 <div class="content-margins">
+		 <div class="content-margins narrow">
 			<div class="page-content">
 					
 

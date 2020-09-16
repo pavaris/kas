@@ -20,7 +20,7 @@ get_header();
 		
 			
 				<article class="video-content <?php echo $terms ? "" : 'footer-padding-gone'; ?>">
-					<div class="content-margins wide">
+					<div class="content-margins">
 						<?php
 						while ( have_posts() ) :
 							the_post();
@@ -181,7 +181,7 @@ $args = array(
 	if($vids->have_posts()){
 ?>
 					<section class="more-podcasts-feed roar-single-feed">
-					<div class="content-margins wide">
+					<div class="content-margins">
 						<h3 class="section-title"><?php echo $terms[0]->name; ?>s</h3>
 						<div class="posts-feed">
 							<?php 

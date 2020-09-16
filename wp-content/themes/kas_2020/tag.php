@@ -11,57 +11,50 @@ get_header();
 ?>
 
 	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+		<main id="main" class="site-main top-padding">
 	
 				
-						<div class="page-header-container">
-							<h1 class="archive-title">Tag: <?php the_archive_title(); ?></h1>
-							<div class="page-header-image">
-								
-							</div>
+						<div class="content-margins">
+							
+								<h1 class="archive-title" style='margin-bottom: 80px;'>Tag: <?php the_archive_title(); ?></h1>
 						</div>
 
-						<div class="content-margins">
-								<section class="search-results-cont">
-					<?php if ( have_posts() ) : ?>
-						<?php
-						/* Start the Loop */
-						while ( have_posts() ) :
-							the_post();
-	
-							/**
-							 * Run the loop for the search to output the results.
-							 * If you want to overload this in a child theme then include a file
-							 * called content-search.php and that will be used instead.
-							 */
-							?> 
-							<a href="<?php the_permalink(); ?>">
-								<?php if(has_post_thumbnail()){ ?>
-								<div class="search-result-img">
-									<?php the_post_thumbnail(); ?>
-								</div>	
-								<?php } ?>
-								
-								<div class="search-result-desc">
-									<h5>
-										<?php the_title(); ?>
-									</h5>
-									<?php echo get_field('short_description'); ?>
-								</div>
-							</a>
-							<?php 
-	
-						endwhile;
-	
-						the_posts_navigation();
-	
-					else :
-	
-						get_template_part( 'template-parts/content', 'none' );
-	
-					endif;
-				?>
-				</section>
+						<div class="content-margins search narrow">
+							
+									<div class="search-results-cont">
+										<section class="results-container">
+								<?php
+									/* Start the Loop */
+									while ( have_posts() ) :
+										the_post();
+				
+										/**
+										 * Run the loop for the search to output the results.
+										 * If you want to overload this in a child theme then include a file
+										 * called content-search.php and that will be used instead.
+										 */
+										?> 
+										<a href="<?php the_permalink(); ?>">
+											
+											<div class="search-result-img">
+												<?php the_post_thumbnail(); ?>
+											</div>	
+											
+											
+											<div class="search-result-desc">
+												<h5>
+													<?php the_title(); ?>
+												</h5>
+												<?php echo get_field('short_description'); ?>
+											</div>
+										</a>
+										<?php 
+				
+									endwhile;
+		
+								?> 
+							</section>
+									</div>
 						</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
