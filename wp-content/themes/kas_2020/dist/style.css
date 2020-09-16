@@ -2136,9 +2136,8 @@ section.newsletter-container {
     justify-content: center;
     padding: 3rem; }
     .podcast-header .podcast-description h1 {
-      font-size: 50px;
-      text-transform: uppercase;
-      font-family: "mr-eaves-modern"; }
+      font-size: 40px;
+      text-transform: uppercase; }
       @media (max-width: 1024px) {
         .podcast-header .podcast-description h1 {
           font-size: 30px; } }
