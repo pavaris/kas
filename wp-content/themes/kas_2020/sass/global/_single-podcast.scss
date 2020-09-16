@@ -1,9 +1,7 @@
 .single-podcast {
 	.archive-title {
 		font-size: 50px;
-		@media (max-width: 1024px) {
-			font-size: 30px;
-		}
+
 		a {
 			color: inherit;
 			text-decoration: none;

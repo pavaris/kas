@@ -123,6 +123,9 @@
 			font-size: 50px;
 			text-transform: uppercase;
 			font-family: $mrEaves;
+			@media (max-width: 1024px) {
+				font-size: 30px;
+			}
 		}
 		p {
 			max-width: 80%;
