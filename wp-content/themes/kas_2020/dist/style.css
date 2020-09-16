@@ -2576,6 +2576,9 @@ section.newsletter-container {
 
 .single-podcast .archive-title {
   font-size: 50px; }
+  @media (max-width: 1024px) {
+    .single-podcast .archive-title {
+      font-size: 30px; } }
   .single-podcast .archive-title a {
     color: inherit;
     text-decoration: none; }
