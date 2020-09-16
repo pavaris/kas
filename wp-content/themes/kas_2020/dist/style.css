@@ -2128,13 +2128,19 @@ section.newsletter-container {
 
 .podcast-header {
   margin-bottom: 50px; }
+  .podcast-header .flex {
+    height: 75vh; }
+    @media (max-width: 767px) {
+      .podcast-header .flex {
+        height: auto; } }
   .podcast-header .podcast-description {
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem; }
+    padding: 3rem;
+    height: 100%; }
     .podcast-header .podcast-description h1 {
       font-size: 40px;
       text-transform: uppercase; }
@@ -2148,8 +2154,7 @@ section.newsletter-container {
       margin-bottom: 0px; }
   .podcast-header .podcast-image {
     width: 50%;
-    height: 0;
-    padding-bottom: 50%;
+    height: 100%;
     position: relative; }
     .podcast-header .podcast-image img {
       position: absolute;
