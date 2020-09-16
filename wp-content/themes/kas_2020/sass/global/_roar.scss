@@ -24,6 +24,9 @@
 			h4 {
 				font-weight: 300;
 				font-size: 30px;
+				&:hover {
+					color: #757f87;
+				}
 			}
 			h5 {
 				line-height: 1.2em;
@@ -88,18 +91,14 @@
 
 	.home-feed-post {
 		position: relative;
-		&:hover {
-			h2 {
+		a {
+			text-decoration: none;
+			color: #757f87;
+		}
+		h2 {
+			&:hover {
 				color: $skyBlue;
 			}
-		}
-		a {
-			position: absolute;
-			left: 0;
-			top: 0;
-			height: 100%;
-			width: 100%;
-			z-index: 3;
 		}
 	}
 }

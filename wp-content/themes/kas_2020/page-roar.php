@@ -30,20 +30,15 @@
 						foreach($feeds as $feed){
 								?> 
 								<div class="home-feed-post">
-									<div class="home-feed-post-img">
+									<a class="home-feed-post-img" href="<?php echo $feed['link']['url']; ?>" target="<?php echo $feed['link']['target']?>">
 										<?php echo wp_get_attachment_image($feed['image']['ID'], 'large'); ?>
-									</div>
-									<div class="home-feed-post-info">
+									</a>
+									<a class="home-feed-post-info" href="<?php echo $feed['link']['url']; ?>" target="<?php echo $feed['link']['target']?>">
 										<div class="home-feed-post-info-inner">
 											<?php echo $feed['content']; ?>
 										</div>
-									</div>
-									<?php if($feed['link']){
-										?>
-										<a href="<?php echo $feed['link']['url']; ?>" target="<?php echo $feed['link']['target']?>">
-										</a>
-										<?php
-									} ?>
+									</a>
+									
 								</div>
 								
 								<?php 

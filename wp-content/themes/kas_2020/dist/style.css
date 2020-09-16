@@ -3383,6 +3383,8 @@ section.newsletter-container {
   .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h4 {
     font-weight: 300;
     font-size: 30px; }
+    .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h4:hover {
+      color: #757f87; }
   .page-template-page-roar section.home-feed .home-feed-post .home-feed-post-info .home-feed-post-info-inner h5 {
     line-height: 1.2em;
     letter-spacing: 0.05em;
@@ -3432,15 +3434,11 @@ section.newsletter-container {
 
 .page-template-page-roar .home-feed-post {
   position: relative; }
-  .page-template-page-roar .home-feed-post:hover h2 {
-    color: #6cb5ce; }
   .page-template-page-roar .home-feed-post a {
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 3; }
+    text-decoration: none;
+    color: #757f87; }
+  .page-template-page-roar .home-feed-post h2:hover {
+    color: #6cb5ce; }
 
 .storytellers {
   padding: 60px 0 30px; }
