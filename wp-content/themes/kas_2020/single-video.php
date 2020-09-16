@@ -60,21 +60,23 @@ get_header();
 									<div class="video-playlist">
 										<div class="video-playlist-inner">
 											<h4><?php echo $terms[0]->name; ?> Playlist</h4>
-										<?php foreach($videos->posts as $video){ ?>
-											<a href="<?php echo get_the_permalink($video->ID); ?>" class="<?php echo $video->ID == $thisID ? 'active' : ''; ?>">
-												<div class="video-img-cont">
-										
-
-	<?php $poster_image = get_field('poster_image', $video->ID); ?>
-										<?php echo wp_get_attachment_image($poster_image['ID'], 'large'); ?>
-
-												</div>
-												<h5>
-													<?php echo get_the_title($video->ID); ?>
-												</h5>
-												<?php echo get_field('short_description', $video->ID); ?>
-											</a>
-										<?php } ?>
+										<div class="actual-playlist">
+											<?php foreach($videos->posts as $key=>$video){ ?>
+												<a href="<?php echo get_the_permalink($video->ID); ?>" class="<?php echo $video->ID == $thisID ? 'active' : ''; ?>" key="<?php echo $key; ?>">
+													<div class="video-img-cont">
+											
+	
+		<?php $poster_image = get_field('poster_image', $video->ID); ?>
+											<?php echo wp_get_attachment_image($poster_image['ID'], 'large'); ?>
+	
+													</div>
+													<h5>
+														<?php echo get_the_title($video->ID); ?>
+													</h5>
+													<?php echo get_field('short_description', $video->ID); ?>
+												</a>
+											<?php } ?>
+										</div>
 										</div>
 									</div>
 								<?php } ?>
@@ -146,6 +148,15 @@ get_header();
 
 		</main><!-- #main -->
 	</div><!-- #primary -->
+
+
+
+	<script>
+		var key = parseInt(jQuery('.video-playlist-inner a.active').attr('key')) + 10;
+		jQuery('.video-playlist-inner a:nth-child(n + ' + key   +')').remove();
+		
+
+	</script>
 
 
 <?php
