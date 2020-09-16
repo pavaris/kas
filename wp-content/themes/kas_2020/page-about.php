@@ -31,6 +31,7 @@
 		 <div class="content-margins narrow">
 			<div class="page-content">
 					
+					<?php the_content(); ?>
 
 
 <?php if(get_field('members')){ ?>
@@ -77,7 +78,6 @@
 	<?php
 } ?>
 
-					<?php the_content(); ?>
 		 	</div>
 		 </div>
 			<?php if($post->ID == $children->posts[0]->ID){ ?>
