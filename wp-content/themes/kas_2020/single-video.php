@@ -72,7 +72,7 @@ get_header();
 												<h5>
 													<?php echo get_the_title($video->ID); ?>
 												</h5>
-												<?php echo get_field('short_description'); ?>
+												<?php echo get_field('short_description', $video->ID); ?>
 											</a>
 										<?php } ?>
 										</div>
