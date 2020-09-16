@@ -152,8 +152,13 @@ get_header();
 
 
 	<script>
-		var key = parseInt(jQuery('.video-playlist-inner a.active').attr('key')) + 10;
-		jQuery('.video-playlist-inner a:nth-child(n + ' + key   +')').remove();
+		var key = parseInt(jQuery('.actual-playlist a.active').attr('key'));
+		var last = parseInt(jQuery('.actual-playlist a:last-child').attr('key'));
+
+		var nth = parseInt(jQuery('.actual-playlist a.active').attr('key')) + 11;
+		jQuery('.video-playlist-inner a:nth-child(n + ' + nth   +')').hide();
+		jQuery('.video-playlist-inner a:nth-last-child(n + ' + (last - key + 2)   +')').hide();
+		// jQuery('.video-playlist-inner a:nth-last-child(n + ' + key   +')').remove();
 		
 
 	</script>
