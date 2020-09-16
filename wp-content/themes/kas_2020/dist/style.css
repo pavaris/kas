@@ -1668,7 +1668,7 @@ h1.section-title {
       margin-bottom: 20px;
       line-height: 1em; }
     .header-slide .header-slide-info .header-slide-cta a {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700; }
     @media (max-width: 1280px) {
       .header-slide .header-slide-info {
@@ -2116,7 +2116,7 @@ section.newsletter-container {
     background-color: white;
     padding-bottom: 15px; }
     .podcast-feed .posts-feed a .post-feed-info .post-category {
-      font-size: 18px; }
+      font-size: 20px; }
     .podcast-feed .posts-feed a h5 {
       font-size: 22px;
       margin-bottom: 10px; }
@@ -2188,7 +2188,7 @@ section.newsletter-container {
     text-decoration: none;
     margin: 0 30px 20px 30px; }
     .podcast-platform-links .platform-link p {
-      font-size: 18px; }
+      font-size: 20px; }
     .podcast-platform-links .platform-link svg {
       margin-bottom: 15px;
       height: 40px; }
@@ -2239,7 +2239,7 @@ section.newsletter-container {
       .posts-feed a .post-feed-info p {
         font-weight: 300;
         line-height: 1.2em;
-        font-size: 18px; }
+        font-size: 20px; }
       .posts-feed a .post-feed-info .post-category {
         line-height: initial;
         background-color: #6cb5ce;
@@ -2440,7 +2440,7 @@ section.newsletter-container {
     line-height: 1.2em; }
     @media (max-width: 767px) {
       #about-page-video h2 {
-        font-size: 18px; } }
+        font-size: 20px; } }
   #about-page-video iframe {
     width: 100%; }
 
@@ -2972,7 +2972,7 @@ section.newsletter-container {
     .search-results-container .filter-container a {
       text-transform: uppercase;
       color: #757f87;
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 700;
       text-decoration: none;
       letter-spacing: 0.1em;
