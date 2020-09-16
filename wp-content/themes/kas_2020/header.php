@@ -30,7 +30,7 @@
 			<nav id="site-navigation" class="main-navigation">
 				<div class="main-nav-inner">
 					<div class="site-branding">
-						<?php echo get_custom_logo(); ?>
+						<?php the_custom_logo(); ?>
 					</div><!-- .site-branding -->
 					
 							<?php wp_nav_menu(['menu' => 'Header Menu']); ?>

@@ -182,12 +182,18 @@
 .wp-block-image .alignleft {
 	float: left;
 	margin-right: 40px;
+	@include mobile {
+		margin-right: 25px;
+	}
 }
 
 .alignright,
 .wp-block-image .alignright {
 	float: right;
 	margin-left: 40px;
+	@include mobile {
+		margin-left: 25px;
+	}
 }
 
 .wp-block-cover {
