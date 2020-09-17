@@ -574,6 +574,7 @@ button {
     .wp-block-columns .wp-block-column {
       margin-bottom: 35px; } }
   .wp-block-columns .wp-block-column .wp-block-image img {
+    height: auto;
     margin: 0 auto;
     display: block; }
 
