@@ -385,7 +385,7 @@ em {
       .content-margins.wide {
         width: 90%; } }
   .content-margins.narrow {
-    max-width: 950px; }
+    max-width: 875px; }
 
 .bg-center {
   background-position: center;
@@ -575,8 +575,7 @@ button {
       margin-bottom: 35px; } }
   .wp-block-columns .wp-block-column .wp-block-image img {
     margin: 0 auto;
-    display: block;
-    height: auto; }
+    display: block; }
 
 .border-columns .wp-block-column {
   border: 2px solid white;
@@ -645,6 +644,10 @@ article.footer-padding-gone {
 
 .wp-block-cover {
   min-height: 600px; }
+
+@media (min-width: 782px) {
+  .wp-block-column:not(:first-child) {
+    margin-left: 45px; } }
 
 #masthead {
   position: absolute;
@@ -1242,7 +1245,7 @@ article.footer-padding-gone {
     text-transform: uppercase;
     font-weight: 600 !important;
     background-color: #6cb5ce;
-    padding: 15px 45px;
+    padding: 20px 55px;
     border-radius: 40px;
     font-size: 20px;
     color: white; }
@@ -1561,7 +1564,16 @@ h1.section-title {
   position: relative;
   left: 50%;
   right: 50%;
-  margin: 30px -50vw; }
+  margin: 30px -50vw 50px;
+  height: 0;
+  padding-bottom: 85%;
+  min-height: unset !important; }
+  @media (max-width: 1280px) {
+    .wp-block-cover {
+      padding-bottom: 68%; } }
+  @media (max-width: 1024px) {
+    .wp-block-cover {
+      padding-bottom: 55%; } }
 
 .home section h3 {
   text-transform: uppercase;
@@ -1570,10 +1582,7 @@ h1.section-title {
   font-weight: 700; }
 
 .header-slides .slick-track {
-  height: calc(100vh - 70px); }
-  @media (max-width: 1200px) {
-    .header-slides .slick-track {
-      height: calc(100vh - 50px); } }
+  height: 75vh; }
 
 .header-slides .slick-dots {
   position: absolute;
@@ -1610,7 +1619,7 @@ h1.section-title {
       width: 100%; } }
 
 .header-slide-container {
-  height: calc(100vh - 70px); }
+  height: 75vh; }
 
 .header-slide {
   height: 100%;
@@ -1993,7 +2002,7 @@ section.newsletter-container {
       background-color: transparent;
       outline: none;
       margin-bottom: 20px;
-      width: 600px; }
+      width: 500px; }
   section.newsletter-container label ::placeholder {
     text-transform: uppercase;
     color: #757f87;
@@ -2644,7 +2653,7 @@ section.newsletter-container {
 
 .podcast-image-mask {
   width: 100%;
-  padding-bottom: 50%;
+  padding-bottom: 67%;
   position: relative;
   margin-bottom: 30px; }
   .podcast-image-mask img {
@@ -3161,7 +3170,8 @@ section.newsletter-container {
     .video-playlist-container .video-playlist p {
       margin-top: 5px;
       margin-bottom: 0px;
-      font-size: 17px; }
+      font-size: 15px;
+      line-height: 1.2em; }
     .video-playlist-container .video-playlist a {
       display: block;
       padding: 15px;
@@ -3331,6 +3341,16 @@ section.newsletter-container {
       .page-template-page-legacy-project .page-header-container h2 {
         font-size: 40px; } }
 
+.page-template-page-legacy-project .page-video-container {
+  padding-bottom: 150px; }
+  .page-template-page-legacy-project .page-video-container h2 {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    font-size: 34px;
+    margin-bottom: 45px; }
+
 .legacy-page-nav-cont {
   text-align: center; }
   .legacy-page-nav-cont .page-content {
@@ -3350,11 +3370,12 @@ section.newsletter-container {
     color: #757f87;
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 600;
     letter-spacing: 0.2em;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-    padding: 0 15px; }
+    padding: 0 10px;
+    margin-right: 5px; }
     .legacy-page-nav a:hover, .legacy-page-nav a.active {
       color: #6cb5ce; }
     .legacy-page-nav a:last-child {

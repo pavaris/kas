@@ -201,6 +201,14 @@
 	position: relative;
 	left: 50%;
 	right: 50%;
-
-	margin: 30px -50vw;
+	margin: 30px -50vw 50px;
+	height: 0;
+	padding-bottom: 85%;
+	min-height: unset !important;
+	@media (max-width: 1280px) {
+		padding-bottom: 68%;
+	}
+	@media (max-width: 1024px) {
+		padding-bottom: 55%;
+	}
 }

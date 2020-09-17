@@ -89,7 +89,7 @@ em {
 		}
 	}
 	&.narrow {
-		max-width: 950px;
+		max-width: 875px;
 	}
 }
 
@@ -308,7 +308,6 @@ button {
 		.wp-block-image img {
 			margin: 0 auto;
 			display: block;
-			height: auto;
 		}
 	}
 }
@@ -399,4 +398,10 @@ article.footer-padding-gone {
 
 .wp-block-cover {
 	min-height: 600px;
+}
+
+@media (min-width: 782px) {
+	.wp-block-column:not(:first-child) {
+		margin-left: 45px;
+	}
 }

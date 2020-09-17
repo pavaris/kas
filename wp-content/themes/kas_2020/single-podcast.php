@@ -23,7 +23,7 @@ get_header();
 						the_post();
 					?>
 						<section class="article-header">
-							<div class="content-margins wide">
+							<div class="content-margins">
 								<h1 class='section-title'><?php the_title(); ?></h1>
 								<h5><?php echo get_the_date('F jS, Y'); ?></h5>
 									<?php if(get_the_tags(get_the_ID())){ ?>
