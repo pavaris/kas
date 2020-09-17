@@ -1677,7 +1677,10 @@ h1.section-title {
       color: white;
       letter-spacing: 0.15em;
       margin-bottom: 20px;
-      line-height: 1em; }
+      line-height: 1em;
+      transition: ease 300ms; }
+      .header-slide .header-slide-info h3:hover {
+        color: #6cb5ce; }
     .header-slide .header-slide-info .header-slide-cta a {
       font-size: 20px;
       font-weight: 700; }
