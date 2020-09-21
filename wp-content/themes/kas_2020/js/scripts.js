@@ -128,6 +128,7 @@ $(window).scroll(function () {
 	var st = $(this).scrollTop();
 	if (st > lastScrollTop) {
 		$("body").addClass("hide_menu");
+		console.log("hide!");
 	} else {
 		$("body").removeClass("hide_menu");
 	}

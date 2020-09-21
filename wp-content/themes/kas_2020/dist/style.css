@@ -3454,7 +3454,7 @@ section.newsletter-container {
 
 .legacy-page-nav {
   width: 100%;
-  margin-top: 50px;
+  margin-top: -50px;
   padding: 60px 0 10px;
   text-align: center;
   border-bottom: 1px solid #757f87;
