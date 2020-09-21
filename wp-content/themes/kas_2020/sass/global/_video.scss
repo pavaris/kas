@@ -123,8 +123,64 @@
 				margin-bottom: 0px;
 			}
 		}
-		@media (max-width: 920px) {
-			display: none;
+	}
+	@media (max-width: 920px) {
+		flex-direction: column;
+		.video-play-wrapper {
+			margin-bottom: 20px;
+		}
+		.video-playlist {
+			max-width: unset;
+			.video-playlist-inner {
+				position: initial;
+				padding: 0;
+				h4 {
+					padding: 10px 0px;
+					margin-bottom: 0px;
+				}
+				.actual-playlist {
+					max-height: 300px;
+					overflow: scroll;
+					a {
+						display: flex;
+						.video-img-cont {
+							flex: 1;
+							padding-bottom: 18%;
+							margin-right: 15px;
+							margin-bottom: 0;
+						}
+						.video-info-cont {
+							width: 66%;
+							h5 {
+								font-size: 22px;
+							}
+							p {
+								font-size: 18px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	@media (max-width: 575px) {
+		.video-playlist .video-playlist-inner .actual-playlist {
+			a {
+				// flex-direction: column;
+				.video-img-cont {
+					padding-bottom: 25%;
+				}
+				.video-info-cont {
+					// width: 100%;
+					width: 55%;
+					h5 {
+						font-size: 16px;
+					}
+					p {
+						font-size: 15px;
+					}
+				}
+			}
 		}
 	}
 }

@@ -64,6 +64,35 @@
                     "ui": 0,
                     "ui_on_text": "",
                     "ui_off_text": ""
+                },
+                {
+                    "key": "field_5f68083481ff5",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "select",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "choices": {
+                        "left": "Left",
+                        "right": "Right",
+                        "bottom-left": "Bottom Left",
+                        "bottom-right": "Bottom Right"
+                    },
+                    "default_value": [
+                        "left"
+                    ],
+                    "allow_null": 0,
+                    "multiple": 0,
+                    "ui": 0,
+                    "return_format": "value",
+                    "ajax": 0,
+                    "placeholder": ""
                 }
             ]
         },
@@ -226,5 +255,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1596425212
+    "modified": 1600653689
 }

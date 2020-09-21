@@ -182,6 +182,18 @@ $(".mobile.filter").click(function () {
 	$(".mobile.filter-dropdown").slideToggle();
 });
 
+var lastScrollTop = $(window).scrollTop();
+$(window).scroll(function () {
+	console.log("scrolling");
+	var st = $(this).scrollTop();
+	if (st > lastScrollTop) {
+		$("body").addClass("hide_menu");
+	} else {
+		$("body").removeClass("hide_menu");
+	}
+	lastScrollTop = st;
+});
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=main.js.map

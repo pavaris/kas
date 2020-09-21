@@ -58,6 +58,9 @@
 	background-color: $anotherGray;
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 4px;
 	z-index: 11;
+	transform: none;
+	@include cubic;
+	transition-duration: 500ms;
 	@media (max-width: 1200px) {
 		display: none;
 	}
@@ -284,6 +287,8 @@
 	z-index: 10;
 	display: none;
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 4px;
+	@include cubic;
+
 	@media (max-width: 1200px) {
 		display: block;
 	}
@@ -362,6 +367,10 @@
 		margin-bottom: 20px;
 		font-size: 15px;
 	}
+	.social-nav {
+		max-width: 300px;
+		margin: 0 auto;
+	}
 }
 
 #mobile-ham {
@@ -413,5 +422,14 @@
 		::placeholder {
 			color: white;
 		}
+	}
+}
+
+body.hide_menu {
+	#site-navigation {
+		transform: translateY(calc(-100% - 100px));
+	}
+	#mobile-nav {
+		transform: translateY(calc(-100%));
 	}
 }

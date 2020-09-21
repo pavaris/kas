@@ -14,7 +14,7 @@
 			 </div>
 		<div class="legacy-page-nav-cont">
 			<div class="content-margins narrow">
-				<div class="legacy-page-nav">
+				<div class="legacy-page-nav" id='subpage-nav'>
 					<?php  
 						$args = array(
 							'post_type'      => 'page',
@@ -26,7 +26,7 @@
 					?>
 	
 			
-					<a href="<?php echo get_the_permalink($aboutPage->ID); ?>" class="<?php echo $aboutPage->ID == $post->ID ? 'active' : ''; ?>">Home</a>			
+					<a href="<?php echo get_the_permalink($aboutPage->ID); ?>#subpage-nav" class="<?php echo $aboutPage->ID == $post->ID ? 'active' : ''; ?>">Home</a>			
 	
 					<?php foreach($children->posts as $key=>$page){ ?>
 					

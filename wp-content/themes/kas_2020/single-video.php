@@ -70,10 +70,12 @@ get_header();
 											<?php echo wp_get_attachment_image($poster_image['ID'], 'large'); ?>
 	
 													</div>
-													<h5>
-														<?php echo get_the_title($video->ID); ?>
-													</h5>
-													<?php echo get_field('short_description', $video->ID); ?>
+													<div class="video-info-cont">
+														<h5>
+															<?php echo get_the_title($video->ID); ?>
+														</h5>
+														<?php echo get_field('short_description', $video->ID); ?>
+													</div>
 												</a>
 											<?php } ?>
 										</div>

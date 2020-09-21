@@ -37,8 +37,8 @@ get_header();
                                     <?php echo get_the_post_thumbnail($slide['post'][0]->ID); ?>
                                   </div>
                                   <?php if(!$slide['hide_title']){ ?>
-                                    <div class="header-slide-info">
-                                      <div class="content-margins wide flex">
+                                    <div class="header-slide-info <?php echo $slide['position']; ?>">
+                                      <div class="content-margins flex">
                                         <div class="header-slide-inner">
                                           <h3><?php echo get_the_title($slide['post'][0]->ID); ?></h3>
                                           <?php echo get_field('short_description', $slide['post'][0]->ID); ?>
