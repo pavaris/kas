@@ -1,0 +1,111 @@
+{
+    "key": "group_5f69638b87b8e",
+    "title": "Legacy Project Categories",
+    "fields": [
+        {
+            "key": "field_5f696395ee689",
+            "label": "Communities",
+            "name": "communities",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "-Select-": "-Select-",
+                "Adopted": "Adopted",
+                "LGBTQIA+": "LGBTQIA+",
+                "Multiracial": "Multiracial"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5f696440ee68b",
+            "label": "Generation",
+            "name": "generation",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "-Select-": "-Select-",
+                "1st Gen": "1st Gen",
+                "1.5 Gen": "1.5 Gen",
+                "2nd Gen": "2nd Gen",
+                "3+ Gen": "3+ Gen"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        },
+        {
+            "key": "field_5f69648aee68c",
+            "label": "Language",
+            "name": "language",
+            "type": "select",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "-Select-": "-Select-",
+                "English": "English",
+                "Korean": "Korean",
+                "Other": "Other"
+            },
+            "default_value": [],
+            "allow_null": 0,
+            "multiple": 0,
+            "ui": 0,
+            "return_format": "value",
+            "ajax": 0,
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "video"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "video_type:legacy-project"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": 1,
+    "description": "",
+    "modified": 1600746385
+}

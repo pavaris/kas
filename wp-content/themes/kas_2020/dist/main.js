@@ -184,15 +184,36 @@ $(".mobile.filter").click(function () {
 
 var lastScrollTop = $(window).scrollTop();
 $(window).scroll(function () {
-	console.log("scrolling");
 	var st = $(this).scrollTop();
 	if (st > lastScrollTop) {
 		$("body").addClass("hide_menu");
-		console.log("hide!");
 	} else {
 		$("body").removeClass("hide_menu");
 	}
 	lastScrollTop = st;
+});
+
+var lang = [];
+var gen = [];
+var comm = [];
+
+$(".filtered-post-feed a").each(function (e) {
+	if ($(this).attr("language")) {
+		lang.push($(this).attr("language"));
+	}
+	if ($(this).attr("communities")) {
+		comm.push($(this).attr("communities"));
+	}
+	if ($(this).attr("generation")) {
+		gen.push($(this).attr("generation"));
+	}
+});
+
+console.log(lang, gen, comm);
+[...new Set(lang)].sort().forEach(function (e) {
+	if (e !== "-Select-") {
+		$(".filters #language").append(`<option value="${e}">${e}</option>`);
+	}
 });
 
 /***/ })

@@ -2,6 +2,7 @@
 	.page-header-container {
 		height: 75vh;
 		padding-top: 0px;
+		margin-bottom: 50px;
 		h2 {
 			font-family: $mrEaves;
 			font-size: 60px;
@@ -68,6 +69,18 @@
 			text-align: center;
 			margin: 0px;
 			margin-bottom: 20px;
+		}
+	}
+}
+
+.filtered-feed {
+	display: none;
+}
+
+.posts-feed-cont {
+	.filters {
+		select {
+			display: none;
 		}
 	}
 }

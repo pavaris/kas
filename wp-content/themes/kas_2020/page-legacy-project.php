@@ -43,7 +43,12 @@
 
 <?php if($post->post_name == 'all-videos'){ ?>
 
-				<div class="content-margins narrow">
+				<div class="content-margins narrow posts-feed-cont">
+					<div class="filters">
+						<select name="communities" id="communities"></select>
+						<select name="generation" id="generation"></select>
+						<select name="language" id="language"></select>
+					</div>
 					<div class="posts-feed">
 						<?php 
 							$args = array(
@@ -66,6 +71,28 @@
 								} 
 							}
 						?>
+					</div>
+					<div class="filtered-feed">
+						<div class="filtered-post-feed">
+							<?php 
+									$args = array(
+									'post_type' => 'video',
+									'posts_per_page' => -1,
+									'tax_query' => array(
+										array(
+												'taxonomy' => 'video_type',
+												'field'    => 'slug',
+												'terms'    => 'legacy-project',
+										)
+									)); 
+									$allVids = new WP_Query($args);
+								if($vids->have_posts()){
+									foreach($vids->posts as $post){
+										legStruct($post->ID, 'Legacy Project');
+									} 
+								}
+							?>
+						</div>
 					</div>
 					<div class="center bottom-padding">
 						<button id='see-more' class='filled' type='video' offset='6' term="legacy-project">More</button>

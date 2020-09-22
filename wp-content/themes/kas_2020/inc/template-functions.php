@@ -400,6 +400,32 @@ function postStruct($ID, $type = ''){
 	<?php 
 }
 
+function legStruct($ID, $type = ''){
+	?> 
+		<a href="<?php echo get_the_permalink($ID); ?>"
+		communities="<?php echo get_field('communities',$ID) ?>"
+		generation="<?php echo get_field('generation',$ID) ?>"
+		language="<?php echo get_field('language',$ID) ?>"
+		>
+				<div class="post-feed-image">
+					<?php echo get_the_post_thumbnail($ID); ?>
+				</div>
+				<div class="post-feed-info">
+					<?php if($type){ ?>
+						<div class="post-category">
+							<?php echo $type; ?>
+						</div>
+					<?php } ?>
+					<h6>
+						<?php echo get_the_title($ID); ?>
+					</h6>
+					<?php echo get_field('short_description', $ID); ?>
+
+				</div>
+			</a>
+	<?php 
+}
+
 
 function threeUp($feedPosts, $sectionTitle){
 	if($feedPosts->have_posts()){ ?>
@@ -519,7 +545,7 @@ function podcast_article($postID){
         	$query->set( 'posts_per_page', '6' );
     }
 
-     add_action( 'pre_get_posts', 'customize_customtaxonomy_archive_display' );
+    //  add_action( 'pre_get_posts', 'customize_customtaxonomy_archive_display' );
 
 
 

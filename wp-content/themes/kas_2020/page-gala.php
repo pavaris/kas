@@ -15,7 +15,7 @@
 			</div>
 
 
-			<section class='page-content'>
+			<section class='page-content' <?php echo get_field('color') ? 'style="background-color:' . get_field('color') . '"' : '' ; ?>>
 					<div class="content-margins narrow">
 						<?php the_content(); ?>
 					</div>
