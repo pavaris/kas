@@ -403,9 +403,9 @@ function postStruct($ID, $type = ''){
 function legStruct($ID, $type = ''){
 	?> 
 		<a href="<?php echo get_the_permalink($ID); ?>"
-		communities="<?php echo get_field('communities',$ID) ?>"
-		generation="<?php echo get_field('generation',$ID) ?>"
-		language="<?php echo get_field('language',$ID) ?>"
+		communities="<?php echo get_field('communities',$ID) !== '-Select-' ? get_field('communities',$ID) : ''; ?>"
+		generation="<?php echo get_field('generation',$ID) !== '-Select-' ? get_field('generation',$ID) : '';  ?>"
+		language="<?php echo get_field('language',$ID) !== '-Select-' ? get_field('language',$ID) : ''; ?>"
 		>
 				<div class="post-feed-image">
 					<?php echo get_the_post_thumbnail($ID); ?>

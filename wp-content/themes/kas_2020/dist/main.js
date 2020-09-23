@@ -176,43 +176,136 @@ $(document).ready(function () {
 			$(".gallery-block-lightbox").fadeOut();
 		});
 	}
-});
 
-$(".mobile.filter").click(function () {
-	$(".mobile.filter-dropdown").slideToggle();
-});
+	$(".mobile.filter").click(function () {
+		$(".mobile.filter-dropdown").slideToggle();
+	});
 
-var lastScrollTop = $(window).scrollTop();
-$(window).scroll(function () {
-	var st = $(this).scrollTop();
-	if (st > lastScrollTop) {
-		$("body").addClass("hide_menu");
-	} else {
-		$("body").removeClass("hide_menu");
+	var lastScrollTop = $(window).scrollTop();
+	$(window).scroll(function () {
+		var st = $(this).scrollTop();
+		if (st > lastScrollTop) {
+			$("body").addClass("hide_menu");
+		} else {
+			$("body").removeClass("hide_menu");
+		}
+		lastScrollTop = st;
+	});
+
+	var lang = [];
+	var gen = [];
+	var comm = [];
+
+	$(".filtered-post-feed a").each(function (e) {
+		if ($(this).attr("language")) {
+			lang.push($(this).attr("language"));
+		}
+		if ($(this).attr("communities")) {
+			comm.push($(this).attr("communities"));
+		}
+		if ($(this).attr("generation")) {
+			gen.push($(this).attr("generation"));
+		}
+	});
+
+	[...new Set(lang)].sort().forEach(function (e) {
+		if (e !== "-Select-") {
+			$(".filters #language").append(`<option value="${e}">${e}</option>`);
+		}
+	});
+	[...new Set(gen)].sort().forEach(function (e) {
+		if (e !== "-Select-") {
+			$(".filters #generation").append(`<option value="${e}">${e}</option>`);
+		}
+	});
+	[...new Set(comm)].sort().forEach(function (e) {
+		if (e !== "-Select-") {
+			$(".filters #communities").append(`<option value="${e}">${e}</option>`);
+		}
+	});
+
+	$("#communities").change(function () {
+		filterChange();
+	});
+	$("#generation").change(function () {
+		filterChange();
+	});
+	$("#language").change(function () {
+		filterChange();
+	});
+
+	function filterChange() {
+		$(".filtered-feed a").show();
+		if ($("#communities").val() !== "") {
+			$(`.filtered-feed a:not([communities="${$("#communities").val()}"])`).hide();
+		}
+		if ($("#language").val() !== "") {
+			$(`.filtered-feed a:not([language="${$("#language").val()}"])`).hide();
+		}
+		if ($("#generation").val() !== "") {
+			$(`.filtered-feed a:not([generation="${$("#generation").val()}"])`).hide();
+		}
+		if ($(`.filtered-feed a[style="display: none;"]`).length > 0) {
+			setTimeout(parseFiltered(), 500);
+		}
+
+		if ($("#language").val() || $("#generation").val() || $("#communities").val()) {
+			$(".posts-feed").hide();
+			$(".filtered-feed").show();
+			$("#see-more-container").hide();
+		} else {
+			$(".posts-feed").show();
+			$(".filtered-feed").hide();
+			$("#see-more-container").show();
+			$(".filters option").removeAttr("disabled");
+		}
 	}
-	lastScrollTop = st;
-});
 
-var lang = [];
-var gen = [];
-var comm = [];
+	function parseFiltered() {
+		var parsedLang = [];
+		var parsedGen = [];
+		var parsedComm = [];
+		var filteredLang = [];
+		var filteredGen = [];
+		var filteredComm = [];
+		$(`.filtered-feed a:not([style="display: none;"])`).each(function () {
+			parsedLang.push($(this).attr("language"));
+			parsedComm.push($(this).attr("communities"));
+			parsedGen.push($(this).attr("generation"));
+		});
 
-$(".filtered-post-feed a").each(function (e) {
-	if ($(this).attr("language")) {
-		lang.push($(this).attr("language"));
-	}
-	if ($(this).attr("communities")) {
-		comm.push($(this).attr("communities"));
-	}
-	if ($(this).attr("generation")) {
-		gen.push($(this).attr("generation"));
-	}
-});
+		filteredLang = [...new Set(parsedLang)];
+		filteredGen = [...new Set(parsedGen)];
+		filteredComm = [...new Set(parsedComm)];
+		console.log(filteredLang, filteredGen, filteredComm);
+		$(".filters option").removeAttr("disabled");
 
-console.log(lang, gen, comm);
-[...new Set(lang)].sort().forEach(function (e) {
-	if (e !== "-Select-") {
-		$(".filters #language").append(`<option value="${e}">${e}</option>`);
+		if (filteredComm.length > 1) {
+			$("#communities option:not([default])").attr("disabled", "true");
+			filteredComm.forEach(function (e) {
+				console.log(e);
+				$(`#communities option[value="${e}"]`).removeAttr("disabled");
+			});
+		}
+		if (filteredLang.length > 1) {
+			$(`#language option:not([default])`).attr("disabled", "true");
+			filteredLang.forEach(function (e) {
+				console.log(e);
+				$(`#language option[value="${e}"]`).removeAttr("disabled");
+			});
+		}
+		if (filteredGen.length > 1) {
+			$(`#generation option:not([default])`).attr("disabled", "true");
+			filteredGen.forEach(function (e) {
+				console.log(e);
+				$(`#generation option[value="${e}"]`).removeAttr("disabled");
+			});
+		}
+	}
+
+	function toggleFeed() {
+		$(".posts-feed").toggle();
+		$(".filtered-feed").toggle();
 	}
 });
 

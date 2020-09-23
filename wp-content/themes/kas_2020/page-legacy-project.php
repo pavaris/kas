@@ -45,9 +45,15 @@
 
 				<div class="content-margins narrow posts-feed-cont">
 					<div class="filters">
-						<select name="communities" id="communities"></select>
-						<select name="generation" id="generation"></select>
-						<select name="language" id="language"></select>
+						<select name="communities" id="communities">
+							<option value="" default>COMMUNITIES</option>
+						</select>
+						<select name="generation" id="generation">
+							<option value="" default>Generation</option>
+						</select>
+						<select name="language" id="language">
+							<option value="" default>Language</option>
+						</select>
 					</div>
 					<div class="posts-feed">
 						<?php 
@@ -94,7 +100,7 @@
 							?>
 						</div>
 					</div>
-					<div class="center bottom-padding">
+					<div class="center bottom-padding" id="see-more-container">
 						<button id='see-more' class='filled' type='video' offset='6' term="legacy-project">More</button>
 					</div>
 				</div>
