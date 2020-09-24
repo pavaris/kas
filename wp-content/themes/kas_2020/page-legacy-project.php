@@ -99,6 +99,9 @@
 								}
 							?>
 						</div>
+						<div class="no-posts">
+							<h4 class="center">There no vidoes with for this combination of filters.</h4>
+						</div>
 					</div>
 					<div class="center bottom-padding" id="see-more-container">
 						<button id='see-more' class='filled' type='video' offset='6' term="legacy-project">More</button>

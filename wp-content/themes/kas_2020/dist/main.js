@@ -245,8 +245,10 @@ $(document).ready(function () {
 		if ($("#generation").val() !== "") {
 			$(`.filtered-feed a:not([generation="${$("#generation").val()}"])`).hide();
 		}
-		if ($(`.filtered-feed a[style="display: none;"]`).length > 0) {
-			setTimeout(parseFiltered(), 500);
+		if ($(`.filtered-feed a[style="display: none;"]`).length === $(".filtered-feed a").length) {
+			$(".filtered-feed").addClass("empty");
+		} else {
+			$(".filtered-feed").removeClass("empty");
 		}
 
 		if ($("#language").val() || $("#generation").val() || $("#communities").val()) {
@@ -262,45 +264,44 @@ $(document).ready(function () {
 	}
 
 	function parseFiltered() {
-		var parsedLang = [];
-		var parsedGen = [];
-		var parsedComm = [];
-		var filteredLang = [];
-		var filteredGen = [];
-		var filteredComm = [];
-		$(`.filtered-feed a:not([style="display: none;"])`).each(function () {
-			parsedLang.push($(this).attr("language"));
-			parsedComm.push($(this).attr("communities"));
-			parsedGen.push($(this).attr("generation"));
-		});
-
-		filteredLang = [...new Set(parsedLang)];
-		filteredGen = [...new Set(parsedGen)];
-		filteredComm = [...new Set(parsedComm)];
-		console.log(filteredLang, filteredGen, filteredComm);
-		$(".filters option").removeAttr("disabled");
-
-		if (filteredComm.length > 1) {
-			$("#communities option:not([default])").attr("disabled", "true");
-			filteredComm.forEach(function (e) {
-				console.log(e);
-				$(`#communities option[value="${e}"]`).removeAttr("disabled");
-			});
-		}
-		if (filteredLang.length > 1) {
-			$(`#language option:not([default])`).attr("disabled", "true");
-			filteredLang.forEach(function (e) {
-				console.log(e);
-				$(`#language option[value="${e}"]`).removeAttr("disabled");
-			});
-		}
-		if (filteredGen.length > 1) {
-			$(`#generation option:not([default])`).attr("disabled", "true");
-			filteredGen.forEach(function (e) {
-				console.log(e);
-				$(`#generation option[value="${e}"]`).removeAttr("disabled");
-			});
-		}
+		// var parsedLang = [];
+		// var parsedGen = [];
+		// var parsedComm = [];
+		// var filteredLang = [];
+		// var filteredGen = [];
+		// var filteredComm = [];
+		// $(`.filtered-feed a:not([style="display: none;"])`).each(function () {
+		// 	parsedLang.push($(this).attr("language"));
+		// 	parsedComm.push($(this).attr("communities"));
+		// 	parsedGen.push($(this).attr("generation"));
+		// });
+		// filteredLang = [...new Set(parsedLang)];
+		// filteredGen = [...new Set(parsedGen)];
+		// filteredComm = [...new Set(parsedComm)];
+		// console.log(filteredLang, filteredGen, filteredComm);
+		// if
+		// $(".filters option").removeAttr("disabled");
+		// if (filteredComm.length > 1) {
+		// 	$("#communities option:not([default])").attr("disabled", "true");
+		// 	filteredComm.forEach(function (e) {
+		// 		console.log(e);
+		// 		$(`#communities option[value="${e}"]`).removeAttr("disabled");
+		// 	});
+		// }
+		// if (filteredLang.length > 1) {
+		// 	$(`#language option:not([default])`).attr("disabled", "true");
+		// 	filteredLang.forEach(function (e) {
+		// 		console.log(e);
+		// 		$(`#language option[value="${e}"]`).removeAttr("disabled");
+		// 	});
+		// }
+		// if (filteredGen.length > 1) {
+		// 	$(`#generation option:not([default])`).attr("disabled", "true");
+		// 	filteredGen.forEach(function (e) {
+		// 		console.log(e);
+		// 		$(`#generation option[value="${e}"]`).removeAttr("disabled");
+		// 	});
+		// }
 	}
 
 	function toggleFeed() {
