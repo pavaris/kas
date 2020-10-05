@@ -1787,9 +1787,6 @@ h1.section-title {
     .home-legacy-project .header-slide .header-slide-info h3 {
       font-size: 30px; } }
 
-.home-legacy-project .header-slide .header-slide-info p {
-  max-width: 600px; }
-
 .home-legacy-feed {
   background-color: #414a57;
   color: white;
@@ -2443,6 +2440,9 @@ section.newsletter-container {
 @media (max-width: 767px) {
   .page-template-page-about .top-padding {
     padding-top: 0px; } }
+
+.page-template-page-about .legacy-page-nav {
+  padding: 80px 0 10px; }
 
 .page-header-container {
   height: 75vh;
