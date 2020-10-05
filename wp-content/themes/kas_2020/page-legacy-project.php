@@ -43,8 +43,8 @@
 
 <?php if($post->post_name == 'all-videos'){ ?>
 
-				<div class="content-margins narrow posts-feed-cont">
-					<div class="filters">
+				<div class="posts-feed-cont">
+					<div class="filters content-margins">
 						<select name="communities" id="communities">
 							<option value="" default>COMMUNITIES</option>
 						</select>
@@ -55,7 +55,7 @@
 							<option value="" default>Language</option>
 						</select>
 					</div>
-					<div class="posts-feed">
+					<div class="posts-feed content-margins wide">
 						<?php 
 							$args = array(
 								'post_type' => 'video',
@@ -100,7 +100,7 @@
 							?>
 						</div>
 						<div class="no-posts">
-							<h4 class="center">There no vidoes with for this combination of filters.</h4>
+							<h4 class="center">There are no vidoes with for this combination of filters.</h4>
 						</div>
 					</div>
 					<div class="center bottom-padding" id="see-more-container">

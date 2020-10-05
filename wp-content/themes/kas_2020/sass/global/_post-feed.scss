@@ -1,7 +1,7 @@
 .posts-feed,
 .filtered-post-feed {
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	flex-wrap: wrap;
 	a {
 		width: calc(33% - 20px);

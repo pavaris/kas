@@ -28,7 +28,7 @@ $hosts = get_field('hosts', $term);
 
 					<div class="content-margins">
 
-						<!-- <?php if(get_field('podcast_embed')){ ?>
+						<?php if(get_field('podcast_embed')){ ?>
 							<div class="latest-podcast-episode">
 								<h3>
 									Latest Episode
@@ -37,7 +37,7 @@ $hosts = get_field('hosts', $term);
 									<?php echo get_field('podcast_embed'); ?>
 								</div>
 							</div>
-						<?php } ?> -->
+						<?php } ?>
 
 					
 

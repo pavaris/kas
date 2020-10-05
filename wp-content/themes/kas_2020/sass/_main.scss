@@ -55,7 +55,7 @@ h6 {
 
 p {
 	margin-bottom: 20px;
-	font-size: 20px;
+	font-size: 23px;
 	line-height: 1.4em;
 	color: $ughGray;
 	letter-spacing: 0.03em;
@@ -71,7 +71,7 @@ em {
 }
 
 #content {
-	padding-top: 70px;
+	padding-top: 84px;
 	@media (max-width: 1200px) {
 		padding-top: 50px;
 	}
@@ -89,7 +89,7 @@ em {
 		}
 	}
 	&.narrow {
-		max-width: 875px;
+		max-width: 850px;
 	}
 }
 
@@ -404,5 +404,11 @@ article.footer-padding-gone {
 @media (min-width: 782px) {
 	.wp-block-column:not(:first-child) {
 		margin-left: 45px;
+	}
+}
+
+.wp-block-buttons {
+	.wp-block-button {
+		margin-right: 45px;
 	}
 }

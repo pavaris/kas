@@ -54,11 +54,12 @@
 	position: fixed;
 	top: 0;
 	left: 0;
-	padding: 15px 30px;
+	padding: 22px 30px;
 	background-color: $anotherGray;
 	box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 8px 4px;
 	z-index: 11;
 	transform: none;
+	height: 84px;
 	@include cubic;
 	transition-duration: 500ms;
 	@media (max-width: 1200px) {
@@ -79,10 +80,13 @@
 		justify-content: space-evenly;
 		align-items: center;
 		width: 100%;
+
 		> .menu-item {
 			margin-right: 25px;
 			padding: 0 10px;
-
+			&:last-child {
+				margin-right: 10px;
+			}
 			white-space: nowrap;
 			a {
 				font-size: 18px;

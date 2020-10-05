@@ -39,14 +39,14 @@ if($author) {
 		<p>Review by <?php echo $author; ?></p>
 		<?php 
 	}else{ ?> 
-		<p>By <?php echo $author; ?></p>
+		<p>By: <?php echo $author; ?></p>
 	<?php	
 	}
 	 }
 }
 ?>
 
-									<p><?php the_date('F jS, Y'); ?></p>
+									<p><?php the_date('F j, Y'); ?></p>
 									
 							</div>
 							<?php if(get_the_tags(get_the_ID())){ ?>
