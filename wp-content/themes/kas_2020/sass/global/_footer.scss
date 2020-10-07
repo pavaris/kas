@@ -50,7 +50,7 @@
 			}
 			ul.menu {
 				display: flex;
-				justify-content: space-around;
+				justify-content: space-evenly;
 				align-items: flex-start;
 				flex-wrap: wrap;
 				@media (max-width: 900px) {

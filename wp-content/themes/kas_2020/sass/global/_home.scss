@@ -178,7 +178,7 @@
 			font-weight: 600;
 			font-size: 60px;
 			color: white;
-			letter-spacing: 0.15em;
+			letter-spacing: 0.1em;
 			margin-bottom: 20px;
 			line-height: 1em;
 			transition: ease 300ms;
@@ -578,7 +578,7 @@ section.newsletter-container {
 		font-size: 40px;
 		letter-spacing: 0.2em;
 		font-weight: 700;
-		margin-bottom: 30px;
+		margin-bottom: 20px;
 	}
 	p {
 		margin-bottom: 0px;
@@ -603,7 +603,7 @@ section.newsletter-container {
 				border: 1px solid $darkGray;
 				background-color: transparent;
 				outline: none;
-				margin-bottom: 20px;
+				margin-bottom: 25px;
 				width: 500px;
 			}
 		}
@@ -625,7 +625,7 @@ section.newsletter-container {
 		font-weight: 700;
 		padding: 15px 45px;
 		border-radius: 40px;
-		margin-top: 20px;
+
 		&:hover {
 			background-color: transparent;
 			border: 1px solid $skyBlue;

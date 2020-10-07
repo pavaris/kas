@@ -82,7 +82,7 @@
 		 </div>
 			<?php if($post->ID == $children->posts[0]->ID){ ?>
 				<div id="about-page-video">
-					<div class="content-margins">
+					<div class="content-margins narrow">
 						<h2>About koreanamericanstory.org</h2>
 						<div class="video-single-embed video-play-wrapper">
 									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
