@@ -308,6 +308,17 @@ $(document).ready(function () {
 		$(".posts-feed").toggle();
 		$(".filtered-feed").toggle();
 	}
+
+	$(".guest").click(function () {
+		let $this = $(this);
+		$("#guest-popup .guest-description").html($this.find(".description").html());
+		$("#guest-popup .guestpop-name").html($this.find(".guest-name").html());
+		$("#guest-popup .guestpop-type").html($this.parent().attr("guestType"));
+		$("#guest-popup").fadeIn().css("display", "flex");
+	});
+	$("#guest-popup .guest-close").click(function () {
+		$("#guest-popup").fadeOut();
+	});
 });
 
 /***/ })

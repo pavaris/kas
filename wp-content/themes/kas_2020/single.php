@@ -63,9 +63,7 @@ if($author) {
 
 						<?php if($terms[0]->slug == 'book-reviews'){ ?>
 							<div class="book-review-content">
-								<div class="book-image">
-									<?php echo get_the_post_thumbnail(); ?>
-								</div>
+								
 								<section class='page-content'>
 								<?php the_content(); ?>
 							</section>
@@ -104,6 +102,25 @@ if($author) {
 							</section>
 							<?php 
 						} ?>
+
+						<div class="single-social-share">
+							<div class="single-share-container">
+								<h4>SHARE</h4>
+								<div class="single-socials">
+								<a href="<?php echo get_field('twitter', 'options'); ?>" target='_blank'>
+									<?php include get_template_directory() . '/img/twitter.svg'; ?>
+								</a>
+								<a href="<?php echo 'what'; ?>" target='_blank'>
+									<?php include get_template_directory() . '/img/facebook.svg'; ?>
+								</a>
+								</div>
+							</div>
+							<div class="single-signup-container">
+									<h4>STAY CONNECTED</h4>
+									<?php echo do_shortcode('[contact-form-7 id="11424" title="Newsletter"]'); ?>
+							</div>
+						
+						</div>
 
 					<?php
 					endwhile; // End of the loop.

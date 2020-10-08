@@ -23,6 +23,9 @@
 			margin-bottom: 45px;
 		}
 	}
+	h1 {
+		margin-bottom: 50px;
+	}
 }
 
 .legacy-page-nav-cont {
@@ -38,7 +41,8 @@
 .legacy-page-nav {
 	width: 100%;
 	margin-top: -50px;
-	padding: 60px 0 10px;
+	padding: 80px 0 10px;
+	margin-bottom: 20px;
 	text-align: center;
 	border-bottom: 1px solid $ughGray;
 	display: inline-flex;

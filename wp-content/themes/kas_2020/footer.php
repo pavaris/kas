@@ -10,6 +10,18 @@
  */
 
 ?>
+<div id="guest-popup">
+	<div class="content-margins narrow">
+		<div class="guest-close">×</div>
+		<div class="flex">
+			<div class="guestpop-name"></div><span>|</span>
+			<div class="guestpop-type">
+
+			</div>
+		</div>
+		<div class="guest-description"></div>
+	</div>
+</div>
 
 	</div><!-- #content -->
 

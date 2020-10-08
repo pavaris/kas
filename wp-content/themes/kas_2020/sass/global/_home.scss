@@ -164,7 +164,7 @@
 		@media (max-width: 1300px) {
 		}
 		p {
-			font-size: 27px;
+			font-size: 24px;
 			font-weight: 200;
 			font-family: $mrEaves;
 			letter-spacing: 0.04em;
@@ -178,7 +178,7 @@
 			font-weight: 600;
 			font-size: 60px;
 			color: white;
-			letter-spacing: 0.1em;
+			letter-spacing: 0.15em;
 			margin-bottom: 20px;
 			line-height: 1em;
 			transition: ease 300ms;
@@ -226,17 +226,24 @@
 		}
 	}
 	.header-slide .header-slide-info {
+		width: 100%;
 		h3 {
 			font-size: 60px;
 			transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+			max-width: unset;
 			&:hover {
 				color: $skyBlue;
 			}
 			@media (max-width: 767px) {
-				font-size: 30px;
+				font-size: 40px;
 			}
 		}
 		p {
+			max-width: 390px;
+
+			@media (max-width: 767px) {
+				// max-width: 60%;
+			}
 		}
 	}
 }

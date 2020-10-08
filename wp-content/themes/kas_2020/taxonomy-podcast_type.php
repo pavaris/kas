@@ -116,27 +116,29 @@ $hosts = get_field('hosts', $term);
 								<div class="content-margins">
 									
 									<h3>Host<?php echo count($hosts) > 1 ? 's' : ""; ?></h3>
-									<div class="team-members">
+									<div class="team-members members-<?php echo count($hosts); ?>">
 										<?php foreach($hosts as $host){
 											?>
 											<div class="team-member">
-												<div class="team-member-images">
-													<img src="<?php echo $host['image']['sizes']['large']; ?>" alt="<?php echo $host['image']['alt']; ?>">
+												<div class="wrap">
+													<div class="team-member-images">
+														<img src="<?php echo $host['image']['sizes']['large']; ?>" alt="<?php echo $host['image']['alt']; ?>">
+													</div>
+													<div class="team-member-name">
+														<?php echo $host['name']; ?>
+													</div>
+													<?php if($host['social']){ ?>
+													<div class="team-member-social">
+														<?php foreach($host['social'] as $social){ ?>
+															<a href="<?php echo $social['link']; ?>" target="_blank">
+																
+																	<?php echo wp_get_attachment_image($social['icon']['ID'], 'medium'); ?>
+																
+															</a>
+														<?php } ?>
+													</div>
+														<?php } ?>
 												</div>
-												<div class="team-member-name">
-													<?php echo $host['name']; ?>
-												</div>
-												<?php if($host['social']){ ?>
-												<div class="team-member-social">
-													<?php foreach($host['social'] as $social){ ?>
-														<a href="<?php echo $social['link']; ?>" target="_blank">
-															
-																<?php echo wp_get_attachment_image($social['icon']['ID'], 'medium'); ?>
-															
-														</a>
-													<?php } ?>
-												</div>
-													<?php } ?>
 												<div class="team-member-info">
 													<?php echo $host['description']; ?>
 												</div>

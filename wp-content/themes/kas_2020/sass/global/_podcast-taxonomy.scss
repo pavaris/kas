@@ -50,6 +50,19 @@
 	}
 	.team-members {
 		justify-content: space-around;
+		&.members-1 {
+			.team-member {
+				flex-direction: row;
+				align-items: flex-start;
+				width: 100%;
+				.wrap {
+					margin-right: 30px;
+				}
+				.team-member-info {
+					margin-top: 0;
+				}
+			}
+		}
 	}
 	.team-member-info {
 		text-align: left;

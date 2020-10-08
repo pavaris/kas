@@ -752,6 +752,20 @@ function my_acf_init_block_types() {
 						'keywords'          => array( 'sponsors' ),
 						'mode' => "edit"
         ));
+				
+				
+				
+				// trailblazer block
+        acf_register_block_type(array(
+            'name'              => 'Guests',
+            'title'             => __('Guests'),
+            'description'       => __('Guests block'),
+            'render_template'   => 'template-parts/blocks/guests.php',
+            'category'          => 'formatting',
+            'icon'              => 'buddicons-buddypress-logo',
+						'keywords'          => array( 'guests' ),
+						'mode' => "edit"
+        ));
     }
 }
 
@@ -762,3 +776,10 @@ add_action( 'pre_get_posts', function( $query ) {
   }
 
 });
+
+add_action('pre_get_posts', 'change_tax_num_of_posts' );
+function change_tax_num_of_posts( $wp_query ) {  
+    if( is_tax() && $wp_query->is_main_query() && is_tax('podcast_type') && ! is_admin()) {
+        $wp_query->set('posts_per_page', 6);
+    }
+}
