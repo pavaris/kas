@@ -1,10 +1,10 @@
 <?php
 /*
-Plugin Name: WP Migrate DB Pro
-Plugin URI: https://deliciousbrains.com/wp-migrate-db-pro/
-Description: Export, push, and pull to migrate your WordPress databases.
+Plugin Name: WP Migrate DB
+Plugin URI: https://wordpress.org/plugins/wp-migrate-db/
+Description: Exports your database as a MySQL data dump (much like phpMyAdmin), does a find and replace on URLs and file paths, then allows you to save it to your computer.
 Author: Delicious Brains
-Version: 1.9.13
+Version: 1.0.16
 Author URI: https://deliciousbrains.com
 Network: True
 Text Domain: wp-migrate-db
@@ -21,10 +21,9 @@ Domain Path: /languages/
 // WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 // **********************************************************************
-$wpmdb_base_path                                       = dirname( __FILE__ );
-$GLOBALS['wpmdb_meta']['wp-migrate-db-pro']['version'] = '1.9.13';
-$GLOBALS['wpmdb_meta']['wp-migrate-db-pro']['folder']  = basename( plugin_dir_path( __FILE__ ) );
-$GLOBALS['wpmdb_meta']['wp-migrate-db-pro']['abspath'] = $wpmdb_base_path;
+
+$wpmdb_base_path                                   = dirname( __FILE__ );
+$GLOBALS['wpmdb_meta']['wp-migrate-db']['version'] = '1.0.16';
 
 if ( ! defined( 'WPMDB_MINIMUM_PHP_VERSION' ) ) {
 	define( 'WPMDB_MINIMUM_PHP_VERSION', '5.4' );
@@ -32,7 +31,7 @@ if ( ! defined( 'WPMDB_MINIMUM_PHP_VERSION' ) ) {
 
 if ( version_compare( PHP_VERSION, WPMDB_MINIMUM_PHP_VERSION, '>=' ) ) {
 	require_once $wpmdb_base_path . '/class/autoload.php';
-	require_once $wpmdb_base_path . '/setup-mdb-pro.php';
+	require_once $wpmdb_base_path . '/setup-mdb.php';
 }
 
 if ( ! function_exists( 'wpmdb_deactivate_other_instances' ) ) {
@@ -47,10 +46,9 @@ if ( ! class_exists( 'WPMDB_PHP_Checker' ) ) {
 
 $php_checker = new WPMDB_PHP_Checker( __FILE__, WPMDB_MINIMUM_PHP_VERSION );
 if ( ! $php_checker->is_compatible_check() ) {
-	register_activation_hook( __FILE__, array( 'WPMDB_PHP_Checker', 'wpmdb_pro_php_version_too_low' ) );
+	register_activation_hook( __FILE__, array( 'WPMDB_PHP_Checker', 'wpmdb_php_version_too_low' ) );
 }
 
-function wpmdb_pro_remove_mu_plugin() {
+function wpmdb_remove_mu_plugin() {
 	do_action( 'wp_migrate_db_remove_compatibility_plugin' );
 }
-
