@@ -225,7 +225,11 @@
 			object-position: center;
 		}
 	}
+
 	.header-slide .header-slide-info {
+		.header-slide-inner {
+			padding-left: 0;
+		}
 		width: 100%;
 		h3 {
 			font-size: 60px;

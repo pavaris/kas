@@ -1985,6 +1985,8 @@ h1.section-title {
 
 .home-legacy-project .header-slide .header-slide-info {
   width: 100%; }
+  .home-legacy-project .header-slide .header-slide-info .header-slide-inner {
+    padding-left: 0; }
   .home-legacy-project .header-slide .header-slide-info h3 {
     font-size: 60px;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
