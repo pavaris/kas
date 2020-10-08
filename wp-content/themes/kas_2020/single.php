@@ -107,10 +107,10 @@ if($author) {
 							<div class="single-share-container">
 								<h4>SHARE</h4>
 								<div class="single-socials">
-								<a href="<?php echo get_field('twitter', 'options'); ?>" target='_blank'>
+								<a href="https://twitter.com/intent/tweet?url=<?php the_permalink(); ?>" target='_blank'>
 									<?php include get_template_directory() . '/img/twitter.svg'; ?>
 								</a>
-								<a href="<?php echo 'what'; ?>" target='_blank'>
+								<a href="http://www.facebook.com/sharer.php?u=<?php the_permalink(); ?>" target='_blank'>
 									<?php include get_template_directory() . '/img/facebook.svg'; ?>
 								</a>
 								</div>
