@@ -1719,7 +1719,8 @@ h1.section-title {
         width: 100%;
         margin-right: 0px !important; } }
     .guests-block .guest .guest-img-wrap {
-      position: relative; }
+      position: relative;
+      margin-bottom: 15px; }
       .guests-block .guest .guest-img-wrap:before {
         content: "";
         position: absolute;
@@ -1733,7 +1734,6 @@ h1.section-title {
     .guests-block .guest:hover .guest-img-wrap:before {
       opacity: 0.2; }
     .guests-block .guest img {
-      margin-bottom: 15px;
       width: 100%;
       height: auto;
       max-width: 300px; }

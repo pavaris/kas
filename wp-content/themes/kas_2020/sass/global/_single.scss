@@ -335,6 +335,8 @@
 		}
 		.guest-img-wrap {
 			position: relative;
+			margin-bottom: 15px;
+
 			&:before {
 				content: "";
 				position: absolute;
@@ -355,7 +357,6 @@
 			}
 		}
 		img {
-			margin-bottom: 15px;
 			width: 100%;
 			height: auto;
 			max-width: 300px;
