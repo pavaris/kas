@@ -2384,14 +2384,23 @@ section.newsletter-container {
       flex-direction: row;
       align-items: flex-start;
       width: 100%; }
+      @media (max-width: 767px) {
+        .podcast-hosts .team-members.members-1 .team-member {
+          flex-direction: column; } }
       .podcast-hosts .team-members.members-1 .team-member .wrap {
-        margin-right: 30px; }
+        margin-right: 30px;
+        width: 30%; }
+        @media (max-width: 767px) {
+          .podcast-hosts .team-members.members-1 .team-member .wrap {
+            width: 100%;
+            margin-right: 0; } }
+        .podcast-hosts .team-members.members-1 .team-member .wrap .team-member-name {
+          display: inline-block; }
       .podcast-hosts .team-members.members-1 .team-member .team-member-info {
-        margin-top: 0; }
+        margin-top: 0;
+        flex: 1; }
   .podcast-hosts .team-member-info {
     text-align: left; }
-    .podcast-hosts .team-member-info p {
-      font-size: 20px; }
   .podcast-hosts .team-member-social {
     display: flex;
     justify-content: space-around;

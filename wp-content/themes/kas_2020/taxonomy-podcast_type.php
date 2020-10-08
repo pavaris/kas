@@ -113,7 +113,7 @@ $hosts = get_field('hosts', $term);
 <?php
 						if($hosts){ ?>
 							<section class="podcast-hosts">
-								<div class="content-margins">
+								<div class="content-margins narrow">
 									
 									<h3>Host<?php echo count($hosts) > 1 ? 's' : ""; ?></h3>
 									<div class="team-members members-<?php echo count($hosts); ?>">

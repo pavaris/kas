@@ -55,20 +55,29 @@
 				flex-direction: row;
 				align-items: flex-start;
 				width: 100%;
+				@include mobile {
+					flex-direction: column;
+				}
 				.wrap {
 					margin-right: 30px;
+					width: 30%;
+					@include mobile {
+						width: 100%;
+						margin-right: 0;
+					}
+					.team-member-name {
+						display: inline-block;
+					}
 				}
 				.team-member-info {
 					margin-top: 0;
+					flex: 1;
 				}
 			}
 		}
 	}
 	.team-member-info {
 		text-align: left;
-		p {
-			font-size: 20px;
-		}
 	}
 	.team-member-social {
 		display: flex;
