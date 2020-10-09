@@ -154,7 +154,7 @@ get_header();
                             <a href="<?php echo get_term_link($project->term_id); ?>">
                               <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
                                 <div class="home-projects-image">
-                                  <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'medium');  ?>
+                                  <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'large');  ?>
                                 </div>
                               <?php } ?>
                               <h5><?php echo $project->name; ?></h5>
