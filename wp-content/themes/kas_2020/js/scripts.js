@@ -124,7 +124,7 @@ $(document).ready(function () {
 	var lastScrollTop = $(window).scrollTop();
 	$(window).scroll(function () {
 		var st = $(this).scrollTop();
-		if (st > lastScrollTop) {
+		if (st > lastScrollTop && st > 0) {
 			$("body").addClass("hide_menu");
 		} else {
 			$("body").removeClass("hide_menu");
