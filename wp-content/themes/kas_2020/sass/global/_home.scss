@@ -257,9 +257,9 @@
 	color: white;
 	padding: 40px 0;
 
-	.content-margins {
-		position: relative;
+	.home-legacy-feed-inside {
 		padding: 0 30px;
+		position: relative;
 	}
 
 	p {
@@ -269,6 +269,9 @@
 		margin-bottom: 30px;
 		color: white;
 		line-height: 1.1em;
+		@media (min-width: 1441px) {
+			font-size: 28px;
+		}
 	}
 
 	a {
@@ -285,6 +288,9 @@
 			letter-spacing: 0.1em;
 			text-transform: uppercase;
 			margin-bottom: 25px;
+			@media (min-width: 1441px) {
+				font-size: 32px;
+			}
 		}
 		&:hover {
 			color: $skyBlue;
@@ -323,6 +329,7 @@
 			border: 0px;
 			padding: 0px;
 			outline: none;
+			height: 100%;
 		}
 		img {
 			height: 60px;
@@ -338,18 +345,18 @@
 			}
 		}
 		&.legacy-arrow-left {
-			right: calc(100% - 10px);
+			right: calc(100% - 32px);
 			@include mobile {
-				right: calc(100% - 20px);
+				right: calc(100% - 30px);
 			}
 			img {
 				transform: rotate(180deg);
 			}
 		}
 		&.legacy-arrow-right {
-			left: calc(100% - 10px);
+			left: calc(100% - 32px);
 			@include mobile {
-				left: calc(100% - 20px);
+				left: calc(100% - 30px);
 			}
 		}
 	}

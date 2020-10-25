@@ -2004,9 +2004,9 @@ h1.section-title {
   background-color: #414a57;
   color: white;
   padding: 40px 0; }
-  .home-legacy-feed .content-margins {
-    position: relative;
-    padding: 0 30px; }
+  .home-legacy-feed .home-legacy-feed-inside {
+    padding: 0 30px;
+    position: relative; }
   .home-legacy-feed p {
     font-weight: 200;
     font-size: 23px;
@@ -2014,6 +2014,9 @@ h1.section-title {
     margin-bottom: 30px;
     color: white;
     line-height: 1.1em; }
+    @media (min-width: 1441px) {
+      .home-legacy-feed p {
+        font-size: 28px; } }
   .home-legacy-feed a {
     margin: 0 20px;
     color: white;
@@ -2027,6 +2030,9 @@ h1.section-title {
       letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 25px; }
+      @media (min-width: 1441px) {
+        .home-legacy-feed a h4 {
+          font-size: 32px; } }
     .home-legacy-feed a:hover {
       color: #6cb5ce; }
   .home-legacy-feed .home-podcast-image {
@@ -2057,7 +2063,8 @@ h1.section-title {
       background-color: transparent;
       border: 0px;
       padding: 0px;
-      outline: none; }
+      outline: none;
+      height: 100%; }
     .home-legacy-feed .legacy-arrow img {
       height: 60px;
       margin-top: -50px; }
@@ -2068,17 +2075,17 @@ h1.section-title {
       opacity: 0;
       pointer-events: none; }
     .home-legacy-feed .legacy-arrow.legacy-arrow-left {
-      right: calc(100% - 10px); }
+      right: calc(100% - 32px); }
       @media (max-width: 767px) {
         .home-legacy-feed .legacy-arrow.legacy-arrow-left {
-          right: calc(100% - 20px); } }
+          right: calc(100% - 30px); } }
       .home-legacy-feed .legacy-arrow.legacy-arrow-left img {
         transform: rotate(180deg); }
     .home-legacy-feed .legacy-arrow.legacy-arrow-right {
-      left: calc(100% - 10px); }
+      left: calc(100% - 32px); }
       @media (max-width: 767px) {
         .home-legacy-feed .legacy-arrow.legacy-arrow-right {
-          left: calc(100% - 20px); } }
+          left: calc(100% - 30px); } }
 
 section.home-mission {
   text-transform: uppercase;
@@ -3564,6 +3571,9 @@ section.newsletter-container {
 
 .video-play-wrapper {
   position: relative; }
+  @media (max-height: 800px) and (min-width: 768px) {
+    .video-play-wrapper iframe {
+      height: 70vh; } }
   .video-play-wrapper a {
     outline: none;
     display: block;

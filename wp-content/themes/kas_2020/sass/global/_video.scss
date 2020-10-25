@@ -190,6 +190,11 @@
 
 .video-play-wrapper {
 	position: relative;
+	iframe {
+		@media (max-height: 800px) and (min-width: 768px) {
+			height: 70vh;
+		}
+	}
 	a {
 		outline: none;
 		display: block;
