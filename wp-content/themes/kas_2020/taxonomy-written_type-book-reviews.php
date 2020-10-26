@@ -30,7 +30,7 @@ get_header();
 
 					<section class="latest-articles">
 						
-						<h3 class="center section-title">Latest from <?php echo $obj->name; ?></h3>
+						<h3 class="center section-title">Latest from <br> <?php echo $obj->name; ?></h3>
 
 					</section>
 				<?php

@@ -89,7 +89,7 @@ get_header();
 									 ?>
 								</div>
 							<div class="center">
-								<button id='see-more' class='filled' type='podcast' offset='6' term="<?php echo $term->slug; ?>">More</button>
+								<button id='see-more' class='filled' type='video' offset='6' term="<?php echo $term->slug; ?>">More</button>
 							</div>
 
 						</div>

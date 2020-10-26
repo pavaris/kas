@@ -14,7 +14,7 @@ $hosts = get_field('hosts', $term);
 					<header class="podcast-header">
 						<div class="flex">
 							<div class="podcast-description" style="<?php echo $style; ?>">
-								<?php the_archive_title( '<h1 class="archive-title">', '</h1>' ); ?>
+								<!-- <?php the_archive_title( '<h1 class="archive-title">', '</h1>' ); ?> -->
 								<?php the_archive_description(); ?>
 
 							</div>

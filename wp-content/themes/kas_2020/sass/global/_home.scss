@@ -11,7 +11,7 @@
 
 .header-slides {
 	.slick-track {
-		height: 75vh;
+		height: 80vh;
 	}
 	.slick-dots {
 		position: absolute;
@@ -110,7 +110,7 @@
 }
 
 .header-slide-container {
-	height: 75vh;
+	height: 80vh;
 }
 
 .header-slide {
@@ -296,6 +296,10 @@
 			color: $skyBlue;
 		}
 	}
+	p:last-child,
+	h4:last-child {
+		margin-bottom: 0;
+	}
 	.home-podcast-image {
 		height: 0;
 		width: 100%;
@@ -311,8 +315,12 @@
 			object-fit: cover;
 		}
 	}
-	.home-legacy-feed-inner {
+	.home-legacy-feed-inner,
+	.content-margins {
 		position: relative;
+	}
+	.content-margins {
+		padding: 0 30px;
 	}
 	.legacy-arrow {
 		padding: 0px;
@@ -345,18 +353,22 @@
 			}
 		}
 		&.legacy-arrow-left {
-			right: calc(100% - 32px);
+			// right: calc(100% - 32px);
+			right: calc(100% - 5px);
 			@include mobile {
-				right: calc(100% - 30px);
+				// right: calc(100% - 30px);
+				right: calc(100% - 20px);
 			}
 			img {
 				transform: rotate(180deg);
 			}
 		}
 		&.legacy-arrow-right {
-			left: calc(100% - 32px);
+			// left: calc(100% - 32px);
+			left: calc(100% - 5px);
 			@include mobile {
-				left: calc(100% - 30px);
+				// left: calc(100% - 30px);
+				left: calc(100% - 20px);
 			}
 		}
 	}

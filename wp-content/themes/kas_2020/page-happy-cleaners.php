@@ -30,7 +30,7 @@
 	
 					<?php foreach($children->posts as $key=>$page){ ?>
 					
-						<a href="<?php echo get_the_permalink($page->ID); ?>" class="<?php  echo get_the_ID() == $page->ID ? 'active' : ''; ?>"><?php echo $page->post_title; ?></a>					
+						<a href="<?php echo get_the_permalink($page->ID); ?>#subpage-nav" class="<?php  echo get_the_ID() == $page->ID ? 'active' : ''; ?>"><?php echo $page->post_title; ?></a>					
 						
 					<?php } ?>
 				</div>

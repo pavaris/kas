@@ -91,8 +91,9 @@ get_header();
                               </div>
                             </a>
                         
-                            <div class="home-legacy-feed">
-                              <div class="home-legacy-feed-inside">
+                            <div class="home-legacy-feed ">
+                              <!-- <div class="home-legacy-feed-inside"> -->
+                              <div class="content-margins wide">
                                 <div class="legacy-arrow legacy-arrow-left">
                                   <button>
                                     <img src="<?php echo get_template_directory_uri(  ); ?>/img/chevron.svg" alt="arrow">
