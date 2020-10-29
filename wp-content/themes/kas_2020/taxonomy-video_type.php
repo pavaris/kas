@@ -47,7 +47,7 @@ get_header();
 			<div class="content-margins">
 				<h5>NYA Latest Published Video</h5>
 <div class="video-single-embed video-play-wrapper">
-									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $firstPost->ID); ?>" frameborder="0"  class="superembed-force"></iframe>
+									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $firstPost->ID); ?>" data-src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">
 										<?php $image = get_field('poster_image', $firstPost->ID); ?>
 										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>

@@ -21,7 +21,7 @@
 						
 							<section class="video-playlist-container">
 								<div class="video-single-embed video-play-wrapper">
-									<iframe src="https://www.youtube.com/embed/<?php echo $videos[0]['youtube_video_id']; ?>" frameborder="0"  class="superembed-force"></iframe>
+									<iframe src="https://www.youtube.com/embed/<?php echo $videos[0]['youtube_video_id']; ?>" data-src="https://www.youtube.com/embed/<?php echo $videos[0]['youtube_video_id']; ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">
 										<img src="<?php echo wp_get_attachment_image_src($videos[0]['poster_image']['ID'], 'large')[0] ?>" alt="video poster">
 									</a>
