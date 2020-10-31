@@ -14,7 +14,7 @@ function postBlock($id){
         <?php echo get_the_post_thumbnail($id); ?>
       </div>
       <h4><?php echo get_the_title($id); ?></h4>
-      <div class="post-block-desc">
+      <div class="short-desc">
         <?php echo get_field('short_description', $id); ?>
       </div>
     </a>

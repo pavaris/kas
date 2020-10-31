@@ -157,7 +157,9 @@ if($author) {
 												<h5>
 													<?php echo get_the_title($post->ID); ?>
 												</h5>
-																						<?php echo get_field('short_description'); ?>
+												<div class="short-desc">
+													<?php echo get_field('short_description'); ?>
+												</div>
 
 											</div>
 										</a>

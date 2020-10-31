@@ -41,7 +41,9 @@ get_header();
                                       <div class="content-margins flex">
                                         <div class="header-slide-inner">
                                           <h3><?php echo get_the_title($slide['post'][0]->ID); ?></h3>
-                                          <?php echo get_field('short_description', $slide['post'][0]->ID); ?>
+
+                                            <?php echo get_field('short_description', $slide['post'][0]->ID); ?>
+
                                         </div>
                                       </div>
                                     </div>
@@ -83,7 +85,9 @@ get_header();
                                       <div class="content-margins wide flex">
                                         <div class="header-slide-inner">
                                           <h3>Legacy Project</h3>
-                                          <p><?php echo get_field('short_description', $legacy); ?></p>
+
+                                            <?php echo get_field('short_description', $legacy); ?>
+
                                         </div>
                                       </div>
                                     </div>
@@ -108,7 +112,9 @@ get_header();
                                       <h4>
                                         <?php echo $legacyPost->post_title; ?>
                                       </h4>
-                                      <?php echo get_field('short_description',$legacyPost->ID) ?></p>
+                                      <div class="short-desc">
+                                        <?php echo get_field('short_description',$legacyPost->ID) ?>
+                                      </div>
                                     </a>
                                   <?php } ?>
                                 </div>

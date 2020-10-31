@@ -47,7 +47,9 @@ get_header();
 									</div>
 									<div class="lead-article-content">
 										<h3 class='section-title'><?php the_title(); ?></h3>
-										<?php echo get_field('short_description'); ?>
+										<div class="short-desc">
+											<?php echo get_field('short_description'); ?>
+										</div>
 									</div>
 								</a>
 							</section>

@@ -72,7 +72,7 @@ $exclude = [];
 							<h5><a href="<?php echo get_term_link($term); ?>"><?php echo $term->name; ?></a></h5>
 							<div class="written-feed-posts posts-feed">
 								<?php foreach($posts as $post){
-									podcast_article($post->ID);
+									postStruct($post->ID);
 								} ?>
 							</div>
 						</div>

@@ -653,6 +653,12 @@ article.footer-padding-gone {
 .wp-block-buttons .wp-block-button {
   margin-right: 45px; }
 
+.short-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden; }
+
 #masthead {
   position: absolute;
   left: 0;
@@ -2478,7 +2484,6 @@ section.newsletter-container {
         .podcast-header .podcast-description h1 {
           font-size: 30px; } }
     .podcast-header .podcast-description p {
-      max-width: 80%;
       color: inherit; }
     .podcast-header .podcast-description p:last-child {
       margin-bottom: 0px; }

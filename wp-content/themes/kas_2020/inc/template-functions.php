@@ -393,7 +393,9 @@ function postStruct($ID, $type = ''){
 					<h6>
 						<?php echo get_the_title($ID); ?>
 					</h6>
-					<?php echo get_field('short_description', $ID); ?>
+					<div class="short-desc">
+						<?php echo get_field('short_description', $ID); ?>
+					</div>
 
 				</div>
 			</a>
@@ -419,8 +421,9 @@ function legStruct($ID, $type = ''){
 					<h6>
 						<?php echo get_the_title($ID); ?>
 					</h6>
-					<?php echo get_field('short_description', $ID); ?>
-
+					<div class="short-desc">
+						<?php echo get_field('short_description', $ID); ?>
+					</div>
 				</div>
 			</a>
 	<?php 
