@@ -22,7 +22,9 @@
 										<?php echo wp_get_attachment_image($explorePost['image']['id'], 'large'); ?>
 									</div>
 									<h5><?php echo $explorePost['title']; ?></h5>
-									<p><?php echo $explorePost['description']; ?></p>
+									<div class="short-desc">
+										<p><?php echo $explorePost['description']; ?></p>
+									</div>
 								</a>
 								<?php 
 							}

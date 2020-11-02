@@ -23,45 +23,18 @@ get_header();
 						</div>
 					</header><!-- .page-header -->
 					<div class="content-margins narrow">
-
-					<section class="taxonomy-description">
+<?php if(get_the_archive_description()
+){ ?> 
+			<section class="taxonomy-description">
 						<?php the_archive_description( '<div class="archive-description">', '</div>' ); ?>
 
-<?php if($term->slug == 'not-your-average'){ ?> 
-	<?php $podcast = get_term_link(get_term_by('slug', 'not-your-average-podcast', 'podcast_type')); ?>
-	<?php if($podcast){ ?>
-	<div class="center">
-		<a href="<?php echo $podcast; ?>" class="button filled">Not Your Average Podcast</a>
-	</div>
-	<?php } ?>
-<?php } ?>
 
 					</section>
+<?php } ?>
+		
 									</div>
 
 
-
-<?php if($term->slug == 'not-your-average'){ ?> 
-	<?php $firstPost = $wp_query->posts[0]; ?>
-		<section class="nya-video">
-			<div class="content-margins">
-				<h5>NYA Latest Published Video</h5>
-<div class="video-single-embed video-play-wrapper">
-									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id', $firstPost->ID); ?>" data-src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
-									<a href="" id="play-video">
-										<?php $image = get_field('poster_image', $firstPost->ID); ?>
-										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
-									</a>
-								</div>
-											</div>
-
-		</section>
-
-<?php } ?>
-
-
-
-			
 
 
 

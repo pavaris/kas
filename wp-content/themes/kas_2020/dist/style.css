@@ -3806,6 +3806,9 @@ section.newsletter-container {
     .posts-feed-cont .filters {
       flex-direction: column; } }
 
+.tax-event_type #page-header {
+  margin-bottom: 0; }
+
 .page-template-page-roar .page-header-container:before {
   display: none; }
 
