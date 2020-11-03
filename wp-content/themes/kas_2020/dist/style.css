@@ -3905,9 +3905,8 @@ section.newsletter-container {
         flex-direction: column; } }
   .storytellers .storyteller {
     display: flex;
-    align-items: center;
     width: calc(50% - 20px);
-    margin-bottom: 20px; }
+    margin-bottom: 50px; }
     @media (max-width: 767px) {
       .storytellers .storyteller {
         width: 100%; } }

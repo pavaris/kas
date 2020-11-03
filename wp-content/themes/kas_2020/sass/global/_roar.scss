@@ -123,9 +123,9 @@
 	}
 	.storyteller {
 		display: flex;
-		align-items: center;
+		// align-items: flex;
 		width: calc(50% - 20px);
-		margin-bottom: 20px;
+		margin-bottom: 50px;
 		@include mobile {
 			width: 100%;
 		}
