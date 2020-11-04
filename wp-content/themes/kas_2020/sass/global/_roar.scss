@@ -78,11 +78,7 @@
 		.posts-feed {
 			justify-content: space-between;
 			a {
-				.post-feed-image {
-					padding-bottom: 100%;
-				}
 				.post-feed-info {
-					padding: 0px;
 					margin-top: 15px;
 				}
 			}
@@ -182,16 +178,6 @@
 			width: 100%;
 			height: 100%;
 			object-fit: cover;
-		}
-	}
-}
-
-.roar-single-feed {
-	.posts-feed {
-		a {
-			.post-feed-image {
-				padding-bottom: 100%;
-			}
 		}
 	}
 }

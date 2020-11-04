@@ -100,6 +100,7 @@
 		justify-content: center;
 		margin-bottom: 30px;
 		select {
+			background-color: transparent;
 			font-size: 16px;
 			flex: 1;
 			margin: 0 15px 15px;
@@ -110,5 +111,18 @@
 		@include mobile {
 			flex-direction: column;
 		}
+	}
+}
+
+.legacy-video-feed-page {
+	.legacy-page-nav-cont,
+	.posts-feed-cont {
+		background-color: $offWhite;
+	}
+	.page-header-container {
+		margin-bottom: 0px;
+	}
+	.legacy-page-nav-cont {
+		padding: 50px 0;
 	}
 }

@@ -39,7 +39,7 @@ get_header();
 
 
 					<section class="podcast-feed footer-margin-padding">
-						<div class="content-margins">
+						<div class="content-margins wide">
 							<h3 class="section-title">Previous <?php echo get_the_archive_title(); ?> Events</h3>
 	
 	
@@ -54,7 +54,7 @@ get_header();
 										 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 										 */
 	
-										 podcast_article(get_the_ID());
+										 postStruct(get_the_ID());
 	
 										 ?>
 	

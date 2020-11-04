@@ -4,7 +4,7 @@
 <?php global $post; ?>
 <?php $aboutPage = get_page_by_title('Legacy Project'); ?>
 
- 	<div id="primary" class="content-area">
+ 	<div id="primary" class="content-area <?php echo $post->post_name == 'all-videos' ? 'legacy-video-feed-page' : ''; ?>">
  		<main id="main" class="site-main">
 		 <div class="page-header-container">
 				<h2>Legacy Project</h2>
@@ -43,7 +43,7 @@
 
 <?php if($post->post_name == 'all-videos'){ ?>
 
-				<div class="posts-feed-cont">
+				<div class="posts-feed-cont footer-margin-padding">
 					<div class="filters content-margins">
 						<select name="communities" id="communities">
 							<option value="" default>COMMUNITIES</option>
@@ -78,7 +78,7 @@
 							}
 						?>
 					</div>
-					<div class="filtered-feed">
+					<div class="filtered-feed content-margins wide">
 						<div class="filtered-post-feed">
 							<?php 
 									$args = array(
@@ -103,7 +103,7 @@
 							<h4 class="center">There are no vidoes with for this combination of filters.</h4>
 						</div>
 					</div>
-					<div class="center bottom-padding" id="see-more-container">
+					<div class="center " id="see-more-container">
 						<button id='see-more' class='filled' type='video' offset='6' term="legacy-project">More</button>
 					</div>
 				</div>

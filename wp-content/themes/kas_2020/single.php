@@ -140,8 +140,8 @@ if($author) {
 						$related = new WP_Query($args);
 						if($related->have_posts()){
 						?>
-							<section class="all-articles">
-								<div class="content-margins">
+							<section class="all-articles footer-margin-padding">
+								<div class="content-margins wide">
 									<h3 class="section-title">Related</h3>
 									
 									<div class="posts-feed">
@@ -166,7 +166,7 @@ if($author) {
 										<?php } ?>
 									</div>
 								</div>
-								<div class="center">
+								<div class="center" style='margin-top: 30px'>
 								<a href="<?php echo get_category_link($terms[0]->term_id); ?>" class='button filled'>MORE</a>
 							</div>
 							</section>

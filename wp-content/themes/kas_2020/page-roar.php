@@ -91,7 +91,7 @@
 								$vids = new WP_Query($args); ?>
 			
 			<section class="all-articles">
-						<div class="content-margins ">
+						<div class="content-margins wide">
 							<h3 class='section-title'>Roar Story Slams</h3>
 							<div class=" posts-feed">
 								<?php foreach($vids->posts as $post){

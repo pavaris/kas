@@ -158,7 +158,7 @@
 								$link = get_the_permalink( $page );
 							} ?>		
 							
-								<div class="center bottom-padding">
+								<div class="center">
 									<button id='see-more' class='filled' type='video' offset='3' term="roar-story-slam">More</button>
 								</div>
 						</div>

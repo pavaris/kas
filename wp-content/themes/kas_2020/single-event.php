@@ -181,7 +181,7 @@ $args = array(
 	if($vids->have_posts()){
 ?>
 					<section class="more-podcasts-feed roar-single-feed">
-					<div class="content-margins">
+					<div class="content-margins wide">
 						<h3 class="section-title"><?php echo $terms[0]->name; ?>s</h3>
 						<div class="posts-feed">
 							<?php 
@@ -202,7 +202,7 @@ $args = array(
 								$link = get_the_permalink( $page );
 							} ?>		
 							
-								<div class="center bottom-padding">
+								<div class="center">
 									<button id='see-more' class='filled' type='event' offset='3' term="<?php echo $terms[0]->slug; ?>">More</button>
 								</div>
 						</div>

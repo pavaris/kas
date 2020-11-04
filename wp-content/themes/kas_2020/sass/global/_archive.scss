@@ -19,10 +19,13 @@
 }
 
 .all-articles {
+	margin-top: 60px;
+	background-color: $offWhite;
+	padding-top: 60px;
 	.section-title {
 		font-size: 32px;
 		font-weight: 600;
-		margin-bottom: 35px;
+		margin-bottom: 50px;
 	}
 }
 
@@ -67,6 +70,17 @@ h1.section-title {
 }
 
 .written-feeds {
+	background-color: $offWhite;
+	position: relative;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		height: 200px;
+		left: 0;
+		background-color: $skyBlue;
+		width: 100%;
+	}
 	.written-feed:first-child {
 		margin-top: -200px;
 		h5 {
@@ -81,6 +95,7 @@ h1.section-title {
 			display: inline;
 			color: $ughGray;
 			transition: ease 300ms all;
+
 			&:hover {
 				color: $skyBlue;
 			}
@@ -91,7 +106,8 @@ h1.section-title {
 			font-weight: 600;
 			letter-spacing: 0.2em;
 			margin-bottom: 40px;
-
+			position: relative;
+			z-index: 2;
 			@include mobile {
 				font-size: 35px;
 				margin-bottom: 20px;
@@ -99,6 +115,9 @@ h1.section-title {
 		}
 		.posts-feed {
 			justify-content: space-between;
+			a {
+				background-color: white;
+			}
 		}
 	}
 }

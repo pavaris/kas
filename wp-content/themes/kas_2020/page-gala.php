@@ -38,8 +38,8 @@
 			$vids = new WP_Query($args); ?>
 
 			<?php if($vids->have_posts()){ ?>
-					<section class="all-articles">
-						<div class="content-margins narrow">
+					<section class="all-articles footer-margin-padding">
+						<div class="content-margins wide">
 							<h3 class='section-title'>Previous Galas</h3>
 							<div class=" posts-feed">
 								<?php foreach($vids->posts as $post){

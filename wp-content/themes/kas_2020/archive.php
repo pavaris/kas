@@ -22,7 +22,7 @@ $exclude = [];
 				<?php the_archive_title( '<h1 class="page-title">', '</h1>' ); ?>
 			</header><!-- .page-header -->
 
-<div class="written-feeds">
+<div class="written-feeds footer-margin-padding">
 	
 				<?php 
 					$args = array(

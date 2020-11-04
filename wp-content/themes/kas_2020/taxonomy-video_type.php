@@ -65,8 +65,8 @@ get_header();
 
 
 
-					<section class="podcast-feed">
-						<div class="content-margins">
+					<section class="podcast-feed footer-margin-padding">
+						<div class="content-margins wide">
 							<h3 class="section-title"><?php echo get_the_archive_title(); ?> Videos</h3>
 	
 	

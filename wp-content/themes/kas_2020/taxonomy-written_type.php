@@ -53,8 +53,10 @@ get_header();
 									</div>
 								</a>
 							</section>
-							
-							<section class="all-articles">
+						</div>
+
+							<section class="all-articles footer-margin-padding">
+								<div class="content-margins wide">
 								<h3 class="section-title">All <?php echo $obj->name; ?></h3>
 								<div class="posts-feed">
 
@@ -68,7 +70,7 @@ get_header();
 						 */
 							?> 
 									
-									<?php postStruct($post->ID, 'Written'); ?>
+									<?php postStruct($post->ID); ?>
 
 							<?php 
 						}
@@ -78,7 +80,7 @@ get_header();
 				?>
 				</div>
 
-				<div class="center <?php echo $hosts ? '': 'bottom-padding';?>">
+				<div class="center">
 					<button id='see-more' class='filled' type='written' offset='10' term="<?php echo $obj->slug; ?>">More</button>
 				</div>
 				

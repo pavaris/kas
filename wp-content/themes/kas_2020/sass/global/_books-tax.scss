@@ -21,43 +21,15 @@
 .term-book-reviews {
 	.all-articles {
 		// background-color: $offWhite;
-		margin-top: 60px;
-		padding: 60px 0 100px;
+		// margin-top: 60px;
+		// padding: 60px 0 100px;
 		.section-title {
 			color: $ughGray;
 		}
-
-		.posts-feed {
-			justify-content: space-between;
-			a {
-				border-radius: 5px;
-				overflow: hidden;
-				background-color: white;
-				margin-bottom: 30px;
-				display: block;
-				.post-feed-info {
-					margin-top: 0px;
-					padding-top: 30px;
-					padding-bottom: 10px;
-					h6 {
-						line-height: 1.3em;
-						font-size: 24px;
-					}
-					.post-category {
-						top: -10px;
-					}
-					p {
-						font-size: 20px;
-						text-transform: initial;
-						font-weight: 200;
-					}
-				}
-			}
-		}
 	}
-	.site-footer {
-		padding-top: 0px;
-	}
+	// .site-footer {
+	// 	padding-top: 0px;
+	// }
 }
 
 .single-written {
