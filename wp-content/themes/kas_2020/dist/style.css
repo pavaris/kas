@@ -2071,6 +2071,8 @@ h1.section-title {
       @media (min-width: 1441px) {
         .home-legacy-feed a h4 {
           font-size: 32px; } }
+    .home-legacy-feed a .short-desc {
+      margin-bottom: 0px; }
     .home-legacy-feed a:hover {
       color: #6cb5ce; }
   .home-legacy-feed p:last-child,
