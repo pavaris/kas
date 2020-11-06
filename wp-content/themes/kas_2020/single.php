@@ -172,6 +172,7 @@ if($author) {
 							</section>
 							
 						<?php } ?>
+						<?php echo do_shortcode('[yarpp]'); ?>
 					<?php } ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
