@@ -81,7 +81,7 @@ get_header();
 										 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
 										 */
 	
-										 podcast_article(get_the_ID());
+										 postStruct(get_the_ID());
 	
 										 ?>
 	
