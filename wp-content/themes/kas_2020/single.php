@@ -127,53 +127,8 @@ if($author) {
 					?>
 				</article>
 			</div>
-						<?php
-					if($terms){ 
-						$args = array('post_type' => 'written', 'posts_per_page' => 3, 
-						'tax_query' => array(
-							array(
-								'taxonomy' => 'written_type',
-								'field' => 'term_id',
-								'terms' => $terms[0]->term_id,
-							)
-						)); 
-						$related = new WP_Query($args);
-						if($related->have_posts()){
-						?>
-							<section class="all-articles footer-margin-padding">
-								<div class="content-margins wide">
-									<h3 class="section-title">Related</h3>
-									
-									<div class="posts-feed">
-										<?php foreach($related->posts as $post){ ?>
-										<a href="<?php echo get_the_permalink($post->ID); ?>">
-											<div class="post-feed-image">
-												<?php echo get_the_post_thumbnail($post->ID); ?>
-											</div>
-											<div class="post-feed-info">
-													<div class="post-category">
-														<?php echo $terms[0]->slug == 'book-reviews' ? 'Review' : 'Written';?>
-													</div>
-												<h5>
-													<?php echo get_the_title($post->ID); ?>
-												</h5>
-												<div class="short-desc">
-													<?php echo get_field('short_description'); ?>
-												</div>
+												<?php echo do_shortcode('[yarpp]'); ?>
 
-											</div>
-										</a>
-										<?php } ?>
-									</div>
-								</div>
-								<div class="center" style='margin-top: 30px'>
-								<a href="<?php echo get_category_link($terms[0]->term_id); ?>" class='button filled'>MORE</a>
-							</div>
-							</section>
-							
-						<?php } ?>
-						<?php echo do_shortcode('[yarpp]'); ?>
-					<?php } ?>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

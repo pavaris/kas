@@ -272,4 +272,16 @@ $(document).ready(function () {
 	$("#guest-popup .guest-close").click(function () {
 		$("#guest-popup").fadeOut();
 	});
+
+	$(".yarpp-related-shortcode button").click(function () {
+		let articles = $(".yarpp-related-shortcode a");
+		let index = $(".yarpp-related-shortcode a:visible").length;
+		let total = $(".yarpp-related-shortcode a").length;
+		for (let x = index; x < index + 3; x++) {
+			$(articles[x]).css("display", "block");
+		}
+		if ($(".yarpp-related-shortcode a:visible").length == total) {
+			$(".yarpp-related-shortcode .center").hide();
+		}
+	});
 });

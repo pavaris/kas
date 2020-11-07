@@ -1851,6 +1851,9 @@ h1.section-title {
         margin-left: 0px;
         font-size: 20px; } }
 
+.yarpp-related-shortcode .posts-feed a:nth-child(n + 4) {
+  display: none; }
+
 .home section h3 {
   text-transform: uppercase;
   letter-spacing: 0.3em;
