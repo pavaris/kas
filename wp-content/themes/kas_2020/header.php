@@ -31,6 +31,7 @@
 				<div class="main-nav-inner">
 					<div class="site-branding">
 						<?php the_custom_logo(); ?>
+						<img src="<?php echo get_template_directory_uri( ) ?>/img/logo.jpg" alt="Korean American Story">
 					</div><!-- .site-branding -->
 					
 							<?php wp_nav_menu(['menu' => 'Header Menu']); ?>
