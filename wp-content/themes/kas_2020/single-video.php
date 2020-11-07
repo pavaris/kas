@@ -74,8 +74,10 @@ get_header();
 														<h5>
 															<?php echo get_the_title($video->ID); ?>
 														</h5>
-														<?php echo get_field('short_description', $video->ID); ?>
-													</div>
+														<div class="short-desc">
+															<?php echo get_field('short_description', $video->ID); ?>
+														</div>
+														</div>
 												</a>
 											<?php } ?>
 										</div>

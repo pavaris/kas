@@ -3507,6 +3507,8 @@ section.newsletter-container {
       top: 0;
       height: 100%;
       width: 100%; }
+    .video-playlist-container .video-playlist .short-desc {
+      margin-bottom: 0; }
     .video-playlist-container .video-playlist h4 {
       text-transform: uppercase;
       font-size: 15px;
