@@ -19,9 +19,9 @@ Description: A simple example YARPP template.
 					<?php echo get_the_post_thumbnail(); ?>
 				</div>
 				<div class="post-feed-info">
-						<div class="post-category">
-							<?php echo $terms[0]->slug == 'book-reviews' ? 'Review' : 'Written';?>
-						</div>
+						<!-- <div class="post-category">
+							<?php// echo $terms[0]->slug == 'book-reviews' ? 'Review' : 'Written';?>
+						</div> -->
 					<h5>
 						<?php echo get_the_title(); ?>
 					</h5>
