@@ -154,16 +154,9 @@
     "location": [
         [
             {
-                "param": "post_taxonomy",
+                "param": "post_type",
                 "operator": "==",
-                "value": "event_type:roar-story-slam"
-            }
-        ],
-        [
-            {
-                "param": "post_taxonomy",
-                "operator": "==",
-                "value": "event_type:gala"
+                "value": "event"
             }
         ]
     ],
@@ -175,5 +168,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1599014557
+    "modified": 1604896687
 }

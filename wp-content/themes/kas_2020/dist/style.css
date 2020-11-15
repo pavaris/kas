@@ -430,6 +430,7 @@ button {
   letter-spacing: 0.2rem;
   font-weight: 500;
   transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+  outline: none;
   cursor: pointer;
   text-decoration: none; }
   .button:hover,
@@ -534,6 +535,7 @@ button {
   letter-spacing: 0.2rem;
   font-weight: 500;
   transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+  outline: none;
   cursor: pointer;
   text-decoration: none;
   font-size: 20px;
@@ -887,6 +889,7 @@ article.footer-padding-gone {
       letter-spacing: 0.2rem;
       font-weight: 500;
       transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+      outline: none;
       cursor: pointer;
       text-decoration: none;
       text-transform: uppercase;
@@ -1281,6 +1284,7 @@ body.hide_menu #mobile-nav {
     letter-spacing: 0.2rem;
     font-weight: 500;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+    outline: none;
     cursor: pointer;
     text-decoration: none;
     text-transform: uppercase;
@@ -1316,6 +1320,7 @@ body.hide_menu #mobile-nav {
     letter-spacing: 0.2rem;
     font-weight: 500;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+    outline: none;
     cursor: pointer;
     text-decoration: none;
     color: #6cb5ce; }
@@ -1698,6 +1703,7 @@ h1.section-title {
         letter-spacing: 0.2rem;
         font-weight: 500;
         transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+        outline: none;
         cursor: pointer;
         text-decoration: none;
         background-color: #6cb5ce;
@@ -1804,14 +1810,15 @@ h1.section-title {
   display: none;
   padding-top: 100px;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  overflow: scroll; }
   #guest-popup .content-margins {
     height: 500px; }
   @media (max-width: 767px) {
     #guest-popup {
       padding-top: 70px; } }
   #guest-popup .guest-close {
-    position: absolute;
+    position: fixed;
     right: 100px;
     top: 100px;
     font-size: 50px;
@@ -1820,8 +1827,8 @@ h1.section-title {
     cursor: pointer; }
     @media (max-width: 767px) {
       #guest-popup .guest-close {
-        top: 70px;
-        right: 40px; } }
+        top: 20px;
+        right: 0; } }
   #guest-popup * {
     color: white; }
   #guest-popup .flex {
@@ -2359,6 +2366,7 @@ section.newsletter-container {
     letter-spacing: 0.2rem;
     font-weight: 500;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
+    outline: none;
     cursor: pointer;
     text-decoration: none;
     background-color: #757f87;
@@ -3712,7 +3720,7 @@ section.newsletter-container {
 
 .page-donate .page-header-container,
 .page-donate .donate-footer-image {
-  height: 75vh; }
+  height: 80vh; }
 
 .page-donate .wp-block-button .wp-block-button__link {
   padding: 8px 25px !important;

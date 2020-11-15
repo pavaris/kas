@@ -9,9 +9,9 @@ get_header();
 				<?php if ( have_posts() ) : ?>
 					<header id="page-header">
 						<div class="page-header-container">
-									<?php
-										the_archive_title( '<h1 class="archive-title">', '</h1>' );
-									?>
+						<?php if(!get_field('hide_title', $term)){ ?>
+								<?php the_archive_title( '<h1 class="archive-title">', '</h1>' );?>
+							<?php } ?>
 							<div class="page-header-image">
 													<?php
 										$image = get_field('banner_image', $term);

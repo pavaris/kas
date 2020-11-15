@@ -268,9 +268,11 @@ $(document).ready(function () {
 		$("#guest-popup .guestpop-name").html($this.find(".guest-name").html());
 		$("#guest-popup .guestpop-type").html($this.parent().attr("guestType"));
 		$("#guest-popup").fadeIn().css("display", "flex");
+		$("body").css("overflow", "hidden");
 	});
 	$("#guest-popup .guest-close").click(function () {
 		$("#guest-popup").fadeOut();
+		$("body").css("overflow", "initial");
 	});
 
 	$(".yarpp-related-shortcode button").click(function () {

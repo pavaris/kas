@@ -78,7 +78,9 @@ get_header();
                               <div class="header-slide-container">
                                 <div class="header-slide">
                                   <div class="header-slide-img">
-                                    <?php echo wp_get_attachment_image(get_field('poster_image', $legacyPosts[0]->ID)["ID"], 'large'); ?>
+                                  <?php $legacy = get_page_by_path( 'legacy-project' );
+ ?>
+                                    <?php echo get_the_post_thumbnail($legacy, 'large'); ?>
                                   </div>
                                   
                                     <div class="header-slide-info">

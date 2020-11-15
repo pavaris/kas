@@ -141,7 +141,7 @@ h1.section-title {
 	letter-spacing: 0.2rem;
 	font-weight: 500;
 	transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
-
+	outline: none;
 	cursor: pointer;
 	text-decoration: none;
 	&:hover {

@@ -29,7 +29,7 @@
 			<div class="site-info">
 				<div class="content-margins wide">
 					<div class="footer-col-left">
-						<?php echo get_custom_logo(); ?>
+						<a href="<?php home_url(); ?>" class='custom-logo-link'><img src="<?php echo get_template_directory_uri( ) ?>/img/logo.jpg" alt="Korean American Story"></a>
 						<div class="footer-social">
 							<?php include get_template_directory() . '/components/social-nav.php'; ?>
 						</div>	

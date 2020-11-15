@@ -544,14 +544,6 @@ function podcast_article($postID){
 }
 
 
-    function customize_customtaxonomy_archive_display ( $query ) {
-        if ( (($query->is_main_query()) && (is_tax('podcast_type'))) ||  ((is_tax('video_type')) && ($query->is_main_query())))
-        	$query->set( 'posts_per_page', '6' );
-    }
-
-    //  add_action( 'pre_get_posts', 'customize_customtaxonomy_archive_display' );
-
-
 
 
 function wpbeginner_numeric_posts_nav() {
@@ -783,7 +775,13 @@ add_action( 'pre_get_posts', function( $query ) {
 
 add_action('pre_get_posts', 'change_tax_num_of_posts' );
 function change_tax_num_of_posts( $wp_query ) {  
-    if( is_tax() && $wp_query->is_main_query() && is_tax('podcast_type') && ! is_admin()) {
-        $wp_query->set('posts_per_page', 6);
+	if(!is_admin()){
+		if( is_tax() && $wp_query->is_main_query()) {
+			if(is_tax('podcast_type') || is_tax('video_type') || is_tax('event_type')){
+				$wp_query->set('posts_per_page', 6);
+			}
+        
     }
+	}
+    
 }

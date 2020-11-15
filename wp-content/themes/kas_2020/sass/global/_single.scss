@@ -402,6 +402,7 @@
 	padding-top: 100px;
 	justify-content: center;
 	align-items: center;
+	overflow: scroll;
 	.content-margins {
 		height: 500px;
 	}
@@ -409,7 +410,7 @@
 		padding-top: 70px;
 	}
 	.guest-close {
-		position: absolute;
+		position: fixed;
 		right: 100px;
 		top: 100px;
 		font-size: 50px;
@@ -417,8 +418,8 @@
 		line-height: 0;
 		cursor: pointer;
 		@include mobile {
-			top: 70px;
-			right: 40px;
+			top: 20px;
+			right: 0;
 		}
 	}
 	* {
