@@ -62,7 +62,7 @@ get_header();
 									 ?>
 								</div>
 							<div class="center">
-								<button id='see-more' class='filled' type='event' offset='6' term="<?php echo $term->slug; ?>">More</button>
+								<button id='see-more' class='filled' type='event' offset='9' term="<?php echo $term->slug; ?>">More</button>
 							</div>
 
 						</div>

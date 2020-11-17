@@ -785,11 +785,19 @@ add_action( 'pre_get_posts', function( $query ) {
 add_action('pre_get_posts', 'change_tax_num_of_posts' );
 function change_tax_num_of_posts( $wp_query ) {  
 	if(!is_admin()){
+		if(is_archive()){
+				$wp_query->set('posts_per_page', 9);
+		}
 		if( is_tax() && $wp_query->is_main_query()) {
-			if(is_tax('podcast_type') || is_tax('event_type' || is_tax('video_type'))){
+			if(is_tax('podcast_type') || is_tax('event_type') || is_tax('video_type') ){
 				$wp_query->set('posts_per_page', 9);
 			} 
-    }
+			if(is_tax('written_type')  ){
+				$wp_query->set('posts_per_page', 10);
+			} 
+
+		}
+		
 	}    
 }
 add_theme_support( 'responsive-embeds' );
