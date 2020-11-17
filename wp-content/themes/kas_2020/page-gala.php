@@ -27,7 +27,7 @@
 <?php 
 	$args = array(
 			'post_type' => 'event',
-			'posts_per_page' => 6,
+			'posts_per_page' => 9,
 			'tax_query' => array(
 				array(
 						'taxonomy' => 'event_type',
