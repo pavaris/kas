@@ -637,6 +637,11 @@ add_action( 'rest_api_init', function () {
     'callback' => 'my_awesome_func',
 	) );
 	
+	register_rest_route( 'kas_posts', '/(?P<post_type>[a-zA-Z0-9-]+)/(?P<tax>[a-zA-Z0-9-]+)/(?P<offset>\d+)/(?P<number>\d+)', array(
+    'methods' => 'GET',
+    'callback' => 'my_awesome_func',
+	) );
+	
 
 	register_rest_route( 'search', '/(?P<query>(.+|%20)+)(?:/(?P<post_type>[a-zA-Z0-9-]+))?', array(
 		'methods' => 'GET',
@@ -647,8 +652,9 @@ add_action( 'rest_api_init', function () {
 
 
 function my_awesome_func( $data ) {
+	$num = isset($data['number']) ? $data['number'] : 6;
   $args = array(
-		'posts_per_page' => 6,
+		'posts_per_page' => $num,
 		'offset' => $data['offset'],
 		'post_type' => $data['post_type'],
 		'tax_query' => array(

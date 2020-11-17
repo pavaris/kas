@@ -150,12 +150,18 @@ $(document).ready(function () {
 		const $this = $(this);
 		const scrollTop = $(window).scrollTop();
 		const offset = parseInt($this.attr("offset"));
+		const show = $this.attr("show") ? $this.attr("show") : "";
 
-		fetch(`${siteURL}/wp-json/kas_posts/${$this.attr("type")}/${$this.attr("term")}/${offset}`).then(response => response.json()).then(data => {
+		const url = `${siteURL}/wp-json/kas_posts/${$this.attr("type")}/${$this.attr("term")}/${offset}/${show}`;
+
+		fetch(url).then(response => response.json()).then(data => {
 			if (data.length) {
 				$(".posts-feed").append(data);
 				$("html, body").scrollTop(scrollTop);
 				$this.attr("offset", offset + 6);
+				if (show !== "" && offset === 9) {
+					$this.hide();
+				}
 			} else {
 				$this.hide();
 			}

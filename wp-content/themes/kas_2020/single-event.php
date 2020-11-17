@@ -203,7 +203,7 @@ $args = array(
 							} ?>		
 							
 								<div class="center">
-									<button id='see-more' class='filled' type='event' offset='3' term="<?php echo $terms[0]->slug; ?>">More</button>
+									<button id='see-more' class='filled' type='event' offset='3' term="<?php echo $terms[0]->slug; ?>" show='3'>More</button>
 								</div>
 						</div>
 					</div>

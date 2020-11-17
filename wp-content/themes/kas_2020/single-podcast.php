@@ -185,7 +185,8 @@ get_header();
 					
 						</div>
 						<div class="button-cnt">
-							<a href="<?php echo get_term_link($terms[0], 'podcast_type'); ?>" class="button filled wide">More</a>
+							
+									<button id='see-more' class='filled' type='podcast' term="<?php echo $terms[0]->slug; ?>" offset="3" show='3'>More</button>
 						</div>
 					</div>
 				</section>

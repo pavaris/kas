@@ -144,7 +144,7 @@ get_header();
 								$page = get_page_by_path( 'legacy-project/all-videos' );
 								$link = get_the_permalink( $page );
 							} ?>		
-							<a href="<?php echo $link; ?>" class="button filled wide">More</a>
+							<button id='see-more' class='filled' type='video' term="<?php echo $terms[0]->slug; ?>" offset="3" show='3'>More</button>
 						</div>
 					</div>
 				</section>
