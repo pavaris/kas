@@ -52,11 +52,6 @@
                 "param": "post_type",
                 "operator": "==",
                 "value": "video"
-            },
-            {
-                "param": "post_taxonomy",
-                "operator": "!=",
-                "value": "video_type:roar-story-slam"
             }
         ]
     ],
@@ -68,5 +63,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1597349169
+    "modified": 1605588399
 }
