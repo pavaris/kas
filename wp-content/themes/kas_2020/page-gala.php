@@ -48,7 +48,7 @@
 							</div>
 						</div>
 							<div class="center">
-					<button id='see-more' class='filled' type='event' term="gala">More</button>
+					<button id='see-more' class='filled' type='event' term="gala" offset="6">More</button>
 				</div>
 					</section>
 			<?php } ?>

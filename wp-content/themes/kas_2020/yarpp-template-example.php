@@ -8,7 +8,7 @@ Description: A simple example YARPP template.
 
 
 
-<section class="all-articles footer-margin-padding">
+<section class="all-articles footer-margin-padding related-posts">
 	<div class="content-margins wide">
 		<h3 class="section-title">Related</h3>
 		

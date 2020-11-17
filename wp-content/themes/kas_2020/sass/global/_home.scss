@@ -618,6 +618,7 @@ section.newsletter-container {
 		font-weight: 200;
 	}
 	label {
+		position: relative;
 		span.form-label {
 			font-size: 0px;
 			line-height: 0px;
@@ -647,6 +648,11 @@ section.newsletter-container {
 			letter-spacing: 0.1em;
 			font-weight: 700;
 		}
+	}
+
+	.ajax-loader {
+		display: block;
+		margin: 10px auto 0;
 	}
 	.wpcf7-submit {
 		@include button;

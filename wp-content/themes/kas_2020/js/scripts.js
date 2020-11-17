@@ -108,7 +108,6 @@ $(document).ready(function () {
 		$(".blocks-gallery-item").click(function (e) {
 			e.preventDefault();
 			let href = $(this).find("img").attr("src");
-			console.log(href);
 			$(".gallery-block-lightbox").fadeIn();
 			$(".gallery-block-lightbox-inner").html("<img src='" + href + "' />");
 		});
@@ -124,7 +123,11 @@ $(document).ready(function () {
 	var lastScrollTop = $(window).scrollTop();
 	$(window).scroll(function () {
 		var st = $(this).scrollTop();
-		if (st > lastScrollTop && st > 0) {
+		var height = 70;
+		if ($(window).width() <= 1200) {
+			height = 50;
+		}
+		if (st > lastScrollTop && st > height) {
 			$("body").addClass("hide_menu");
 		} else {
 			$("body").removeClass("hide_menu");
@@ -273,6 +276,9 @@ $(document).ready(function () {
 	$("#guest-popup .guest-close").click(function () {
 		$("#guest-popup").fadeOut();
 		$("body").css("overflow", "initial");
+		setTimeout(function () {
+			$("#guest-popup").scrollTop(0);
+		}, 400);
 	});
 
 	$(".yarpp-related-shortcode button").click(function () {

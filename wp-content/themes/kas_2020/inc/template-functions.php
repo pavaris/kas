@@ -675,7 +675,7 @@ function my_awesome_func( $data ) {
 			ob_start();
 			
 			foreach($posts->posts as $post){
-				postStruct($post->ID, "Review");
+				postStruct($post->ID);
 			}
 			return ob_get_clean();
 		}
@@ -683,7 +683,7 @@ function my_awesome_func( $data ) {
 		ob_start();
 			
 		foreach($posts->posts as $post){
-			postStruct($post->ID, "Written");
+			postStruct($post->ID);
 		}
 		return ob_get_clean();
 
@@ -767,8 +767,11 @@ function my_acf_init_block_types() {
 
 add_action( 'pre_get_posts', function( $query ) {
 
-  if ( ! is_admin() && $query->is_main_query() && $query->is_search() ) {
-    $query->set( 'posts_per_page', -1 );
+  if ( ! is_admin() && $query->is_main_query()) {
+		if( $query->is_search() || is_tag()){
+			$query->set( 'posts_per_page', -1 );
+		}
+    
   }
 
 });
@@ -782,6 +785,6 @@ function change_tax_num_of_posts( $wp_query ) {
 			}
         
     }
-	}
-    
+	}    
 }
+add_theme_support( 'responsive-embeds' );

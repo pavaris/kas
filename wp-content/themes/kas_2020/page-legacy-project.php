@@ -78,10 +78,11 @@
 							}
 						?>
 					</div>
+					<?php wp_reset_query(); ?>
 					<div class="filtered-feed content-margins wide">
 						<div class="filtered-post-feed">
 							<?php 
-									$args = array(
+									$args2 = array(
 									'post_type' => 'video',
 									'posts_per_page' => -1,
 									'tax_query' => array(
@@ -91,9 +92,9 @@
 												'terms'    => 'legacy-project',
 										)
 									)); 
-									$allVids = new WP_Query($args);
-								if($vids->have_posts()){
-									foreach($vids->posts as $post){
+									$allVids = new WP_Query($args2);
+								if($allVids->have_posts()){
+									foreach($allVids->posts as $post){
 										legStruct($post->ID, 'Legacy Project');
 									} 
 								}

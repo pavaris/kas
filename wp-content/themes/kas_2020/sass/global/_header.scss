@@ -28,6 +28,8 @@
 		position: relative;
 		width: 175px;
 		img {
+			image-rendering: -webkit-optimize-contrast;
+			image-rendering: crisp-edges;
 			top: 0px;
 			width: 100%;
 			height: auto;

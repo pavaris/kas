@@ -320,39 +320,33 @@ template {
   display: none; }
 
 body {
-  font-family: "mr-eaves-modern"; }
+  font-family: "mr-eaves-modern", "source-han-serif-korean"; }
 
 h1 {
   margin-bottom: 35px;
-  font-size: 65px;
-  font-family: "mr-eaves-modern"; }
+  font-size: 65px; }
 
 h2 {
   margin-bottom: 25px;
-  font-size: 40px;
-  font-family: "mr-eaves-modern"; }
+  font-size: 40px; }
 
 h3 {
   margin-bottom: 15px;
-  font-size: 35px;
-  font-family: "mr-eaves-modern"; }
+  font-size: 35px; }
 
 h4 {
   margin-bottom: 15px;
   font-size: 29px;
   font-weight: 600;
-  line-height: 1.2em;
-  font-family: "mr-eaves-modern"; }
+  line-height: 1.2em; }
 
 h5 {
   margin-bottom: 15px;
-  font-size: 20px;
-  font-family: "mr-eaves-modern"; }
+  font-size: 20px; }
 
 h6 {
   margin-bottom: 15px;
-  font-size: 15px;
-  font-family: "mr-eaves-modern"; }
+  font-size: 15px; }
 
 p {
   margin-bottom: 20px;
@@ -693,6 +687,8 @@ article.footer-padding-gone {
     position: relative;
     width: 175px; }
     .site-header .site-branding img {
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
       top: 0px;
       width: 100%;
       height: auto;
@@ -985,7 +981,7 @@ article.footer-padding-gone {
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu li {
       margin-bottom: 10px; }
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu a {
-      font-family: "mr-eaves-modern";
+      font-family: "mr-eaves-modern", "source-han-serif-korean";
       font-size: 14px; }
   #mobile-nav .button {
     display: inline-block;
@@ -1469,6 +1465,11 @@ h1.section-title {
       .written-feeds .written-feed .posts-feed a {
         background-color: white; }
 
+.related-posts .button {
+  padding: 15px 45px;
+  border-radius: 40px;
+  font-size: 20px; }
+
 .single .site-header:before {
   transform: translateY(0%);
   opacity: 1;
@@ -1802,18 +1803,19 @@ h1.section-title {
 
 #guest-popup {
   position: fixed;
-  background-color: rgba(25, 33, 46, 0.9);
+  background-color: rgba(25, 33, 46, 0.97);
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
   display: none;
   padding-top: 100px;
-  justify-content: center;
-  align-items: center;
   overflow: scroll; }
   #guest-popup .content-margins {
-    height: 500px; }
+    padding: 100px 20px 20px; }
+    @media (max-width: 767px) {
+      #guest-popup .content-margins {
+        padding: 100px 40px 40px; } }
   @media (max-width: 767px) {
     #guest-popup {
       padding-top: 70px; } }
@@ -1825,10 +1827,14 @@ h1.section-title {
     padding: 20px;
     line-height: 0;
     cursor: pointer; }
+    @media (max-width: 1200px) {
+      #guest-popup .guest-close {
+        top: 150px;
+        right: 50px; } }
     @media (max-width: 767px) {
       #guest-popup .guest-close {
-        top: 20px;
-        right: 0; } }
+        top: 150px;
+        right: 20px; } }
   #guest-popup * {
     color: white; }
   #guest-popup .flex {
@@ -1857,9 +1863,14 @@ h1.section-title {
       #guest-popup .guestpop-type {
         margin-left: 0px;
         font-size: 20px; } }
+  #guest-popup .guest-description {
+    margin-bottom: 100px; }
 
 .yarpp-related-shortcode .posts-feed a:nth-child(n + 4) {
   display: none; }
+
+.wp-block-embed__wrapper {
+  text-align: center; }
 
 .home section h3 {
   text-transform: uppercase;
@@ -1990,14 +2001,14 @@ h1.section-title {
     .header-slide .header-slide-info p {
       font-size: 24px;
       font-weight: 200;
-      font-family: "mr-eaves-modern";
+      font-family: "mr-eaves-modern", "source-han-serif-korean";
       letter-spacing: 0.04em;
       line-height: 1.2em;
       color: white;
       max-width: 65%; }
     .header-slide .header-slide-info h3 {
       text-transform: uppercase;
-      font-family: "mr-eaves-modern";
+      font-family: "mr-eaves-modern", "source-han-serif-korean";
       font-weight: 600;
       font-size: 60px;
       color: white;
@@ -2240,7 +2251,7 @@ section.home-projects {
   padding: 60px 0 100px; }
   section.home-projects h3 {
     text-align: center;
-    font-family: "mr-eaves-modern";
+    font-family: "mr-eaves-modern", "source-han-serif-korean";
     font-size: 50px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -2326,7 +2337,7 @@ section.newsletter-container {
   margin-bottom: -120px;
   padding-bottom: 120px !important; }
   section.newsletter-container h3 {
-    font-family: "mr-eaves-modern";
+    font-family: "mr-eaves-modern", "source-han-serif-korean";
     font-size: 40px;
     letter-spacing: 0.2em;
     font-weight: 700;
@@ -2334,29 +2345,34 @@ section.newsletter-container {
   section.newsletter-container p {
     margin-bottom: 0px;
     font-weight: 200; }
-  section.newsletter-container label span.form-label {
-    font-size: 0px;
-    line-height: 0px; }
-  section.newsletter-container label br {
-    display: none; }
-  section.newsletter-container label .wpcf7-form-control-wrap {
-    display: block; }
-    section.newsletter-container label .wpcf7-form-control-wrap input {
-      max-width: 100%;
-      padding: 15px 35px;
-      font-size: 20px;
-      text-align: center;
-      border-radius: 22px;
-      border: 1px solid #414a57;
-      background-color: transparent;
-      outline: none;
-      margin-bottom: 25px;
-      width: 400px; }
-  section.newsletter-container label ::placeholder {
-    text-transform: uppercase;
-    color: #757f87;
-    letter-spacing: 0.1em;
-    font-weight: 700; }
+  section.newsletter-container label {
+    position: relative; }
+    section.newsletter-container label span.form-label {
+      font-size: 0px;
+      line-height: 0px; }
+    section.newsletter-container label br {
+      display: none; }
+    section.newsletter-container label .wpcf7-form-control-wrap {
+      display: block; }
+      section.newsletter-container label .wpcf7-form-control-wrap input {
+        max-width: 100%;
+        padding: 15px 35px;
+        font-size: 20px;
+        text-align: center;
+        border-radius: 22px;
+        border: 1px solid #414a57;
+        background-color: transparent;
+        outline: none;
+        margin-bottom: 25px;
+        width: 400px; }
+    section.newsletter-container label ::placeholder {
+      text-transform: uppercase;
+      color: #757f87;
+      letter-spacing: 0.1em;
+      font-weight: 700; }
+  section.newsletter-container .ajax-loader {
+    display: block;
+    margin: 10px auto 0; }
   section.newsletter-container .wpcf7-submit {
     border: 1px solid #6cb5ce;
     border-radius: 25px;
@@ -2756,7 +2772,7 @@ section.newsletter-container {
   .page-header-container h1 {
     position: relative;
     z-index: 2;
-    font-family: "mr-eaves-modern"; }
+    font-family: "mr-eaves-modern", "source-han-serif-korean"; }
   .page-header-container h2 {
     position: relative;
     z-index: 2;
@@ -3731,7 +3747,7 @@ section.newsletter-container {
   padding-top: 0px;
   margin-bottom: 50px; }
   .page-template-page-legacy-project .page-header-container h2 {
-    font-family: "mr-eaves-modern";
+    font-family: "mr-eaves-modern", "source-han-serif-korean";
     font-size: 60px;
     margin: 0px; }
     @media (max-width: 767px) {
@@ -3812,7 +3828,7 @@ section.newsletter-container {
     margin: 0 15px 15px;
     padding: 5px;
     text-transform: uppercase;
-    font-family: "mr-eaves-modern"; }
+    font-family: "mr-eaves-modern", "source-han-serif-korean"; }
   @media (max-width: 767px) {
     .posts-feed-cont .filters {
       flex-direction: column; } }
