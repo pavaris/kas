@@ -59,7 +59,7 @@
 						<?php 
 							$args = array(
 								'post_type' => 'video',
-								'posts_per_page' => 6,
+								'posts_per_page' => 9,
 								'tax_query' => array(
 									array(
 											'taxonomy' => 'video_type',
@@ -105,7 +105,7 @@
 						</div>
 					</div>
 					<div class="center " id="see-more-container">
-						<button id='see-more' class='filled' type='video' offset='6' term="legacy-project">More</button>
+						<button id='see-more' class='filled' type='video' offset='9' term="legacy-project">More</button>
 					</div>
 				</div>
 
