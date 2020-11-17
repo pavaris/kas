@@ -1864,7 +1864,7 @@ h1.section-title {
         margin-left: 0px;
         font-size: 20px; } }
   #guest-popup .guest-description {
-    margin-bottom: 100px; }
+    padding-bottom: 100px; }
 
 .yarpp-related-shortcode .posts-feed a:nth-child(n + 4) {
   display: none; }
