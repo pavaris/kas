@@ -663,6 +663,8 @@ article.footer-padding-gone {
   margin-bottom: 20px; }
   .short-desc p:last-child {
     margin-bottom: 0; }
+  .short-desc p:nth-child(n + 2) {
+    display: none; }
 
 #masthead {
   position: absolute;

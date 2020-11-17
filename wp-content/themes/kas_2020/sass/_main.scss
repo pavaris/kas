@@ -423,4 +423,7 @@ article.footer-padding-gone {
 	p:last-child {
 		margin-bottom: 0;
 	}
+	p:nth-child(n + 2) {
+		display: none;
+	}
 }
