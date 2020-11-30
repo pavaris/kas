@@ -45,7 +45,9 @@ get_header();
 												<h5>
 													<?php the_title(); ?>
 												</h5>
-												<?php echo get_field('short_description'); ?>
+												<div class="short-desc">
+													<?php echo get_field('short_description'); ?>
+												</div>
 											</div>
 										</a>
 										<?php 

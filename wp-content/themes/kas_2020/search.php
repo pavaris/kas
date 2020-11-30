@@ -97,7 +97,9 @@ global $wp_query;
 											<h5>
 												<?php the_title(); ?>
 											</h5>
-											<?php echo get_field('short_description'); ?>
+											<div class="short-desc">
+												<?php echo get_field('short_description'); ?>
+											</div>
 										</div>
 									</a>
 									<?php 
@@ -172,8 +174,8 @@ global $wp_query;
 							<img src="${e.image}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" />
 							</div>
 							<div class="search-result-desc">
-							<h5>${e.title}</h5>
-							${e.desc !== null ? e.desc : ''}
+							<h5>${e.title}</h5><div class="short-desc">
+							${e.desc !== null ? e.desc : ''}</div>
 							</div>
 							</a>
 							`;
@@ -188,8 +190,8 @@ global $wp_query;
 							<img src="${e.image}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" />
 							</div>
 							<div class="search-result-desc">
-							<h5>${e.title}</h5>
-							${e.desc !== null ? e.desc : ''}
+							<h5>${e.title}</h5><div class="short-desc">
+							${e.desc !== null ? e.desc : ''}</div>
 							</div>
 							</a>
 							`;

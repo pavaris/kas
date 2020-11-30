@@ -1657,8 +1657,14 @@ h1.section-title {
     @media (max-width: 767px) {
       .single-social-share .single-socials {
         margin-bottom: 40px; } }
+    @media (max-width: 450px) {
+      .single-social-share .single-socials {
+        justify-content: center; } }
   .single-social-share a {
     margin-right: 40px; }
+    @media (max-width: 450px) {
+      .single-social-share a {
+        margin: 0 20px; } }
     .single-social-share a svg {
       height: 35px;
       width: 35px; }
@@ -1673,6 +1679,9 @@ h1.section-title {
     font-size: 22px;
     letter-spacing: 0.1rem;
     margin-bottom: 30px; }
+    @media (max-width: 450px) {
+      .single-social-share h4 {
+        text-align: center; } }
   .single-social-share .single-share-container {
     margin-right: 20px;
     display: flex;
@@ -1686,9 +1695,18 @@ h1.section-title {
         display: flex;
         width: 100%;
         margin-bottom: 0px; }
+        @media (max-width: 450px) {
+          .single-social-share .single-signup-container form p {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; } }
       .single-social-share .single-signup-container form label {
         flex: 1;
         margin-right: 30px; }
+        @media (max-width: 450px) {
+          .single-social-share .single-signup-container form label {
+            margin-right: 0;
+            margin-bottom: 20px; } }
       .single-social-share .single-signup-container form input[type="email"] {
         width: 100%;
         border-radius: 22px;
@@ -1697,6 +1715,9 @@ h1.section-title {
         font-size: 16px;
         letter-spacing: 0.05rem;
         height: 40px; }
+        @media (max-width: 450px) {
+          .single-social-share .single-signup-container form input[type="email"] {
+            text-align: center; } }
       .single-social-share .single-signup-container form input[type="submit"] {
         border: 1px solid #6cb5ce;
         border-radius: 25px;
@@ -1730,6 +1751,9 @@ h1.section-title {
         @media (max-width: 1056px) {
           .single-social-share .single-signup-container form input[type="submit"] {
             padding: 12px 25px; } }
+        @media (max-width: 450px) {
+          .single-social-share .single-signup-container form input[type="submit"] {
+            margin-bottom: 5px; } }
       .single-social-share .single-signup-container form ::placeholder {
         text-transform: uppercase;
         font-weight: 400; }

@@ -17,7 +17,7 @@ get_header();
 										$image = get_field('banner_image', $term);
 										?>
 									
-										<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
+										<?php echo wp_get_attachment_image($image['ID'], 'full'); ?>
 	
 							</div>
 						</div>
@@ -107,7 +107,9 @@ get_header();
 											?>
 											<div class="team-member">
 												<div class="team-member-images">
-													<img src="<?php echo $host['image']['sizes']['medium']; ?>" alt="<?php echo $host['image']['alt']; ?>">
+													
+															<?php echo wp_get_attachment_image($host['image']['ID'], 'medium'); ?>
+
 												</div>
 												<div class="team-member-name">
 													<?php echo $host['name']; ?>
@@ -117,7 +119,7 @@ get_header();
 													<?php foreach($host['social'] as $social){ ?>
 														<a href="<?php echo $social['link']; ?>" target="_blank">
 															
-																<?php echo wp_get_attachment_image($social['icon']['ID'], 'medium'); ?>
+																<?php echo wp_get_attachment_image($social['icon']['ID']); ?>
 															
 														</a>
 													<?php } ?>

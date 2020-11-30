@@ -42,7 +42,9 @@ get_header();
                                         <div class="header-slide-inner">
                                           <h3><?php echo get_the_title($slide['post'][0]->ID); ?></h3>
 
-                                            <?php echo get_field('short_description', $slide['post'][0]->ID); ?>
+                                            <div class="short-desc">
+                                              <?php echo get_field('short_description', $slide['post'][0]->ID); ?>
+                                            </div>
 
                                         </div>
                                       </div>
@@ -80,7 +82,7 @@ get_header();
                                   <div class="header-slide-img">
                                   <?php $legacy = get_page_by_path( 'legacy-project' );
  ?>
-                                    <?php echo get_the_post_thumbnail($legacy, 'large'); ?>
+                                    <?php echo get_the_post_thumbnail($legacy); ?>
                                   </div>
                                   
                                     <div class="header-slide-info">
@@ -88,7 +90,9 @@ get_header();
                                         <div class="header-slide-inner">
                                           <h3>Legacy Project</h3>
 
-                                            <?php echo get_field('short_description', $legacy); ?>
+                                            <div class="short-desc">
+                                              <?php echo get_field('short_description', $legacy); ?>
+                                            </div>
 
                                         </div>
                                       </div>
