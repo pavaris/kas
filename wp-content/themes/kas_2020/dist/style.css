@@ -320,7 +320,7 @@ template {
   display: none; }
 
 body {
-  font-family: "mr-eaves-modern", "source-han-serif-korean"; }
+  font-family: "proxima-nova", "source-han-serif-korean"; }
 
 h1 {
   margin-bottom: 35px;
@@ -983,7 +983,7 @@ article.footer-padding-gone {
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu li {
       margin-bottom: 10px; }
     #mobile-nav #mobile-nav-links #menu-header-menu-1 .sub-menu a {
-      font-family: "mr-eaves-modern", "source-han-serif-korean";
+      font-family: "proxima-nova", "source-han-serif-korean";
       font-size: 14px; }
   #mobile-nav .button {
     display: inline-block;
@@ -2027,14 +2027,14 @@ h1.section-title {
     .header-slide .header-slide-info p {
       font-size: 24px;
       font-weight: 200;
-      font-family: "mr-eaves-modern", "source-han-serif-korean";
+      font-family: "proxima-nova", "source-han-serif-korean";
       letter-spacing: 0.04em;
       line-height: 1.2em;
       color: white;
       max-width: 65%; }
     .header-slide .header-slide-info h3 {
       text-transform: uppercase;
-      font-family: "mr-eaves-modern", "source-han-serif-korean";
+      font-family: "proxima-nova", "source-han-serif-korean";
       font-weight: 600;
       font-size: 60px;
       color: white;
@@ -2277,7 +2277,7 @@ section.home-projects {
   padding: 60px 0 100px; }
   section.home-projects h3 {
     text-align: center;
-    font-family: "mr-eaves-modern", "source-han-serif-korean";
+    font-family: "proxima-nova", "source-han-serif-korean";
     font-size: 50px;
     font-weight: 600;
     letter-spacing: 0.1em;
@@ -2363,7 +2363,7 @@ section.newsletter-container {
   margin-bottom: -120px;
   padding-bottom: 120px !important; }
   section.newsletter-container h3 {
-    font-family: "mr-eaves-modern", "source-han-serif-korean";
+    font-family: "proxima-nova", "source-han-serif-korean";
     font-size: 40px;
     letter-spacing: 0.2em;
     font-weight: 700;
@@ -2798,7 +2798,7 @@ section.newsletter-container {
   .page-header-container h1 {
     position: relative;
     z-index: 2;
-    font-family: "mr-eaves-modern", "source-han-serif-korean"; }
+    font-family: "proxima-nova", "source-han-serif-korean"; }
   .page-header-container h2 {
     position: relative;
     z-index: 2;
@@ -3773,7 +3773,7 @@ section.newsletter-container {
   padding-top: 0px;
   margin-bottom: 50px; }
   .page-template-page-legacy-project .page-header-container h2 {
-    font-family: "mr-eaves-modern", "source-han-serif-korean";
+    font-family: "proxima-nova", "source-han-serif-korean";
     font-size: 60px;
     margin: 0px; }
     @media (max-width: 767px) {
@@ -3854,7 +3854,7 @@ section.newsletter-container {
     margin: 0 15px 15px;
     padding: 5px;
     text-transform: uppercase;
-    font-family: "mr-eaves-modern", "source-han-serif-korean"; }
+    font-family: "proxima-nova", "source-han-serif-korean"; }
   @media (max-width: 767px) {
     .posts-feed-cont .filters {
       flex-direction: column; } }
