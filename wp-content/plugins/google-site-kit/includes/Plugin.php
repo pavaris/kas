@@ -138,6 +138,11 @@ final class Plugin {
 		$activation_flag = new Core\Util\Activation_Flag( $this->context, $options );
 		$activation_flag->register();
 
+		// Register uninstallation logic outside of 'init' since it hooks into
+		// plugin uninstallation.
+		$uninstallation = new Core\Util\Uninstallation( $this->context, $options );
+		$uninstallation->register();
+
 		// Initiate the plugin on 'init' for relying on current user being set.
 		add_action(
 			'init',
@@ -169,6 +174,7 @@ final class Plugin {
 				( new Core\Admin\Dashboard( $this->context, $assets, $modules ) )->register();
 				( new Core\Notifications\Notifications( $this->context, $options, $authentication ) )->register();
 				( new Core\Util\Debug_Data( $this->context, $options, $user_options, $authentication, $modules ) )->register();
+				( new Core\Util\Health_Checks( $authentication ) )->register();
 				( new Core\Admin\Standalone( $this->context ) )->register();
 				( new Core\Util\Activation_Notice( $this->context, $activation_flag, $assets ) )->register();
 				( new Core\Util\Migration_1_3_0( $this->context, $options, $user_options ) )->register();
