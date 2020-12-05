@@ -14,7 +14,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' && ! isset( $_POST['Submit-SecLog-Search'] ) || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -742,7 +742,13 @@ function bps_get_security_log() {
 // Form - Security Log - Perform File Open and Write test - If append write test is successful write to file
 function bpsPro_security_log_write_check() {
 
-	if ( @$_POST['submit-security-log'] != true ) {
+	if ( isset ( $_POST['submit-security-log'] ) ) {
+		$_POST['submit-security-log'] = true;
+	} else {
+		$_POST['submit-security-log'] = null;
+	}
+
+	if ( $_POST['submit-security-log'] != true ) {
 
 		$bps_sec_log = WP_CONTENT_DIR . '/bps-backup/logs/http_error_log.txt';
 	

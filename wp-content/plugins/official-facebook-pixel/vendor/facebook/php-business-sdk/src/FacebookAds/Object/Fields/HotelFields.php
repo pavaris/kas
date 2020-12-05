@@ -38,8 +38,10 @@ use FacebookAds\Enum\AbstractEnum;
 class HotelFields extends AbstractEnum {
 
   const ADDRESS = 'address';
+  const APPLINKS = 'applinks';
   const BRAND = 'brand';
   const CATEGORY = 'category';
+  const CATEGORY_SPECIFIC_FIELDS = 'category_specific_fields';
   const CURRENCY = 'currency';
   const DESCRIPTION = 'description';
   const GUEST_RATINGS = 'guest_ratings';
@@ -55,14 +57,15 @@ class HotelFields extends AbstractEnum {
   const SANITIZED_IMAGES = 'sanitized_images';
   const STAR_RATING = 'star_rating';
   const URL = 'url';
-  const APPLINKS = 'applinks';
   const BASE_PRICE = 'base_price';
 
   public function getFieldTypes() {
     return array(
       'address' => 'string',
+      'applinks' => 'CatalogItemAppLinks',
       'brand' => 'string',
       'category' => 'string',
+      'category_specific_fields' => 'CatalogSubVerticalList',
       'currency' => 'string',
       'description' => 'string',
       'guest_ratings' => 'string',
@@ -78,7 +81,6 @@ class HotelFields extends AbstractEnum {
       'sanitized_images' => 'list<string>',
       'star_rating' => 'float',
       'url' => 'string',
-      'applinks' => 'Object',
       'base_price' => 'unsigned int',
     );
   }

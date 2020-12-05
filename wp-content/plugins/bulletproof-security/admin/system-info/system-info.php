@@ -14,7 +14,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' ) {
 
@@ -108,7 +108,7 @@ $bps_bottomDiv = '</p></div>';
 	?>
 	<strong><a href="https://forum.ait-pro.com/forums/topic/dso-setup-steps/" title="DSO Server Setup Steps" target="_blank"><?php _e('DSO Server Setup Steps', 'bulletproof-security'); ?></a></strong><br /><br />		
 	
-	<?php $text = '<strong>'.__('File|Folder Diagnostic & Troubleshooting Info','bulletproof-security').'</strong><br>'.__('The file/folder permissions and UID checks are mainly for diagnostic troubleshooting so that you can check permissions or the UID of mission critical WP & BPS folders and files at a glance. There is some security benefit to changing file and folder permissions to more secure permissions, but this is not an essential or critical thing to do these days.', 'bulletproof-security').'<br><br><strong>'.__('Script Owner User ID (UID)|File Owner User ID','bulletproof-security').'</strong><br>'.__('Your Script Owner User ID (UID) and File Owner User ID should match. If they do not match for any folders then you will need to change the Owner of that folder so that both match. If you have a DSO server type see the DSO Server Setup Steps Forum Help Link at the top of this Read Me help window.', 'bulletproof-security').'<br><br><strong>'.__('CGI And DSO File And Folder Permission Recommendations','bulletproof-security').'</strong><br>'.__('If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO/Apache mod_php you will see a table listing file and folder permission recommendations for DSO.', 'bulletproof-security').'<br><br>'.__('If your Host is using CGI, but they do not allow you to set your folder permissions more restrictive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host or you may see a 403 or 500 error and will need to change the folder permissions back to what they were before. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins on several different Web Hosts, but all web hosts have different things that they specifically allow or do not allow.', 'bulletproof-security').'<br><br>'.__('Most Hosts now use 705 Root folder permissions. Your Host might not be doing this or allow this, but typically 755 is fine for your Root folder. Changing your folder permissions to 705 helps in protecting against Mass Host Code Injections. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins. Changing your file permissions to 604 helps in protecting your files from Mass Host Code Injections. CGI Mission Critical files should be set to 400 and 404 respectively.','bulletproof-security').'<br><br><strong>'.__('If you have BPS Pro installed then use F-Lock to Lock or Unlock your Mission Critical files. BPS Pro S-Monitor will automatically display warning messages if your files are unlocked.','bulletproof-security').'</strong><br><br><strong>'.__('The /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.','bulletproof-security').'</strong><br><br>'.__('Your current file and folder permissions are shown below with suggested/recommended file and folder permissions. ','bulletproof-security').'<strong>'.__('Not all web hosts will allow you to set your folder permissions to these Recommended folder permissions.', 'bulletproof-security').'</strong> '.__('If you see 500 errors after changing your folder permissions than change them back to what they were.','bulletproof-security').'<br><br>'.__('I recommend using FileZilla to change your file and folder permissions. FileZilla is a free FTP software that makes changing your file and folder permissions very simple and easy as well as many other very nice FTP features. With FileZilla you can right mouse click on your files or folders and set the permissions with a Numeric value like 755, 644, etc. Takes the confusion out of which attributes to check or uncheck.','bulletproof-security'); echo $text; ?></p>
+	<?php $text = '<strong>'.__('File|Folder Diagnostic & Troubleshooting Info','bulletproof-security').'</strong><br>'.__('The file/folder permissions and UID checks are mainly for diagnostic troubleshooting so that you can check permissions or the UID of mission critical WP & BPS folders and files at a glance. There is some security benefit to changing file and folder permissions to more secure permissions, but this is not an essential or critical thing to do these days.', 'bulletproof-security').'<br><br><strong>'.__('Script Owner User ID (UID)|File Owner User ID','bulletproof-security').'</strong><br>'.__('Your Script Owner User ID (UID) and File Owner User ID should match. If they do not match for any folders then you will need to change the Owner of that folder so that both match. If you have a DSO server type see the DSO Server Setup Steps Forum Help Link at the top of this Read Me help window.', 'bulletproof-security').'<br><br><strong>'.__('CGI And DSO File And Folder Permission Recommendations','bulletproof-security').'</strong><br>'.__('If your Server API (SAPI) is CGI you will see a table displayed with recommendations for file and folder permissions for CGI. If your SAPI is DSO/Apache/mod_php you will see a table listing file and folder permission recommendations for DSO.', 'bulletproof-security').'<br><br>'.__('If your Host is using CGI, but they do not allow you to set your folder permissions more restrictive to 705 and file permissions more restrictive to 604 then most likely when you change your folder and file permissions they will automatically be changed back to 755 and 644 by your Host or you may see a 403 or 500 error and will need to change the folder permissions back to what they were before. CGI 705 folder permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins on several different Web Hosts, but all web hosts have different things that they specifically allow or do not allow.', 'bulletproof-security').'<br><br>'.__('Most Hosts now use 705 Root folder permissions. Your Host might not be doing this or allow this, but typically 755 is fine for your Root folder. CGI 604 file permissions have been thoroughly tested with WordPress and no problems have been discovered with WP or with WP Plugins.','bulletproof-security').'<br><br><strong>'.__('The /', 'bulletproof-security').$bps_wpcontent_dir.__('/bps-backup/ folder permission recommendation is 755 for CGI or DSO for compatibility reasons. The /bps-backup folder has a deny all htaccess file in it so that it cannot be accessed by anyone other than you so the folder permissions for this folder are irrelevant.','bulletproof-security').'</strong><br><br>'.__('Your current file and folder permissions are shown below with suggested/recommended file and folder permissions. ','bulletproof-security').'<strong>'.__('Not all web hosts will allow you to set your folder permissions to these Recommended folder permissions.', 'bulletproof-security').'</strong> '.__('If you see 500 errors after changing your folder permissions than change them back to what they were before.','bulletproof-security').'<br><br><strong>'.__('BPS Pro Video Tutorial links can be found in the Help & FAQ pages.','bulletproof-security').'</strong>'; echo $text; ?></p>
 </div>
 </div>
 
@@ -147,7 +147,17 @@ if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_u
 	$label_2 = preg_match( '/(([a-zA-Z0-9-])+\.){2}([a-zA-Z0-9-])+$/', $bpsHostName, $matches_2 );
 	$label_3 = preg_match( '/(([a-zA-Z0-9-])+\.){3}([a-zA-Z0-9-])+$/', $bpsHostName, $matches_3 );
 	
-	@$domain_labels = array( $matches_1[0], $matches_2[0], $matches_3[0] );
+	if ( ! empty($matches_1) ) {
+		$domain_labels = array( $matches_1[0] );
+	}
+	if ( ! empty($matches_2) ) {
+		$domain_labels = array( $matches_2[0] );
+	}
+	if ( ! empty($matches_3) ) {
+		$domain_labels = array( $matches_3[0] );
+	}
+
+	//@$domain_labels = array( $matches_1[0], $matches_2[0], $matches_3[0] );
 	$labels = array_filter( $domain_labels, 'strlen' );
 	
 	foreach ( $labels as $domain ) {
@@ -165,6 +175,8 @@ if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_u
 	
 			if ( empty( $bpsTargetNS ) ) {
 				
+				// Note: Known Issue: This Warning error only occurs on XAMPP/Windows when using DNS_ALL: dns_get_record(): Type '251721779' not supported
+				// DNS_ANY works fine on Windows/XAMPP
 				@dns_get_record( $domain, DNS_ALL, $authns, $addtl );
 		
 				if ( empty( $authns[0]['target'] ) ) {
@@ -444,9 +456,7 @@ function bpsPro_count_network_activated_plugins($count) {
 	if ( extension_loaded('suhosin') ) {
 		_e('Suhosin-Extension is Loaded', 'bulletproof-security');	
 	} else {
-	if ( ! isset( $bpsconstants['SUHOSIN_PATCH'] ) && @$bpsconstants['SUHOSIN_PATCH'] != 1 && ! extension_loaded('suhosin') ) {
 		_e('Suhosin is Not Installed|Loaded', 'bulletproof-security');			
-	}
 	}
 	echo '<br>';
 	echo '<strong><span class="sysinfo-label-text">'.__('APC', 'bulletproof-security').':</span></strong> ';
@@ -688,10 +698,10 @@ function bpsPro_count_network_activated_plugins($count) {
 			echo '<strong><span class="sysinfo-label-text">'.__('PHP Actual Configuration Memory Limit: ', 'bulletproof-security').'</span><font color="green">'.$memoryLimitM.'</font></strong><br>';		
 		break;
     	case $memoryLimit >= '65' && $memoryLimit < '128':
-			echo '<strong><span class="sysinfo-label-text">'.__('PHP Actual Configuration Memory Limit: ', 'bulletproof-security').'</span><font color="black">'.$memoryLimitM.__(' Recommendation: Increase Memory Limit to 128M.', 'bulletproof-security').'</font></strong><br>';
+			echo '<strong><span class="sysinfo-label-text">'.__('PHP Actual Configuration Memory Limit: ', 'bulletproof-security').'</span><font color="black">'.$memoryLimitM.__(' Recommendation: Increase Memory Limit to at least 128M, 256M is even better.', 'bulletproof-security').'</font></strong><br>';
 		break;
     	case $memoryLimit > '0' && $memoryLimit <= '64':
-			echo '<strong><span class="sysinfo-label-text">'.__('PHP Actual Configuration Memory Limit: ', 'bulletproof-security').'</span><font color="#fb0101">'.$memoryLimitM.__(' Recommendation: Increase Memory Limit to 128M.', 'bulletproof-security').'</font></strong><br>';	
+			echo '<strong><span class="sysinfo-label-text">'.__('PHP Actual Configuration Memory Limit: ', 'bulletproof-security').'</span><font color="#fb0101">'.$memoryLimitM.__(' Recommendation: Increase Memory Limit to at least 128M, 256M is even better.', 'bulletproof-security').'</font></strong><br>';	
 		break;
  	}
 	}		
@@ -930,9 +940,9 @@ function bpsPro_count_network_activated_plugins($count) {
 
 	bps_check_perms("../", "705");
 	bps_check_perms("../.htaccess", "404");
-	bps_check_perms("../wp-config.php", "400");
-	bps_check_perms("../index.php", "400");
-	bps_check_perms("../wp-blog-header.php", "400");
+	bps_check_perms("../wp-config.php", "604");
+	bps_check_perms("../index.php", "604");
+	bps_check_perms("../wp-blog-header.php", "604");
 	bps_check_perms("../wp-admin", "705");
 	bps_check_perms("../wp-includes", "705");
 	bps_check_perms("../$bps_wpcontent_dir", "705");

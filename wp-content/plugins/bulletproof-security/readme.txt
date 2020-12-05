@@ -3,8 +3,8 @@ Contributors: AITpro
 Donate link: https://wordpress.org/support/view/plugin-reviews/bulletproof-security?rate=5#postform
 Tags: security, secure, malware scanner, login security, firewall, security plugin, wordpress security, login, bruteforce, backup, exploit, infection, protection, virus, anti-virus, logout, spam, anti-spam
 Requires at least: 3.8 
-Tested up to: 5.4
-Stable tag: 4.1
+Tested up to: 5.5.1
+Stable tag: 4.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -34,7 +34,8 @@ https://www.youtube.com/watch?v=FMv58aLUMT0
 * HTTP Error Logging
 * FrontEnd|BackEnd Maintenance Mode
 * UI Theme Skin Changer (3 Theme Skins)
-* Extensive System Info
+* Extensive System Info (System Info page)
+* WordPress Automatic Update Options
 
 = BulletProof Security Pro Feature Highlights =
 
@@ -67,7 +68,8 @@ https://www.youtube.com/watch?v=FMv58aLUMT0
 * Pro Tools: 16 mini-plugins
 * Heads Up Dashboard Status Display
 * UI Theme Skin Changer (3 Theme Skins)
-* Extensive System Info
+* Extensive System Info (System Info page)
+* WordPress Automatic Update Options
 * <a href="https://www.ait-pro.com/bps-features/" title="BulletProof Security Features" rel="nofollow" target="_blank">View All BulletProof Security Pro Feature Details</a>
 
 = BulletProof Security Recommended Video Tutorials =
@@ -179,6 +181,10 @@ Security plugin features and frequently asked questions see the FAQ section belo
 = GDPR Compliance =
 * BPS has a GDPR Compliance Setup Wizard Options setting, which allows someone to turn IP address logging On or Off throughout all BPS plugin features by choosing the GDPR Compliance On option setting on the Setup Wizard Options page: BPS Features affected: Security Logging, Login Security Logging, and Maintenance Mode Logging. Note: For simplicity and ease of use there is only one option setting that needs to be set instead of creating individual option settings in all BPS features that perform IP address logging.
 * <a href="https://forum.ait-pro.com/forums/topic/bps-gdpr-compliance/" title="BPS GDPR Compliance Forum Topic" rel="nofollow" target="_blank">BPS GDPR Compliance Forum Topic</a>
+
+= WordPress Automatic Update Options =
+The BPS plugin comes with a must-use plugin called BPS MU Tools. The BPS MU Tools must-use plugin is located on the WordPress Plugins page under the Must-Use link at the top of the WordPress Plugins page. The BPS MU Tools plugin has 6 WP Automatic Update option settings: Disable all Updates: On = All WordPress Automatic Updates: Core, Plugins, Themes and Translations will be disabled | Disable all Core Updates: On = All WordPress Core Automatic Updates: Development, Minor and Major versions are disabled | Enable all Core Updates: On = All WordPress Core Automatic Updates: Development, Minor and Major versions are enabled | Enable Development Updates: On = WordPress Core Automatic Updates are enabled for Development WP versions | Enable Minor Updates: On = WordPress Core Automatic Updates are enabled for Minor WP versions | Enable Major Updates: On = WordPress Core Automatic Updates are enabled for Major WP versions. For more extensive help information click the WordPress Automatic Update Help Forum Topic link below.
+* <a href="https://forum.ait-pro.com/forums/topic/wordpress-automatic-update-help-forum-topic-bps-must-use-plugin/" title="WordPress Automatic Update Help Forum Topic" rel="nofollow" target="_blank">WordPress Automatic Update Help Forum Topic</a>
 
 = BulletProof Security Bonus Custom Code =
 

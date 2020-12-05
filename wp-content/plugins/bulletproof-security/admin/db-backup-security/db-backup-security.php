@@ -19,7 +19,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' && ! isset( $_POST['Submit-DB-Prefix-Table-Refresh'] ) || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -1001,12 +1001,12 @@ if ( isset( $_POST['Submit-DBB-Reset'] ) && current_user_can('manage_options') )
 
 	echo '<label for="bps-dbb">'.__('DB Backup Folder Location:', 'bulletproof-security').'</label><br>';
 	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Recommended: Use The Default Obfuscated & Secure BPS Backup Folder.', 'bulletproof-security').'</strong></font></label><br>';
-	echo '<input type="text" name="DBBFolder" class="dbb-text-500" value="'; if ( @preg_match( '|[<>\"\';]|', $_POST['DBBFolder'] ) ) { echo esc_html($DBBoptions['bps_db_backup_folder']); } else { echo esc_html(trim(stripslashes($DBBFolder))); } echo '" /><br>';	
+	echo '<input type="text" name="DBBFolder" class="dbb-text-500" value="'; if ( isset( $_POST['DBBFolder'] ) && preg_match( '|[<>\"\';]|', $_POST['DBBFolder'] ) ) { echo esc_html($DBBoptions['bps_db_backup_folder']); } else { echo esc_html(trim(stripslashes($DBBFolder))); } echo '" /><br>';	
 
 	echo '<label for="bps-dbb">'.__('DB Backup File Download Link|URL:', 'bulletproof-security').'</label><br>';
 	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Note: If you see 404 errors when trying to download zip files or if you have', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('changed the DB Backup Folder Location above, click the Read Me help button.', 'bulletproof-security').'</strong></font></label><br>';
-	echo '<input type="text" name="DBBDownloadLink" class="dbb-text-500" value="'; if ( @preg_match( '|[<>\"\';]|', $_POST['DBBDownloadLink'] ) ) { echo esc_url($DBBoptions['bps_db_backup_download_link']); } else { echo esc_url(trim($DBBDownloadLink)); } echo '" /><br>';
+	echo '<input type="text" name="DBBDownloadLink" class="dbb-text-500" value="'; if ( isset( $_POST['DBBDownloadLink'] ) && preg_match( '|[<>\"\';]|', $_POST['DBBDownloadLink'] ) ) { echo esc_url($DBBoptions['bps_db_backup_download_link']); } else { echo esc_url(trim($DBBDownloadLink)); } echo '" /><br>';
 
 	echo '<label for="bps-dbb">'.__('Backup Job Type: Manual or Scheduled', 'bulletproof-security').'</label><br>';
 	echo '<select name="dbb_backup_job_type" class="form-340">';
@@ -1150,7 +1150,7 @@ if ( isset( $_POST['Submit-DBB-Reset'] ) && current_user_can('manage_options') )
 	echo '<label for="bps-dbb">'.__('Rename|Create|Reset DB Backup Folder Name:', 'bulletproof-security').'</label><br>';
 	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Randomly Generated New DB Backup Folder Name.', 'bulletproof-security').'</strong></font></label><br>';
 	echo '<label for="bps-dbb"><font color="#2ea2cc"><strong>'.__('Valid Folder Naming Characters: a-z A-Z 0-9 - _', 'bulletproof-security').'</strong></font></label><br>';
-	echo '<input type="text" name="DBBFolderReset" class="regular-text-short-fixed" style="width:325px;margin:0px 0px 10px 0px;" value="'; if ( @preg_match( '|[^a-zA-Z0-9-_]|', $_POST['DBBFolderReset'] ) ) { echo esc_html($db_backup_folder_obs); } else { echo esc_html(trim(stripslashes($DBBFolderReset))); } echo '" /><br>';
+	echo '<input type="text" name="DBBFolderReset" class="regular-text-short-fixed" style="width:325px;margin:0px 0px 10px 0px;" value="'; if ( isset( $_POST['DBBFolderReset'] ) && preg_match( '|[^a-zA-Z0-9-_]|', $_POST['DBBFolderReset'] ) ) { echo esc_html($db_backup_folder_obs); } else { echo esc_html(trim(stripslashes($DBBFolderReset))); } echo '" /><br>';
 	
 	echo "<p><input type=\"submit\" name=\"Submit-DBB-Reset\" value=\"".esc_attr__('Rename|Create|Reset', 'bulletproof-security')."\" class=\"button bps-button\" onclick=\"return confirm('".__('The Rename|Create|Reset Tool renames the DB Backup folder if it already exists or creates a new DB Backup folder if it does not already exist.\n\n-------------------------------------------------------------\n\nIf you have DB Backup files they will not be affected/changed. The DB Backup File Download Link|URL path will also be changed and have the new DB Backup folder name in the URL path.\n\n-------------------------------------------------------------\n\nClick OK to proceed or click Cancel', 'bulletproof-security')."')\" /></p></form>";
 
@@ -1487,7 +1487,7 @@ if ( isset( $_POST['Submit-DB-Table-Prefix'] ) && current_user_can('manage_optio
 	<?php wp_nonce_field('bulletproof_security_table_prefix_changer'); ?>
     <div>
     <strong><label for="bpsTablePrefix"><?php _e('Randomly Generated DB Table Prefix', 'bulletproof-security'); ?></label></strong><br />  
-    <input type="text" name="DBTablePrefix" value="<?php if ( @preg_match( '|[^a-z0-9_]|', $_POST['DBTablePrefix'] ) ) { echo esc_html($prefix_obs); } else { echo esc_html($DBTablePrefix); } ?>" class="table-prefix-changer" /> <br />
+    <input type="text" name="DBTablePrefix" value="<?php if ( isset( $_POST['DBTablePrefix'] ) && preg_match( '|[^a-z0-9_]|', $_POST['DBTablePrefix'] ) ) { echo esc_html($prefix_obs); } else { echo esc_html($DBTablePrefix); } ?>" class="table-prefix-changer" /> <br />
     <p class="submit">
     <input type="submit" name="Submit-DB-Table-Prefix" value="<?php esc_attr_e('Change DB Table Prefix', 'bulletproof-security') ?>" class="button bps-button" onclick="bpsSpinnerTablePrefix()" />
     </p>

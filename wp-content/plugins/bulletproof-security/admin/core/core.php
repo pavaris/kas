@@ -21,7 +21,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -231,7 +231,19 @@ global $bps_version;
 		$check_string = @file_get_contents($filename);
 	}
 	
-	if ( @$_POST['Submit-RBM-Activate'] != true && @$_POST['Submit-RBM-Deactivate'] != true ) {
+	if ( isset ( $_POST['Submit-RBM-Activate'] ) ) {
+		$_POST['Submit-RBM-Activate'] = true;
+	} else {
+		$_POST['Submit-RBM-Activate'] = null;
+	}
+	
+	if ( isset ( $_POST['Submit-RBM-Deactivate'] ) )  {
+		$_POST['Submit-RBM-Deactivate'] = true;
+	} else {
+		$_POST['Submit-RBM-Deactivate'] = null;
+	}
+
+	if ( $_POST['Submit-RBM-Activate'] != true && $_POST['Submit-RBM-Deactivate'] != true ) {
 	
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' ) {
 			$text = '<h3><strong>'.__('RBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -248,7 +260,7 @@ global $bps_version;
 		}
 	}
 
-	if ( @$_POST['Submit-RBM-Activate'] == true || @$_POST['Submit-RBM-Deactivate'] == true ) {
+	if ( $_POST['Submit-RBM-Activate'] == true || $_POST['Submit-RBM-Deactivate'] == true ) {
 		
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' ) {
 			$text = '<h3><strong>'.__('RBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -346,7 +358,19 @@ global $bps_version;
 		$check_string = @file_get_contents($filename);
 	}
 	
-	if ( @$_POST['Submit-WBM-Activate'] != true && @$_POST['Submit-WBM-Deactivate'] != true ) {
+	if ( isset ( $_POST['Submit-WBM-Activate'] ) ) {
+		$_POST['Submit-WBM-Activate'] = true;
+	} else {
+		$_POST['Submit-WBM-Activate'] = null;
+	}
+	
+	if ( isset ( $_POST['Submit-WBM-Deactivate'] ) )  {
+		$_POST['Submit-WBM-Deactivate'] = true;
+	} else {
+		$_POST['Submit-WBM-Deactivate'] = null;
+	}
+
+	if ( $_POST['Submit-WBM-Activate'] != true && $_POST['Submit-WBM-Deactivate'] != true ) {
 	
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' || $BPS_wpadmin_Options['bps_wpadmin_restriction'] == 'disabled' || $GDMW_options['bps_gdmw_hosting'] == 'yes' ) {
 			$text = '<h3><strong>'.__('WBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -360,7 +384,7 @@ global $bps_version;
 		}
 	}
 
-	if ( @$_POST['Submit-WBM-Activate'] == true || @$_POST['Submit-WBM-Deactivate'] == true ) {
+	if ( $_POST['Submit-WBM-Activate'] == true || $_POST['Submit-WBM-Deactivate'] == true ) {
 		
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' || $BPS_wpadmin_Options['bps_wpadmin_restriction'] == 'disabled' || $GDMW_options['bps_gdmw_hosting'] == 'yes' ) {
 			$text = '<h3><strong>'.__('WBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -420,7 +444,19 @@ function bpsPro_hpf_status() {
 	
 	$hpf_options = get_option('bulletproof_security_options_hpf_cron');	
 	
-	if ( @$_POST['Submit-Hidden-Plugins'] != true && @$_POST['Hidden-Plugins-Ignore-Submit'] != true ) {
+	if ( isset ( $_POST['Submit-Hidden-Plugins'] ) ) {
+		$_POST['Submit-Hidden-Plugins'] = true;
+	} else {
+		$_POST['Submit-Hidden-Plugins'] = null;
+	}
+	
+	if ( isset ( $_POST['Hidden-Plugins-Ignore-Submit'] ) )  {
+		$_POST['Hidden-Plugins-Ignore-Submit'] = true;
+	} else {
+		$_POST['Hidden-Plugins-Ignore-Submit'] = null;
+	}
+
+	if ( $_POST['Submit-Hidden-Plugins'] != true && $_POST['Hidden-Plugins-Ignore-Submit'] != true ) {
 	
 		if ( $hpf_options['bps_hidden_plugins_cron'] == 'On' ) {
 			$text = '<h3><strong>'.__('HPF Status: ', 'bulletproof-security').'<span class="core-status-activated">'.__('HPF Cron On', 'bulletproof-security').'</span></strong></h3>';
@@ -431,7 +467,7 @@ function bpsPro_hpf_status() {
 		}
 	}
 
-	if ( @$_POST['Submit-Hidden-Plugins'] == true || @$_POST['Hidden-Plugins-Ignore-Submit'] == true ) {
+	if ( $_POST['Submit-Hidden-Plugins'] == true || $_POST['Hidden-Plugins-Ignore-Submit'] == true ) {
 		
 		if ( $hpf_options['bps_hidden_plugins_cron'] == 'On' ) {
 			$text = '<h3><strong>'.__('HPF Status: ', 'bulletproof-security').'<span class="core-status-activated">'.__('HPF Cron On', 'bulletproof-security').'</span></strong></h3>';
@@ -533,7 +569,19 @@ function bpsPro_mbm_status() {
 	$HFiles_options = get_option('bulletproof_security_options_htaccess_files');	
 	$filename = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/.htaccess';
 	
-	if ( @$_POST['Submit-MBM-Activate'] != true && @$_POST['Submit-MBM-Deactivate'] != true ) {
+	if ( isset ( $_POST['Submit-MBM-Activate'] ) ) {
+		$_POST['Submit-MBM-Activate'] = true;
+	} else {
+		$_POST['Submit-MBM-Activate'] = null;
+	}
+	
+	if ( isset ( $_POST['Submit-MBM-Deactivate'] ) )  {
+		$_POST['Submit-MBM-Deactivate'] = true;
+	} else {
+		$_POST['Submit-MBM-Deactivate'] = null;
+	}
+
+	if ( $_POST['Submit-MBM-Activate'] != true && $_POST['Submit-MBM-Deactivate'] != true ) {
 	
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' ) {
 			$text = '<h3><strong>'.__('MBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -547,7 +595,7 @@ function bpsPro_mbm_status() {
 		}
 	}
 
-	if ( @$_POST['Submit-MBM-Activate'] == true || @$_POST['Submit-MBM-Deactivate'] == true ) {
+	if ( $_POST['Submit-MBM-Activate'] == true || $_POST['Submit-MBM-Deactivate'] == true ) {
 		
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' ) {
 			$text = '<h3><strong>'.__('MBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -609,7 +657,19 @@ function bpsPro_bbm_status() {
 	$HFiles_options = get_option('bulletproof_security_options_htaccess_files');	
 	$filename = WP_CONTENT_DIR . '/bps-backup/.htaccess';
 	
-	if ( @$_POST['Submit-BBM-Activate'] != true && @$_POST['Submit-BBM-Deactivate'] != true ) {
+	if ( isset ( $_POST['Submit-BBM-Activate'] ) ) {
+		$_POST['Submit-BBM-Activate'] = true;
+	} else {
+		$_POST['Submit-BBM-Activate'] = null;
+	}
+	
+	if ( isset ( $_POST['Submit-BBM-Deactivate'] ) )  {
+		$_POST['Submit-BBM-Deactivate'] = true;
+	} else {
+		$_POST['Submit-BBM-Deactivate'] = null;
+	}
+
+	if ( $_POST['Submit-BBM-Activate'] != true && $_POST['Submit-BBM-Deactivate'] != true ) {
 	
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' ) {
 			$text = '<h3><strong>'.__('BBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -623,7 +683,7 @@ function bpsPro_bbm_status() {
 		}
 	}
 
-	if ( @$_POST['Submit-BBM-Activate'] == true || @$_POST['Submit-BBM-Deactivate'] == true ) {
+	if ( $_POST['Submit-BBM-Activate'] == true || $_POST['Submit-BBM-Deactivate'] == true ) {
 		
 		if ( ! file_exists($filename) && $HFiles_options['bps_htaccess_files'] == 'disabled' ) {
 			$text = '<h3><strong>'.__('BBM Status: ', 'bulletproof-security').'<span class="core-status-disabled">'.__('Disabled', 'bulletproof-security').'</span></strong></h3>';
@@ -736,7 +796,13 @@ echo bps_wpadmin_htaccess_file_check();
 
 function bpsPro_secure_htaccess_write_check() {
 	
-	if ( @$_POST['submit1'] != true ) {
+	if ( isset ( $_POST['submit1'] ) ) {
+		$_POST['submit1'] = true;
+	} else {
+		$_POST['submit1'] = null;
+	}
+
+	if ( $_POST['submit1'] != true ) {
 
 		$secure_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/secure.htaccess';
 		$HFiles_options = get_option('bulletproof_security_options_htaccess_files');	
@@ -820,7 +886,13 @@ bpsPro_secure_htaccess_write_check();
 
 function bpsPro_default_htaccess_write_check() {
 	
-	if ( @$_POST['submit2'] != true ) {
+	if ( isset ( $_POST['submit2'] ) ) {
+		$_POST['submit2'] = true;
+	} else {
+		$_POST['submit2'] = null;
+	}
+
+	if ( $_POST['submit2'] != true ) {
 
 		$default_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/default.htaccess';
 		$HFiles_options = get_option('bulletproof_security_options_htaccess_files');	
@@ -919,7 +991,13 @@ bpsPro_default_htaccess_write_check();
 
 function bpsPro_wpadmin_secure_htaccess_write_check() {
 
-	if ( @$_POST['submit4'] != true ) {
+	if ( isset ( $_POST['submit4'] ) ) {
+		$_POST['submit4'] = true;
+	} else {
+		$_POST['submit4'] = null;
+	}
+
+	if ( $_POST['submit4'] != true ) {
 
 		$wpadmin_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
 		$HFiles_options = get_option('bulletproof_security_options_htaccess_files');
@@ -1012,7 +1090,13 @@ bpsPro_wpadmin_secure_htaccess_write_check();
 
 function bpsPro_root_htaccess_write_check() {
 
-	if ( @$_POST['submit7'] != true ) {
+	if ( isset ( $_POST['submit7'] ) ) {
+		$_POST['submit7'] = true;
+	} else {
+		$_POST['submit7'] = null;
+	}
+
+	if ( $_POST['submit7'] != true ) {
 	
 		$root_htaccess_file = ABSPATH . '.htaccess';
 		$HFiles_options = get_option('bulletproof_security_options_htaccess_files');	
@@ -1096,7 +1180,13 @@ bpsPro_root_htaccess_write_check();
 
 function bpsPro_wpadmin_htaccess_write_check() {
 
-	if ( @$_POST['submit8'] != true ) {
+	if ( isset ( $_POST['submit8'] ) ) {
+		$_POST['submit8'] = true;
+	} else {
+		$_POST['submit8'] = null;
+	}
+
+	if ( $_POST['submit8'] != true ) {
 
 		$current_wpadmin_htaccess_file = ABSPATH . 'wp-admin/.htaccess';
 		$HFiles_options = get_option('bulletproof_security_options_htaccess_files');
@@ -1306,7 +1396,9 @@ $scrollto6 = isset($_REQUEST['scrollto6']) ? (int) $_REQUEST['scrollto6'] : 0;
 
 <div id="bps-edittabs-1" class="bps-edittabs-page-class">
 <form name="template1" id="template1" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-6' ); ?>" method="post">
-<?php wp_nonce_field('bulletproof_security_save_settings_1'); ?>
+<?php wp_nonce_field('bulletproof_security_save_settings_1'); 
+	$secure_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/secure.htaccess';
+?>
     <div>
     <textarea id="crypt21" class="bps-text-area-600x700" name="newcontent1" id="newcontent1" tabindex="1"><?php echo bps_get_secure_htaccess(); ?></textarea>
 	<input type="hidden" name="action" value="update" />
@@ -1376,7 +1468,9 @@ function bpsSecureFileDecrypt() {
 
 <div id="bps-edittabs-2" class="bps-edittabs-page-class">
 <form name="template2" id="template2" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-6' ); ?>" method="post">
-<?php wp_nonce_field('bulletproof_security_save_settings_2'); ?>
+<?php wp_nonce_field('bulletproof_security_save_settings_2'); 
+	$default_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/default.htaccess';
+?>
 	<div>
     <textarea id="crypt22" class="bps-text-area-600x700" name="newcontent2" id="newcontent2" tabindex="2"><?php echo bps_get_default_htaccess(); ?></textarea>
 	<input type="hidden" name="action" value="update" />
@@ -1446,7 +1540,9 @@ function bpsDefaultFileDecrypt() {
 
 <div id="bps-edittabs-4" class="bps-edittabs-page-class">
 <form name="template4" id="template4" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-6' ); ?>" method="post">
-<?php wp_nonce_field('bulletproof_security_save_settings_4'); ?>
+<?php wp_nonce_field('bulletproof_security_save_settings_4'); 
+	$wpadmin_htaccess_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/wpadmin-secure.htaccess';
+?>
 	<div>
     <textarea id="crypt23" class="bps-text-area-600x700" name="newcontent4" id="newcontent4" tabindex="4"><?php echo bps_get_wpadmin_htaccess(); ?></textarea>
 	<input type="hidden" name="action" value="update" />
@@ -1530,7 +1626,10 @@ $sapi_type = php_sapi_name();
 
 <div id="bps-edittabs-5" class="bps-edittabs-page-class">
 <form name="template5" id="template5" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-6' ); ?>" method="post">
-<?php wp_nonce_field('bulletproof_security_save_settings_5'); ?>
+<?php wp_nonce_field('bulletproof_security_save_settings_5'); 
+	$root_htaccess_file = ABSPATH . '.htaccess';
+	$perms = '';
+?>
 	<div>
     <textarea id="crypt26" class="bps-text-area-600x700" name="newcontent5" id="newcontent5" tabindex="5"><?php echo bps_get_root_htaccess(); ?></textarea>
 	<input type="hidden" name="action" value="update" />
@@ -1538,7 +1637,7 @@ $sapi_type = php_sapi_name();
 	<input type="hidden" name="scrollto5" id="scrollto5" value="<?php echo esc_html( $scrollto5 ); ?>" />
     <p class="submit">
     
-	<?php if ( @bpsStatusRHE($perms) == '0404' ) { ?>
+	<?php if ( bpsStatusRHE($perms) == '0404' ) { ?>
 	<input type="submit" name="submit5" value="<?php esc_attr_e('Update File', 'bulletproof-security') ?>" class="button bps-button" onClick="return confirm('<?php $text = __('YOUR ROOT HTACCESS FILE IS LOCKED.', 'bulletproof-security').'\n\n'.__('YOUR FILE EDITS|CHANGES CANNOT BE SAVED.', 'bulletproof-security').'\n\n'.__('Click Cancel, copy the file editing changes you made to save them and then click the Unlock .htaccess File button to unlock your Root .htaccess file. After your Root .htaccess file is unlocked paste your file editing changes back into your Root .htaccess file and click this Update File button again to save your file edits/changes.', 'bulletproof-security'); echo $text; ?>')" />
 	<?php } else { ?>
 
@@ -1606,7 +1705,9 @@ function bpsRootFileDecrypt() {
 
 <div id="bps-edittabs-6" class="bps-edittabs-page-class">
 <form name="template6" id="template6" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/core/core.php#bps-tabs-6' ); ?>" method="post">
-<?php wp_nonce_field('bulletproof_security_save_settings_6'); ?>
+<?php wp_nonce_field('bulletproof_security_save_settings_6'); 
+	$current_wpadmin_htaccess_file = ABSPATH . 'wp-admin/.htaccess';
+?>
 	<div>
     <textarea id="crypt27" class="bps-text-area-600x700" name="newcontent6" id="newcontent6" tabindex="6"><?php echo bps_get_current_wpadmin_htaccess_file(); ?></textarea>
 	<input type="hidden" name="action" value="update" />
@@ -1843,7 +1944,7 @@ global $bps_topDiv, $bps_bottomDiv;
 	$My_Notes_options = get_option('bulletproof_security_options_mynotes'); 
 ?>
 
-    <textarea id="crypt20" class="bps-text-area-600x700" name="bps_my_notes" tabindex="1"><?php echo $My_Notes_options['bps_my_notes']; ?></textarea>
+    <textarea id="crypt20" class="bps-text-area-600x700" name="bps_my_notes" tabindex="1"><?php if ( ! empty( $My_Notes_options['bps_my_notes'] ) ) { echo $My_Notes_options['bps_my_notes']; } ?></textarea>
     <input type="hidden" name="scrolltoNotes" value="<?php echo esc_html( $scrolltoNotes ); ?>" />
 
 	<?php echo '<div id="bps-my-notes-tooltip"><label for="bps-mscan-label" style="">'.__('If you are unable to save custom htaccess code and/or see an error message when trying to save custom htaccess code, ', 'bulletproof-security').'<br>'.__('click the Encrypt My Notes button first and then click the Save My Notes button.', 'bulletproof-security').'<br>'.__('Mouse over the question mark image to the right for help info.', 'bulletproof-security').'</label><strong><font color="black"><span class="tooltip-350-225"><img src="'.plugins_url('/bulletproof-security/admin/images/question-mark.png').'" style="position:relative;top:3px;left:5px;" /><span>'.__('If your web host currently has ModSecurity installed or installs ModSecurity at a later time then ModSecurity will prevent you from saving your custom htaccess code unless you encrypt it first by clicking the Encrypt My Notes button.', 'bulletproof-security').'<br><br>'.__('If you click the Encrypt My Notes button, but then want to add or edit additional custom code click the Decrypt My Notes button. After you are done adding or editing custom code click the Encrypt My Notes button before clicking the Save My Notes button.', 'bulletproof-security').'<br><br>'.__('Click the Custom Code Read Me help button for more help info.', 'bulletproof-security').'</span></span></font></strong></div>'; ?>
@@ -2046,6 +2147,16 @@ $text = '<h3><span class="blue-bold">'.__('The Complete Website Security Solutio
 <div id="bpsProVersions">
 
 <a href="https://forum.ait-pro.com/forums/topic/bulletproof-security-pro-version-release-dates/" target="_blank" title="Link Opens in New Browser Window" style="font-size:22px;"><?php _e('BPS Pro Version Release Dates', 'bulletproof-security'); ?></a><br /><br />
+
+<div class="pro-links">
+<?php
+  echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.9', 'https://www.ait-pro.com/aitpro-blog/5662/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-9/' ).'<br>';
+  echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.8', 'https://www.ait-pro.com/aitpro-blog/5657/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-8/' ).'<br>';
+  echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.7', 'https://www.ait-pro.com/aitpro-blog/5650/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-7/' ).'<br>';
+?>
+</div>
+<div id="milestone">9 Year Milestone: 8-1-2020 | First Public Release: 8-1-2011</div>
+<div class="pro-links">
 <?php
   echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.6', 'https://www.ait-pro.com/aitpro-blog/5644/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-6/' ).'<br>';
   echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.5', 'https://www.ait-pro.com/aitpro-blog/5613/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-5/' ).'<br>';
@@ -2054,6 +2165,7 @@ $text = '<h3><span class="blue-bold">'.__('The Complete Website Security Solutio
   echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.2', 'https://www.ait-pro.com/aitpro-blog/5574/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-2/' ).'<br>';
   echo sprintf( __( '<a href="%2$s" target="_blank" title="Link Opens in New Browser Window">Whats New in BPS Pro %1$s</a>' ), '14.1', 'https://www.ait-pro.com/aitpro-blog/5567/bulletproof-security-pro/whats-new-in-bulletproof-security-pro-14-1/' ).'<br>';
 ?>
+</div>
 <div id="milestone">8 Year Milestone: 8-1-2019 | First Public Release: 8-1-2011</div>
 <div class="pro-links">
 <?php

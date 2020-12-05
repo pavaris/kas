@@ -41,9 +41,11 @@ class VehicleOfferFields extends AbstractEnum {
   const AMOUNT_PERCENTAGE = 'amount_percentage';
   const AMOUNT_PRICE = 'amount_price';
   const AMOUNT_QUALIFIER = 'amount_qualifier';
+  const APPLINKS = 'applinks';
   const BODY_STYLE = 'body_style';
   const CASHBACK_CURRENCY = 'cashback_currency';
   const CASHBACK_PRICE = 'cashback_price';
+  const CATEGORY_SPECIFIC_FIELDS = 'category_specific_fields';
   const CURRENCY = 'currency';
   const DMA_CODES = 'dma_codes';
   const DOWNPAYMENT_CURRENCY = 'downpayment_currency';
@@ -76,9 +78,11 @@ class VehicleOfferFields extends AbstractEnum {
       'amount_percentage' => 'float',
       'amount_price' => 'string',
       'amount_qualifier' => 'string',
+      'applinks' => 'CatalogItemAppLinks',
       'body_style' => 'string',
       'cashback_currency' => 'string',
       'cashback_price' => 'string',
+      'category_specific_fields' => 'CatalogSubVerticalList',
       'currency' => 'string',
       'dma_codes' => 'list<string>',
       'downpayment_currency' => 'string',

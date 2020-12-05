@@ -19,7 +19,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -176,17 +176,46 @@ $bps_bottomDiv = '</p></div>';
 <input type="submit" name="Submit-UI-WP-Toolbar" class="button bps-button" style="margin:10px 0px 10px 0px;" value="<?php esc_attr_e('Save Option', 'bulletproof-security') ?>" />
 </form>
 
-<form name="script-loader-filter-form" action="options.php" method="post">
-	<?php settings_fields('bulletproof_security_options_SLF'); ?> 
-	<?php $bpsPro_SLF_options = get_option('bulletproof_security_options_SLF'); ?>
+<?php
+// SLF Values Form
+function bpsPro_slf_values_form() {
+global $bps_topDiv, $bps_bottomDiv;
 
-	<label for="UI-UX-label"><?php _e('Script|Style Loader Filter (SLF) In BPS Plugin Pages:', 'bulletproof-security'); ?></label><br />
-	<label for="UI-UX-label" style="color:#2ea2cc;"><?php _e('Click the Read Me help button for information', 'bulletproof-security'); ?></label><br />
-<select name="bulletproof_security_options_SLF[bps_slf_filter]" class="form-250">
+	if ( isset( $_POST['bpsSLFSubmit'] ) && current_user_can('manage_options') ) {
+		check_admin_referer( 'bpsSLFValues' );
+		
+		$BPS_SLF_Options = array( 
+		'bps_slf_filter' 		=> $_POST['bps_slf_filter'], 
+		'bps_slf_filter_new' 	=> $_POST['bps_slf_filter_new'] 
+		);	
+
+		foreach( $BPS_SLF_Options as $key => $value ) {
+			update_option('bulletproof_security_options_SLF', $BPS_SLF_Options);
+		}	
+
+		echo $bps_topDiv;
+		$text = '<font color="green"><strong>'.__('SLF Option settings saved', 'bulletproof-security').'</strong></font>';
+		echo $text;		
+		echo $bps_bottomDiv;
+	}
+}
+?>
+
+<form name="script_loader_filter_form" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/theme-skin/theme-skin.php' ); ?>" method="post">
+<?php 
+	wp_nonce_field('bpsSLFValues'); 
+	bpsPro_slf_values_form(); 
+	$bpsPro_SLF_options = get_option('bulletproof_security_options_SLF');
+?>
+
+<label for="SLF"><?php _e('Script|Style Loader Filter (SLF) In BPS Plugin Pages:', 'bulletproof-security'); ?></label><br />
+<label for="SLF" style="color:#2ea2cc;"><?php _e('Click the Read Me help button for information', 'bulletproof-security'); ?></label><br />
+<select name="bps_slf_filter" class="form-250">
 <option value="On" <?php selected('On', $bpsPro_SLF_options['bps_slf_filter']); ?>><?php _e('SLF On', 'bulletproof-security'); ?></option>
 <option value="Off" <?php selected('Off', $bpsPro_SLF_options['bps_slf_filter']); ?>><?php _e('SLF Off', 'bulletproof-security'); ?></option>
 </select>
-<input type="submit" name="Submit-SLF" class="button bps-button" style="margin:10px 0px 10px 0px;" value="<?php esc_attr_e('Save Option', 'bulletproof-security') ?>" />
+<input type="hidden" name="bps_slf_filter_new" value="14" />
+<input type="submit" name="bpsSLFSubmit" class="button bps-button" style="margin:10px 0px 10px 0px;" value="<?php esc_attr_e('Save Option', 'bulletproof-security') ?>" />
 </form>
 
 <form name="bps-debug" action="options.php" method="post">

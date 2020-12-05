@@ -125,7 +125,7 @@ global $wpdb, $wp_version, $blog_id;
 	}
 	}
 
-// Whitelist BPS DB options: Total: 41
+// Whitelist BPS DB options: Total: 42
 register_setting('bulletproof_security_options', 'bulletproof_security_options', 'bulletproof_security_options_validate');
 register_setting('bulletproof_security_options_SLF', 'bulletproof_security_options_SLF', 'bulletproof_security_options_validate_SLF');
 register_setting('bulletproof_security_options_gdpr', 'bulletproof_security_options_gdpr', 'bulletproof_security_options_validate_gdpr');
@@ -146,6 +146,7 @@ register_setting('bulletproof_security_options_apache_modules', 'bulletproof_sec
 register_setting('bulletproof_security_options_hidden_plugins', 'bulletproof_security_options_hidden_plugins', 'bulletproof_security_options_validate_hidden_plugins');
 register_setting('bulletproof_security_options_sec_log_post_limit', 'bulletproof_security_options_sec_log_post_limit', 'bulletproof_security_options_validate_sec_log_post_limit');
 register_setting('bulletproof_security_options_login_security_jtc', 'bulletproof_security_options_login_security_jtc', 'bulletproof_security_options_validate_login_security_jtc');
+register_setting('bulletproof_security_options_mu_wp_autoupdate', 'bulletproof_security_options_mu_wp_autoupdate', 'bulletproof_security_options_validate_mu_wp_autoupdate');
 register_setting('bulletproof_security_options_wizard_autofix', 'bulletproof_security_options_wizard_autofix', 'bulletproof_security_options_validate_wizard_autofix');
 register_setting('bulletproof_security_options_status_display', 'bulletproof_security_options_status_display', 'bulletproof_security_options_validate_status_display');
 register_setting('bulletproof_security_options_login_security', 'bulletproof_security_options_login_security', 'bulletproof_security_options_validate_login_security');
@@ -343,7 +344,7 @@ global $blog_id;
 	// Do not display the Maintenance Mode menu for GDMW hosted sites
 	$BPS_wpadmin_Options = get_option('bulletproof_security_options_htaccess_res');
 	$GDMW_options = get_option('bulletproof_security_options_GDMW');
-	if ( $BPS_wpadmin_Options['bps_wpadmin_restriction'] != 'disabled' || $GDMW_options['bps_gdmw_hosting'] != 'yes' ) {	
+	if ( isset( $BPS_wpadmin_Options['bps_wpadmin_restriction'] ) && $BPS_wpadmin_Options['bps_wpadmin_restriction'] != 'disabled' || isset( $GDMW_options['bps_gdmw_hosting'] ) && $GDMW_options['bps_gdmw_hosting'] != 'yes' ) {	
 	add_submenu_page('bulletproof-security/admin/core/core.php', __('Maintenance Mode', 'bulletproof-security'), __('Maintenance Mode', 'bulletproof-security'), 'manage_options', 'bulletproof-security/admin/maintenance/maintenance.php' );
 	}
 	
@@ -377,8 +378,10 @@ if ( $bpsPro_SLF_options['bps_slf_filter'] == 'On' ) {
 }
 
 // Prevents other plugin and theme Styles from loading in BPS plugin pages
+// Notes: $tag is a string and not an array. This is a quick and dirty way to strip out all rogue styles/scripts + optimum performance.
 // .53.8: Added Debug option
-// 3.5: Modified SLF filter code. 
+// 3.5: Modified SLF filter code.
+// 4.2: Whitelist the Query Monitor plugin js and CSS scripts in BPS plugin pages. script & style name: query-monitor.
 function bpsPro_style_loader_filter($tag){
 	
 	if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches) ) {
@@ -388,13 +391,13 @@ function bpsPro_style_loader_filter($tag){
 		$Debug_options = get_option('bulletproof_security_options_debug');
 		$matches = '';
 
-		if ( ! strpos( $tag, 'bulletproof-security' ) && ! strpos( $tag, 'wp-admin' ) && ! strpos( $tag, 'wp-includes' ) )
+		if ( ! strpos( $tag, 'bulletproof-security' ) && ! strpos( $tag, 'wp-admin' ) && ! strpos( $tag, 'wp-includes' ) && ! strpos( $tag, 'query-monitor' ) )
 
 			unset($tag);
 			
 			if ( $Debug_options['bps_debug'] == 'On' ) {
 			
-				if ( preg_match( '/\/(plugins|themes)\/.*\.css/', $tag, $matches ) ) {
+				if ( @preg_match( '/\/(plugins|themes)\/.*\.css/', $tag, $matches ) ) {
 			
 					echo $topDiv;
 					echo '<font color="blue"><strong>'.__('BPS UI|UX Debug: SLF: CSS Script Loaded', 'bulletproof-security').'</strong></font><br>';
@@ -407,8 +410,10 @@ function bpsPro_style_loader_filter($tag){
 }
 
 // Prevents other plugin and theme Scripts from loading in BPS plugin pages
+// Notes: $tag is a string and not an array. This is a quick and dirty way to strip out all rogue styles/scripts + optimum performance.
 // .53.8: Added Debug option
 // 3.5: Modified SLF filter code.
+// 4.2: Whitelist the Query Monitor plugin js and CSS scripts in BPS plugin pages. script & style name: query-monitor.
 function bpsPro_script_loader_filter($tag){
 
 	if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches) ) {
@@ -418,13 +423,13 @@ function bpsPro_script_loader_filter($tag){
 		$Debug_options = get_option('bulletproof_security_options_debug');
 		$matches = '';
 
-		if ( ! strpos( $tag, 'bulletproof-security' ) && ! strpos( $tag, 'wp-admin' ) && ! strpos( $tag, 'wp-includes' ) )
+		if ( ! strpos( $tag, 'bulletproof-security' ) && ! strpos( $tag, 'wp-admin' ) && ! strpos( $tag, 'wp-includes' ) && ! strpos( $tag, 'query-monitor' ) )
 
 			unset($tag);
 			
 			if ( $Debug_options['bps_debug'] == 'On' ) {
 			
-				if ( preg_match( '/\/(plugins|themes)\/.*\.js/', $tag, $matches ) ) {
+				if ( @preg_match( '/\/(plugins|themes)\/.*\.js/', $tag, $matches ) ) {
 					
 					echo $topDiv;
 					echo '<font color="blue"><strong>'.__('BPS UI|UX Debug: SLF: js Script Loaded', 'bulletproof-security').'</strong></font><br>';
@@ -443,6 +448,7 @@ add_action( 'admin_enqueue_scripts', 'bpsPro_register_enqueue_scripts_styles' );
 // 2.3: Remove all version compare conditions for >= 3.8. Minimum WP version required is now WP 3.8.
 // 2.4: register and enqueue new BPS MScan AJAX script
 // 3.6: Encryption/Decryption added to evade/bypass the Mod Security CRS ruleset, which breaks numerous Forms throughout BPS.
+// 4.2: Whitelist the Query Monitor plugin js and CSS scripts in BPS plugin pages. script & style name: query-monitor.
 function bpsPro_register_enqueue_scripts_styles() {
 global $wp_scripts, $wp_styles, $bulletproof_security, $wp_version, $bps_version;
 
@@ -503,9 +509,9 @@ global $wp_scripts, $wp_styles, $bulletproof_security, $wp_version, $bps_version
 		}
 		
 		// Dequeue any other plugin or theme scripts that should not be loading on BPS plugin pages
-		$script_handles = array( 'bps-mscan-ajax', 'bps-tabs', 'bps-dialog', 'bps-accordion', 'bps-encryption', 'bps-crypto-js', 'admin-bar', 'jquery', 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-dialog', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-resizable', 'jquery-ui-draggable', 'jquery-ui-button', 'jquery-ui-position', 'jquery-ui-accordion', 'jquery-effects-core', 'jquery-effects-blind', 'jquery-effects-explode', 'common', 'utils', 'svg-painter', 'wp-auth-check', 'heartbeat', 'debug-bar' );
+		$script_handles = array( 'bps-mscan-ajax', 'bps-tabs', 'bps-dialog', 'bps-accordion', 'bps-encryption', 'bps-crypto-js', 'admin-bar', 'jquery', 'jquery-ui-core', 'jquery-ui-tabs', 'jquery-ui-dialog', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-resizable', 'jquery-ui-draggable', 'jquery-ui-button', 'jquery-ui-position', 'jquery-ui-accordion', 'jquery-effects-core', 'jquery-effects-blind', 'jquery-effects-explode', 'common', 'utils', 'svg-painter', 'wp-auth-check', 'heartbeat', 'debug-bar', 'query-monitor' );
 
-		$style_handles = array( 'bps-css', 'bps-css-38', 'admin-bar', 'colors', 'ie', 'wp-auth-check', 'debug-bar' );
+		$style_handles = array( 'bps-css', 'bps-css-38', 'admin-bar', 'colors', 'ie', 'wp-auth-check', 'debug-bar', 'query-monitor' );
 		
 		if ( $Debug_options['bps_debug'] == 'On' ) {
 			echo '<div id="message" class="updated" style="background-color:#dfecf2;border:1px solid #999;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><p>';
@@ -831,6 +837,8 @@ require_once( ABSPATH . 'wp-admin/includes/plugin.php');
 		delete_option('bulletproof_security_options_vcheck');
 		delete_option('bulletproof_security_options_gdpr');  
 		delete_option('bulletproof_security_options_mu_sysinfo');
+		delete_option('bulletproof_security_options_mu_wp_autoupdate');
+		delete_option('bulletproof_security_options_MU_tools');
 		// will be adding this new upgrade notice option later
 		// delete_option('bulletproof_security_options_upgrade_notice');	
 	
@@ -864,6 +872,9 @@ require_once( ABSPATH . 'wp-admin/includes/plugin.php');
 		delete_user_meta($user_id, 'bps_ignore_jtc_lite_notice');
 		delete_user_meta($user_id, 'bps_ignore_rate_notice');
 		delete_user_meta($user_id, 'bpsPro_ignore_mod_security_notice');
+		delete_user_meta($user_id, 'bpsPro_ignore_gdpr_compliance_notice');
+		delete_user_meta($user_id, 'bps_ignore_root_version_check_notice');
+		delete_user_meta($user_id, 'bpsPro_ignore_mu_wp_automatic_updates_notice');		
 
 		@unlink($wpadminHtaccess);	
 	
@@ -1231,6 +1242,9 @@ function bulletproof_security_options_validate_debug($input) {
 	return $options;  
 }
 
+// Pending Deletion: CAUTION: be sure to search all files for these options especially general-functions.php
+// 2.0: Removal: UI|UX Option: BPS Plugin AutoUpdate has been removed. BPS plugin Automatic Updates enable or disable is now handled directly in the BPS MU Tools must-use plugin.
+// 4.2: The BPS plugin AutoUpdate code has been removed from the MU Tools plugin. WP now handles Plugin auto-updates.
 // UI|UX AutoUpdate the BPS Plugin
 function bulletproof_security_options_validate_autoupdate($input) {  
 	$options = get_option('bulletproof_security_options_autoupdate');  
@@ -1267,6 +1281,7 @@ function bulletproof_security_options_validate_zip_fix($input) {
 	return $options;  
 }
 
+// Pending Deletion: CAUTION: be sure to search all files for these options especially general-functions.php
 // MU Tools: must-use file: bps-mu-tools.php
 // timestamp to limit log writing and email alerts when the BPS plugin folder is renamed or deleted.
 function bulletproof_security_options_validate_MU_tools_free($input) {  
@@ -1398,6 +1413,20 @@ function bulletproof_security_options_validate_mu_sysinfo($input) {
 	$options = get_option('bulletproof_security_options_mu_sysinfo');  
 	$options['bps_sysinfo_hide_display'] = $input['bps_sysinfo_hide_display'];		
 	
+	return $options;  
+}
+
+// MU Tools: must-use file/plugin: bps-mu-tools.php
+// Enable|Disable WordPress Automatic Updates. Note: add_filter( 'automatic_updater_disabled', '__return_true' ); Disables all Automatic Updates: Core, Plugins and Themes.
+function bulletproof_security_options_validate_mu_wp_autoupdate($input) {  
+	$options = get_option('bulletproof_security_options_mu_wp_autoupdate');  
+	$options['bps_automatic_updater_disabled'] = wp_filter_nohtml_kses($input['bps_automatic_updater_disabled']);
+	$options['bps_auto_update_core_updates_disabled'] = wp_filter_nohtml_kses($input['bps_auto_update_core_updates_disabled']);
+	$options['bps_auto_update_core'] = wp_filter_nohtml_kses($input['bps_auto_update_core']);
+	$options['bps_allow_dev_auto_core_updates'] = wp_filter_nohtml_kses($input['bps_allow_dev_auto_core_updates']);
+	$options['bps_allow_minor_auto_core_updates'] = wp_filter_nohtml_kses($input['bps_allow_minor_auto_core_updates']);
+	$options['bps_allow_major_auto_core_updates'] = wp_filter_nohtml_kses($input['bps_allow_major_auto_core_updates']);
+				
 	return $options;  
 }
 

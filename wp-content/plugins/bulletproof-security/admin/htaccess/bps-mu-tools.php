@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: BPS MU Tools
-Description: <strong>Enable|Disable BPS Plugin AutoUpdates:</strong> Clicking this link enables or disables BPS Plugin automatic updates for the BPS plugin only. <strong>Enable|Disable BPS Folder|Deactivation Checks:</strong> Clicking this link enables or disables checks for whether the /bulletproof-security/ plugin folder has been renamed or deleted. Checks for whether the BPS plugin has been deactivated. Email alerts are sent every 5 minutes when the BPS plugin folder has been renamed or deleted or the BPS plugin has been deactivated. To disable these checks and the email alerts click the Disable BPS Folder|Deactivation Checks link. <strong>Note:</strong> When you click disable links you will then see enable links and vice versa.
-Version: 4.0
+Description: To turn On any of these WordPress Automatic Update options/filters click the links. When any of these WordPress Automatic Update options/filters are turned On that means that particular WP Automatic Update option/filter is enabled and the link will be displayed in green font. When any of these WordPress Automatic Update options/filters are turned Off that means that particular WP Automatic Update option/filter is not in use. It does not mean that particular WP Automatic Update filter is disabling or turning Off a particular WP Automatic Update. For additional help info about each of these WordPress Automatic Update options/filters click the "WordPress Automatic Update Help Forum Topic" link below. &bull; Disable all Updates: On = All WordPress Automatic Updates: Core, Plugins, Themes and Translations will be disabled. &bull; Disable all Core Updates: On = All WordPress Core Automatic Updates: Development, Minor and Major versions are disabled. &bull; Enable all Core Updates: On = All WordPress Core Automatic Updates: Development, Minor and Major versions are enabled. &bull; Enable Development Updates: On = WordPress Core Automatic Updates are enabled for Development WP versions. &bull; Enable Minor Updates: On = WordPress Core Automatic Updates are enabled for Minor WP versions. &bull; Enable Major Updates: On = WordPress Core Automatic Updates are enabled for Major WP versions.
+Version: 6.0
 Author: AITpro
 Author URI: https://forum.ait-pro.com/forums/forum/bulletproof-security-free/
 License: GPLv2 or later
@@ -18,6 +18,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 ## 2.0: Added CSRF Nonce verification to Toggle GET links.
 ## 2.7: BugFix for SSL sites nonce verification failing.
 ## 3.2: Disabling all functions except for the BPS Plugin automatic update function.
+## 4.2: Added WP Automatic Update options/filters. Removed the MU Tools Enable|Disable BPS Plugin AutoUpdates & Enable|Disable BPS Folder|Deactivation Checks code.
 
 ## Uncommenting these filters below and commenting out this BPS filter: add_filter( 'auto_update_plugin', 'bpsPro_autoupdate_bps_plugin', 10, 2 );
 ## will allow ALL plugin and theme automatic updates on your website. At a later time|version this BPS MU plugin file will include options to enable|disable these things.
@@ -48,7 +49,7 @@ function bpsPro_autoupdate_bps_plugin( $update, $item ) {
     }
 }
 
-add_filter( 'auto_update_plugin', 'bpsPro_autoupdate_bps_plugin', 10, 2 );
+//add_filter( 'auto_update_plugin', 'bpsPro_autoupdate_bps_plugin', 10, 2 );
 
 // Check if the /bulletproof-security/ plugin folder has been renamed or deleted.
 // Writes a log entry and sends an email alert once every 5 minutes.
@@ -57,10 +58,6 @@ function bpsPro_plugin_folder_check() {
 	$MUTools_Options = get_option('bulletproof_security_options_MU_tools_free');
 	
 	if ( @$MUTools_Options['bps_mu_tools_enable_disable_deactivation'] == 'disable' ) {
-		return;
-	}
-
-	if ( defined('DISABLE_WP_CRON') && DISABLE_WP_CRON === true ) {
 		return;
 	}
 
@@ -140,10 +137,6 @@ function bpsPro_plugin_deactivation_check() {
 		return;
 	}
 	
-	if ( defined('DISABLE_WP_CRON') && DISABLE_WP_CRON === true ) {
-		return;
-	}
-
 	global $blog_id;
 
 	if ( is_multisite() && $blog_id != 1 ) {
@@ -222,8 +215,8 @@ function bpsPro_toggle_links() {
 	
 	if ( is_admin() && preg_match( '/\/wp-admin\/plugins\.php/', esc_html($_SERVER['REQUEST_URI']) ) || is_network_admin() && preg_match( '/\/wp-admin\/network\/plugins\.php/', esc_html($_SERVER['REQUEST_URI']) ) ) {
 		
-		if ( isset( $_GET['bps_toggle_a'] ) || isset( $_GET['bps_toggle_d'] ) ) {
-		
+		if ( isset( $_GET['bps_toggle_automatic_updater_disabled'] ) || isset( $_GET['bps_toggle_auto_update_core_updates_disabled'] ) || isset( $_GET['bps_toggle_auto_update_core'] ) || isset( $_GET['bps_toggle_allow_dev_auto_core_updates'] ) || isset( $_GET['bps_toggle_allow_minor_auto_core_updates'] ) ||isset( $_GET['bps_toggle_allow_major_auto_core_updates'] ) ) {
+
 			if ( ! function_exists( 'wp_verify_nonce' ) ) {
 				require_once( ABSPATH . '/wp-includes/pluggable.php' );
 			}
@@ -257,33 +250,68 @@ function bpsPro_toggle_links() {
 			
 			} else {		
 		
-				$MUTools_Options = get_option('bulletproof_security_options_MU_tools_free');
+				$wp_auto_update_options = get_option('bulletproof_security_options_mu_wp_autoupdate');
 
-				if ( ! isset( $_GET['bps_toggle_a'] ) ) {
-					$bps_toggle_a = $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'];
-				} elseif ( 'enable' == $_GET['bps_toggle_a'] ) {
-					$bps_toggle_a = 'enable';
-				} elseif ( 'disable' == $_GET['bps_toggle_a'] ) {
-					$bps_toggle_a = 'disable';
+				if ( ! isset( $_GET['bps_toggle_automatic_updater_disabled'] ) ) {
+					$bps_toggle_automatic_updater_disabled = $wp_auto_update_options['bps_automatic_updater_disabled'];
+				} elseif ( 'enable' == $_GET['bps_toggle_automatic_updater_disabled'] ) {
+					$bps_toggle_automatic_updater_disabled = 'enabled';
+				} elseif ( 'disable' == $_GET['bps_toggle_automatic_updater_disabled'] ) {
+					$bps_toggle_automatic_updater_disabled = 'disabled';
 				}
 
-				if ( ! isset( $_GET['bps_toggle_d'] ) ) {
-					$bps_toggle_d = $MUTools_Options['bps_mu_tools_enable_disable_deactivation'];
-				} elseif ( 'enable' == $_GET['bps_toggle_d'] ) {
-					$bps_toggle_d = 'enable';
-				} elseif ( 'disable' == $_GET['bps_toggle_d'] ) {
-					$bps_toggle_d = 'disable';
+				if ( ! isset( $_GET['bps_toggle_auto_update_core_updates_disabled'] ) ) {
+					$bps_toggle_auto_update_core_updates_disabled = $wp_auto_update_options['bps_auto_update_core_updates_disabled'];
+				} elseif ( 'enable' == $_GET['bps_toggle_auto_update_core_updates_disabled'] ) {
+					$bps_toggle_auto_update_core_updates_disabled = 'enabled';
+				} elseif ( 'disable' == $_GET['bps_toggle_auto_update_core_updates_disabled'] ) {
+					$bps_toggle_auto_update_core_updates_disabled = 'disabled';
 				}
-		
-				$MUTools_Option_settings = array( 
-				'bps_mu_tools_timestamp' 					=> time() + 300, 
-				'bps_mu_tools_enable_disable_autoupdate' 	=> $bps_toggle_a, 
-				'bps_mu_tools_enable_disable_deactivation' 	=> $bps_toggle_d 
+
+				if ( ! isset( $_GET['bps_toggle_auto_update_core'] ) ) {
+					$bps_toggle_auto_update_core = $wp_auto_update_options['bps_auto_update_core'];
+				} elseif ( 'enable' == $_GET['bps_toggle_auto_update_core'] ) {
+					$bps_toggle_auto_update_core = 'enabled';
+				} elseif ( 'disable' == $_GET['bps_toggle_auto_update_core'] ) {
+					$bps_toggle_auto_update_core = 'disabled';
+				}
+
+				if ( ! isset( $_GET['bps_toggle_allow_dev_auto_core_updates'] ) ) {
+					$bps_toggle_allow_dev_auto_core_updates = $wp_auto_update_options['bps_allow_dev_auto_core_updates'];
+				} elseif ( 'enable' == $_GET['bps_toggle_allow_dev_auto_core_updates'] ) {
+					$bps_toggle_allow_dev_auto_core_updates = 'enabled';
+				} elseif ( 'disable' == $_GET['bps_toggle_allow_dev_auto_core_updates'] ) {
+					$bps_toggle_allow_dev_auto_core_updates = 'disabled';
+				}
+
+				if ( ! isset( $_GET['bps_toggle_allow_minor_auto_core_updates'] ) ) {
+					$bps_toggle_allow_minor_auto_core_updates = $wp_auto_update_options['bps_allow_minor_auto_core_updates'];
+				} elseif ( 'enable' == $_GET['bps_toggle_allow_minor_auto_core_updates'] ) {
+					$bps_toggle_allow_minor_auto_core_updates = 'enabled';
+				} elseif ( 'disable' == $_GET['bps_toggle_allow_minor_auto_core_updates'] ) {
+					$bps_toggle_allow_minor_auto_core_updates = 'disabled';
+				}
+
+				if ( ! isset( $_GET['bps_toggle_allow_major_auto_core_updates'] ) ) {
+					$bps_toggle_allow_major_auto_core_updates = $wp_auto_update_options['bps_allow_major_auto_core_updates'];
+				} elseif ( 'enable' == $_GET['bps_toggle_allow_major_auto_core_updates'] ) {
+					$bps_toggle_allow_major_auto_core_updates = 'enabled';
+				} elseif ( 'disable' == $_GET['bps_toggle_allow_major_auto_core_updates'] ) {
+					$bps_toggle_allow_major_auto_core_updates = 'disabled';
+				}
+
+				$BPS_WP_Autoupdate_Options = array(
+				'bps_automatic_updater_disabled' 		=> $bps_toggle_automatic_updater_disabled, 
+				'bps_auto_update_core_updates_disabled' => $bps_toggle_auto_update_core_updates_disabled, 
+				'bps_auto_update_core' 					=> $bps_toggle_auto_update_core, 
+				'bps_allow_dev_auto_core_updates' 		=> $bps_toggle_allow_dev_auto_core_updates, 
+				'bps_allow_minor_auto_core_updates' 	=> $bps_toggle_allow_minor_auto_core_updates, 
+				'bps_allow_major_auto_core_updates' 	=> $bps_toggle_allow_major_auto_core_updates 
 				);	
-
-				foreach ( $MUTools_Option_settings as $key => $value ) {
-					update_option('bulletproof_security_options_MU_tools_free', $MUTools_Option_settings);
-				}
+						
+				foreach( $BPS_WP_Autoupdate_Options as $key => $value ) {
+					update_option('bulletproof_security_options_mu_wp_autoupdate', $BPS_WP_Autoupdate_Options);
+				}			
 			}
 		}
 	}
@@ -298,7 +326,7 @@ function bpsPro_mu_plugin_actlinks( $links, $file ) {
 		$this_plugin = plugin_basename(__FILE__);
 	if ( $file == $this_plugin ) {
 
-		$MUTools_Options = get_option('bulletproof_security_options_MU_tools_free');
+		$wp_auto_update_options = get_option('bulletproof_security_options_mu_wp_autoupdate');
 		
 		if ( ! function_exists( 'wp_create_nonce' ) ) {
 			require_once( ABSPATH . '/wp-includes/pluggable.php' );
@@ -306,50 +334,164 @@ function bpsPro_mu_plugin_actlinks( $links, $file ) {
 		
 		$nonce = wp_create_nonce( 'bps-anti-csrf' );
 	
-		if ( $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'] == 'enable' ) {
-		
+		// Disable all Automatic Updates: Core, Plugins and Themes.
+		if ( $wp_auto_update_options['bps_automatic_updater_disabled'] == 'enabled' ) {			
+
 			if ( is_multisite() ) {
-				$links[] = '<a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_a=disable&_wpnonce=$nonce" ).'">Disable BPS Plugin AutoUpdates</a>';
+				$links[] = '<a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_automatic_updater_disabled=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Disable all Updates: On</a>';
 			} else {
-				$links[] = '<a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_a=disable&_wpnonce=$nonce" ).'">Disable BPS Plugin AutoUpdates</a>';
+				$links[] = '<a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_automatic_updater_disabled=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Disable all Updates: On</a>';
 			}		
 
 		} else {
 		
-			if ( $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'] == 'disable' ) {
-			
-				if ( is_multisite() ) {
-					$links[] = '<a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_a=enable&_wpnonce=$nonce" ).'">Enable BPS Plugin AutoUpdates</a>';
-				} else {
-					$links[] = '<a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_a=enable&_wpnonce=$nonce" ).'">Enable BPS Plugin AutoUpdates</a>';
-				}
-			}
-		}		
-
-		if ( $MUTools_Options['bps_mu_tools_enable_disable_deactivation'] == 'enable' ) {
-		
 			if ( is_multisite() ) {
-				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_d=disable&_wpnonce=$nonce" ).'">Disable BPS Folder|Deactivation Checks</a>';
+				$links[] = '<a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_automatic_updater_disabled=enable&_wpnonce=$nonce" ).'">Disable all Updates: Off</a>';
 			} else {
-				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_d=disable&_wpnonce=$nonce" ).'">Disable BPS Folder|Deactivation Checks</a>';
-			}		
-
-		} else {
-		
-			if ( $MUTools_Options['bps_mu_tools_enable_disable_deactivation'] == 'disable' ) {			
-			
-				if ( is_multisite() ) {
-					$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_d=enable&_wpnonce=$nonce" ).'">Enable BPS Folder|Deactivation Checks</a>';
-				} else {
-					$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_d=enable&_wpnonce=$nonce" ).'">Enable BPS Folder|Deactivation Checks</a>';
-				}		
+				$links[] = '<a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_automatic_updater_disabled=enable&_wpnonce=$nonce" ).'">Disable all Updates: Off</a>';
 			}
 		}
+
+		// Disable all WordPress Core Automatic Updates: Development, Minor and Major
+		if ( $wp_auto_update_options['bps_auto_update_core_updates_disabled'] == 'enabled' ) {			
+
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core_updates_disabled=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Disable all Core Updates: On</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core_updates_disabled=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Disable all Core Updates: On</a>';
+			}		
+
+		} else {
+		
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core_updates_disabled=enable&_wpnonce=$nonce" ).'">Disable all Core Updates: Off</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core_updates_disabled=enable&_wpnonce=$nonce" ).'">Disable all Core Updates: Off</a>';
+			}
+		}
+
+		// Enable all WordPress Core Automatic Updates: Development, Minor and Major
+		if ( $wp_auto_update_options['bps_auto_update_core'] == 'enabled' ) {			
+
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable all Core Updates: On</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable all Core Updates: On</a>';
+			}		
+
+		} else {
+		
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core=enable&_wpnonce=$nonce" ).'">Enable all Core Updates: Off</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_auto_update_core=enable&_wpnonce=$nonce" ).'">Enable all Core Updates: Off</a>';
+			}
+		}
+
+		// Enable WordPress Core Development Automatic Updates
+		if ( $wp_auto_update_options['bps_allow_dev_auto_core_updates'] == 'enabled' ) {	
+
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_dev_auto_core_updates=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable Development Updates: On</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_dev_auto_core_updates=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable Development Updates: On</a>';
+			}		
+
+		} else {
+		
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_dev_auto_core_updates=enable&_wpnonce=$nonce" ).'">Enable Development Updates: Off</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_dev_auto_core_updates=enable&_wpnonce=$nonce" ).'">Enable Development Updates: Off</a>';
+			}
+		}
+
+		// Enable WordPress Core Minor Automatic Updates
+		if ( $wp_auto_update_options['bps_allow_minor_auto_core_updates'] == 'enabled' ) {
+
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_minor_auto_core_updates=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable Minor Updates: On</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_minor_auto_core_updates=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable Minor Updates: On</a>';
+			}		
+
+		} else {
+		
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_minor_auto_core_updates=enable&_wpnonce=$nonce" ).'">Enable Minor Updates: Off</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_minor_auto_core_updates=enable&_wpnonce=$nonce" ).'">Enable Minor Updates: Off</a>';
+			}
+		}
+		
+		// Enable WordPress Core Major Automatic Updates
+		if ( $wp_auto_update_options['bps_allow_major_auto_core_updates'] == 'enabled' ) {
+
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_major_auto_core_updates=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable Major Updates: On</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_major_auto_core_updates=disable&_wpnonce=$nonce" ).'" style="color:green;font-weight:600">Enable Major Updates: On</a>';
+			}		
+
+		} else {
+		
+			if ( is_multisite() ) {
+				$links[] = '<br><a href="'.network_admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_major_auto_core_updates=enable&_wpnonce=$nonce" ).'">Enable Major Updates: Off</a>';
+			} else {
+				$links[] = '<br><a href="'.admin_url( "plugins.php?plugin_status=mustuse&bps_toggle_allow_major_auto_core_updates=enable&_wpnonce=$nonce" ).'">Enable Major Updates: Off</a>';
+			}
+		}	
 	}
 	return $links;
 }
 
 add_filter( 'plugin_action_links', 'bpsPro_mu_plugin_actlinks', 10, 2 );
 add_filter( 'network_admin_plugin_action_links', 'bpsPro_mu_plugin_actlinks', 10, 2 );
+
+function bpsPro_wp_automatic_updates_free() {
+	
+	$wp_auto_update_options = get_option('bulletproof_security_options_mu_wp_autoupdate');
+
+	if ( isset($wp_auto_update_options['bps_automatic_updater_disabled']) && $wp_auto_update_options['bps_automatic_updater_disabled'] == 'enabled' ) {
+		add_filter( 'automatic_updater_disabled', '__return_true' );
+	}
+
+	if ( isset($wp_auto_update_options['bps_auto_update_core_updates_disabled']) && $wp_auto_update_options['bps_auto_update_core_updates_disabled'] == 'enabled' ) {
+		add_filter( 'auto_update_core', '__return_false' );
+	}
+
+	if ( isset($wp_auto_update_options['bps_auto_update_core']) && $wp_auto_update_options['bps_auto_update_core'] == 'enabled' ) {
+		add_filter( 'auto_update_core', '__return_true' );
+	}
+
+	if ( isset($wp_auto_update_options['bps_allow_dev_auto_core_updates']) && $wp_auto_update_options['bps_allow_dev_auto_core_updates'] == 'enabled' ) {
+		add_filter( 'allow_dev_auto_core_updates', '__return_true' );
+	}
+
+	if ( isset($wp_auto_update_options['bps_allow_minor_auto_core_updates']) && $wp_auto_update_options['bps_allow_minor_auto_core_updates'] == 'enabled' ) {
+		add_filter( 'allow_minor_auto_core_updates', '__return_true' );
+	}
+
+	if ( isset($wp_auto_update_options['bps_allow_major_auto_core_updates']) && $wp_auto_update_options['bps_allow_major_auto_core_updates'] == 'enabled' ) {
+		add_filter( 'allow_major_auto_core_updates', '__return_true' );
+	}
+}
+
+bpsPro_wp_automatic_updates_free();
+
+// Add additional links on the BPS Must-Use plugins page
+function bpsPro_mu_plugin_extra_links_free($links, $file) {
+	static $this_plugin;
+	//if ( ! current_user_can('install_plugins') )
+		//return $links;
+	if ( ! $this_plugin ) $this_plugin = plugin_basename(__FILE__);
+	if ( $file == $this_plugin ) {
+		$links[] = '<a href="https://forum.ait-pro.com/forums/topic/wordpress-automatic-update-help-forum-topic-bps-must-use-plugin/" target="_blank" title="WordPress Automatic Update Help Forum Topic">' . __('WordPress Automatic Update Help Forum Topic', 'bulleproof-security').'</a>';
+	}
+
+	return $links;
+}
+
+add_filter( 'plugin_row_meta', 'bpsPro_mu_plugin_extra_links_free', 10, 2 )
 
 ?>

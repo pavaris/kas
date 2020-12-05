@@ -24,13 +24,14 @@ function bps_HUD_WP_Dashboard() {
 		bps_hud_BPSQSE_old_code_check();
 		bpsPro_BBM_htaccess_check();
 		bpsPro_hud_speed_boost_cache_code();
-		bps_hud_check_autoupdate();
+		//bps_hud_check_autoupdate();
 		bpsPro_hud_mscan_notice();
 		bpsPro_hud_jtc_lite_notice();
 		bpsPro_hud_rate_notice();
 		//bpsPro_hud_mod_security_check();
 		bpsPro_hud_gdpr_compliance();
 		//bps_hud_check_public_username();
+		bpsPro_mu_wp_automatic_updates_notice();
 	}
 }
 add_action('admin_notices', 'bps_HUD_WP_Dashboard');
@@ -559,7 +560,7 @@ function bpsPro_hud_speed_boost_cache_code() {
 		return;
 	}	
 	
-	if ( @$_POST['bps_customcode_submit'] == true ) {
+	if ( isset ( $_POST['bps_customcode_submit'] ) && $_POST['bps_customcode_submit'] == true ) {
 		return;
 	}
 
@@ -603,66 +604,6 @@ $user_id = $current_user->ID;
         
 	if ( isset($_GET['bpsPro_hud_speed_boost_nag_ignore']) && '0' == $_GET['bpsPro_hud_speed_boost_nag_ignore'] ) {
 		add_user_meta($user_id, 'bpsPro_ignore_speed_boost_notice', 'true', true);
-	}
-}
-
-// Heads Up Display w/ Dismiss - BPS Plugin AutoUpdate
-// Notes: Only Display the AutoUpdate Dimiss Notice if the Bonus Custom Code Dismiss Notice is not being displayed (display after the BCC Dimiss Notice).
-// There are 3 common scenarios: only the dismiss all notice link was clicked, some of the individual dismiss notices were clicked and 
-// the dismiss all notice link was clicked and only all individual dimiss notice links were clicked, but not the dismiss all notice link.
-// which leaves 2 possible conditions: either the dismiss all notice value == true or all other dismiss notice values == true.
-// 1.2: New BPS MU Tools file created.
-function bps_hud_check_autoupdate() {
-	
-	$MUTools_Options = get_option('bulletproof_security_options_MU_tools_free');
-	
-	if ( $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'] == 'disable' ) {
-	
-		global $current_user;
-		$user_id = $current_user->ID;
-
-		$bcc_dismiss_all = get_user_meta($user_id, 'bps_bonus_code_dismiss_all_notice');
-		$bcc1 = get_user_meta($user_id, 'bps_brute_force_login_protection_notice');
-		$bcc2 = get_user_meta($user_id, 'bps_speed_boost_cache_notice');
-		$bcc3 = get_user_meta($user_id, 'bps_author_enumeration_notice');
-		$bcc4 = get_user_meta($user_id, 'bps_xmlrpc_ddos_notice');
-		$bcc5 = get_user_meta($user_id, 'bps_post_request_attack_notice');
-		$bcc6 = get_user_meta($user_id, 'bps_sniff_driveby_notice');
-		$bcc7 = get_user_meta($user_id, 'bps_iframe_clickjack_notice');
-
-		if ( true == $bcc_dismiss_all || true == $bcc1 && true == $bcc2 && true == $bcc3 && true == $bcc4 && true == $bcc5 && true == $bcc6 && true == $bcc7 ) {
-
-			if ( ! get_user_meta($user_id, 'bps_ignore_autoupdate_notice') ) {
-			
-			if ( esc_html($_SERVER['QUERY_STRING']) == '' && basename(esc_html($_SERVER['REQUEST_URI'])) != 'wp-admin' ) {
-				$bps_base = basename(esc_html($_SERVER['REQUEST_URI'])) . '?';
-			} elseif ( esc_html($_SERVER['QUERY_STRING']) == '' && basename(esc_html($_SERVER['REQUEST_URI'])) == 'wp-admin' ) {
-				$bps_base = basename( str_replace( 'wp-admin', 'index.php?', esc_html($_SERVER['REQUEST_URI'])));
-			} else {
-				$bps_base = str_replace( admin_url(), '', esc_html($_SERVER['REQUEST_URI']) ) . '&';
-			}		
-			
-			if ( is_multisite() ) {
-				$bps_mu_link = '<a href="'.network_admin_url( 'plugins.php?plugin_status=mustuse' ).'">'.esc_attr__('BPS Plugin AutoUpdates', 'bulletproof-security').'</a>';
-			} else {
-				$bps_mu_link = '<a href="'.admin_url( 'plugins.php?plugin_status=mustuse' ).'">'.esc_attr__('BPS Plugin AutoUpdates', 'bulletproof-security').'</a>';
-			}
-
-			$text = '<div class="update-nag" style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:2px 5px;margin-top:2px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('BPS Plugin Automatic Update Notice', 'bulletproof-security').'</font><br>'.__('Would you like to have BPS plugin updates installed automatically? Click this link: ', 'bulletproof-security').$bps_mu_link.__(' and click the BPS MU Tools Enable BPS Plugin AutoUpdates link.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice button below. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the Custom Code page.', 'bulletproof-security').'<br><div style="float:left;margin:3px 0px 3px 0px;padding:2px 6px 2px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'bps_autoupdate_nag_ignore=0'.'" style="text-decoration:none;font-weight:600;">'.__('Dismiss Notice', 'bulletproof-security').'</a></div></div>';
-			echo $text;
-			}
-		}
-	}
-}
-
-add_action('admin_init', 'bps_autoupdate_nag_ignore');
-
-function bps_autoupdate_nag_ignore() {
-global $current_user;
-$user_id = $current_user->ID;
-        
-	if ( isset( $_GET['bps_autoupdate_nag_ignore'] ) && '0' == $_GET['bps_autoupdate_nag_ignore'] ) {
-		add_user_meta($user_id, 'bps_ignore_autoupdate_notice', 'true', true);
 	}
 }
 
@@ -814,6 +755,11 @@ $user_id = $current_user->ID;
 // Heads Up Display w/ Dismiss Notice - GDPR Compliance Dismiss Notice. Displays a link to a help forum topic.
 function bpsPro_hud_gdpr_compliance() {
 	
+	// Setup Wizard DB option is saved by running the Setup Wizard, on BPS Upgrades & manual BPS setup
+	if ( ! get_option('bulletproof_security_options_wizard_free') ) { 
+		return;
+	}
+
 	global $current_user;
 	$user_id = $current_user->ID;		
 	
@@ -840,6 +786,61 @@ $user_id = $current_user->ID;
         
 	if ( isset($_GET['bpsPro_gdpr_compliance_nag_ignore']) && '0' == $_GET['bpsPro_gdpr_compliance_nag_ignore'] ) {
 		add_user_meta($user_id, 'bpsPro_ignore_gdpr_compliance_notice', 'true', true);
+	}
+}
+
+// Heads Up Display w/ Dismiss Notice: If someone has enabled any of the BPS Pro MU Tools WP Automatic Update options check the wp-config.php file for redundant constants.
+function bpsPro_mu_wp_automatic_updates_notice() {
+	
+	if ( ! get_option('bulletproof_security_options_mu_wp_autoupdate') ) {
+		return;
+	}
+	
+	$wpconfig_file = ABSPATH . 'wp-config.php';
+	
+	// If someone has moved their wp-config.php file exit.
+	if ( ! file_exists( $wpconfig_file ) ) {
+		return;
+	}
+
+	if ( file_exists($wpconfig_file) ) {
+		
+		$file_contents = @file_get_contents($wpconfig_file);
+		$wp_auto_update_options = get_option('bulletproof_security_options_mu_wp_autoupdate');
+		
+		if ( $wp_auto_update_options['bps_automatic_updater_disabled'] == 'enabled' || $wp_auto_update_options['bps_auto_update_core_updates_disabled'] == 'enabled' || $wp_auto_update_options['bps_auto_update_core'] == 'enabled' || $wp_auto_update_options['bps_allow_dev_auto_core_updates'] == 'enabled' || $wp_auto_update_options['bps_allow_minor_auto_core_updates'] == 'enabled' || $wp_auto_update_options['bps_allow_major_auto_core_updates'] == 'enabled' ) {
+		
+			if ( preg_match( '/(WP_AUTO_UPDATE_CORE|AUTOMATIC_UPDATER_DISABLED)/', $file_contents ) ) {
+	
+				global $current_user;
+				$user_id = $current_user->ID;		
+			
+				if ( ! get_user_meta($user_id, 'bpsPro_ignore_mu_wp_automatic_updates_notice') ) {
+			
+					if ( esc_html($_SERVER['QUERY_STRING']) == '' && basename(esc_html($_SERVER['REQUEST_URI'])) != 'wp-admin' ) {
+						$bps_base = basename(esc_html($_SERVER['REQUEST_URI'])) . '?';
+					} elseif ( esc_html($_SERVER['QUERY_STRING']) == '' && basename(esc_html($_SERVER['REQUEST_URI'])) == 'wp-admin' ) {
+						$bps_base = basename( str_replace( 'wp-admin', 'index.php?', esc_html($_SERVER['REQUEST_URI'])));
+					} else {
+						$bps_base = str_replace( admin_url(), '', esc_html($_SERVER['REQUEST_URI']) ) . '&';
+					}
+			
+					$text = '<div class="update-nag" style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:2px 5px;margin-top:2px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('BPS wp-config.php file WP Automatic Update constants detected', 'bulletproof-security').'</font><br>'.__('You are using the BPS MU Tools plugin option settings to handle WP Automatic Updates. BPS detected that you are also using one or both of these WP Automatic Update constants in your wp-config.php file: WP_AUTO_UPDATE_CORE and/or AUTOMATIC_UPDATER_DISABLED. Either comment out these constants in your wp-config.php file or delete these constants. If you choose to comment out these constants instead of deleting them then dismiss this Dismiss Notice after you have commented them out.', 'bulletproof-security').'<br>'.__('To Dismiss this Notice click the Dismiss Notice button below. To Reset Dismiss Notices click the Reset|Recheck Dismiss Notices button on the BPS Custom Code page.', 'bulletproof-security').'<br><div style="float:left;margin:3px 0px 3px 0px;padding:2px 6px 2px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.$bps_base.'bpsPro_mu_wp_automatic_updates_nag_ignore=0'.'" style="text-decoration:none;font-weight:bold;">'.__('Dismiss Notice', 'bulletproof-security').'</a></div></div>';
+					echo $text;
+				}
+			}
+		}
+	}
+}
+
+add_action('admin_init', 'bpsPro_mu_wp_automatic_updates_nag_ignore');
+
+function bpsPro_mu_wp_automatic_updates_nag_ignore() {
+global $current_user;
+$user_id = $current_user->ID;
+        
+	if ( isset($_GET['bpsPro_mu_wp_automatic_updates_nag_ignore']) && '0' == $_GET['bpsPro_mu_wp_automatic_updates_nag_ignore'] ) {
+		add_user_meta($user_id, 'bpsPro_ignore_mu_wp_automatic_updates_notice', 'true', true);
 	}
 }
 

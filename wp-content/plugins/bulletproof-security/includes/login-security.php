@@ -1068,7 +1068,6 @@ jQuery(document).ready(function($){
 </script>
 
 <style>
-<!--
 .ui-helper-hidden-accessible{display:none;}
 
 .ui-tooltip.bps-custom-tooltip-style { 
@@ -1086,7 +1085,6 @@ jQuery(document).ready(function($){
 body .ui-tooltip.bps-custom-tooltip-style {
 	border-width:2px;
 }
--->
 </style>
 
 <?php } }
@@ -1223,9 +1221,7 @@ $BPS_ACE_options = get_option('bulletproof_security_options_auth_cookie');
 ?>
 	
 <style>
-<!--
 .forgetmenot{display:none;}
--->
 </style>
 
 <?php } }

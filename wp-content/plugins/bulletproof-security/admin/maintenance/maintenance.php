@@ -14,7 +14,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -480,9 +480,22 @@ if ( is_admin() && wp_script_is( 'bps-accordion', $list = 'queue' ) && current_u
 
 <form name="bpsMaintenanceMode" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/maintenance/maintenance.php' ); ?>" method="post">
 <?php 
-wp_nonce_field('bpsMaintenanceMode'); 
-bpsPro_maintenance_mode_values_form();
-$MMoptions = get_option('bulletproof_security_options_maint_mode');
+	wp_nonce_field('bpsMaintenanceMode'); 
+	bpsPro_maintenance_mode_values_form();
+	$MMoptions = get_option('bulletproof_security_options_maint_mode');
+	
+	$bps_maint_text = ! isset($MMoptions['bps_maint_text']) ? '' : $MMoptions['bps_maint_text'];
+	$bps_maint_countdown_timer_color = ! isset($MMoptions['bps_maint_countdown_timer_color']) ? '' : $MMoptions['bps_maint_countdown_timer_color'];
+	$bps_maint_time = isset($MMoptions['bps_maint_time']) ? esc_html($MMoptions['bps_maint_time']) : esc_html('');
+	$bps_maint_retry_after = isset($MMoptions['bps_maint_retry_after']) ? esc_html($MMoptions['bps_maint_retry_after']) : esc_html('');
+	$bps_maint_ip_allowed = isset($MMoptions['bps_maint_ip_allowed']) ? esc_html($MMoptions['bps_maint_ip_allowed']) : esc_html('');
+	$bps_maint_background_images = ! isset($MMoptions['bps_maint_background_images']) ? '' : $MMoptions['bps_maint_background_images'];
+	$bps_maint_center_images = ! isset($MMoptions['bps_maint_center_images']) ? '' : $MMoptions['bps_maint_center_images'];
+	$bps_maint_background_color = ! isset($MMoptions['bps_maint_background_color']) ? '' : $MMoptions['bps_maint_background_color'];
+	$bps_maint_email_to = isset($MMoptions['bps_maint_email_to']) ? esc_html($MMoptions['bps_maint_email_to']) : esc_html('');
+	$bps_maint_email_from = isset($MMoptions['bps_maint_email_to']) ? esc_html($MMoptions['bps_maint_email_to']) : esc_html('');
+	$bps_maint_email_cc = isset($MMoptions['bps_maint_email_to']) ? esc_html($MMoptions['bps_maint_email_to']) : esc_html('');
+	$bps_maint_email_bcc = isset($MMoptions['bps_maint_email_to']) ? esc_html($MMoptions['bps_maint_email_to']) : esc_html('');
 ?>
 
 <div id="bps-accordion-3" class="bps-accordion-main-2" style="">
@@ -494,7 +507,7 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
     
     <!-- Note: wp_editor/TinyMCE causes XAMPP Apache server crash: XAMPP: 1.8.1, pcre.dll, PHP 5.4.7 (VC9 X86 32bit thread safe) + PEAR -->
     <div class="mmode-tinymce">
-	<?php wp_editor( stripslashes( htmlspecialchars_decode( $MMoptions['bps_maint_text'], ENT_QUOTES ) ), 'bpscustomeditor' ); ?><br />
+	<?php wp_editor( stripslashes( htmlspecialchars_decode( $bps_maint_text, ENT_QUOTES ) ), 'bpscustomeditor' ); ?><br />
     </div> 
 
 </div>
@@ -502,31 +515,31 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 <h3><?php _e('MMode Option Settings', 'bulletproof-security'); ?></h3>
 <div id="mmode-accordion-inner">
     
-    <input type="checkbox" name="mmode_countdown_timer" style="margin-top:5px;" value="1" <?php checked( $MMoptions['bps_maint_countdown_timer'], 1 ); ?> /><label for="mmode"><?php _e('Enable Countdown Timer', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_countdown_timer" style="margin-top:5px;" value="1" <?php if ( empty( $MMoptions['bps_maint_countdown_timer'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_countdown_timer'], 1 ); } ?> /><label for="mmode"><?php _e('Enable Countdown Timer', 'bulletproof-security'); ?></label><br /><br />
     
     <label for="mmode"><?php _e('Countdown Timer Text Color:', 'bulletproof-security'); ?></label><br />
 <select name="mmode_countdown_timer_color" class="form-300">
-<option value="lime" <?php selected('lime', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('LCD|Lime Green', 'bulletproof-security'); ?></option>
-<option value="white" <?php selected('white', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('White', 'bulletproof-security'); ?></option>
-<option value="silver" <?php selected('silver', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('Silver', 'bulletproof-security'); ?></option>
-<option value="gray" <?php selected('gray', $MMoptions['bps_maint_countdown_timer_color']); ?>><?php _e('Gray', 'bulletproof-security'); ?></option>
+<option value="lime" <?php selected('lime', $bps_maint_countdown_timer_color); ?>><?php _e('LCD|Lime Green', 'bulletproof-security'); ?></option>
+<option value="white" <?php selected('white', $bps_maint_countdown_timer_color); ?>><?php _e('White', 'bulletproof-security'); ?></option>
+<option value="silver" <?php selected('silver', $bps_maint_countdown_timer_color); ?>><?php _e('Silver', 'bulletproof-security'); ?></option>
+<option value="gray" <?php selected('gray', $bps_maint_countdown_timer_color); ?>><?php _e('Gray', 'bulletproof-security'); ?></option>
 </select><br /><br />
 
     <label for="mmode"><?php _e('Maintenance Mode Time (in Minutes):', 'bulletproof-security'); ?></label><br />
     <label for="mmode"><?php _e('Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours.', 'bulletproof-security'); ?></label><br />
-    <input type="text" name="mmode_time" class="regular-text-250" value="<?php echo $MMoptions['bps_maint_time']; ?>" /><br /><br />
+    <input type="text" name="mmode_time" class="regular-text-250" value="<?php echo $bps_maint_time; ?>" /><br /><br />
     
     <label for="mmode"><?php _e('Header Retry-After (enter the same time as Maintenance Mode Time above):', 'bulletproof-security'); ?></label><br />
     <label for="mmode"><?php _e('Example: 10 = 10 minutes, 180 = 3 hours, 1440 = 24 hours.', 'bulletproof-security'); ?></label><br />
-    <input type="text" name="mmode_retry_after" class="regular-text-250" value="<?php echo $MMoptions['bps_maint_retry_after']; ?>" /><br /><br />   
+    <input type="text" name="mmode_retry_after" class="regular-text-250" value="<?php echo $bps_maint_retry_after; ?>" /><br /><br />   
      
-	<input type="checkbox" name="mmode_frontend" value="1" <?php checked( $MMoptions['bps_maint_frontend'], 1 ); ?> /><label for="mmode"><?php _e('Enable FrontEnd Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />    
+	<input type="checkbox" name="mmode_frontend" value="1" <?php if ( empty( $MMoptions['bps_maint_frontend'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_frontend'], 1 ); } ?> /><label for="mmode"><?php _e('Enable FrontEnd Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />    
     
 <?php if ( is_multisite() && $blog_id != 1 ) { echo '<div style="margin:0px 0px 0px 0px;"></div>'; } else { ?>
 	
     <div id="mmode-caution">
     <?php $text = '<font color="#fb0101">'.__('CAUTION: ', 'bulletproof-security').'</font><font color="blue">'.__('You MUST enter Your Current IP Address or the', 'bulletproof-security').'<br>'.__('Recommended IP Address if you Enable BackEnd Maintenance Mode', 'bulletproof-security').'<br>'.__('or you will be locked out of your WordPress Dashboard.', 'bulletproof-security').'</font>'; echo $text; ?></div>
-    <input type="checkbox" name="mmode_backend" value="1" <?php checked( $MMoptions['bps_maint_backend'], 1 ); ?> /><label for="mmode"><?php _e('Enable BackEnd Maintenance Mode ', 'bulletproof-security'); ?></label><br /><br />        
+    <input type="checkbox" name="mmode_backend" value="1" <?php if ( empty( $MMoptions['bps_maint_backend'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_backend'], 1 ); } ?> /><label for="mmode"><?php _e('Enable BackEnd Maintenance Mode ', 'bulletproof-security'); ?></label><br /><br />        
 
 <?php } ?>    
 
@@ -544,79 +557,79 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 	<?php bps_get_proxy_real_ip_address_maint(); ?>
 	
     <input type="hidden" name="scrolltommode1" id="scrolltommode1" value="<?php echo esc_html( $scrolltommode1 ); ?>" />
-    <textarea class="PFW-Allow-From-Text-Area" name="mmode_ip_allowed" id="mmode_ip_allowed" tabindex="1"><?php echo trim( $MMoptions['bps_maint_ip_allowed'], ", \t\n\r"); ?></textarea><br /><br />
+    <textarea class="PFW-Allow-From-Text-Area" name="mmode_ip_allowed" id="mmode_ip_allowed" tabindex="1"><?php echo trim( $bps_maint_ip_allowed, ", \t\n\r"); ?></textarea><br /><br />
 
     <label for="mmode"><?php _e('Background Images:', 'bulletproof-security'); ?></label><br />
 <select name="mmode_background_images" class="form-300">
-<option value="0" <?php selected('0', $MMoptions['bps_maint_background_images']); ?>><?php _e('No Background Image', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blackHL; ?>" <?php selected($blackHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Black Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blackHLG; ?>" <?php selected($blackHLG, $MMoptions['bps_maint_background_images']); ?>><?php _e('Black Honeycomb Large Grey Line', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blackMS; ?>" <?php selected($blackMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Black Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blackMSG; ?>" <?php selected($blackMSG, $MMoptions['bps_maint_background_images']); ?>><?php _e('Black Mesh Small Grey Line', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blueHL; ?>" <?php selected($blueHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Blue Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blueMS; ?>" <?php selected($blueMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Blue Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $brownHL; ?>" <?php selected($brownHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Brown Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $brownMS; ?>" <?php selected($brownMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Brown Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $greenHL; ?>" <?php selected($greenHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Green Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $greenMS; ?>" <?php selected($greenMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Green Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $grayHL; ?>" <?php selected($grayHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Gray Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $grayMS; ?>" <?php selected($grayMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Gray Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $orangeHL; ?>" <?php selected($orangeHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Orange Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $orangeMS; ?>" <?php selected($orangeMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Orange Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $purpleHL; ?>" <?php selected($purpleHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Purple Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $purpleMS; ?>" <?php selected($purpleMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Purple Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $redHL; ?>" <?php selected($redHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Red|Burgundy Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $redMS; ?>" <?php selected($redMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Red|Burgundy Mesh Small', 'bulletproof-security'); ?></option>
-<option value="<?php echo $yellowHL; ?>" <?php selected($yellowHL, $MMoptions['bps_maint_background_images']); ?>><?php _e('Yellow Honeycomb Large', 'bulletproof-security'); ?></option>
-<option value="<?php echo $yellowMS; ?>" <?php selected($yellowMS, $MMoptions['bps_maint_background_images']); ?>><?php _e('Yellow Mesh Small', 'bulletproof-security'); ?></option>
+<option value="0" <?php selected('0', $bps_maint_background_images); ?>><?php _e('No Background Image', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blackHL; ?>" <?php selected($blackHL, $bps_maint_background_images); ?>><?php _e('Black Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blackHLG; ?>" <?php selected($blackHLG, $bps_maint_background_images); ?>><?php _e('Black Honeycomb Large Grey Line', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blackMS; ?>" <?php selected($blackMS, $bps_maint_background_images); ?>><?php _e('Black Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blackMSG; ?>" <?php selected($blackMSG, $bps_maint_background_images); ?>><?php _e('Black Mesh Small Grey Line', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blueHL; ?>" <?php selected($blueHL, $bps_maint_background_images); ?>><?php _e('Blue Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blueMS; ?>" <?php selected($blueMS, $bps_maint_background_images); ?>><?php _e('Blue Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $brownHL; ?>" <?php selected($brownHL, $bps_maint_background_images); ?>><?php _e('Brown Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $brownMS; ?>" <?php selected($brownMS, $bps_maint_background_images); ?>><?php _e('Brown Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $greenHL; ?>" <?php selected($greenHL, $bps_maint_background_images); ?>><?php _e('Green Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $greenMS; ?>" <?php selected($greenMS, $bps_maint_background_images); ?>><?php _e('Green Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $grayHL; ?>" <?php selected($grayHL, $bps_maint_background_images); ?>><?php _e('Gray Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $grayMS; ?>" <?php selected($grayMS, $bps_maint_background_images); ?>><?php _e('Gray Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $orangeHL; ?>" <?php selected($orangeHL, $bps_maint_background_images); ?>><?php _e('Orange Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $orangeMS; ?>" <?php selected($orangeMS, $bps_maint_background_images); ?>><?php _e('Orange Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $purpleHL; ?>" <?php selected($purpleHL, $bps_maint_background_images); ?>><?php _e('Purple Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $purpleMS; ?>" <?php selected($purpleMS, $bps_maint_background_images); ?>><?php _e('Purple Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $redHL; ?>" <?php selected($redHL, $bps_maint_background_images); ?>><?php _e('Red|Burgundy Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $redMS; ?>" <?php selected($redMS, $bps_maint_background_images); ?>><?php _e('Red|Burgundy Mesh Small', 'bulletproof-security'); ?></option>
+<option value="<?php echo $yellowHL; ?>" <?php selected($yellowHL, $bps_maint_background_images); ?>><?php _e('Yellow Honeycomb Large', 'bulletproof-security'); ?></option>
+<option value="<?php echo $yellowMS; ?>" <?php selected($yellowMS, $bps_maint_background_images); ?>><?php _e('Yellow Mesh Small', 'bulletproof-security'); ?></option>
 </select><br /><br />    
 
     <label for="mmode"><?php _e('Center Images:', 'bulletproof-security'); ?></label><br />
 <select name="mmode_center_images" class="form-300">
-<option value="0" <?php selected('0', $MMoptions['bps_maint_center_images']); ?>><?php _e('No Center Image', 'bulletproof-security'); ?></option>
-<option value="<?php echo $basicBlack; ?>" <?php selected($basicBlack, $MMoptions['bps_maint_center_images']); ?>><?php _e('Basic Black', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blackVeins; ?>" <?php selected($blackVeins, $MMoptions['bps_maint_center_images']); ?>><?php _e('Black Veins', 'bulletproof-security'); ?></option>
-<option value="<?php echo $blueGlass; ?>" <?php selected($blueGlass, $MMoptions['bps_maint_center_images']); ?>><?php _e('Blue Glass', 'bulletproof-security'); ?></option>
-<option value="<?php echo $brushedMetal; ?>" <?php selected($brushedMetal, $MMoptions['bps_maint_center_images']); ?>><?php _e('Brushed Metal Stamped', 'bulletproof-security'); ?></option>
-<option value="<?php echo $chrome; ?>" <?php selected($chrome, $MMoptions['bps_maint_center_images']); ?>><?php _e('Chrome', 'bulletproof-security'); ?></option>
-<option value="<?php echo $chromeSlick; ?>" <?php selected($chromeSlick, $MMoptions['bps_maint_center_images']); ?>><?php _e('Chrome Slick', 'bulletproof-security'); ?></option>
-<option value="<?php echo $fire; ?>" <?php selected($fire, $MMoptions['bps_maint_center_images']); ?>><?php _e('Fire', 'bulletproof-security'); ?></option>
-<option value="<?php echo $gunMetal; ?>" <?php selected($gunMetal, $MMoptions['bps_maint_center_images']); ?>><?php _e('Gun Metal', 'bulletproof-security'); ?></option>
-<option value="<?php echo $mercury; ?>" <?php selected($mercury, $MMoptions['bps_maint_center_images']); ?>><?php _e('Mercury', 'bulletproof-security'); ?></option>
-<option value="<?php echo $smoke; ?>" <?php selected($smoke, $MMoptions['bps_maint_center_images']); ?>><?php _e('Smoke', 'bulletproof-security'); ?></option>
-<option value="<?php echo $stripedCone; ?>" <?php selected($stripedCone, $MMoptions['bps_maint_center_images']); ?>><?php _e('Striped Cone', 'bulletproof-security'); ?></option>
-<option value="<?php echo $swampBevel; ?>" <?php selected($swampBevel, $MMoptions['bps_maint_center_images']); ?>><?php _e('Swamp Bevel', 'bulletproof-security'); ?></option>
-<option value="<?php echo $toy; ?>" <?php selected($toy, $MMoptions['bps_maint_center_images']); ?>><?php _e('Toy', 'bulletproof-security'); ?></option>
-<option value="<?php echo $waterReflection; ?>" <?php selected($waterReflection, $MMoptions['bps_maint_center_images']); ?>><?php _e('Water Reflection', 'bulletproof-security'); ?></option>
-<option value="<?php echo $woodGrain; ?>" <?php selected($woodGrain, $MMoptions['bps_maint_center_images']); ?>><?php _e('Wood Grain', 'bulletproof-security'); ?></option>
+<option value="0" <?php selected('0', $bps_maint_center_images); ?>><?php _e('No Center Image', 'bulletproof-security'); ?></option>
+<option value="<?php echo $basicBlack; ?>" <?php selected($basicBlack, $bps_maint_center_images); ?>><?php _e('Basic Black', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blackVeins; ?>" <?php selected($blackVeins, $bps_maint_center_images); ?>><?php _e('Black Veins', 'bulletproof-security'); ?></option>
+<option value="<?php echo $blueGlass; ?>" <?php selected($blueGlass, $bps_maint_center_images); ?>><?php _e('Blue Glass', 'bulletproof-security'); ?></option>
+<option value="<?php echo $brushedMetal; ?>" <?php selected($brushedMetal, $bps_maint_center_images); ?>><?php _e('Brushed Metal Stamped', 'bulletproof-security'); ?></option>
+<option value="<?php echo $chrome; ?>" <?php selected($chrome, $bps_maint_center_images); ?>><?php _e('Chrome', 'bulletproof-security'); ?></option>
+<option value="<?php echo $chromeSlick; ?>" <?php selected($chromeSlick, $bps_maint_center_images); ?>><?php _e('Chrome Slick', 'bulletproof-security'); ?></option>
+<option value="<?php echo $fire; ?>" <?php selected($fire, $bps_maint_center_images); ?>><?php _e('Fire', 'bulletproof-security'); ?></option>
+<option value="<?php echo $gunMetal; ?>" <?php selected($gunMetal, $bps_maint_center_images); ?>><?php _e('Gun Metal', 'bulletproof-security'); ?></option>
+<option value="<?php echo $mercury; ?>" <?php selected($mercury, $bps_maint_center_images); ?>><?php _e('Mercury', 'bulletproof-security'); ?></option>
+<option value="<?php echo $smoke; ?>" <?php selected($smoke, $bps_maint_center_images); ?>><?php _e('Smoke', 'bulletproof-security'); ?></option>
+<option value="<?php echo $stripedCone; ?>" <?php selected($stripedCone, $bps_maint_center_images); ?>><?php _e('Striped Cone', 'bulletproof-security'); ?></option>
+<option value="<?php echo $swampBevel; ?>" <?php selected($swampBevel, $bps_maint_center_images); ?>><?php _e('Swamp Bevel', 'bulletproof-security'); ?></option>
+<option value="<?php echo $toy; ?>" <?php selected($toy, $bps_maint_center_images); ?>><?php _e('Toy', 'bulletproof-security'); ?></option>
+<option value="<?php echo $waterReflection; ?>" <?php selected($waterReflection, $bps_maint_center_images); ?>><?php _e('Water Reflection', 'bulletproof-security'); ?></option>
+<option value="<?php echo $woodGrain; ?>" <?php selected($woodGrain, $bps_maint_center_images); ?>><?php _e('Wood Grain', 'bulletproof-security'); ?></option>
 </select><br /><br />    
 
     <label for="mmode"><?php _e('Background Colors (If not using a Background Image):', 'bulletproof-security'); ?></label><br />
 <select name="mmode_background_color" class="form-300">
-<option value="white" <?php selected('white', $MMoptions['bps_maint_background_color']); ?>><?php _e('No Background Color', 'bulletproof-security'); ?></option>
-<option value="white" <?php selected('white', $MMoptions['bps_maint_background_color']); ?>><?php _e('White', 'bulletproof-security'); ?></option>
-<option value="black" <?php selected('black', $MMoptions['bps_maint_background_color']); ?>><?php _e('Black', 'bulletproof-security'); ?></option>
-<option value="gray" <?php selected('gray', $MMoptions['bps_maint_background_color']); ?>><?php _e('Gray', 'bulletproof-security'); ?></option>
+<option value="white" <?php selected('white', $bps_maint_background_color); ?>><?php _e('No Background Color', 'bulletproof-security'); ?></option>
+<option value="white" <?php selected('white', $bps_maint_background_color); ?>><?php _e('White', 'bulletproof-security'); ?></option>
+<option value="black" <?php selected('black', $bps_maint_background_color); ?>><?php _e('Black', 'bulletproof-security'); ?></option>
+<option value="gray" <?php selected('gray', $bps_maint_background_color); ?>><?php _e('Gray', 'bulletproof-security'); ?></option>
 </select><br /><br />
 
-    <input type="checkbox" name="mmode_visitor_ip" value="1" <?php checked( $MMoptions['bps_maint_show_visitor_ip'], 1 ); ?> /><label for="mmode"><?php _e('Display Visitor IP Address', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_visitor_ip" value="1" <?php if ( empty( $MMoptions['bps_maint_show_visitor_ip'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_show_visitor_ip'], 1 ); } ?> /><label for="mmode"><?php _e('Display Visitor IP Address', 'bulletproof-security'); ?></label><br /><br />
 	
-    <input type="checkbox" name="mmode_login_link" value="1" <?php checked( $MMoptions['bps_maint_show_login_link'], 1 ); ?> /><label for="mmode"><?php _e('Display Admin|Login Link', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_login_link" value="1" <?php if ( empty( $MMoptions['bps_maint_show_login_link'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_show_login_link'], 1 ); } ?> /><label for="mmode"><?php _e('Display Admin|Login Link', 'bulletproof-security'); ?></label><br /><br />
 
-    <input type="checkbox" name="mmode_dashboard_reminder" value="1" <?php checked( $MMoptions['bps_maint_dashboard_reminder'], 1 ); ?> /><label for="mmode"><?php _e('Display Dashboard Reminder Message when site is in Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_dashboard_reminder" value="1" <?php if ( empty( $MMoptions['bps_maint_dashboard_reminder'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_dashboard_reminder'], 1 ); } ?> /><label for="mmode"><?php _e('Display Dashboard Reminder Message when site is in Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />
 
-    <input type="checkbox" name="mmode_log_visitors" value="1" <?php @checked( $MMoptions['bps_maint_log_visitors'], 1 ); ?> /><label for="mmode"><?php _e('Enable Visitor Logging', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_log_visitors" value="1" <?php if ( empty( $MMoptions['bps_maint_log_visitors'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_log_visitors'], 1 ); } ?> /><label for="mmode"><?php _e('Enable Visitor Logging', 'bulletproof-security'); ?></label><br /><br />
 
-	<input type="checkbox" name="mmode_countdown_email" value="1" <?php checked( $MMoptions['bps_maint_countdown_email'], 1 ); ?> /><label for="mmode"><?php _e('Send Email Reminder when Maintenance Mode Countdown Timer has completed', 'bulletproof-security'); ?></label><br /><br />
+	<input type="checkbox" name="mmode_countdown_email" value="1" <?php if ( empty( $MMoptions['bps_maint_countdown_email'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_countdown_email'], 1 ); } ?> /><label for="mmode"><?php _e('Send Email Reminder when Maintenance Mode Countdown Timer has completed', 'bulletproof-security'); ?></label><br /><br />
     
     <strong><label for="mmode-email"><?php _e('Send Countdown Timer Email To:', 'bulletproof-security'); ?> </label></strong><br />
-    <input type="text" name="mmode_email_to" class="regular-text-250" value="<?php echo $MMoptions['bps_maint_email_to']; ?>" /><br />
+    <input type="text" name="mmode_email_to" class="regular-text-250" value="<?php echo $bps_maint_email_to; ?>" /><br />
     <strong><label for="mmode-email"><?php _e('Send Countdown Timer Email From:', 'bulletproof-security'); ?> </label></strong><br />
-    <input type="text" name="mmode_email_from" class="regular-text-250" value="<?php echo $MMoptions['bps_maint_email_from']; ?>" /><br />
+    <input type="text" name="mmode_email_from" class="regular-text-250" value="<?php echo $bps_maint_email_from; ?>" /><br />
     <strong><label for="mmode-email"><?php _e('Send Countdown Timer Email Cc:', 'bulletproof-security'); ?> </label></strong><br />
-    <input type="text" name="mmode_email_cc" class="regular-text-250" value="<?php echo $MMoptions['bps_maint_email_cc']; ?>" /><br />
+    <input type="text" name="mmode_email_cc" class="regular-text-250" value="<?php echo $bps_maint_email_cc; ?>" /><br />
     <strong><label for="mmode-email"><?php _e('Send Countdown Timer Email Bcc:', 'bulletproof-security'); ?> </label></strong><br />
-    <input type="text" name="mmode_email_bcc" class="regular-text-250" value="<?php echo $MMoptions['bps_maint_email_bcc']; ?>" /><br />
+    <input type="text" name="mmode_email_bcc" class="regular-text-250" value="<?php echo $bps_maint_email_bcc; ?>" /><br />
 
 </div>
 
@@ -628,9 +641,9 @@ $MMoptions = get_option('bulletproof_security_options_maint_mode');
 <?php if ( is_multisite() && $blog_id != 1 ) { echo '<div style="margin:0px 0px 10px 0px;"></div>'; } else { ?>
 
  	<strong><label for="mmode" style="color:#2ea2cc;"><?php _e('Click the Maintenance Mode Read Me help button for the steps to use these special options:', 'bulletproof-security'); ?></label></strong><br /><br />
-    <input type="checkbox" name="mmode_mu_entire_site" value="1" <?php checked( $MMoptions['bps_maint_mu_entire_site'], 1 ); ?> /><label for="mmode"><?php _e('Put The Primary Site And All Subsites In Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="mmode_mu_entire_site" value="1" <?php if ( empty( $MMoptions['bps_maint_mu_entire_site'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_mu_entire_site'], 1 ); } ?> /><label for="mmode"><?php _e('Put The Primary Site And All Subsites In Maintenance Mode', 'bulletproof-security'); ?></label><br /><br />
 
-    <input type="checkbox" name="mmode_mu_subsites_only" value="1" <?php checked( $MMoptions['bps_maint_mu_subsites_only'], 1 ); ?> /><label for="mmode"><?php _e('Put All Subsites In Maintenance Mode, But Not The Primary Site', 'bulletproof-security'); ?></label><br /><br />   
+    <input type="checkbox" name="mmode_mu_subsites_only" value="1" <?php if ( empty( $MMoptions['bps_maint_mu_subsites_only'] ) ) { echo ''; } else { checked( $MMoptions['bps_maint_mu_subsites_only'], 1 ); } ?> /><label for="mmode"><?php _e('Put All Subsites In Maintenance Mode, But Not The Primary Site', 'bulletproof-security'); ?></label><br /><br />   
     
 <?php } ?> 
 

@@ -48,8 +48,9 @@ p {
 <body>
 <div id="bpsMessage">
 	<p><?php $bps_hostname = str_replace( 'www.', '', htmlspecialchars( $_SERVER['SERVER_NAME'], ENT_QUOTES ) );
-	echo $bps_hostname; ?> 400 Bad Request Error Page</p>
+	echo $bps_hostname; ?> 400 Bad Request Error</p>
 	<p>If you arrived here due to a search or clicking on a link click your Browser's back button to return to the previous page. Thank you.</p>
+    <p style="font-size:12px">BPS Plugin 400 Error Page</p>
 </div>
 
 <?php 

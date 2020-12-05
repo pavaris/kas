@@ -66,6 +66,7 @@ class PageFields extends AbstractEnum {
   const COVER = 'cover';
   const CULINARY_TEAM = 'culinary_team';
   const CURRENT_LOCATION = 'current_location';
+  const DELIVERY_AND_PICKUP_OPTION_INFO = 'delivery_and_pickup_option_info';
   const DESCRIPTION = 'description';
   const DESCRIPTION_HTML = 'description_html';
   const DIFFERENTLY_OPEN_OFFERINGS = 'differently_open_offerings';
@@ -127,7 +128,6 @@ class PageFields extends AbstractEnum {
   const NEW_LIKE_COUNT = 'new_like_count';
   const OFFER_ELIGIBLE = 'offer_eligible';
   const OVERALL_STAR_RATING = 'overall_star_rating';
-  const PAGE_ABOUT_STORY = 'page_about_story';
   const PAGE_TOKEN = 'page_token';
   const PARENT_PAGE = 'parent_page';
   const PARKING = 'parking';
@@ -136,6 +136,7 @@ class PageFields extends AbstractEnum {
   const PERSONAL_INTERESTS = 'personal_interests';
   const PHARMA_SAFETY_INFO = 'pharma_safety_info';
   const PHONE = 'phone';
+  const PICKUP_OPTIONS = 'pickup_options';
   const PLACE_TYPE = 'place_type';
   const PLOT_OUTLINE = 'plot_outline';
   const PREFERRED_AUDIENCE = 'preferred_audience';
@@ -209,6 +210,7 @@ class PageFields extends AbstractEnum {
       'cover' => 'CoverPhoto',
       'culinary_team' => 'string',
       'current_location' => 'string',
+      'delivery_and_pickup_option_info' => 'list<string>',
       'description' => 'string',
       'description_html' => 'string',
       'differently_open_offerings' => 'map<string, bool>',
@@ -270,7 +272,6 @@ class PageFields extends AbstractEnum {
       'new_like_count' => 'unsigned int',
       'offer_eligible' => 'bool',
       'overall_star_rating' => 'float',
-      'page_about_story' => 'PageAboutStory',
       'page_token' => 'string',
       'parent_page' => 'Page',
       'parking' => 'PageParking',
@@ -279,6 +280,7 @@ class PageFields extends AbstractEnum {
       'personal_interests' => 'string',
       'pharma_safety_info' => 'string',
       'phone' => 'string',
+      'pickup_options' => 'list<string>',
       'place_type' => 'string',
       'plot_outline' => 'string',
       'preferred_audience' => 'Targeting',

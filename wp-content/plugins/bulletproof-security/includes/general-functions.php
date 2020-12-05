@@ -495,7 +495,7 @@ function bpsPro_htaccess_manual_update_notice() {
 			global $pagenow;
 
 			// manual steps if version of BPS root htaccess file is very old
-			if ( 'plugins.php' == $pagenow || @preg_match( '/page=bulletproof-security\/admin\/core\/core\.php/', esc_html( $_SERVER['REQUEST_URI'], $matches ) ) ) {
+			if ( 'plugins.php' == $pagenow || preg_match( '/page=bulletproof-security\/admin\/core\/core\.php/', esc_html( $_SERVER['REQUEST_URI'] ) ) ) {
 
 				$pos = strpos( $check_string, 'IMPORTANT!!! DO NOT DELETE!!! - B E G I N Wordpress' );
 			
@@ -835,36 +835,12 @@ function bpsPro_upgrade_CC_automatic_fix() {
 }
 
 // Copies the new version of BPS MU Tools must-use plugin to the /mu-plugins/ folder on BPS upgrade
+// 4.3: Delete the old bulletproof_security_options_autoupdate option & delete the bulletproof_security_options_MU_tools_free option
 function bpsPro_mu_tools_plugin_copy() {
 	
-	// 2.4: Add strpos Version check
-	// 2.3: Always update the mu tools timestamp to time + 5 minutes on BPS upgrade. Hopefully that will prevent email alerts being sent during BPS upgrades.
-	// 2.0: Update and Pre-save the new BPS MU Tools DB options
-	// Delete the old bulletproof_security_options_autoupdate DB option
-	// Delete the old bps-plugin-autoupdate.php files
-	// Copy the new BPS MU Tools file to the /mu-plugins/ folder
-	$AutoUpdate_options = get_option('bulletproof_security_options_autoupdate');
-	$MUTools_Options = get_option('bulletproof_security_options_MU_tools_free');
-		
-	if ( $AutoUpdate_options['bps_autoupdate'] == 'On' ) {
-		$bps_mu_tools2 = 'enable';
-	} else {
-		$bps_mu_tools2 = ! $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'] ? 'disable' : $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'];
-	}
-
-	$bps_mu_tools3 = ! $MUTools_Options['bps_mu_tools_enable_disable_deactivation'] ? 'enable' : $MUTools_Options['bps_mu_tools_enable_disable_deactivation'];
-
-	$MUTools_Option_settings = array( 
-	'bps_mu_tools_timestamp' 					=> time() + 300,
-	'bps_mu_tools_enable_disable_autoupdate' 	=> $bps_mu_tools2, 
-	'bps_mu_tools_enable_disable_deactivation' 	=> $bps_mu_tools3 
-	);	
-
-	foreach ( $MUTools_Option_settings as $key => $value ) {
-		update_option('bulletproof_security_options_MU_tools_free', $MUTools_Option_settings);
-	}		
-		
 	delete_option('bulletproof_security_options_autoupdate');
+	delete_option('bulletproof_security_options_MU_tools_free');
+	
 	$autoupdate_master_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/htaccess/bps-plugin-autoupdate.php';
 	$autoupdate_muplugins_file = WP_CONTENT_DIR . '/mu-plugins/bps-plugin-autoupdate.php';
 		
@@ -890,8 +866,10 @@ function bpsPro_mu_tools_plugin_copy() {
 		$pos1 = strpos( $check_string, 'Version: 1.0' );
 		$pos2 = strpos( $check_string, 'Version: 2.0' );
 		$pos3 = strpos( $check_string, 'Version: 3.0' );
-
-		if ( $pos1 !== false || $pos2 !== false || $pos3 !== false ) {
+		$pos4 = strpos( $check_string, 'Version: 4.0' );
+		$pos5 = strpos( $check_string, 'Version: 5.0' );
+				
+		if ( $pos1 !== false || $pos2 !== false || $pos3 !== false || $pos4 !== false || $pos5 !== false ) {
 			@copy($BPS_MU_tools, $BPS_MU_tools_copy);			
 		}
 	}
@@ -1028,6 +1006,64 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 	if ( current_user_can('manage_options') ) {
 		global $bps_version, $bps_last_version, $wp_version, $wpdb, $aitpro_bullet, $pagenow, $current_user;
 	
+		$user_id = $current_user->ID;
+		
+		// 4.3: Pre-save all UI|UX option settings except for SLF - already done further below. 
+		// Note: Avoids having to do additional Form coding work for PHP 7.4.9 Notice errors.
+		// Theme Skin
+		$UITSoptions = get_option('bulletproof_security_options_theme_skin');
+		$uits = ! isset($UITSoptions['bps_ui_theme_skin']) ? 'blue' : $UITSoptions['bps_ui_theme_skin'];
+		$uits_options = array('bps_ui_theme_skin' => $uits);
+
+		foreach( $uits_options as $key => $value ) {
+			update_option('bulletproof_security_options_theme_skin', $uits_options);
+		}
+
+		// Turn On|Off The Inpage Status Display
+		$UIStatus_display = get_option('bulletproof_security_options_status_display');
+		$ui_status = ! isset($UIStatus_display['bps_status_display']) ? 'On' : $UIStatus_display['bps_status_display'];
+		$ui_status_display = array('bps_status_display' => $ui_status);
+
+		foreach( $ui_status_display as $key => $value ) {
+			update_option('bulletproof_security_options_status_display', $ui_status_display);
+		}
+
+		// Processing Spinner
+		$UISpinneroptions = get_option('bulletproof_security_options_spinner');
+		$uips = ! isset($UISpinneroptions['bps_spinner']) ? 'On' : $UISpinneroptions['bps_spinner'];
+		$uips_options = array('bps_spinner' => $uips);
+
+		foreach( $uips_options as $key => $value ) {
+			update_option('bulletproof_security_options_spinner', $uips_options);
+		}
+
+		// ScrollTop Animation
+		$ScrollTopoptions = get_option('bulletproof_security_options_scrolltop');
+		$uist = ! isset($ScrollTopoptions['bps_scrolltop']) ? 'On' : $ScrollTopoptions['bps_scrolltop'];
+		$uist_options = array('bps_scrolltop' => $uist);
+
+		foreach( $uist_options as $key => $value ) {
+			update_option('bulletproof_security_options_scrolltop', $uist_options);
+		}
+		
+		// WP Toolbar Functionality in BPS plugin pages		
+		$UIWPToptions = get_option('bulletproof_security_options_wpt_nodes');
+		$uiwpt = ! isset($UIWPToptions['bps_wpt_nodes']) ? 'allnodes' : $UIWPToptions['bps_wpt_nodes'];
+		$uiwpt_options = array('bps_wpt_nodes' => $uiwpt);
+
+		foreach( $uiwpt_options as $key => $value ) {
+			update_option('bulletproof_security_options_wpt_nodes', $uiwpt_options);
+		}		
+
+		// BPS UI|UX|AutoFix Debug
+		$UIDebug_options = get_option('bulletproof_security_options_debug');
+		$uidb = ! isset($UIDebug_options['bps_debug']) ? 'Off' : $UIDebug_options['bps_debug'];
+		$uidb_options = array('bps_debug' => $uidb);
+
+		foreach( $uidb_options as $key => $value ) {
+			update_option('bulletproof_security_options_debug', $uidb_options);
+		}
+
 		// 3.5: Pre-save the SLF option. The default is now set to On. New option added to use to check against for BPS upgrades: bps_slf_filter_new
 		$bpsPro_SLF_options = get_option('bulletproof_security_options_SLF');
 		
@@ -1043,6 +1079,71 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 			}
 		}		
 		
+		// 4.3: Pre-save all Setup Wizard Options DB option settings. 
+		// Note: Avoids having to do additional Form coding work for PHP 7.4.9 Notice errors.
+		// AutoFix
+		$AutoFix_Options = get_option('bulletproof_security_options_wizard_autofix');
+		$swoaf = ! isset($AutoFix_Options['bps_wizard_autofix']) ? 'On' : $AutoFix_Options['bps_wizard_autofix'];
+		$SWOAF_options = array('bps_wizard_autofix' => $swoaf);
+
+		foreach( $SWOAF_options as $key => $value ) {
+			update_option('bulletproof_security_options_wizard_autofix', $SWOAF_options);
+		}		
+		
+		// GDPR Compliance
+		$GDPR_Options = get_option('bulletproof_security_options_gdpr');	
+		$swgdpr = ! isset($GDPR_Options['bps_gdpr_on_off']) ? 'Off' : $GDPR_Options['bps_gdpr_on_off'];
+		$SWGDPR_options = array('bps_gdpr_on_off' => $swgdpr);
+
+		foreach( $SWGDPR_options as $key => $value ) {
+			update_option('bulletproof_security_options_gdpr', $SWGDPR_options);
+		}		
+		
+		// GDMW 
+		$GDMW_options = get_option('bulletproof_security_options_GDMW');
+		$swgdmw = ! isset($GDMW_options['bps_gdmw_hosting']) ? 'no' : $GDMW_options['bps_gdmw_hosting'];
+		$SWGDMW_options = array('bps_gdmw_hosting' => $swgdmw);
+
+		foreach( $SWGDMW_options as $key => $value ) {
+			update_option('bulletproof_security_options_GDMW', $SWGDMW_options);
+		}		
+		
+		// Enable|Disable htaccess files
+		$HFiles_options = get_option('bulletproof_security_options_htaccess_files');		
+		$swhf = ! isset($HFiles_options['bps_htaccess_files']) ? 'enabled' : $HFiles_options['bps_htaccess_files'];
+		$SWHF_options = array('bps_htaccess_files' => $swhf);
+
+		foreach( $SWHF_options as $key => $value ) {
+			update_option('bulletproof_security_options_htaccess_files', $SWHF_options);
+		}		
+					
+		// Enable|Disable wp-admin BulletProof Mode
+		$BPS_wpadmin_Options = get_option('bulletproof_security_options_htaccess_res');
+		$swwhf = ! isset($BPS_wpadmin_Options['bps_wpadmin_restriction']) ? 'enabled' : $BPS_wpadmin_Options['bps_wpadmin_restriction'];
+		$SWWHF_options = array('bps_wpadmin_restriction' => $swwhf);
+
+		foreach( $SWWHF_options as $key => $value ) {
+			update_option('bulletproof_security_options_htaccess_res', $SWWHF_options);
+		}
+
+		// Zip File Download Fix
+		$Zip_download_Options = get_option('bulletproof_security_options_zip_fix');
+		$swzd = ! isset($Zip_download_Options['bps_zip_download_fix']) ? 'Off' : $Zip_download_Options['bps_zip_download_fix'];
+		$SWZD_options = array('bps_zip_download_fix' => $swzd);
+
+		foreach( $SWZD_options as $key => $value ) {
+			update_option('bulletproof_security_options_zip_fix', $SWZD_options);
+		}		
+
+		// Multisite Hide|Display System Info Page for Subsites
+		$Mu_Sysinfo_page_options = get_option('bulletproof_security_options_mu_sysinfo');
+		$swmus = ! isset($Mu_Sysinfo_page_options['bps_sysinfo_hide_display']) ? 'display' : $Mu_Sysinfo_page_options['bps_sysinfo_hide_display'];
+		$SWMUS_options = array('bps_sysinfo_hide_display' => $swmus);
+
+		foreach( $SWMUS_options as $key => $value ) {
+			update_option('bulletproof_security_options_mu_sysinfo', $SWMUS_options);
+		}
+
 		// 2.9: BPS plugin 30 day review/rating request Dismiss Notice
 		$bps_rate_options = 'bulletproof_security_options_rate_free';
 		$gmt_offset = get_option( 'gmt_offset' ) * 3600;
@@ -1058,7 +1159,10 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		}
 
 		// 2.4: new function created to handle all BPS MU Tools must-use plugin processing
+		// 4.3: Delete the old bulletproof_security_options_autoupdate option & delete the bulletproof_security_options_MU_tools_free option
+		// 4.3: delete the Dismiss Notice DB option: bps_ignore_autoupdate_notice
 		bpsPro_mu_tools_plugin_copy();
+		delete_user_meta($user_id, 'bps_ignore_autoupdate_notice');
 		// 2.4: Pre-save MScan Options
 		bpsPro_presave_mscan_options();		
 
@@ -1079,7 +1183,7 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		// 2.4: pre-save JTC-Lite db options
 		$jtc_options = get_option('bulletproof_security_options_login_security_jtc');
 
-		if ( ! $jtc_options['bps_jtc_custom_roles'] ) {
+		if ( ! isset($jtc_options['bps_jtc_custom_roles']) ) {
 			$jtc_options19 = array( 'bps', '' );
 		
 		} else {
@@ -1097,11 +1201,11 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 			}	
 		}
 
-		$jtc1 = ! $jtc_options['bps_tooltip_captcha_key'] ? 'jtc' : $jtc_options['bps_tooltip_captcha_key'];
-		$jtc2 = ! $jtc_options['bps_tooltip_captcha_hover_text'] ? 'Type/Enter:  jtc' : $jtc_options['bps_tooltip_captcha_hover_text'];
-		$jtc3 = ! $jtc_options['bps_tooltip_captcha_title'] ? 'Hover or click the text box below' : $jtc_options['bps_tooltip_captcha_title'];
-		$jtc4 = ! $jtc_options['bps_jtc_login_form'] ? '0' : $jtc_options['bps_jtc_login_form'];
-		$jtc5 = ! $jtc_options['bps_jtc_custom_form_error'] ? '' : $jtc_options['bps_jtc_custom_form_error'];
+		$jtc1 = ! isset($jtc_options['bps_tooltip_captcha_key']) ? 'jtc' : $jtc_options['bps_tooltip_captcha_key'];
+		$jtc2 = ! isset($jtc_options['bps_tooltip_captcha_hover_text']) ? 'Type/Enter:  jtc' : $jtc_options['bps_tooltip_captcha_hover_text'];
+		$jtc3 = ! isset($jtc_options['bps_tooltip_captcha_title']) ? 'Hover or click the text box below' : $jtc_options['bps_tooltip_captcha_title'];
+		$jtc4 = ! isset($jtc_options['bps_jtc_login_form']) ? '0' : $jtc_options['bps_jtc_login_form'];
+		$jtc5 = ! isset($jtc_options['bps_jtc_custom_form_error']) ? '' : $jtc_options['bps_jtc_custom_form_error'];
 
 		$jtc_db_options = array(
 		'bps_tooltip_captcha_key' 			=> $jtc1, 
@@ -1135,8 +1239,6 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 			}
 		}
 
-		$user_id = $current_user->ID;
-		
 		// 2.4: Delete the Woo Dimiss Notice and Woo check option. No longer used in BPS free.
 		delete_user_meta($user_id, 'bps_ignore_woocommerce_lsm_jtc_notice');
 		delete_option('bulletproof_security_options_setup_wizard_woo');
@@ -1180,7 +1282,7 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		
 		if ( $isl_options['bps_isl'] == 'On' || $isl_options['bps_isl'] == 'Off' ) {
 
-			if ( ! $isl_options['bps_isl_custom_roles'] ) {
+			if ( ! isset($isl_options['bps_isl_custom_roles']) ) {
 				$isl_options18 = array( 'bps', '' );
 			
 			} else {
@@ -1229,7 +1331,7 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 	
 		if ( $ace_options['bps_ace'] == 'On' || $ace_options['bps_ace'] == 'Off' ) {
 			
-			if ( ! $ace_options['bps_ace_custom_roles'] ) {
+			if ( ! isset($ace_options['bps_ace_custom_roles']) ) {
 				$ace_options11 = array( 'bps', '' );
 			
 			} else {
@@ -1272,16 +1374,16 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		// .51.8: New Login Security Attempts Remaining option added
 		$lsm = get_option('bulletproof_security_options_login_security');	
 	
-		$lsm1 = ! $lsm['bps_max_logins'] ? '3' : $lsm['bps_max_logins'];
-		$lsm2 = ! $lsm['bps_lockout_duration'] ? '15' : $lsm['bps_lockout_duration'];
-		$lsm3 = ! $lsm['bps_manual_lockout_duration'] ? '60' : $lsm['bps_manual_lockout_duration'];
-		$lsm4 = ! $lsm['bps_max_db_rows_display'] ? '' : $lsm['bps_max_db_rows_display'];
-		$lsm5 = ! $lsm['bps_login_security_OnOff'] ? 'On' : $lsm['bps_login_security_OnOff'];
-		$lsm6 = ! $lsm['bps_login_security_logging'] ? 'logLockouts' : $lsm['bps_login_security_logging'];
-		$lsm7 = ! $lsm['bps_login_security_errors'] ? 'wpErrors' : $lsm['bps_login_security_errors'];
-		$lsm8 = ! $lsm['bps_login_security_remaining'] ? 'On' : $lsm['bps_login_security_remaining'];
-		$lsm9 = ! $lsm['bps_login_security_pw_reset'] ? 'enable' : $lsm['bps_login_security_pw_reset'];
-		$lsm10 = ! $lsm['bps_login_security_sort'] ? 'ascending' : $lsm['bps_login_security_sort'];
+		$lsm1 = ! isset($lsm['bps_max_logins']) ? '3' : $lsm['bps_max_logins'];
+		$lsm2 = ! isset($lsm['bps_lockout_duration']) ? '15' : $lsm['bps_lockout_duration'];
+		$lsm3 = ! isset($lsm['bps_manual_lockout_duration']) ? '60' : $lsm['bps_manual_lockout_duration'];
+		$lsm4 = ! isset($lsm['bps_max_db_rows_display']) ? '' : $lsm['bps_max_db_rows_display'];
+		$lsm5 = ! isset($lsm['bps_login_security_OnOff']) ? 'On' : $lsm['bps_login_security_OnOff'];
+		$lsm6 = ! isset($lsm['bps_login_security_logging']) ? 'logLockouts' : $lsm['bps_login_security_logging'];
+		$lsm7 = ! isset($lsm['bps_login_security_errors']) ? 'wpErrors' : $lsm['bps_login_security_errors'];
+		$lsm8 = ! isset($lsm['bps_login_security_remaining']) ? 'On' : $lsm['bps_login_security_remaining'];
+		$lsm9 = ! isset($lsm['bps_login_security_pw_reset']) ? 'enable' : $lsm['bps_login_security_pw_reset'];
+		$lsm10 = ! isset($lsm['bps_login_security_sort']) ? 'ascending' : $lsm['bps_login_security_sort'];
 
 		$lsm_options = array(
 		'bps_max_logins' 				=> $lsm1, 
@@ -1312,10 +1414,10 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		// .53.8: Add/Update new Hidden|Empty Plugin Folders|Files Cron DB options.
 		$hpf_cron = get_option('bulletproof_security_options_hpf_cron');
 
-		$hpf_cron1 = ! $hpf_cron['bps_hidden_plugins_cron'] ? 'On' : $hpf_cron['bps_hidden_plugins_cron'];
-		$hpf_cron2 = ! $hpf_cron['bps_hidden_plugins_cron_frequency'] ? '15' : $hpf_cron['bps_hidden_plugins_cron_frequency'];
-		$hpf_cron3 = ! $hpf_cron['bps_hidden_plugins_cron_email'] ? '' : $hpf_cron['bps_hidden_plugins_cron_email'];
-		$hpf_cron4 = ! $hpf_cron['bps_hidden_plugins_cron_alert'] ? '' : $hpf_cron['bps_hidden_plugins_cron_alert'];	
+		$hpf_cron1 = ! isset($hpf_cron['bps_hidden_plugins_cron']) ? 'On' : $hpf_cron['bps_hidden_plugins_cron'];
+		$hpf_cron2 = ! isset($hpf_cron['bps_hidden_plugins_cron_frequency']) ? '15' : $hpf_cron['bps_hidden_plugins_cron_frequency'];
+		$hpf_cron3 = ! isset($hpf_cron['bps_hidden_plugins_cron_email']) ? '' : $hpf_cron['bps_hidden_plugins_cron_email'];
+		$hpf_cron4 = ! isset($hpf_cron['bps_hidden_plugins_cron_alert']) ? '' : $hpf_cron['bps_hidden_plugins_cron_alert'];	
 		
 		$hpf_cron_options = array(
 		'bps_hidden_plugins_cron' 			=> $hpf_cron1, 
@@ -1330,7 +1432,7 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		
 		// .53.8: Add/Update new Hidden|Empty Plugin Folders|Files Ignore Hidden Plugin Folders & Files DB options.
 		$hpf_check = get_option('bulletproof_security_options_hidden_plugins');
-		$hpf_check1 = ! $hpf_check['bps_hidden_plugins_check'] ? '' : $hpf_check['bps_hidden_plugins_check'];
+		$hpf_check1 = ! isset($hpf_check['bps_hidden_plugins_check']) ? '' : $hpf_check['bps_hidden_plugins_check'];
 		
 		$hpf_check_options = array( 'bps_hidden_plugins_check' => $hpf_check1 );
 
@@ -1347,17 +1449,17 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		$email_log = get_option('bulletproof_security_options_email');
 		$admin_email = get_option('admin_email');
 
-		$email_log1 = ! $email_log['bps_send_email_to'] ? $admin_email : $email_log['bps_send_email_to'];
-		$email_log2 = ! $email_log['bps_send_email_from'] ? $admin_email : $email_log['bps_send_email_from'];
-		$email_log3 = ! $email_log['bps_send_email_cc'] ? '' : $email_log['bps_send_email_cc'];
-		$email_log4 = ! $email_log['bps_send_email_bcc'] ? '' : $email_log['bps_send_email_bcc'];
-		$email_log5 = ! $email_log['bps_login_security_email'] ? 'lockoutOnly' : $email_log['bps_login_security_email'];
-		$email_log6 = ! $email_log['bps_security_log_size'] ? '500KB' : $email_log['bps_security_log_size'];
-		$email_log7 = ! $email_log['bps_security_log_emailL'] ? 'email' : $email_log['bps_security_log_emailL'];
-		$email_log8 = ! $email_log['bps_dbb_log_email'] ? 'email' : $email_log['bps_dbb_log_email'];
-		$email_log9 = ! $email_log['bps_dbb_log_size'] ? '500KB' : $email_log['bps_dbb_log_size'];
-		$email_log10 = ! $bps_email_options['bps_mscan_log_size'] ? '500KB' : $bps_email_options['bps_mscan_log_size'];	
-		$email_log11 = ! $bps_email_options['bps_mscan_log_email'] ? 'email' : $bps_email_options['bps_mscan_log_email'];	
+		$email_log1 = ! isset($email_log['bps_send_email_to']) ? $admin_email : $email_log['bps_send_email_to'];
+		$email_log2 = ! isset($email_log['bps_send_email_from']) ? $admin_email : $email_log['bps_send_email_from'];
+		$email_log3 = ! isset($email_log['bps_send_email_cc']) ? '' : $email_log['bps_send_email_cc'];
+		$email_log4 = ! isset($email_log['bps_send_email_bcc']) ? '' : $email_log['bps_send_email_bcc'];
+		$email_log5 = ! isset($email_log['bps_login_security_email']) ? 'lockoutOnly' : $email_log['bps_login_security_email'];
+		$email_log6 = ! isset($email_log['bps_security_log_size']) ? '500KB' : $email_log['bps_security_log_size'];
+		$email_log7 = ! isset($email_log['bps_security_log_emailL']) ? 'email' : $email_log['bps_security_log_emailL'];
+		$email_log8 = ! isset($email_log['bps_dbb_log_email']) ? 'email' : $email_log['bps_dbb_log_email'];
+		$email_log9 = ! isset($email_log['bps_dbb_log_size']) ? '500KB' : $email_log['bps_dbb_log_size'];
+		$email_log10 = ! isset($email_log['bps_mscan_log_size']) ? '500KB' : $email_log['bps_mscan_log_size'];	
+		$email_log11 = ! isset($email_log['bps_mscan_log_email']) ? 'email' : $email_log['bps_mscan_log_email'];	
 
 		$email_log_options = array(
 		'bps_send_email_to' 			=> $email_log1, 
@@ -1387,21 +1489,21 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 		// .52.3: If Custom Code db options do not exist yet, create blank values
 		$ccr = get_option('bulletproof_security_options_customcode');
 	
-		$ccr1 = ! $ccr['bps_customcode_one'] ? '' : $ccr['bps_customcode_one'];
-		$ccr2 = ! $ccr['bps_customcode_server_signature'] ? '' : $ccr['bps_customcode_server_signature'];
-		$ccr3 = ! $ccr['bps_customcode_directory_index'] ? '' : $ccr['bps_customcode_directory_index'];
-		$ccr4 = ! $ccr['bps_customcode_server_protocol'] ? '' : $ccr['bps_customcode_server_protocol'];
-		$ccr5 = ! $ccr['bps_customcode_error_logging'] ? '' : $ccr['bps_customcode_error_logging'];
-		$ccr6 = ! $ccr['bps_customcode_deny_dot_folders'] ? '' : $ccr['bps_customcode_deny_dot_folders'];
-		$ccr7 = ! $ccr['bps_customcode_admin_includes'] ? '' : $ccr['bps_customcode_admin_includes'];
-		$ccr8 = ! $ccr['bps_customcode_wp_rewrite_start'] ? '' : $ccr['bps_customcode_wp_rewrite_start'];
-		$ccr9 = ! $ccr['bps_customcode_request_methods'] ? '' : $ccr['bps_customcode_request_methods'];
-		$ccr10 = ! $ccr['bps_customcode_two'] ? '' : $ccr['bps_customcode_two'];
-		$ccr11 = ! $ccr['bps_customcode_timthumb_misc'] ? '' : $ccr['bps_customcode_timthumb_misc'];
-		$ccr12 = ! $ccr['bps_customcode_bpsqse'] ? '' : $ccr['bps_customcode_bpsqse'];
-		$ccr12m = @! $ccr['bps_customcode_wp_rewrite_end'] ? '' : $ccr['bps_customcode_wp_rewrite_end'];
-		$ccr13 = ! $ccr['bps_customcode_deny_files'] ? '' : $ccr['bps_customcode_deny_files'];
-		$ccr14 = ! $ccr['bps_customcode_three'] ? '' : $ccr['bps_customcode_three'];
+		$ccr1 = ! isset($ccr['bps_customcode_one']) ? '' : $ccr['bps_customcode_one'];
+		$ccr2 = ! isset($ccr['bps_customcode_server_signature']) ? '' : $ccr['bps_customcode_server_signature'];
+		$ccr3 = ! isset($ccr['bps_customcode_directory_index']) ? '' : $ccr['bps_customcode_directory_index'];
+		$ccr4 = ! isset($ccr['bps_customcode_server_protocol']) ? '' : $ccr['bps_customcode_server_protocol'];
+		$ccr5 = ! isset($ccr['bps_customcode_error_logging']) ? '' : $ccr['bps_customcode_error_logging'];
+		$ccr6 = ! isset($ccr['bps_customcode_deny_dot_folders']) ? '' : $ccr['bps_customcode_deny_dot_folders'];
+		$ccr7 = ! isset($ccr['bps_customcode_admin_includes']) ? '' : $ccr['bps_customcode_admin_includes'];
+		$ccr8 = ! isset($ccr['bps_customcode_wp_rewrite_start']) ? '' : $ccr['bps_customcode_wp_rewrite_start'];
+		$ccr9 = ! isset($ccr['bps_customcode_request_methods']) ? '' : $ccr['bps_customcode_request_methods'];
+		$ccr10 = ! isset($ccr['bps_customcode_two']) ? '' : $ccr['bps_customcode_two'];
+		$ccr11 = ! isset($ccr['bps_customcode_timthumb_misc']) ? '' : $ccr['bps_customcode_timthumb_misc'];
+		$ccr12 = ! isset($ccr['bps_customcode_bpsqse']) ? '' : $ccr['bps_customcode_bpsqse'];
+		$ccr12m = @! isset($ccr['bps_customcode_wp_rewrite_end']) ? '' : $ccr['bps_customcode_wp_rewrite_end'];
+		$ccr13 = ! isset($ccr['bps_customcode_deny_files']) ? '' : $ccr['bps_customcode_deny_files'];
+		$ccr14 = ! isset($ccr['bps_customcode_three']) ? '' : $ccr['bps_customcode_three'];
 
 		if ( ! is_multisite() ) {
 
@@ -1449,10 +1551,10 @@ function bpsPro_new_version_db_options_files_autoupdate() {
 
 		$ccw = get_option('bulletproof_security_options_customcode_WPA');
 	
-		$ccw1 = ! $ccw['bps_customcode_deny_files_wpa'] ? '' : $ccw['bps_customcode_deny_files_wpa'];
-		$ccw2 = ! $ccw['bps_customcode_one_wpa'] ? '' : $ccw['bps_customcode_one_wpa'];
-		$ccw3 = ! $ccw['bps_customcode_two_wpa'] ? '' : $ccw['bps_customcode_two_wpa'];
-		$ccw4 = ! $ccw['bps_customcode_bpsqse_wpa'] ? '' : $ccw['bps_customcode_bpsqse_wpa'];
+		$ccw1 = ! isset($ccw['bps_customcode_deny_files_wpa']) ? '' : $ccw['bps_customcode_deny_files_wpa'];
+		$ccw2 = ! isset($ccw['bps_customcode_one_wpa']) ? '' : $ccw['bps_customcode_one_wpa'];
+		$ccw3 = ! isset($ccw['bps_customcode_two_wpa']) ? '' : $ccw['bps_customcode_two_wpa'];
+		$ccw4 = ! isset($ccw['bps_customcode_bpsqse_wpa']) ? '' : $ccw['bps_customcode_bpsqse_wpa'];
 	
 		$ccw_options = array(
 		'bps_customcode_deny_files_wpa' => $ccw1, 

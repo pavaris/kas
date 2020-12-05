@@ -110,6 +110,7 @@ function bpsClearTimeout() {
 		echo '<p>' . $custom_message . '</p>';
 		if ( $BPS_ISL_options['bps_isl_login_url'] != 'No' && $BPS_ISL_options['bps_isl_login_url'] != 'no' ) {
 		echo '<p><a href="' . filter_var( $url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) . '" style="text-decoration:underline;">Login</a></p>';
+		echo '<p style="font-size:12px">BPS Plugin Idle Session Logout Page</p>';
 		}
 		echo '</div>';
 	
@@ -121,6 +122,7 @@ function bpsClearTimeout() {
 		echo '<p>Idle Session Logout (ISL) Time: ' . $BPS_ISL_options['bps_isl_timeout'] . ' minutes.</p>';
 		if ( $BPS_ISL_options['bps_isl_login_url'] != 'No' && $BPS_ISL_options['bps_isl_login_url'] != 'no' ) {
 		echo '<p><a href="' . filter_var( $url, FILTER_VALIDATE_URL, FILTER_FLAG_PATH_REQUIRED ) . '" style="text-decoration:underline;">Login</a> again.</p>';
+		echo '<p style="font-size:12px">BPS Plugin Idle Session Logout Page</p>';
 		}
 		echo '</div>';
 	}

@@ -264,7 +264,7 @@ function bps_root_htaccess_status_dashboard() {
 		
 		$bps_status_display = get_option('bulletproof_security_options_status_display');
 
-		if ( $bps_status_display['bps_status_display'] != 'Off' ) {
+		if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' ) {
 		
 		echo '<div id="bps-status-display" style="float:left;padding:0px 0px 10px 0px;">'.__('The BPS Status Display is set to Off by default on the System Info page', 'bulletproof-security').'</div>';
 		echo '<div style="clear:both;"></div>';
@@ -565,7 +565,7 @@ switch ( $bps_version ) {
 		
 		$bps_status_display = get_option('bulletproof_security_options_status_display');
 
-		if ( $bps_status_display['bps_status_display'] != 'Off' ) {
+		if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' ) {
 					
 			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
@@ -614,7 +614,7 @@ function bps_wpadmin_htaccess_status_dashboard() {
 	$BPS_wpadmin_Options = get_option('bulletproof_security_options_htaccess_res');
 	$GDMW_options = get_option('bulletproof_security_options_GDMW');	
 	
-	if ( $BPS_wpadmin_Options['bps_wpadmin_restriction'] == 'disabled'  || $GDMW_options['bps_gdmw_hosting'] == 'yes' ) {
+	if ( isset( $BPS_wpadmin_Options['bps_wpadmin_restriction'] ) && $BPS_wpadmin_Options['bps_wpadmin_restriction'] == 'disabled' || isset( $GDMW_options['bps_gdmw_hosting'] ) && $GDMW_options['bps_gdmw_hosting'] == 'yes' ) {
 		return;
 	}
 	
@@ -750,7 +750,7 @@ switch ( $bps_version ) {
 		
 		$bps_status_display = get_option('bulletproof_security_options_status_display');
 
-		if ( $bps_status_display['bps_status_display'] != 'Off' ) {		
+		if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' ) {		
 
 			if ( preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
@@ -788,11 +788,11 @@ function bpsProMScanStatus() {
 	
 		$bps_status_display = get_option('bulletproof_security_options_status_display');
 	
-		if ( $bps_status_display['bps_status_display'] == 'Off' ) {
+		if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] == 'Off' ) {
 			return;
 		}
 	
-			if ( $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {	
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {	
 		
 				// New BPS installation - do not display status
 				if ( ! get_option('bulletproof_security_options_wizard_free') ) { 
@@ -848,11 +848,11 @@ function bpsProDBBStatus() {
 
 			$bps_status_display = get_option('bulletproof_security_options_status_display');
 
-			if ( $bps_status_display['bps_status_display'] == 'Off' ) {
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] == 'Off' ) {
 				return;
 			}
 
-			if ( $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {	
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {	
 	
 				// New BPS installation - do not display status
 				if ( ! get_option('bulletproof_security_options_wizard_free') ) { 
@@ -908,11 +908,11 @@ global $aitpro_bullet;
 	
 			$bps_status_display = get_option('bulletproof_security_options_status_display');
 		
-			if ( $bps_status_display['bps_status_display'] == 'Off' ) {
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] == 'Off' ) {
 				return;
 			}
 	
-			if ( $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 	
 				// New BPS installation - do not display status
 				if ( ! get_option('bulletproof_security_options_wizard_free') ) { 
@@ -945,11 +945,11 @@ global $aitpro_bullet;
 	
 			$bps_status_display = get_option('bulletproof_security_options_status_display');
 		
-			if ( $bps_status_display['bps_status_display'] == 'Off' ) {
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] == 'Off' ) {
 				return;
 			}
 	
-			if ( $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
+			if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 	
 				// New BPS installation - do not display status
 				if ( ! get_option('bulletproof_security_options_wizard_free') ) { 
@@ -988,11 +988,11 @@ global $aitpro_bullet;
 
 	$bps_status_display = get_option('bulletproof_security_options_status_display');
 
-	if ( $bps_status_display['bps_status_display'] == 'Off' ) {
+	if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] == 'Off' ) {
 		return;
 	}
 
-		if ( $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
+		if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
 			// New BPS installation - do not display status
 			if ( ! get_option('bulletproof_security_options_wizard_free') ) { 
@@ -1037,11 +1037,11 @@ global $aitpro_bullet;
 
 	$bps_status_display = get_option('bulletproof_security_options_status_display');
 
-	if ( $bps_status_display['bps_status_display'] == 'Off' ) {
+	if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] == 'Off' ) {
 		return;
 	}
 
-		if ( $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
+		if ( isset($bps_status_display['bps_status_display']) && $bps_status_display['bps_status_display'] != 'Off' && preg_match( '/page=bulletproof-security/', esc_html($_SERVER['REQUEST_URI']), $matches ) ) {
 
 			// New BPS installation - do not display status
 			if ( ! get_option('bulletproof_security_options_wizard_free') ) { 

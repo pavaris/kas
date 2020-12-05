@@ -38,7 +38,7 @@ function bpsPro_HUD_autofix_whitelist_check() {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
@@ -528,6 +528,8 @@ function bpsPro_HUD_autofix_whitelist_check() {
 	$visual_composer_active = in_array( $visual_composer, apply_filters('active_plugins', get_option('active_plugins')));
 	$bookly_booking = 'appointment-booking/main.php';
 	$bookly_booking_active = in_array( $bookly_booking, apply_filters('active_plugins', get_option('active_plugins')));
+	$beaver_builder = 'bb-plugin/fl-builder.php';
+	$beaver_builder_active = in_array( $beaver_builder, apply_filters('active_plugins', get_option('active_plugins')));
 	$emg_pro = 'easy-media-gallery-pro/easy-media-gallery-pro.php';
 	$emg_pro_active = in_array( $emg_pro, apply_filters('active_plugins', get_option('active_plugins')));
 	$nextgen_gallery = 'nextgen-gallery/nggallery.php';
@@ -586,6 +588,12 @@ function bpsPro_HUD_autofix_whitelist_check() {
 		if ( ! preg_match( $admin_ajax_psb, $bps_customcode_two_wpa ) ) {
 			$autofix_message = 1;
 			$debug_wpadmin_PSB .= __('CC wp-admin Text Box 3: Bookly Booking Plugin', 'bulletproof-security').'<br>';
+		}
+	}
+	if ( $beaver_builder_active == 1 || is_plugin_active_for_network( $beaver_builder ) ) {
+		if ( ! preg_match( $admin_ajax_psb, $bps_customcode_two_wpa ) ) {
+			$autofix_message = bpsPro_autofix_message($autofix_message);
+			$debug_wpadmin_PSB .= __('CC wp-admin Text Box 3: Beaver Builder Plugin', 'bulletproof-security').'<br>';
 		}
 	}
 	if ( $emg_pro_active == 1 || is_plugin_active_for_network( $emg_pro ) ) {
@@ -758,7 +766,7 @@ function bpsPro_HUD_autofix_whitelist_check() {
 
 	## Display Setup Wizard AutoFix WP Dashboard message
 	if ( $autofix_message == 1 ) {
-		$text_wp = '<div class="update-nag" style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:2px 5px;margin-top:2px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('BPS Setup Wizard AutoFix (AutoWhitelist|AutoSetup|AutoCleanup) Notice', 'bulletproof-security').'</font><br>'.__('One or more of your plugins or your theme requires a BPS Custom Code whitelist rule to be automatically created by the Setup Wizard.', 'bulletproof-security').'<br>'.__('Click this ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php' ).'" title="Setup Wizard AutoFix">'.__('Setup Wizard link', 'bulletproof-security').'</a>'.__(' and click the Setup Wizard button to automatically create BPS Custom Code whitelist rules.', 'bulletproof-security').'<br>'.__('This BPS AutoFix check can be turned Off on the ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php#bps-tabs-2' ).'" title="Setup Wizard Options">'.__('Setup Wizard Options', 'bulletproof-security').'</a>'.__(' page if you do not want BPS to check for any plugin or theme whitelist rules.', 'bulletproof-security').'</div>';
+		$text_wp = '<div class="update-nag" style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:2px 5px;margin-top:2px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('BPS Setup Wizard AutoFix (AutoWhitelist|AutoSetup|AutoCleanup) Notice', 'bulletproof-security').'</font><br>'.__('One or more of your plugins or your theme requires a BPS Custom Code whitelist rule to be automatically created by the Setup Wizard.', 'bulletproof-security').'<br>'.__('Click this ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php' ).'" title="Setup Wizard AutoFix">'.__('Setup Wizard link', 'bulletproof-security').'</a>'.__(' and click the Setup Wizard button to automatically create BPS Custom Code whitelist rules.', 'bulletproof-security').'<br>'.__('This BPS AutoFix check can be turned Off on the ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php#bps-tabs-2' ).'" title="Setup Wizard Options">'.__('Setup Wizard Options', 'bulletproof-security').'</a>'.__(' page if you do not want BPS to check for any plugin or theme whitelist rules.', 'bulletproof-security').'<br>'.__('If this Notice does not go away after running the Setup Wizard, use the ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/theme-skin/theme-skin.php' ).'" title="BPS UI|UX|AutoFix Debug tool">'.__('BPS UI|UX|AutoFix Debug tool', 'bulletproof-security').'</a>.'.__(' Click the UI|UX Settings page Read Me help button for more information.', 'bulletproof-security').'</div>';
 		echo $text_wp;
 	}
 

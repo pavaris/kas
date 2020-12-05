@@ -38,8 +38,10 @@ use FacebookAds\Enum\AbstractEnum;
 class VehicleFields extends AbstractEnum {
 
   const ADDRESS = 'address';
+  const APPLINKS = 'applinks';
   const AVAILABILITY = 'availability';
   const BODY_STYLE = 'body_style';
+  const CATEGORY_SPECIFIC_FIELDS = 'category_specific_fields';
   const CONDITION = 'condition';
   const CURRENCY = 'currency';
   const CUSTOM_LABEL_0 = 'custom_label_0';
@@ -80,13 +82,14 @@ class VehicleFields extends AbstractEnum {
   const VEHICLE_TYPE = 'vehicle_type';
   const VIN = 'vin';
   const YEAR = 'year';
-  const APPLINKS = 'applinks';
 
   public function getFieldTypes() {
     return array(
       'address' => 'Object',
+      'applinks' => 'CatalogItemAppLinks',
       'availability' => 'string',
       'body_style' => 'string',
+      'category_specific_fields' => 'CatalogSubVerticalList',
       'condition' => 'string',
       'currency' => 'string',
       'custom_label_0' => 'string',
@@ -127,7 +130,6 @@ class VehicleFields extends AbstractEnum {
       'vehicle_type' => 'string',
       'vin' => 'string',
       'year' => 'unsigned int',
-      'applinks' => 'Object',
     );
   }
 }

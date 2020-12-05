@@ -91,30 +91,6 @@ class AdCreative extends AbstractCrudObject {
     }
   }
 
-  public function deleteAdLabels(array $fields = array(), array $params = array(), $pending = false) {
-    $this->assureId();
-
-    $param_types = array(
-      'adlabels' => 'list<Object>',
-    );
-    $enums = array(
-    );
-
-    $request = new ApiRequest(
-      $this->api,
-      $this->data['id'],
-      RequestInterface::METHOD_DELETE,
-      '/adlabels',
-      new AbstractCrudObject(),
-      'EDGE',
-      array(),
-      new TypeChecker($param_types, $enums)
-    );
-    $request->addParams($params);
-    $request->addFields($fields);
-    return $pending ? $request : $request->execute();
-  }
-
   public function createAdLabel(array $fields = array(), array $params = array(), $pending = false) {
     $this->assureId();
 
@@ -234,6 +210,7 @@ class AdCreative extends AbstractCrudObject {
     $param_types = array(
       'thumbnail_height' => 'unsigned int',
       'thumbnail_width' => 'unsigned int',
+      'with_unified_spec' => 'bool',
     );
     $enums = array(
     );

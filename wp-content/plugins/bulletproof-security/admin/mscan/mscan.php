@@ -120,7 +120,11 @@ function bpsPro_mscan_openbasedir_check() {
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
   <tr>
     <td class="bps-table_title">
-	<?php $text = '<h2>'.__('MScan ~ ', 'bulletproof-security').'<span style="font-size:.75em;">'.__('Scans website files for hacker files or code ~ Scans the WP database for hacker code.', 'bulletproof-security').'</span></h2><div class="promo-text">'.__('Want even more security protection?', 'bulletproof-security').'<br>'.__('Get real-time automated security protection that is far superior to all malware scanners: ', 'bulletproof-security').'<a href="https://affiliates.ait-pro.com/po/" target="_blank" title="ARQ IDPS">'.__('Get BPS Pro ARQ IDPS', 'bulletproof-security').'</a></div>'; echo $text; ?>
+	<?php $text = '<h2>'.__('MScan ~ ', 'bulletproof-security').'<span style="font-size:.75em;">'.__('Scans website files for hacker files or code ~ Scans the WP database for hacker code.', 'bulletproof-security').'</span></h2><div class="promo-text">'.__('Want even more security protection?', 'bulletproof-security').'<br>'.__('Get real-time automated security protection that is far superior to all malware scanners: ', 'bulletproof-security').'<a href="https://affiliates.ait-pro.com/po/" target="_blank" title="ARQ IDPS">'.__('Get BPS Pro ARQ IDPS', 'bulletproof-security').'</a></div>'; echo $text; 
+	
+        $text2 = '<div style="background-color:#dfecf2;border:1px solid #999;font-size:1em;font-weight:600;padding:0px 5px;margin:0px 10px 10px 0px;-moz-border-radius-topleft:3px;-webkit-border-top-left-radius:3px;-khtml-border-top-left-radius:3px;border-top-left-radius:3px;-moz-border-radius-topright:3px;-webkit-border-top-right-radius:3px;-khtml-border-top-right-radius:3px;border-top-right-radius:3px;-webkit-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);-moz-box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);box-shadow: 3px 3px 5px -1px rgba(153,153,153,0.7);"><font color="blue">'.__('MScan Disclaimer:', 'bulletproof-security').'</font><br>'.__('MScan is a very sensitive scanner that will detect hacker\'s code and files that other WordPress malware scanners will not detect, but unfortunately that also means that MScan will detect a lot of false-positives. The majority of things that MScan detects as suspicious are not going to be hacker\'s code or files and can be ignored using the Ignore File or Ignore DB Entry in the View|Ignore|Delete Suspicious Files and View|Ignore Suspicious DB Entries Forms below. For additional help information click this link: ', 'bulletproof-security').' <a href="https://forum.ait-pro.com/forums/topic/mscan-malware-scanner-guide/" target="_blank" title="MScan Malware Scanner Guide">'.__('MScan Malware Scanner Guide', 'bulletproof-security').'</a></div>';
+		echo $text2;	
+	?>
     </td>
   </tr>
   <tr>
@@ -352,7 +356,13 @@ global $bps_topDiv, $bps_bottomDiv;
 		echo $bps_bottomDiv;	
 	}
 
-	if ( @$_POST['Submit-MScan-Start'] != true && $MScan_status['bps_mscan_status'] == '3' ) {
+	if ( isset ( $_POST['Submit-MScan-Start'] ) ) {
+		$_POST['Submit-MScan-Start'] = true;
+	} else {
+		$_POST['Submit-MScan-Start'] = null;
+	}
+
+	if ( $_POST['Submit-MScan-Start'] != true && $MScan_status['bps_mscan_status'] == '3' ) {
 		
 		$suspect_files_message = '';
 		$suspect_db_message = '';
@@ -993,11 +1003,11 @@ bpsPro_save_mscan_options();
 	$max_time_limit = ( isset( $_POST['mscan_max_time_limit'] ) ) ? $_POST['mscan_max_time_limit'] : '300';
 	
 	echo '<label for="bps-mscan-label" style="padding-right:5px">'.__('Max File Size Limit to Scan:', 'bulletproof-security').'</label>';
-	echo '<input type="text" name="mscan_max_file_size" class="regular-text-50-fixed" style="margin-bottom:5px" value="'; if ( @preg_match( '/\d/', $_POST['mscan_max_file_size'] ) ) { echo esc_html($max_file_size); } else { echo esc_html(trim(stripslashes($max_file_size))); } echo '" /> KB';
+	echo '<input type="text" name="mscan_max_file_size" class="regular-text-50-fixed" style="margin-bottom:5px" value="'; if ( isset( $_POST['mscan_max_file_size'] ) && preg_match( '/\d/', $_POST['mscan_max_file_size'] ) ) { echo esc_html($max_file_size); } else { echo esc_html(trim(stripslashes($max_file_size))); } echo '" /> KB';
 	echo '<br>';
 
 	echo '<label for="bps-mscan-label" style="padding-right:23px">'.__('Max Time Limit to Scan:', 'bulletproof-security').'</label>';
-	echo '<input type="text" name="mscan_max_time_limit" class="regular-text-50-fixed" style="margin-bottom:5px" value="'; if ( @preg_match( '/\d/', $_POST['mscan_max_time_limit'] ) ) { echo esc_html($max_time_limit); } else { echo esc_html(trim(stripslashes($max_time_limit))); } echo '" /> Seconds';
+	echo '<input type="text" name="mscan_max_time_limit" class="regular-text-50-fixed" style="margin-bottom:5px" value="'; if ( isset( $_POST['mscan_max_time_limit'] ) && preg_match( '/\d/', $_POST['mscan_max_time_limit'] ) ) { echo esc_html($max_time_limit); } else { echo esc_html(trim(stripslashes($max_time_limit))); } echo '" /> Seconds';
 	echo '<br>';
 
 	echo '<label for="bps-mscan-label" style="">'.__('Exclude Individual Folders', 'bulletproof-security').'</label><strong><font color="black"><span class="tooltip-350-120"><img src="'.plugins_url('/bulletproof-security/admin/images/question-mark.png').'" style="position:relative;top:3px;left:10px;" /><span>'.__('Enter one folder path per line. Include folder slashes.', 'bulletproof-security').'<br>'.__('Example:', 'bulletproof-security').'<br>/parent-folder-1/child-folder-1/<br>/parent-folder-2/child-folder-2/<br><br>'.__('Click the MScan Read Me help button for more help info.', 'bulletproof-security').'</span></span></font></strong><br>';

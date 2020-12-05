@@ -1818,6 +1818,24 @@ RewriteRule . - [S=99]";
 		}
 	}
 
+	## Beaver Builder|Ultimate Addons Contact Form Plugin: whitelist rules
+	$beaver_builder = 'bb-plugin/fl-builder.php';
+	$beaver_builder_active = in_array( $beaver_builder, apply_filters('active_plugins', get_option('active_plugins')));
+	$pattern23 = '/RewriteCond\s%{REQUEST_URI}\s\(admin-ajax\\\.php\)\s\[NC\]/';
+	$beaver_builder_array = array();
+	$beaver_builder_fix = '';
+
+	if ( $beaver_builder_active == 1 || is_plugin_active_for_network( $beaver_builder ) ) {
+		$beaver_builder_fix = __('Beaver Builder Plugin wp-admin skip/bypass rule AutoWhitelist successful', 'bulletproof-security');
+
+		if ( ! preg_match( $pattern23, $bps_customcode_two_wpa ) ) {
+		
+			$beaver_builder_array[] = "# admin-ajax.php skip/bypass rule
+RewriteCond %{REQUEST_URI} (admin-ajax\.php) [NC]
+RewriteRule . - [S=99]";
+		}
+	}
+
 	$bps_customcode_two_wpa_array_impload = implode( "]", $bps_customcode_two_wpa_array );
 	$bps_customcode_two_wpa_array_preg_split = preg_split("/\[S=\d{1,2}\]/", $bps_customcode_two_wpa_array_impload);
 	$bps_customcode_two_wpa_array_preg_replace = preg_replace("/RewriteRule\s\.\s-\s/", "RewriteRule . - [S=99]", $bps_customcode_two_wpa_array_preg_split);
@@ -1830,7 +1848,7 @@ RewriteRule . - [S=99]";
 		$cc2_array[] = trim( $value, " \t\n\r");
 	}
 	
-	$bps_customcode_two_wpa_array_merge = array_merge($cc2_array, $woo_pfeed_pro_array, $visual_composer_array, $bookly_booking_array, $emg_pro_array, $nextgen_gallery_array, $OptimizePress_theme_array, $wp_checkout_array, $video_showcase_array, $wp_invoice_array, $yoast_seo_array, $formidable_pro_array, $google_typography_array, $flare_array, $bbPress_array, $spider_calendar_array, $buddypress_array, $wpml_transman_array, $events_manager_array, $mailpoet_array, $event_espresso_array, $content_egg_array, $flatsome_theme_array);
+	$bps_customcode_two_wpa_array_merge = array_merge($cc2_array, $woo_pfeed_pro_array, $visual_composer_array, $bookly_booking_array, $emg_pro_array, $nextgen_gallery_array, $OptimizePress_theme_array, $wp_checkout_array, $video_showcase_array, $wp_invoice_array, $yoast_seo_array, $formidable_pro_array, $google_typography_array, $flare_array, $bbPress_array, $spider_calendar_array, $buddypress_array, $wpml_transman_array, $events_manager_array, $mailpoet_array, $event_espresso_array, $content_egg_array, $flatsome_theme_array, $beaver_builder_array);
 
 	$cc2_unique = array_unique($bps_customcode_two_wpa_array_merge);
 	$S_replace = preg_replace_callback( '/(S=\d{1,2})/', 'bpsPro_S_number_count_replace', $cc2_unique );
@@ -1848,7 +1866,7 @@ RewriteRule . - [S=99]";
 		update_option('bulletproof_security_options_customcode_WPA', $wpadmin_CC_Options);
 	}
 
-	$success_array = array($woo_pfeed_pro_fix, $visual_composer_fix, $bookly_booking_fix, $emg_pro_fix, $nextgen_gallery_fix, $OptimizePress_theme_fix, $wp_checkout_fix, $video_showcase_fix, $wp_invoice_fix, $yoast_seo_fix, $formidable_pro_fix, $google_typography_fix, $flare_fix, $bbPress_fix, $spider_calendar_fix, $buddypress_fix, $wpml_transman_fix, $events_manager_fix, $mailpoet_fix, $event_espresso_fix, $content_egg_fix, $flatsome_theme_fix);
+	$success_array = array($woo_pfeed_pro_fix, $visual_composer_fix, $bookly_booking_fix, $emg_pro_fix, $nextgen_gallery_fix, $OptimizePress_theme_fix, $wp_checkout_fix, $video_showcase_fix, $wp_invoice_fix, $yoast_seo_fix, $formidable_pro_fix, $google_typography_fix, $flare_fix, $bbPress_fix, $spider_calendar_fix, $buddypress_fix, $wpml_transman_fix, $events_manager_fix, $mailpoet_fix, $event_espresso_fix, $content_egg_fix, $flatsome_theme_fix, $beaver_builder_fix);
 	
 	foreach ( $success_array as $successMessage ) {
 		

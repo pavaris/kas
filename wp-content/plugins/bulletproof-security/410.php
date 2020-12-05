@@ -52,6 +52,7 @@ p {
 	<p><?php $bps_hostname = str_replace( 'www.', '', htmlspecialchars( $_SERVER['SERVER_NAME'], ENT_QUOTES ) );
 	echo $bps_hostname; ?> 410 Gone Request</p>
 	<p>This page no longer exists.</p>
+    <p style="font-size:12px">BPS Plugin 410 Error Page</p>
 </div>
 
 <?php 

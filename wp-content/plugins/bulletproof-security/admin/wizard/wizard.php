@@ -20,7 +20,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -250,10 +250,10 @@ switch ( $memoryLimit ) {
 		echo $successTextBegin.__('Pass! PHP Configuration Memory Limit is set to: ', 'bulletproof-security').$memoryLimit.'M'.$successTextEnd;		
 		break;
     case $memoryLimit >= '64' && $memoryLimit < '128':
-		echo $successTextBegin.__('Pass! PHP Configuration Memory Limit is set to: ', 'bulletproof-security').$memoryLimit.'M. '.__('It is recommended that you increase your memory limit to at least 128M. Contact your Web Host and ask them to increase your memory limit to the maximum memory limit setting allowed by your Host.', 'bulletproof-security').$successTextEnd;
+		echo $successTextBegin.__('Pass! PHP Configuration Memory Limit is set to: ', 'bulletproof-security').$memoryLimit.'M. '.__('It is recommended that you increase your memory limit to at least 128M, 256M is even better. Contact your Web Host and ask them to increase your memory limit to the maximum memory limit setting allowed by your Host.', 'bulletproof-security').$successTextEnd;
 		break;
     case $memoryLimit > '0' && $memoryLimit < '64':
-		echo '<br>'.$failTextBegin.__('Error: Your PHP Configuration Memory Limit is set to: ', 'bulletproof-security').$memoryLimit.'M. '.__('WordPress needs a bare minimum Memory Limit setting of 64M to perform well. Contact your Web Host and ask them to increase your memory limit to the maximum memory limit setting allowed by your Host.', 'bulletproof-security').$failTextEnd.'<br>';	
+		echo '<br>'.$failTextBegin.__('Error: Your PHP Configuration Memory Limit is set to: ', 'bulletproof-security').$memoryLimit.'M. '.__('WordPress needs a bare minimum Memory Limit setting of 128M to perform well. Contact your Web Host and ask them to increase your memory limit to the maximum memory limit setting allowed by your Host.', 'bulletproof-security').$failTextEnd.'<br>';	
 		break;
  	}
 	}
@@ -282,9 +282,11 @@ switch ( $memoryLimit ) {
 	} 
 
 	// BPS .52.6: Pre-save UI Theme Skin with Blue Theme if DB option does not exist. function is in general-functions.php
-	bpsPro_presave_ui_theme_skin_options();
+	// This function is no longer used. Pending deletion.
+	// bpsPro_presave_ui_theme_skin_options();
 	// 3.5: Pre-Save the SLF filter options. The default is now set to On. New option added to use to check against for BPS upgrades: bps_slf_filter_new
-	bpsPro_presave_ui_theme_skin_SLF_options();
+	// This function is no longer used. Pending deletion.
+	// bpsPro_presave_ui_theme_skin_SLF_options();
 
 	// PHP/php.ini htaccess code pre-check - Check if root .htaccess file has php.ini handler code and if that code has been added to BPS Custom Code
 	bpsSetupWizardPhpiniHandlerCheck();
@@ -363,6 +365,11 @@ $failTextBegin = '<font color="#fb0101"><strong>';
 $failMessage = __('Error: Unable to create DB Table ', 'bulletproof-security');
 $failTextEnd = '</strong></font><br>';
 $HFiles_options = get_option('bulletproof_security_options_htaccess_files');
+
+	// Pre-save UI|UX Settions DB option settings
+	bpsPro_presave_uiux_settings();
+	// Pre-save the Setup Wizard Options DB option settings
+	bpsPro_presave_setupwizard_option_settings();	
 
 	// 2.9: BPS plugin 30 day review/rating request Dismiss Notice
 	$bps_rate_options = 'bulletproof_security_options_rate_free';
@@ -816,8 +823,6 @@ $HFiles_options = get_option('bulletproof_security_options_htaccess_files');
 	
 	// Custom Code - no echo/output: pre-save CC DB options for Custom Code Export|Import features ONLY if DB options do not exist
 	bpsSetupWizardCustomCodePresave();
-	// BPS MU Tools - no echo/output: pre-save MU Tools DB options for new BPS installations.
-	bpsSetupWizardMUToolsPresave();
 	
 	echo '</p></div>';	
 	
@@ -997,6 +1002,7 @@ function bpsSpinnerSWizard() {
 		<ul>
             <li><a href="#bps-tabs-1"><?php _e('Setup Wizard', 'bulletproof-security'); ?></a></li>
             <li><a href="#bps-tabs-2"><?php _e('Setup Wizard Options', 'bulletproof-security'); ?></a></li>
+            <li><a href="#bps-tabs-3"><?php _e('Setup Wizard Export|Import', 'bulletproof-security'); ?></a></li>
 		</ul>
             
 <div id="bps-tabs-1" class="bps-tab-page">
@@ -1471,7 +1477,420 @@ if ( isset( $_POST['Submit-Net-JTC'] ) && current_user_can('manage_options') ) {
   </tr>
 </table>
 
-</div>    
+</div>  
+
+  <div id="bps-tabs-3" class="bps-tab-page">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="bps-help_faq_table">
+  <tr>
+    <td class="bps-table_title"><h2><?php _e('Setup Wizard Export|Import ~ ', 'bulletproof-security'); ?><span style="font-size:.75em;"><?php _e('Export or Import BPS plugin option settings.', 'bulletproof-security'); ?></span></h2></td>
+  </tr>
+  <tr>
+    <td class="bps-table_cell_help">
+    
+<h3 style="margin:0px 0px 5px 0px;"><?php _e('Setup Wizard Export|Import', 'bulletproof-security'); ?>  <button id="bps-open-modal3" class="button bps-modal-button"><?php _e('Read Me', 'bulletproof-security'); ?></button></h3>
+
+<div id="bps-modal-content3" class="bps-dialog-hide" title="<?php _e('Setup Wizard Export|Import', 'bulletproof-security'); ?>">
+    <p>
+	<?php
+        $text = '<strong>'.__('This Read Me Help window is draggable (top) and resizable (bottom right corner)', 'bulletproof-security').'</strong><br><br>';
+		echo $text; 
+		// Forum Help Links or of course both
+		//$text = '<strong><font color="blue">'.__('Forum Help Links: ', 'bulletproof-security').'</font></strong><br>'; 	
+		//echo $text;	
+	?>
+	<!--<strong><a href="https://forum.ait-pro.com/forums/topic/gdmw/" title="GDMW Hosting" target="_blank">
+	<?php _e('GDMW Hosting', 'bulletproof-security'); ?></a></strong><br />-->
+	
+	<?php $dialog_text = '<strong>'.__('Setup Wizard Export', 'bulletproof-security').'</strong><br>'.__('The Setup Wizard Export feature exports all BPS plugin option settings except for website specific settings that need to be setup by running the Setup Wizard after you have imported the BPS plugin option settings into a new website. The name of the exported zip file is: bps-settings-export.zip', 'bulletproof-security').'<br><br><strong>'.__('Setup Wizard Import', 'bulletproof-security').'</strong><br>'.__('To import BPS plugin option settings click the Choose File button, navigate to where you downloaded/saved the bps-settings-export.zip file on your computer, select the zip file and click the Open button. Then click the Import button. IMPORTANT: Run the Setup Wizard after the import completes. After running the Setup Wizard go to the BPS Security >  htaccess Core > Custom Code tab page and check all of your custom htaccess code for any website specific custom htaccess code. Example: If you find any custom htaccess code that has a website URL for your other website that you exported BPS plugin settings from, then either edit that custom htaccess code or remove it from BPS Custom Code.', 'bulletproof-security').'<br><br><strong>'.__('Network|Multisite Help Info', 'bulletproof-security').'</strong><br>'.__('Setup Wizard Export|Import works for Network|Multisite site types, but only the Primary site\'s BPS plugin option settings are exported and imported. BPS plugin option settings are not exported or imported for Subsites. Note: These Setup Wizard Options > Network|Multisite Sitewide Login Security Settings and Network|Multisite Sitewide JTC Anti-Spam|Anti-Hacker Settings can be run after importing BPS plugin option settings to apply BPS LSM and JTC plugin option settings from the Primary site to all Subsites.', 'bulletproof-security'); echo $dialog_text; ?></p>
+</div>
+
+<div id="CC-Import" style="margin:20px 0px 20px 0px">
+<form name="bpsSWImport" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php#bps-tabs-3' ); ?>" method="post" enctype="multipart/form-data">
+	<?php wp_nonce_field('bulletproof_security_sw_import'); ?>
+	<input type="file" name="bps_sw_import" id="bps_sw_import" />
+	<input type="submit" name="Submit-SW-Import" class="button bps-button" style="margin-top:1px;" value="<?php esc_attr_e('Import', 'bulletproof-security') ?>" onclick="return confirm('<?php $text = __('Clicking OK will Import BPS plugin settings from the bps-settings-export.zip file on your computer.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to Import BPS plugin settings or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
+	<?php bpsPro_setup_wizard_import(); ?>
+</form>
+</div>
+
+<div id="CC-Export" style="margin-bottom:10px">
+<form name="bpsSWExport" id="bpsExport" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php#bps-tabs-3' ); ?>" method="post">
+	<?php wp_nonce_field('bulletproof_security_sw_export'); ?>
+    <input type="submit" name="Submit-SW-Export" class="button bps-button" value="<?php esc_attr_e('Export', 'bulletproof-security') ?>" onclick="return confirm('<?php 
+$text = __('Clicking OK will Export your BPS plugin settings into the bps-settings-export.zip file, which you can then download to your computer by clicking the Download Zip Export button displayed in the Setup Wizard Export success message.', 'bulletproof-security').'\n\n'.$bpsSpacePop.'\n\n'.__('Click OK to Export BPS plugin settings or click Cancel.', 'bulletproof-security'); echo $text; ?>')" />
+	<?php bpsPro_setup_wizard_export(); ?>
+</form>
+</div>
+
+
+<?php
+
+// Zip the Setup Wizard Export file: setup-wizard-export.php - If ZipArchive Class is not available use PclZip
+function bpsPro_zip_setup_wizard_export_file() {
+
+	$filename = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/bps-settings-export.zip';
+	
+	if ( file_exists($filename) ) {
+		unlink($filename);
+	}
+
+	// Use ZipArchive
+	if ( class_exists('ZipArchive') ) {
+
+		$zip = new ZipArchive();
+
+		if ( $zip->open($filename, ZIPARCHIVE::CREATE) !== TRUE ) {
+    		exit("Error: Cannot Open $filename\n");
+		}
+
+		$zip->addFile(WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/setup-wizard-export.php', "setup-wizard-export.php");
+		$zip->close();
+
+	return true;
+
+	} else {
+
+		// Use PclZip
+		define( 'PCLZIP_TEMPORARY_DIR', WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/' );
+		require_once( ABSPATH . 'wp-admin/includes/class-pclzip.php');
+	
+		if ( ini_get( 'mbstring.func_overload' ) && function_exists( 'mb_internal_encoding' ) ) {
+			$previous_encoding = mb_internal_encoding();
+			mb_internal_encoding( 'ISO-8859-1' );
+		}
+  		
+		$archive = new PclZip(WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/bps-settings-export.zip');
+  		$v_list = $archive->create(WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/setup-wizard-export.php', PCLZIP_OPT_REMOVE_PATH, WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/');
+  	
+	return true;
+
+		if ( $v_list == 0 ) {
+			die("Error : ".$archive->errorInfo(true) );
+		return false;	
+		}
+	}
+}
+
+// Setup Wizard Export: Creates BPS Pro plugin option settings in a file that is called by an include/require on Import.
+// Network|Multisite: Only the Primary site's BPS Pro plugin option settings can be exported and imported.
+// Don't do an automatic download. There are issues with some Browsers.
+function bpsPro_setup_wizard_export() {
+global $wpdb, $blog_id, $bps_topDiv, $bps_bottomDiv;
+		
+	if ( isset( $_POST['Submit-SW-Export'] ) && current_user_can('manage_options') ) {
+		check_admin_referer( 'bulletproof_security_sw_export' );
+
+		if ( is_multisite() && $blog_id != 1 ) {
+			return;
+		
+		} else {
+	
+			$timeNow = time();
+			$gmt_offset = get_option( 'gmt_offset' ) * 3600;
+			$timestamp = date_i18n(get_option('date_format'), strtotime("11/15-1976")) . ' ' . date_i18n(get_option('time_format'), $timeNow + $gmt_offset);
+			$wizard_export = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/setup-wizard-export.php';
+			
+			$handle = fopen( $wizard_export, 'wb' );
+		
+		if ( $handle )
+	
+			fwrite( $handle, "<?php\n" );
+			fwrite( $handle, "## ---------------------------------------------\n" );
+			fwrite( $handle, "## BulletProof Security Setup Wizard Export\n" );
+			fwrite( $handle, "## Support: https://forum.ait-pro.com/\n" );
+			fwrite( $handle, "## Export Time: ". $timestamp . "\n" );
+			fwrite( $handle, "## Website: " . get_bloginfo( 'url' ) . "\n" );
+			fwrite( $handle, "## WP ABSPATH: ". ABSPATH . "\n" );
+			fwrite( $handle, "## ---------------------------------------------\n\n" );
+			fwrite( $handle, "## BPS Plugin Options\n\n" );	
+		
+			$bps_plugin_options = 'bulletproof_security_options';	
+			$BPSPluginOptionRows = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $wpdb->options WHERE option_name LIKE %s", "$bps_plugin_options%" ) );
+			
+			foreach ( $BPSPluginOptionRows as $data ) {
+				
+				// Exclude these BPS option settings
+				if ( $data->option_name != 'bulletproof_security_options_apache_modules' && $data->option_name != 'bulletproof_security_options_MScan_status' && $data->option_name != 'bulletproof_security_options_MScan_log' && $data->option_name != 'bulletproof_security_options_DBB_log' && $data->option_name != 'bulletproof_security_options_db_backup' && $data->option_name != 'bulletproof_security_options_mod_security' && $data->option_name != 'bulletproof_security_options_wizard_free' && $data->option_name != 'bulletproof_security_options_rate_free' && $data->option_name != 'bulletproof_security_options_vcheck' && $data->option_name != 'bulletproof_security_options_MU_tools_free' ) {
+				
+					fwrite( $handle, "$".$data->option_name." = '".$data->option_name."';\n" );
+					fwrite( $handle, "$".$data->option_name."_array = array(\n" );
+		
+					$options_array = maybe_unserialize($data->option_value);
+					
+					foreach ( $options_array as $key => $value ) {
+						
+						if ( ! is_array($value) ) {
+						
+							// Remove or change option keys or values
+							//if ( $key == 'option_name' ) {
+							//	$value = 'Off';
+							//}
+			
+							fwrite( $handle, "'".$key."'"." => '".$value."', \n" );
+						}
+					}
+				
+					fwrite( $handle, ");\n\n" );
+					fwrite( $handle, "if ( ! get_option( $".$data->option_name." ) ) {\n" );
+					fwrite( $handle, "foreach( $".$data->option_name."_array as \$key => \$value ) {\n" );
+					fwrite( $handle, "update_option('".$data->option_name."', $".$data->option_name."_array);\n" );
+					fwrite( $handle, "}\n\n" );
+					fwrite( $handle, "} else {\n\n" );
+					fwrite( $handle, "foreach( $".$data->option_name."_array as \$key => \$value ) {\n" );
+					fwrite( $handle, "update_option('".$data->option_name."', $".$data->option_name."_array);\n" );
+					fwrite( $handle, "}\n" );
+					fwrite( $handle, "}\n\n" );
+				}
+			}
+				
+			fwrite( $handle, "?>\n" );
+			
+			$wizard_zip_file = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/bps-settings-export.zip';
+			
+			if ( file_exists($wizard_export) ) {
+			
+				if ( bpsPro_zip_setup_wizard_export_file() == true ) {
+	
+					echo $bps_topDiv;
+					$text = '<font color="green"><strong>'.__('BPS plugin option settings exported successfully. Click the Download Zip Export button to download the Setup Wizard Export zip file: bps-settings-export.zip.', 'bulletproof-security').'<br>'.__('If you see a 403 error and/or are unable to download the zip file then click here: ', 'bulletproof-security').'<a href="'.admin_url( 'admin.php?page=bulletproof-security/admin/wizard/wizard.php#bps-tabs-2' ).'" target="_blank">'.__('Setup Wizard Options', 'bulletproof-security').'</a>'.__(' and select the Zip File Download Fix On setting for the Zile File Download Fix option. You should now be able to download the bps-settings-export.zip file.', 'bulletproof-security').'</strong></font><br><div style="width:140px;font-size:1em;text-align:center;margin:10px 0px 0px 0px;padding:4px 6px 4px 6px;background-color:#e8e8e8;border:1px solid gray;"><a href="'.plugins_url( '/bulletproof-security/admin/wizard/bps-settings-export.zip' ).'" style="font-size:1em;font-weight:bold;text-decoration:none;">'.__('Download Zip Export', 'bulletproof-security').'</a></div>';
+					echo $text;
+					echo $bps_bottomDiv;
+				}		
+			}		
+		}
+	}
+}
+
+// Update the BPS plugin option settings by processing the setup-wizard-export.php file once.
+function bpsPro_SW_DB_Update() {
+	
+	$SW_export = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/setup-wizard-export.php';
+	
+	if ( file_exists($SW_export) ) {
+		
+		require_once( WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/setup-wizard-export.php' );		
+		
+		// Update the Admin email address option settings in Email|Log Settings and MMode to the current site's Admin email address
+		$admin_email = get_option('admin_email');
+		$BPS_Email_Options = get_option('bulletproof_security_options_email');
+		
+		$BPS_Options_email = array(
+		'bps_send_email_to' 			=> $admin_email, 
+		'bps_send_email_from' 			=> $admin_email, 
+		'bps_send_email_cc' 			=> $BPS_Email_Options['bps_send_email_cc'], 
+		'bps_send_email_bcc' 			=> $BPS_Email_Options['bps_send_email_bcc'], 
+		'bps_login_security_email' 		=> $BPS_Email_Options['bps_login_security_email'], 
+		'bps_security_log_size' 		=> $BPS_Email_Options['bps_security_log_size'], 
+		'bps_security_log_emailL' 		=> $BPS_Email_Options['bps_security_log_emailL'], 
+		'bps_dbb_log_email' 			=> $BPS_Email_Options['bps_dbb_log_email'], 
+		'bps_dbb_log_size' 				=> $BPS_Email_Options['bps_dbb_log_size'], 
+		'bps_mscan_log_size' 			=> $BPS_Email_Options['bps_mscan_log_size'], 
+		'bps_mscan_log_email' 			=> $BPS_Email_Options['bps_mscan_log_email'] 
+		);
+
+		foreach( $BPS_Options_email as $key => $value ) {
+			update_option('bulletproof_security_options_email', $BPS_Options_email);
+		}
+		
+		$BPS_MMode = get_option('bulletproof_security_options_maint_mode');
+		
+		$BPS_Options_MMode = array(
+		'bps_maint_on_off' 					=> $BPS_MMode['bps_maint_on_off'], 
+		'bps_maint_countdown_timer' 		=> $BPS_MMode['bps_maint_countdown_timer'], 
+		'bps_maint_countdown_timer_color' 	=> $BPS_MMode['bps_maint_countdown_timer_color'], 
+		'bps_maint_time' 					=> $BPS_MMode['bps_maint_time'], 
+		'bps_maint_retry_after' 			=> $BPS_MMode['bps_maint_retry_after'], 
+		'bps_maint_frontend' 				=> $BPS_MMode['bps_maint_frontend'], 
+		'bps_maint_backend' 				=> $BPS_MMode['bps_maint_backend'], 
+		'bps_maint_ip_allowed' 				=> $BPS_MMode['bps_maint_ip_allowed'], 
+		'bps_maint_text' 					=> $BPS_MMode['bps_maint_text'],
+		'bps_maint_background_images' 		=> $BPS_MMode['bps_maint_background_images'], 
+		'bps_maint_center_images' 			=> $BPS_MMode['bps_maint_center_images'], 
+		'bps_maint_background_color' 		=> $BPS_MMode['bps_maint_background_color'], 
+		'bps_maint_show_visitor_ip' 		=> $BPS_MMode['bps_maint_show_visitor_ip'], 
+		'bps_maint_show_login_link' 		=> $BPS_MMode['bps_maint_show_login_link'], 
+		'bps_maint_dashboard_reminder' 		=> $BPS_MMode['bps_maint_dashboard_reminder'], 
+		'bps_maint_log_visitors' 			=> $BPS_MMode['bps_maint_log_visitors'], 
+		'bps_maint_countdown_email' 		=> $BPS_MMode['bps_maint_countdown_email'], 
+		'bps_maint_email_to' 				=> $admin_email, 
+		'bps_maint_email_from' 				=> $admin_email, 
+		'bps_maint_email_cc' 				=> $BPS_MMode['bps_maint_email_cc'], 
+		'bps_maint_email_bcc' 				=> $BPS_MMode['bps_maint_email_bcc'], 
+		'bps_maint_mu_entire_site' 			=> $BPS_MMode['bps_maint_mu_entire_site'], 
+		'bps_maint_mu_subsites_only' 		=> $BPS_MMode['bps_maint_mu_subsites_only']
+		);	
+	
+		foreach( $BPS_Options_MMode as $key => $value ) {
+			update_option('bulletproof_security_options_maint_mode', $BPS_Options_MMode);
+		}
+
+		// Update ISL logout and login URL's ONLY if the ISL options have already been saved before.
+		$BPS_ISL = get_option('bulletproof_security_options_idle_session');
+
+		$ISL_logout_url = plugins_url('/bulletproof-security/isl-logout.php');
+		$ISL_login_url = site_url('/wp-login.php');
+		$Custom_Roles = $BPS_ISL['bps_isl_custom_roles'];
+
+		if ( ! empty($Custom_Roles) ) {
+			
+			$Custom_Roles_array = array();
+			
+			foreach ( $Custom_Roles as $key => $value ) {
+				
+				if ( $value == '1' ) {
+					$Custom_Roles_array[$key] = $value;
+				} 
+			}
+		
+		} else {
+			
+			$Custom_Roles_array = array( 'bps', '' );
+		}
+
+		$ISL_Options = array(
+		'bps_isl' 							=> $BPS_ISL['bps_isl'], 
+		'bps_isl_timeout' 					=> $BPS_ISL['bps_isl_timeout'], 
+		'bps_isl_logout_url' 				=> $ISL_logout_url, 
+		'bps_isl_login_url' 				=> $ISL_login_url,
+		'bps_isl_custom_message' 			=> $BPS_ISL['bps_isl_custom_message'],
+		'bps_isl_custom_css_1' 				=> $BPS_ISL['bps_isl_custom_css_1'],
+		'bps_isl_custom_css_2' 				=> $BPS_ISL['bps_isl_custom_css_2'],
+		'bps_isl_custom_css_3' 				=> $BPS_ISL['bps_isl_custom_css_3'],
+		'bps_isl_custom_css_4' 				=> $BPS_ISL['bps_isl_custom_css_4'],	
+		'bps_isl_user_account_exceptions' 	=> $BPS_ISL['bps_isl_user_account_exceptions'], 
+		'bps_isl_administrator' 			=> $BPS_ISL['bps_isl_administrator'], 
+		'bps_isl_editor' 					=> $BPS_ISL['bps_isl_editor'], 
+		'bps_isl_author' 					=> $BPS_ISL['bps_isl_author'], 
+		'bps_isl_contributor' 				=> $BPS_ISL['bps_isl_contributor'], 
+		'bps_isl_subscriber' 				=> $BPS_ISL['bps_isl_subscriber'], 
+		'bps_isl_tinymce' 					=> $BPS_ISL['bps_isl_tinymce'], 
+		'bps_isl_uri_exclusions' 			=> $BPS_ISL['bps_isl_uri_exclusions'], 
+		'bps_isl_custom_roles' 				=> $Custom_Roles_array  
+		);	
+	
+		if ( ! get_option('bulletproof_security_options_idle_session') ) {
+			// do nothing
+			
+		} else {
+		
+			foreach( $ISL_Options as $key => $value ) {
+				update_option('bulletproof_security_options_idle_session', $ISL_Options);
+			}
+		}
+
+		return true;
+	
+	} else {
+		
+		return false;
+	}
+}
+
+// Setup Wizard Import: Import the Setup Wizard Export zip file: bps-settings-export.zip
+// Notes: Don't use the WP wp_handle_upload() function. I need more flexibility.
+function bpsPro_setup_wizard_import() {
+global $bps_topDiv, $bps_bottomDiv;	
+	
+	if ( isset( $_POST['Submit-SW-Import'] ) && current_user_can('manage_options') ) {
+		check_admin_referer( 'bulletproof_security_sw_import' );
+	
+		$bpsZipFilename = 'bps-settings-export.zip';
+		$bps_tmp_file = $_FILES['bps_sw_import']['tmp_name'];
+		$zip_folder_path = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/';
+		$bps_uploaded_zip = str_replace( '//', '/', $zip_folder_path) . $_FILES['bps_sw_import']['name'];
+		$bpsZipzUploadFail = $_FILES['bps_sw_import']['name'];
+		$SW_export = WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/setup-wizard-export.php';
+		
+		if ( file_exists($SW_export) ) {
+			unlink($SW_export);
+		}
+		
+		echo $bps_topDiv;
+
+		if ( ! empty($_FILES) ) {
+		if ( $_FILES['bps_sw_import']['name'] == $bpsZipFilename ) {
+		
+			if ( move_uploaded_file($bps_tmp_file, $bps_uploaded_zip) ) {
+
+				$text = '<strong><font color="green">'.__('Zip File Upload Successful.', 'bulletproof-security').'</font></strong><br>';
+				echo $text;
+				
+				if ( class_exists('ZipArchive') ) {	
+
+					$bpsZip = new ZipArchive;
+	
+					if ( $bpsZip->open( WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/bps-settings-export.zip' ) === TRUE ) {
+						$bpsZip->extractTo( WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/' );
+    					$bpsZip->close();
+    	
+						$text = '<strong><font color="green">'.__('Zip File Exraction Successful. Method: ZipArchive class.', 'bulletproof-security').'</font></strong><br>';
+						echo $text;
+
+						// Update BPS Pro plugin option settings from the extracted setup-wizard-export.php file.
+						if ( bpsPro_SW_DB_Update() == true ) {
+							$text = '<strong><font color="green">'.__('BPS plugin settings imported successfully.', 'bulletproof-security').'</font><br><br><font color="blue">'.__('IMPORTANT: Run the BPS Setup Wizard now.', 'bulletproof-security').'</font><br><br>'.__('After running the Setup Wizard go to the BPS Security >  htaccess Core > Custom Code tab page and check all of your custom htaccess code for any website specific custom htaccess code. Example: If you find any custom htaccess code that has a website URL for your other website that you exported BPS plugin settings from, then either edit that custom htaccess code or remove it from BPS Custom Code.', 'bulletproof-security').'</strong>';
+							echo $text;
+						}
+
+					} else {
+	
+						$text = '<strong><font color="#fb0101">'.__('ERROR: Zip File Extraction Failed. Method: ZipArchive class.', 'bulletproof-security').'</font></strong>';
+						echo $text;
+								
+					}	
+		
+				} else { // Use PclZip if ZipArchive class is not installed
+		
+					// NOTE: last modified date of files is not changed with PclZip
+					define( 'PCLZIP_TEMPORARY_DIR', WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/' );
+					require_once( ABSPATH . 'wp-admin/includes/class-pclzip.php');
+	
+					if ( ini_get( 'mbstring.func_overload' ) && function_exists( 'mb_internal_encoding' ) ) {
+						$previous_encoding = mb_internal_encoding();
+						mb_internal_encoding( 'ISO-8859-1' );
+					}	
+
+					$archive = new PclZip( WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard/bps-settings-export.zip' );
+  		
+					if ( $archive->extract( PCLZIP_OPT_PATH, WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard', PCLZIP_OPT_REMOVE_PATH, WP_PLUGIN_DIR . '/bulletproof-security/admin/wizard' ) ) {
+					
+						$text = '<strong><font color="green">'.__('Zip File Extraction Successful. Method: PclZip.', 'bulletproof-security').'</font></strong><br>';
+						echo $text;
+				
+						// Update BPS Pro plugin option settings from the extracted setup-wizard-export.php file.
+						if ( bpsPro_SW_DB_Update() == true ) {
+
+							$text = '<strong><font color="green">'.__('BPS plugin settings imported successfully.', 'bulletproof-security').'</font><br><br><font color="blue">'.__('IMPORTANT: Run the BPS Setup Wizard now.', 'bulletproof-security').'</font><br><br>'.__('After running the Setup Wizard go to the BPS Security >  htaccess Core > Custom Code tab page and check all of your custom htaccess code for any website specific custom htaccess code. Example: If you find any custom htaccess code that has a website URL for your other website that you exported BPS plugin settings from, then either edit that custom htaccess code or remove it from BPS Custom Code.', 'bulletproof-security').'</strong>';
+							echo $text;
+						}
+
+					} else {
+					
+						$text = '<strong><font color="#fb0101">'.__('ERROR: Zip File Extraction Failed. Method: PclZip.', 'bulletproof-security').'</font></strong>';
+						echo $text;
+
+					}
+				} // end if ( class_exists('ZipArchive') ) {		
+		
+			} else { // end if ( move_uploaded_file($bps_tmp_file, $bps_uploaded_zip) ) {
+		
+				$text = '<strong><font color="#fb0101">'.__('ERROR: Zip File Upload Failed.', 'bulletproof-security').'</font><br><font color="black">'.__('Either the bps-settings-export.zip file has not been selected yet for Import or the file ', 'bulletproof-security').$bpsZipzUploadFail.__(' is not a valid Setup Wizard Export file or file name. The BPS Setup Wizard Import feature only allows the bps-settings-export.zip file to be Uploaded/Imported. The filename MUST be named: bps-settings-export.zip.', 'bulletproof-security').'</font></strong>';
+				echo $text;
+			}
+		}
+		}
+		echo $bps_bottomDiv;
+	}	
+}
+
+?>
+
+	</td>
+  </tr>
+</table>
+
+</div>
 
 <div id="AITpro-link">BulletProof Security <?php echo BULLETPROOF_VERSION; ?> Plugin by <a href="https://forum.ait-pro.com/" target="_blank" title="AITpro Website Security">AITpro Website Security</a>
 </div>

@@ -622,6 +622,7 @@ if ( isset( $_POST['bpsResetDismissSubmit'] ) && current_user_can('manage_option
 		echo $text;
 	}
 
+	/*
 	if ( ! delete_user_meta($user_id, 'bps_ignore_autoupdate_notice') ) {
 		$text = __('The BPS Plugin Automatic Update Notice is NOT set. Nothing to reset.', 'bulletproof-security').'<br>';
 		echo $text;
@@ -629,6 +630,7 @@ if ( isset( $_POST['bpsResetDismissSubmit'] ) && current_user_can('manage_option
 		$text = '<span style="color:#008000;">'.__('Success! The BPS Plugin Automatic Update Notice is reset.', 'bulletproof-security').'</span><br>';
 		echo $text;
 	}
+	*/
 
 	/*
 	if ( ! delete_user_meta($user_id, 'bpsPro_ignore_EPC_plugin_notice') ) {
@@ -685,6 +687,14 @@ if ( isset( $_POST['bpsResetDismissSubmit'] ) && current_user_can('manage_option
 		echo $text;
 	} else {
 		$text = '<span style="color:#008000;">'.__('Success! The Root htaccess File Version Check Notice is reset.', 'bulletproof-security').'</span><br>';
+		echo $text;
+	}
+
+	if ( ! delete_user_meta($user_id, 'bpsPro_ignore_mu_wp_automatic_updates_notice') ) {
+		$text = __('The BPS wp-config.php file WP Automatic Update constants detected Notice is NOT set. Nothing to reset.', 'bulletproof-security').'<br>';
+		echo $text;
+	} else {
+		$text = '<span style="color:#008000;">'.__('Success! The BPS wp-config.php file WP Automatic Update constants detected Notice is reset.', 'bulletproof-security').'</span><br>';
 		echo $text;
 	}
 

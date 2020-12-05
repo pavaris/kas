@@ -519,6 +519,10 @@ $bps_secure_bottom_misc_code = "# HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/
 		$lock = '0404';
 	} elseif ( file_exists( $bps_auto_write_secure_file_root) && @$permsRootHtaccess == '0444' ) {
 		$lock = '0444';			
+	} elseif ( file_exists( $bps_auto_write_secure_file_root) && @$permsRootHtaccess == '0604' ) {
+		$lock = '0604';			
+	} elseif ( file_exists( $bps_auto_write_secure_file_root) && @$permsRootHtaccess == '0644' ) {
+		$lock = '0644';			
 	}
 
 	if ( file_exists( $bps_auto_write_secure_file_root) && @substr( $sapi_type, 0, 6) != 'apache' && @$permsRootHtaccess != '0666' || @$permsRootHtaccess != '0777' ) { 
@@ -583,9 +587,9 @@ $bps_secure_bottom_misc_code = "# HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/
 		}	
 	}
 
-	// AutoLock: Off by default or echo saved DB option
+	// AutoLock: Off by default on new installations or echo saved DB option. 
+	// A recommendation is made to lock and AutoLock the root htaccess file. each person needs to make that choice.
 	// For 444 permissions do not do anything with lock or autolock settings
-	// Pending: add a condition for 444 permissions throughout all BPS code
 	if ( @$lock != '0444' ) {	
 	
 		$BPS_autolock_options = get_option('bulletproof_security_options_autolock');
@@ -609,6 +613,11 @@ $bps_secure_bottom_misc_code = "# HOTLINKING/FORBID COMMENT SPAMMERS/BLOCK BOTS/
 				echo $successTextBegin.$key.__(' DB Option created or updated Successfully!', 'bulletproof-security').$successTextEnd;	
 			}
 		}
+	}
+	
+	// 4.3: New check and recommendation to Lock the Root htaccess file and turn on AutoLock.
+	if ( $lock == '0604' || $lock == '0644' ) {
+		echo '<strong><font color="blue">'.__('Your current Root .htaccess file is not locked. It is recommended that you lock your Root .htaccess file on the htaccess Core > htaccess File Editor page. Click the Lock htaccess File and Turn On AutoLock buttons on the htaccess File Editor page.', 'bulletproof-security').'</font></strong><br>';
 	}
 }
 
@@ -996,23 +1005,141 @@ function bpsSetupWizardCustomCodePresave() {
 	}
 }
 
-function bpsSetupWizardMUToolsPresave() {
+// Pre-save UI|UX DB option settings to avoid doing additional Form coding work for PHP 7.4.9 Notice errors
+function bpsPro_presave_uiux_settings() {
+	
+	// Theme Skin
+	$UITSoptions = get_option('bulletproof_security_options_theme_skin');
+	$uits = ! isset($UITSoptions['bps_ui_theme_skin']) ? 'blue' : $UITSoptions['bps_ui_theme_skin'];
+	$uits_options = array('bps_ui_theme_skin' => $uits);
 
-	$MUTools_Options = get_option('bulletproof_security_options_MU_tools_free');
-		
-	$bps_mu_tools1 = ! $MUTools_Options['bps_mu_tools_timestamp'] ? time() + 300 : $MUTools_Options['bps_mu_tools_timestamp'];
-	$bps_mu_tools2 = ! $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'] ? 'disable' : $MUTools_Options['bps_mu_tools_enable_disable_autoupdate'];
-	$bps_mu_tools3 = ! $MUTools_Options['bps_mu_tools_enable_disable_deactivation'] ? 'enable' : $MUTools_Options['bps_mu_tools_enable_disable_deactivation'];
+	foreach( $uits_options as $key => $value ) {
+		update_option('bulletproof_security_options_theme_skin', $uits_options);
+	}
 
-	$MUTools_Option_settings = array( 
-	'bps_mu_tools_timestamp' 					=> $bps_mu_tools1,
-	'bps_mu_tools_enable_disable_autoupdate' 	=> $bps_mu_tools2, 
-	'bps_mu_tools_enable_disable_deactivation' 	=> $bps_mu_tools3 
-	);	
+	// Turn On|Off The Inpage Status Display
+	$UIStatus_display = get_option('bulletproof_security_options_status_display');
+	$ui_status = ! isset($UIStatus_display['bps_status_display']) ? 'On' : $UIStatus_display['bps_status_display'];
+	$ui_status_display = array('bps_status_display' => $ui_status);
 
-	foreach ( $MUTools_Option_settings as $key => $value ) {
-		update_option('bulletproof_security_options_MU_tools_free', $MUTools_Option_settings);
+	foreach( $ui_status_display as $key => $value ) {
+		update_option('bulletproof_security_options_status_display', $ui_status_display);
+	}
+
+	// Processing Spinner
+	$UISpinneroptions = get_option('bulletproof_security_options_spinner');
+	$uips = ! isset($UISpinneroptions['bps_spinner']) ? 'On' : $UISpinneroptions['bps_spinner'];
+	$uips_options = array('bps_spinner' => $uips);
+
+	foreach( $uips_options as $key => $value ) {
+		update_option('bulletproof_security_options_spinner', $uips_options);
+	}
+
+	// ScrollTop Animation
+	$ScrollTopoptions = get_option('bulletproof_security_options_scrolltop');
+	$uist = ! isset($ScrollTopoptions['bps_scrolltop']) ? 'On' : $ScrollTopoptions['bps_scrolltop'];
+	$uist_options = array('bps_scrolltop' => $uist);
+
+	foreach( $uist_options as $key => $value ) {
+		update_option('bulletproof_security_options_scrolltop', $uist_options);
+	}
+	
+	// WP Toolbar Functionality in BPS plugin pages		
+	$UIWPToptions = get_option('bulletproof_security_options_wpt_nodes');
+	$uiwpt = ! isset($UIWPToptions['bps_wpt_nodes']) ? 'allnodes' : $UIWPToptions['bps_wpt_nodes'];
+	$uiwpt_options = array('bps_wpt_nodes' => $uiwpt);
+
+	foreach( $uiwpt_options as $key => $value ) {
+		update_option('bulletproof_security_options_wpt_nodes', $uiwpt_options);
+	}		
+
+	// Script|Style Loader Filter (SLF) In BPS Plugin Pages	
+	$UISLFoptions = get_option('bulletproof_security_options_SLF');
+	$uislf1 = ! isset($UISLFoptions['bps_slf_filter']) ? 'On' : $UISLFoptions['bps_slf_filter'];
+	$uislf2 = ! isset($UISLFoptions['bps_slf_filter_new']) ? '14' : $UISLFoptions['bps_slf_filter_new'];	
+	$uislf_options = array(
+	'bps_slf_filter' 		=> $uislf1, 
+	'bps_slf_filter_new' 	=> $uislf2
+	);
+
+	foreach( $uislf_options as $key => $value ) {
+		update_option('bulletproof_security_options_SLF', $uislf_options);
+	}
+
+	// BPS UI|UX|AutoFix Debug
+	$UIDebug_options = get_option('bulletproof_security_options_debug');
+	$uidb = ! isset($UIDebug_options['bps_debug']) ? 'Off' : $UIDebug_options['bps_debug'];
+	$uidb_options = array('bps_debug' => $uidb);
+
+	foreach( $uidb_options as $key => $value ) {
+		update_option('bulletproof_security_options_debug', $uidb_options);
 	}
 }
 
+// Pre-save the Setup Wizard Options DB option settings to avoid doing additional Form coding work for PHP 7.4.9 Notice errors
+function bpsPro_presave_setupwizard_option_settings() {
+	
+	// AutoFix
+	$AutoFix_Options = get_option('bulletproof_security_options_wizard_autofix');
+	$swoaf = ! isset($AutoFix_Options['bps_wizard_autofix']) ? 'On' : $AutoFix_Options['bps_wizard_autofix'];
+	$SWOAF_options = array('bps_wizard_autofix' => $swoaf);
+
+	foreach( $SWOAF_options as $key => $value ) {
+		update_option('bulletproof_security_options_wizard_autofix', $SWOAF_options);
+	}		
+	
+	// GDPR Compliance
+	$GDPR_Options = get_option('bulletproof_security_options_gdpr');	
+	$swgdpr = ! isset($GDPR_Options['bps_gdpr_on_off']) ? 'Off' : $GDPR_Options['bps_gdpr_on_off'];
+	$SWGDPR_options = array('bps_gdpr_on_off' => $swgdpr);
+
+	foreach( $SWGDPR_options as $key => $value ) {
+		update_option('bulletproof_security_options_gdpr', $SWGDPR_options);
+	}		
+	
+	// GDMW 
+	$GDMW_options = get_option('bulletproof_security_options_GDMW');
+	$swgdmw = ! isset($GDMW_options['bps_gdmw_hosting']) ? 'no' : $GDMW_options['bps_gdmw_hosting'];
+	$SWGDMW_options = array('bps_gdmw_hosting' => $swgdmw);
+
+	foreach( $SWGDMW_options as $key => $value ) {
+		update_option('bulletproof_security_options_GDMW', $SWGDMW_options);
+	}		
+	
+	// Enable|Disable htaccess files
+	$HFiles_options = get_option('bulletproof_security_options_htaccess_files');		
+	$swhf = ! isset($HFiles_options['bps_htaccess_files']) ? 'enabled' : $HFiles_options['bps_htaccess_files'];
+	$SWHF_options = array('bps_htaccess_files' => $swhf);
+
+	foreach( $SWHF_options as $key => $value ) {
+		update_option('bulletproof_security_options_htaccess_files', $SWHF_options);
+	}		
+				
+	// Enable|Disable wp-admin BulletProof Mode
+	$BPS_wpadmin_Options = get_option('bulletproof_security_options_htaccess_res');
+	$swwhf = ! isset($BPS_wpadmin_Options['bps_wpadmin_restriction']) ? 'enabled' : $BPS_wpadmin_Options['bps_wpadmin_restriction'];
+	$SWWHF_options = array('bps_wpadmin_restriction' => $swwhf);
+
+	foreach( $SWWHF_options as $key => $value ) {
+		update_option('bulletproof_security_options_htaccess_res', $SWWHF_options);
+	}
+
+	// Zip File Download Fix
+	$Zip_download_Options = get_option('bulletproof_security_options_zip_fix');
+	$swzd = ! isset($Zip_download_Options['bps_zip_download_fix']) ? 'Off' : $Zip_download_Options['bps_zip_download_fix'];
+	$SWZD_options = array('bps_zip_download_fix' => $swzd);
+
+	foreach( $SWZD_options as $key => $value ) {
+		update_option('bulletproof_security_options_zip_fix', $SWZD_options);
+	}		
+
+	// Multisite Hide|Display System Info Page for Subsites
+	$Mu_Sysinfo_page_options = get_option('bulletproof_security_options_mu_sysinfo');
+	$swmus = ! isset($Mu_Sysinfo_page_options['bps_sysinfo_hide_display']) ? 'display' : $Mu_Sysinfo_page_options['bps_sysinfo_hide_display'];
+	$SWMUS_options = array('bps_sysinfo_hide_display' => $swmus);
+
+	foreach( $SWMUS_options as $key => $value ) {
+		update_option('bulletproof_security_options_mu_sysinfo', $SWMUS_options);
+	}	
+}
 ?>

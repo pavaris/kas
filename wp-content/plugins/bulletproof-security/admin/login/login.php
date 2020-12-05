@@ -14,7 +14,7 @@ if ( ! current_user_can('manage_options') ) {
 <?php 
 $ScrollTop_options = get_option('bulletproof_security_options_scrolltop');
 
-if ( $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
+if ( isset( $ScrollTop_options['bps_scrolltop'] ) && $ScrollTop_options['bps_scrolltop'] != 'Off' ) {
 	
 	if ( esc_html($_SERVER['REQUEST_METHOD']) == 'POST' && ! isset( $_POST['Submit-Login-Security-search'] ) || isset( $_GET['settings-updated'] ) && @$_GET['settings-updated'] == true ) {
 
@@ -979,8 +979,11 @@ if ( ! current_user_can('manage_options') ) { _e('Permission Denied', 'bulletpro
 	
 		if ( $role_name != 'administrator' && $role_name != 'editor' && $role_name != 'author' && $role_name != 'contributor' && $role_name != 'subscriber' ) {
 			
-			echo "<input type=\"checkbox\" name=\"bps_jtc_custom_roles[$role_name]\" value=\"1\""; @checked( $BPSoptionsJTC['bps_jtc_custom_roles'][$role_name], 1 ); echo " /><label> ". $role_info['name'] ."</label>".'<br>';
-			
+			echo "<input type=\"checkbox\" name=\"bps_jtc_custom_roles[$role_name]\" value=\"1\"";
+			if ( ! empty($BPSoptionsJTC['bps_jtc_custom_roles'][$role_name]) ) {
+			checked( $BPSoptionsJTC['bps_jtc_custom_roles'][$role_name], 1 );
+			}
+			echo " /><label> ". $role_info['name'] ."</label>".'<br>';
 		}
 	}
 ?> 
@@ -1251,7 +1254,19 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
 
 <form name="IdleSessionLogout" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/login/login.php#bps-tabs-3' ); ?>" method="post">
 	<?php wp_nonce_field('bps_isl_logout'); ?> 
-	<?php $BPS_ISL_options = get_option('bulletproof_security_options_idle_session'); ?>
+	<?php $BPS_ISL_options = get_option('bulletproof_security_options_idle_session'); 
+$ISL_on_off = ! isset($BPS_ISL_options['bps_isl']) ? '' : $BPS_ISL_options['bps_isl'];
+$ISL_timeout = isset($BPS_ISL_options['bps_isl_timeout']) ? preg_replace('/\D/', "", esc_html($BPS_ISL_options['bps_isl_timeout'])) : esc_html('60');
+$ISL_logout_url = isset($BPS_ISL_options['bps_isl_logout_url']) ? esc_url($BPS_ISL_options['bps_isl_logout_url']) : esc_url(plugins_url('/bulletproof-security/isl-logout.php'));
+$ISL_login_url = isset($BPS_ISL_options['bps_isl_login_url']) ? esc_url($BPS_ISL_options['bps_isl_login_url']) : esc_url(site_url('/wp-login.php'));
+$ISL_exclusions = isset($BPS_ISL_options['bps_isl_uri_exclusions']) ? esc_html($BPS_ISL_options['bps_isl_uri_exclusions']) : esc_html('');
+$ISL_message = isset($BPS_ISL_options['bps_isl_custom_message']) ? esc_html($BPS_ISL_options['bps_isl_custom_message']) : esc_html('');
+$ISL_css_1 = isset($BPS_ISL_options['bps_isl_custom_css_1']) ? esc_html($BPS_ISL_options['bps_isl_custom_css_1']) : esc_html('background-color:#fff;line-height:normal;');
+$ISL_css_2 = isset($BPS_ISL_options['bps_isl_custom_css_2']) ? esc_html($BPS_ISL_options['bps_isl_custom_css_2']) : esc_html('position:fixed;top:20%;left:0%;text-align:center;height:100%;width:100%;');
+$ISL_css_3 = isset($BPS_ISL_options['bps_isl_custom_css_3']) ? esc_html($BPS_ISL_options['bps_isl_custom_css_3']) : esc_html('border:5px solid gray;background-color:#BCE2F1;');
+$ISL_css_4 = isset($BPS_ISL_options['bps_isl_custom_css_4']) ? esc_html($BPS_ISL_options['bps_isl_custom_css_4']) : esc_html('font-family:Verdana, Arial, Helvetica, sans-serif;font-size:18px;font-weight:bold;');
+$ISL_exceptions = isset($BPS_ISL_options['bps_isl_user_account_exceptions']) ? esc_html($BPS_ISL_options['bps_isl_user_account_exceptions']) : esc_html('');	
+	?>
     
  <h3><?php _e('Idle Session Logout (ISL) Settings', 'bulletproof-security'); ?></h3>   
     
@@ -1260,42 +1275,42 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
     <td>
     <label for="LSLog"><?php _e('Turn On|Turn Off:', 'bulletproof-security'); ?></label><br />
     <select name="bps_isl" class="form-250">
-	<option value="On" <?php selected('On', $BPS_ISL_options['bps_isl']); ?>><?php _e('ISL On', 'bulletproof-security'); ?></option>
-	<option value="Off" <?php selected('Off', $BPS_ISL_options['bps_isl']); ?>><?php _e('ISL Off', 'bulletproof-security'); ?></option>
+	<option value="On" <?php selected('On', $ISL_on_off); ?>><?php _e('ISL On', 'bulletproof-security'); ?></option>
+	<option value="Off" <?php selected('Off', $ISL_on_off); ?>><?php _e('ISL Off', 'bulletproof-security'); ?></option>
 	</select>
 	</td>
   </tr>
   <tr>
     <td>
     <label for="LSLog"><?php _e('Idle Session Logout Time in Minutes:', 'bulletproof-security'); ?></label><br />
-    <input type="text" name="bps_isl_timeout" class="regular-text-250" value="<?php if ( $BPS_ISL_options['bps_isl_timeout'] != '' ) { echo preg_replace( '/\D/', "", esc_html( $BPS_ISL_options['bps_isl_timeout'] ) ); } else { echo esc_html('60'); } ?>" />
+    <input type="text" name="bps_isl_timeout" class="regular-text-250" value="<?php echo $ISL_timeout; ?>" />
     </td>
   </tr>
   <tr>
     <td>
     <label for="LSLog"><?php _e('Idle Session Logout Page URL:', 'bulletproof-security'); ?></label><br />
-    <input type="text" name="bps_isl_logout_url" class="regular-text-450" value="<?php if ( $BPS_ISL_options['bps_isl_logout_url'] != '' ) { echo esc_url( $BPS_ISL_options['bps_isl_logout_url'] ); } else { echo esc_url( plugins_url('/bulletproof-security/isl-logout.php') ); } ?>" />
+    <input type="text" name="bps_isl_logout_url" class="regular-text-450" value="<?php echo $ISL_logout_url; ?>" />
     </td>
   </tr>
   <tr>
     <td>
     <label for="LSLog"><?php _e('Idle Session Logout Page Login URL:', 'bulletproof-security'); ?></label><br />
     <label><strong><i><?php _e('Enter/Type: "No" (without quotes) if you do not want a Login URL displayed.', 'bulletproof-security'); ?></i></strong></label><br />
-    <input type="text" name="bps_isl_login_url" class="regular-text-450" value="<?php if ( $BPS_ISL_options['bps_isl_login_url'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_login_url'] ); } else { echo esc_url( site_url( '/wp-login.php' ) ); } ?>" />
+    <input type="text" name="bps_isl_login_url" class="regular-text-450" value="<?php echo $ISL_login_url; ?>" />
     </td>
   </tr>
   <tr>
     <td>
     <label for="LSLog"><?php _e('Idle Session Logout Exclude URLs|URIs:', 'bulletproof-security'); ?></label><br />
 	<label><strong><i><?php _e('Enter URIs separated by a comma and a space: /some-post/, /some-page/', 'bulletproof-security'); ?></i></strong></label><br />
- 	<textarea class="PFW-Allow-From-Text-Area" name="bps_isl_uri_exclusions" tabindex="1"><?php if ( $BPS_ISL_options['bps_isl_uri_exclusions'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_uri_exclusions'] ); } else { echo esc_html(''); } ?></textarea>
+ 	<textarea class="PFW-Allow-From-Text-Area" name="bps_isl_uri_exclusions" tabindex="1"><?php echo $ISL_exclusions; ?></textarea>
 	<input type="hidden" name="scrolltoISLMessage" id="scrolltoISLMessage" value="<?php echo esc_html( $scrolltoISLMessage ); ?>" />
     </td>
   </tr>
   <tr>
     <td>
     <label for="LSLog"><?php _e('Idle Session Logout Page Custom Message:', 'bulletproof-security'); ?></label><br />
- 	<textarea class="PFW-Allow-From-Text-Area" name="bps_isl_custom_message" tabindex="1"><?php if ( $BPS_ISL_options['bps_isl_custom_message'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_custom_message'] ); } else { echo esc_html(''); } ?></textarea>
+ 	<textarea class="PFW-Allow-From-Text-Area" name="bps_isl_custom_message" tabindex="1"><?php echo $ISL_message; ?></textarea>
 	<input type="hidden" name="scrolltoISLMessage" id="scrolltoISLMessage" value="<?php echo esc_html( $scrolltoISLMessage ); ?>" />
     </td>
   </tr>
@@ -1303,16 +1318,16 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
     <td>
     <label for="LSLog"><?php _e('Idle Session Logout Page Custom CSS Style:', 'bulletproof-security'); ?></label><br />
 	<label><strong><?php echo 'body {'; ?></strong></label>
-    <input type="text" id="crypt33" name="bps_isl_custom_css_1" class="bps_isl_custom_css_1" value="<?php if ( $BPS_ISL_options['bps_isl_custom_css_1'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_custom_css_1'] ); } else { echo esc_html( 'background-color:#fff;line-height:normal;' ); } ?>" />
+    <input type="text" id="crypt33" name="bps_isl_custom_css_1" class="bps_isl_custom_css_1" value="<?php echo $ISL_css_1; ?>" />
     <label><strong><?php echo '}'; ?></strong></label><br />
 	<label><strong><?php echo '#bpsMessage {'; ?></strong></label>
-    <input type="text" id="crypt34" name="bps_isl_custom_css_2" class="bps_isl_custom_css_2" value="<?php if ( $BPS_ISL_options['bps_isl_custom_css_2'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_custom_css_2'] ); } else { echo esc_html( 'position:fixed;top:20%;left:0%;text-align:center;height:100%;width:100%;' ); } ?>" />
+    <input type="text" id="crypt34" name="bps_isl_custom_css_2" class="bps_isl_custom_css_2" value="<?php echo $ISL_css_2; ?>" />
     <label><strong><?php echo '}'; ?></strong></label><br />
 	<label><strong><?php echo '#bpsMessageTextBox {'; ?></strong></label>
-    <input type="text" id="crypt35" name="bps_isl_custom_css_3" class="bps_isl_custom_css_3" value="<?php if ( $BPS_ISL_options['bps_isl_custom_css_3'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_custom_css_3'] ); } else { echo esc_html( 'border:5px solid gray;background-color:#BCE2F1;' ); } ?>" />
+    <input type="text" id="crypt35" name="bps_isl_custom_css_3" class="bps_isl_custom_css_3" value="<?php echo $ISL_css_3; ?>" />
     <label><strong><?php echo '}'; ?></strong></label><br />
 	<label><strong><?php echo 'p {'; ?></strong></label>
-    <input type="text" id="crypt36" name="bps_isl_custom_css_4" class="bps_isl_custom_css_4" value="<?php if ( $BPS_ISL_options['bps_isl_custom_css_4'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_custom_css_4'] ); } else { echo esc_html( 'font-family:Verdana, Arial, Helvetica, sans-serif;font-size:18px;font-weight:bold;' ); } ?>" />
+    <input type="text" id="crypt36" name="bps_isl_custom_css_4" class="bps_isl_custom_css_4" value="<?php echo $ISL_css_4; ?>" />
     <label><strong><?php echo '}'; ?></strong></label><br />
     </td>
   </tr>
@@ -1321,7 +1336,7 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
     <label for="LSLog"><?php _e('User Account Exceptions:', 'bulletproof-security'); ?></label><br />
     <label for="LSLog"><i><?php _e('Enter User Account names separated by a comma and a space: johnDoe, janeDoe', 'bulletproof-security'); ?></i></label><br />
     <label for="LSLog"><i><?php _e('Idle Session Logout Time Will Not Be Applied For These User Accounts.', 'bulletproof-security'); ?></i></label><br />
-    <input type="text" name="bps_isl_user_account_exceptions" class="regular-text-450" value="<?php if ( $BPS_ISL_options['bps_isl_user_account_exceptions'] != '' ) { echo esc_html( $BPS_ISL_options['bps_isl_user_account_exceptions'] ); } else { echo esc_html(''); } ?>" />
+    <input type="text" name="bps_isl_user_account_exceptions" class="regular-text-450" value="<?php echo $ISL_exceptions; ?>" />
 	</td>
   </tr>
   <tr>
@@ -1329,11 +1344,11 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
     <label><strong><?php _e('Enable|Disable Idle Session Logouts For These User Roles: ', 'bulletproof-security'); ?></strong></label><br />  
   	<label><strong><i><?php _e('Check to Enable. Uncheck to Disable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
     <div id="Roles-scroller">
-    <input type="checkbox" name="bps_isl_administrator" value="1" <?php checked( $BPS_ISL_options['bps_isl_administrator'], 1 ); ?> /><label><?php _e(' Administrator', 'bulletproof-security'); ?></label><br />
-    <input type="checkbox" name="bps_isl_editor" value="1" <?php checked( $BPS_ISL_options['bps_isl_editor'], 1 ); ?> /><label><?php _e(' Editor', 'bulletproof-security'); ?></label><br />
-	<input type="checkbox" name="bps_isl_author" value="1" <?php checked( $BPS_ISL_options['bps_isl_author'], 1 ); ?> /><label><?php _e(' Author', 'bulletproof-security'); ?></label><br />    
-	<input type="checkbox" name="bps_isl_contributor" value="1" <?php checked( $BPS_ISL_options['bps_isl_contributor'], 1 ); ?> /><label><?php _e(' Contributor', 'bulletproof-security'); ?></label><br />
-	<input type="checkbox" name="bps_isl_subscriber" value="1" <?php checked( $BPS_ISL_options['bps_isl_subscriber'], 1 ); ?> /><label><?php _e(' Subscriber', 'bulletproof-security'); ?></label><br />
+   <input type="checkbox" name="bps_isl_administrator" value="1" <?php if ( empty( $BPS_ISL_options['bps_isl_administrator'] ) ) { echo ''; } else { checked( $BPS_ISL_options['bps_isl_administrator'], 1 ); } ?> /><label><?php _e(' Administrator', 'bulletproof-security'); ?></label><br />
+    <input type="checkbox" name="bps_isl_editor" value="1" <?php if ( empty( $BPS_ISL_options['bps_isl_editor'] ) ) { echo ''; } else { checked( $BPS_ISL_options['bps_isl_editor'], 1 ); } ?> /><label><?php _e(' Editor', 'bulletproof-security'); ?></label><br />
+	<input type="checkbox" name="bps_isl_author" value="1" <?php if ( empty( $BPS_ISL_options['bps_isl_author'] ) ) { echo ''; } else { checked( $BPS_ISL_options['bps_isl_author'], 1 ); } ?> /><label><?php _e(' Author', 'bulletproof-security'); ?></label><br />    
+	<input type="checkbox" name="bps_isl_contributor" value="1" <?php if ( empty( $BPS_ISL_options['bps_isl_contributor'] ) ) { echo ''; } else { checked( $BPS_ISL_options['bps_isl_contributor'], 1 ); } ?> /><label><?php _e(' Contributor', 'bulletproof-security'); ?></label><br />
+	<input type="checkbox" name="bps_isl_subscriber" value="1" <?php if ( empty( $BPS_ISL_options['bps_isl_subscriber'] ) ) { echo ''; } else { checked( $BPS_ISL_options['bps_isl_subscriber'], 1 ); } ?> /><label><?php _e(' Subscriber', 'bulletproof-security'); ?></label><br />
 
 <?php
 
@@ -1341,8 +1356,11 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
 	
 		if ( $role_name != 'administrator' && $role_name != 'editor' && $role_name != 'author' && $role_name != 'contributor' && $role_name != 'subscriber' ) {
 			
-			echo "<input type=\"checkbox\" name=\"bps_isl_custom_roles[$role_name]\" value=\"1\""; @checked( $BPS_ISL_options['bps_isl_custom_roles'][$role_name], 1 ); echo " /><label> ". $role_info['name'] ."</label>".'<br>';
-			
+			echo "<input type=\"checkbox\" name=\"bps_isl_custom_roles[$role_name]\" value=\"1\""; 
+			if ( ! empty($BPS_ISL_options['bps_isl_custom_roles'][$role_name]) ) {
+				checked( $BPS_ISL_options['bps_isl_custom_roles'][$role_name], 1 );
+			}
+			echo " /><label> ". $role_info['name'] ."</label>".'<br>';
 		}
 	}
 ?> 
@@ -1354,7 +1372,7 @@ if ( isset( $_POST['Submit-ISL-Options'] ) && current_user_can('manage_options')
 	<td>
     <label><strong><?php _e('Enable|Disable Idle Session Logouts For TinyMCE Editors: ', 'bulletproof-security'); ?></strong></label><br />  
   <label><strong><i><?php _e('Check to Disable. Uncheck to Enable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
-    <input type="checkbox" name="bps_isl_tinymce" value="1" <?php checked( $BPS_ISL_options['bps_isl_tinymce'], 1 ); ?> /><label><?php _e(' Enable|Disable ISL For TinyMCE Editor', 'bulletproof-security'); ?></label><br /><br />
+    <input type="checkbox" name="bps_isl_tinymce" value="1" <?php if ( empty( $BPS_ISL_options['bps_isl_tinymce'] ) ) { echo ''; } else { checked( $BPS_ISL_options['bps_isl_tinymce'], 1 ); } ?> /><label><?php _e(' Enable|Disable ISL For TinyMCE Editor', 'bulletproof-security'); ?></label><br /><br />
 
 	<?php echo '<div id="jtc-tooltip" style="margin:0px 0px 10px 0px;max-width:640px"><label for="bps-mscan-label" style="">'.__('If you see an error or are unable to save your ISL option settings then click the Encrypt ISL Code button first and then click the Save Options button. Mouse over the question mark image to the right for help info.', 'bulletproof-security').'</label><strong><font color="black"><span class="tooltip-350-225"><img src="'.plugins_url('/bulletproof-security/admin/images/question-mark.png').'" style="position:relative;top:3px;left:5px;" /><span>'.__('If your web host currently has ModSecurity installed or installs ModSecurity at a later time then ModSecurity will prevent you from saving your ISL option settings and CSS code unless you encrypt it first by clicking the Encrypt ISL Code button.', 'bulletproof-security').'<br><br>'.__('If you click the Encrypt ISL Code button and then want to edit your CSS code again click the Decrypt ISL Code button. After you are done editing click the Encrypt ISL Code button before clicking the Save Options button.', 'bulletproof-security').'<br><br>'.__('Click the Idle Session Logout|Auth Cookie Expiration Read Me help button for more help info.', 'bulletproof-security').'</span></span></font></strong></div>'; ?>
 
@@ -1528,15 +1546,20 @@ if ( isset( $_POST['Submit-ACE-Options'] ) && current_user_can('manage_options')
 
 <form name="ACELogout" action="<?php echo admin_url( 'admin.php?page=bulletproof-security/admin/login/login.php#bps-tabs-3' ); ?>" method="post">
 	<?php wp_nonce_field('bps_auth_cookie_expiration'); ?>
-	<?php $BPS_ACE_options = get_option('bulletproof_security_options_auth_cookie'); ?>
+	<?php $BPS_ACE_options = get_option('bulletproof_security_options_auth_cookie'); 
+$ACE_on_off = ! isset($BPS_ACE_options['bps_ace']) ? '' : $BPS_ACE_options['bps_ace'];
+$ACE_Expiration = isset($BPS_ACE_options['bps_ace_expiration']) ? preg_replace('/\D/', "", esc_html($BPS_ACE_options['bps_ace_expiration'])) : esc_html('2880');
+$ACE_RM_Expiration = isset($BPS_ACE_options['bps_ace_rememberme_expiration']) ? preg_replace('/\D/', "", esc_html($BPS_ACE_options['bps_ace_rememberme_expiration'])) : esc_html('20160');
+$ACE_exceptions = isset($BPS_ACE_options['bps_ace_user_account_exceptions']) ? esc_html($BPS_ACE_options['bps_ace_user_account_exceptions']) : esc_html('');	
+	?>
  
 <table border="0">
   <tr>
     <td>
     <label for="LSLog"><?php _e('Turn On|Turn Off:', 'bulletproof-security'); ?></label><br />
     <select name="bps_ace" class="form-250"><br />
-	<option value="On" <?php selected('On', $BPS_ACE_options['bps_ace']); ?>><?php _e('ACE On', 'bulletproof-security'); ?></option>
-	<option value="Off" <?php selected('Off', $BPS_ACE_options['bps_ace']); ?>><?php _e('ACE Off', 'bulletproof-security'); ?></option>
+	<option value="On" <?php selected('On', $ACE_on_off); ?>><?php _e('ACE On', 'bulletproof-security'); ?></option>
+	<option value="Off" <?php selected('Off', $ACE_on_off); ?>><?php _e('ACE Off', 'bulletproof-security'); ?></option>
 	</select>
 	</td>
   </tr>
@@ -1544,21 +1567,21 @@ if ( isset( $_POST['Submit-ACE-Options'] ) && current_user_can('manage_options')
     <td>
     <label for="LSLog"><?php _e('Auth Cookie Expiration Time in Minutes:', 'bulletproof-security'); ?></label><br />
     <label for="LSLog"><?php _e('WP Default setting is 2880 Minutes/2 Days:', 'bulletproof-security'); ?></label><br />
-    <input type="text" name="bps_ace_expiration" class="regular-text-250" value="<?php if ( $BPS_ACE_options['bps_ace_expiration'] != '' ) { echo preg_replace( '/\D/', "", esc_html( $BPS_ACE_options['bps_ace_expiration'] ) ); } else { echo esc_html('2880'); } ?>" />
+    <input type="text" name="bps_ace_expiration" class="regular-text-250" value="<?php echo $ACE_Expiration; ?>" />
     </td>
   </tr>
   <tr>
     <td>
     <label for="LSLog"><?php _e('Remember Me Auth Cookie Expiration Time in Minutes:', 'bulletproof-security'); ?></label><br />
     <label for="LSLog"><?php _e('WP Default setting is 20160 Minutes/14 Days:', 'bulletproof-security'); ?></label><br />
-    <input type="text" name="bps_ace_rememberme_expiration" class="regular-text-250" value="<?php if ( $BPS_ACE_options['bps_ace_rememberme_expiration'] != '' ) { echo preg_replace( '/\D/', "", esc_html( $BPS_ACE_options['bps_ace_rememberme_expiration'] ) ); } else { echo esc_html('20160'); } ?>" />
+    <input type="text" name="bps_ace_rememberme_expiration" class="regular-text-250" value="<?php echo $ACE_RM_Expiration; ?>" />
 	</td>
   </tr>
   <tr>
 	<td>
     <label><strong><?php _e('Enable|Disable Remember Me Checkbox:', 'bulletproof-security'); ?></strong></label><br />  
   <label><strong><i><?php _e('Check to Disable. Uncheck to Enable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
-    <input type="checkbox" name="bps_ace_rememberme_disable" value="1" <?php checked( $BPS_ACE_options['bps_ace_rememberme_disable'], 1 ); ?> /><label><?php _e(' Disable & do not display the Remember Me checkbox', 'bulletproof-security'); ?></label><br />
+    <input type="checkbox" name="bps_ace_rememberme_disable" value="1" <?php if ( empty( $BPS_ACE_options['bps_ace_rememberme_disable'] ) ) { echo ''; } else { checked( $BPS_ACE_options['bps_ace_rememberme_disable'], 1 ); } ?> /><label><?php _e(' Disable & do not display the Remember Me checkbox', 'bulletproof-security'); ?></label><br />
 </td>
   </tr>
   <tr>
@@ -1566,7 +1589,7 @@ if ( isset( $_POST['Submit-ACE-Options'] ) && current_user_can('manage_options')
     <label for="LSLog"><?php _e('User Account Exceptions:', 'bulletproof-security'); ?></label><br />
     <label for="LSLog"><i><?php _e('Enter User Account names separated by a comma and a space: johnDoe, janeDoe', 'bulletproof-security'); ?></i></label><br />
     <label for="LSLog"><i><?php _e('Auth Cookie Expiration Time Will Not Be Applied To These User Accounts.', 'bulletproof-security'); ?></i></label><br />
-    <input type="text" name="bps_ace_user_account_exceptions" class="regular-text-450" value="<?php if ( $BPS_ACE_options['bps_ace_user_account_exceptions'] != '' ) { echo esc_html( $BPS_ACE_options['bps_ace_user_account_exceptions'] ); } else { echo esc_html(''); } ?>" />
+    <input type="text" name="bps_ace_user_account_exceptions" class="regular-text-450" value="<?php echo $ACE_exceptions; ?>" />
 	</td>
   </tr>
   <tr>
@@ -1574,11 +1597,11 @@ if ( isset( $_POST['Submit-ACE-Options'] ) && current_user_can('manage_options')
     <label><strong><?php _e('Enable|Disable Auth Cookie Expiration Time For These User Roles: ', 'bulletproof-security'); ?></strong></label><br />  
   <label><strong><i><?php _e('Check to Enable. Uncheck to Disable. See the Read Me help button for details.', 'bulletproof-security'); ?></i></strong></label><br />
     <div id="Roles-scroller">
-    <input type="checkbox" name="bps_ace_administrator" value="1" <?php checked( $BPS_ACE_options['bps_ace_administrator'], 1 ); ?> /><label><?php _e(' Administrator', 'bulletproof-security'); ?></label><br />
-    <input type="checkbox" name="bps_ace_editor" value="1" <?php checked( $BPS_ACE_options['bps_ace_editor'], 1 ); ?> /><label><?php _e(' Editor', 'bulletproof-security'); ?></label><br />
-	<input type="checkbox" name="bps_ace_author" value="1" <?php checked( $BPS_ACE_options['bps_ace_author'], 1 ); ?> /><label><?php _e(' Author', 'bulletproof-security'); ?></label><br />    
-	<input type="checkbox" name="bps_ace_contributor" value="1" <?php checked( $BPS_ACE_options['bps_ace_contributor'], 1 ); ?> /><label><?php _e(' Contributor', 'bulletproof-security'); ?></label><br />
-	<input type="checkbox" name="bps_ace_subscriber" value="1" <?php checked( $BPS_ACE_options['bps_ace_subscriber'], 1 ); ?> /><label><?php _e(' Subscriber', 'bulletproof-security'); ?></label><br />
+    <input type="checkbox" name="bps_ace_administrator" value="1" <?php if ( empty( $BPS_ACE_options['bps_ace_administrator'] ) ) { echo ''; } else { checked( $BPS_ACE_options['bps_ace_administrator'], 1 ); } ?> /><label><?php _e(' Administrator', 'bulletproof-security'); ?></label><br />
+    <input type="checkbox" name="bps_ace_editor" value="1" <?php if ( empty( $BPS_ACE_options['bps_ace_editor'] ) ) { echo ''; } else { checked( $BPS_ACE_options['bps_ace_editor'], 1 ); } ?> /><label><?php _e(' Editor', 'bulletproof-security'); ?></label><br />
+	<input type="checkbox" name="bps_ace_author" value="1" <?php if ( empty( $BPS_ACE_options['bps_ace_author'] ) ) { echo ''; } else { checked( $BPS_ACE_options['bps_ace_author'], 1 ); } ?> /><label><?php _e(' Author', 'bulletproof-security'); ?></label><br />    
+	<input type="checkbox" name="bps_ace_contributor" value="1" <?php if ( empty( $BPS_ACE_options['bps_ace_contributor'] ) ) { echo ''; } else { checked( $BPS_ACE_options['bps_ace_contributor'], 1 ); } ?> /><label><?php _e(' Contributor', 'bulletproof-security'); ?></label><br />
+	<input type="checkbox" name="bps_ace_subscriber" value="1" <?php if ( empty( $BPS_ACE_options['bps_ace_subscriber'] ) ) { echo ''; } else { checked( $BPS_ACE_options['bps_ace_subscriber'], 1 ); } ?> /><label><?php _e(' Subscriber', 'bulletproof-security'); ?></label><br />
 
 <?php
 
@@ -1586,8 +1609,11 @@ if ( isset( $_POST['Submit-ACE-Options'] ) && current_user_can('manage_options')
 	
 		if ( $role_name != 'administrator' && $role_name != 'editor' && $role_name != 'author' && $role_name != 'contributor' && $role_name != 'subscriber' ) {
 			
-			echo "<input type=\"checkbox\" name=\"bps_ace_custom_roles[$role_name]\" value=\"1\""; @checked( $BPS_ACE_options['bps_ace_custom_roles'][$role_name], 1 ); echo " /><label> ". $role_info['name'] ."</label>".'<br>';
-			
+			echo "<input type=\"checkbox\" name=\"bps_ace_custom_roles[$role_name]\" value=\"1\"";
+			if ( ! empty($BPS_ACE_options['bps_ace_custom_roles'][$role_name]) ) {
+				checked( $BPS_ACE_options['bps_ace_custom_roles'][$role_name], 1 );
+			}
+			echo " /><label> ". $role_info['name'] ."</label>".'<br>';
 		}
 	}
 ?>    

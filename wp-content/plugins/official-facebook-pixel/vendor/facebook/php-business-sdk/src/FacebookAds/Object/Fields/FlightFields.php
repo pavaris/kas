@@ -37,6 +37,8 @@ use FacebookAds\Enum\AbstractEnum;
 
 class FlightFields extends AbstractEnum {
 
+  const APPLINKS = 'applinks';
+  const CATEGORY_SPECIFIC_FIELDS = 'category_specific_fields';
   const CURRENCY = 'currency';
   const DESCRIPTION = 'description';
   const DESTINATION_AIRPORT = 'destination_airport';
@@ -54,6 +56,8 @@ class FlightFields extends AbstractEnum {
 
   public function getFieldTypes() {
     return array(
+      'applinks' => 'CatalogItemAppLinks',
+      'category_specific_fields' => 'CatalogSubVerticalList',
       'currency' => 'string',
       'description' => 'string',
       'destination_airport' => 'string',

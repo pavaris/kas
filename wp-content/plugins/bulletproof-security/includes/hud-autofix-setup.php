@@ -33,7 +33,7 @@ function bpsPro_EPC_plugin_check() {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset ( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
@@ -92,7 +92,7 @@ function bpsPro_w3tc_htaccess_check($w3tc_plugin) {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset ( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
@@ -156,7 +156,7 @@ function bpsPro_wpsc_htaccess_check($wpsc_plugin) {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset ( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
@@ -222,7 +222,7 @@ function bpsPro_comet_cache_htaccess_check() {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset ( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
@@ -291,7 +291,7 @@ function bpsPro_wpfc_htaccess_check() {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset ( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
@@ -356,7 +356,7 @@ function bpsPro_wp_rocket_htaccess_check() {
 		return;
 	}
 
-	if ( @$_POST['Submit-Setup-Wizard'] == true ) {
+	if ( isset ( $_POST['Submit-Setup-Wizard'] ) && $_POST['Submit-Setup-Wizard'] == true ) {
 		return;
 	}
 
