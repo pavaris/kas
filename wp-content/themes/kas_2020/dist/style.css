@@ -2011,7 +2011,7 @@ h1.section-title {
       height: 100%;
       width: 100%;
       object-fit: cover;
-      object-position: 0 25%; }
+      object-position: center 25%; }
   .header-slide .header-slide-info {
     position: absolute;
     left: 0;
