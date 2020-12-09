@@ -2913,6 +2913,8 @@ section.newsletter-container {
     align-items: center;
     margin-bottom: 45px;
     margin-right: 3%; }
+    .team-members .team-member .wrap {
+      width: 100%; }
     .team-members .team-member:nth-child(3n), .team-members .team-member:last-child {
       margin-right: 0px; }
     @media (max-width: 900px) {
@@ -2945,17 +2947,19 @@ section.newsletter-container {
       .team-members .team-member .team-member-images:hover .image-now {
         opacity: 0; }
     .team-members .team-member .team-member-name {
-      background-color: #414a57;
-      color: white;
-      padding: 10px 30px;
       font-size: 20px;
       text-transform: uppercase;
       letter-spacing: 0.15em;
       position: relative;
       top: -20px;
       z-index: 1; }
+      .team-members .team-member .team-member-name span {
+        background-color: #414a57;
+        color: white;
+        box-shadow: 0 0 0 10px #414a57;
+        line-height: 1.8em; }
     .team-members .team-member .team-member-info {
-      margin-top: -10px; }
+      margin-top: -5px; }
     .team-members .team-member p {
       margin-bottom: 10px; }
     .team-members .team-member a {

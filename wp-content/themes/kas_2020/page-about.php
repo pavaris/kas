@@ -45,7 +45,7 @@
 						<?php }else{ echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-child'); } ?>
 						
 					</div>
-					<div class="team-member-name"><?php echo $member['name']; ?></div>
+					<div class="team-member-name"><span><?php echo $member['name']; ?></span></div>
 					<div class="team-member-info">
 						<?php echo $member['info']; ?>
 					</div>

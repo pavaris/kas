@@ -126,7 +126,7 @@ $hosts = get_field('hosts', $term);
 														<img src="<?php echo $host['image']['sizes']['large']; ?>" alt="<?php echo $host['image']['alt']; ?>">
 													</div>
 													<div class="team-member-name">
-														<?php echo $host['name']; ?>
+														<span><?php echo $host['name']; ?></span>
 													</div>
 													<?php if($host['social']){ ?>
 													<div class="team-member-social">

@@ -112,7 +112,7 @@ get_header();
 
 												</div>
 												<div class="team-member-name">
-													<?php echo $host['name']; ?>
+													<span><?php echo $host['name']; ?></span>
 												</div>
 												<?php if($host['social']){ ?>
 												<div class="team-member-social">

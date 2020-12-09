@@ -190,6 +190,9 @@
 		align-items: center;
 		margin-bottom: 45px;
 		margin-right: 3%;
+		.wrap {
+			width: 100%;
+		}
 		&:nth-child(3n),
 		&:last-child {
 			margin-right: 0px;
@@ -232,18 +235,21 @@
 			}
 		}
 		.team-member-name {
-			background-color: $darkGray;
-			color: white;
-			padding: 10px 30px;
 			font-size: 20px;
 			text-transform: uppercase;
 			letter-spacing: 0.15em;
 			position: relative;
 			top: -20px;
 			z-index: 1;
+			span {
+				background-color: $darkGray;
+				color: white;
+				box-shadow: 0 0 0 10px $darkGray;
+				line-height: 1.8em;
+			}
 		}
 		.team-member-info {
-			margin-top: -10px;
+			margin-top: -5px;
 		}
 		p {
 			margin-bottom: 10px;
