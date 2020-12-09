@@ -101,7 +101,7 @@
 							?>
 						</div>
 						<div class="no-posts">
-							<h4 class="center">There are no vidoes with for this combination of filters.</h4>
+							<h4 class="center">There are no videos with for this combination of filters.</h4>
 						</div>
 					</div>
 					<div class="center " id="see-more-container">
