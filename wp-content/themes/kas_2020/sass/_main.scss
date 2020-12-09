@@ -314,6 +314,10 @@ button {
 	}
 }
 
+.wp-block-image img {
+	height: auto;
+}
+
 .border-columns {
 	.wp-block-column {
 		border: 2px solid white;

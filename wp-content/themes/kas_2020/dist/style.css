@@ -580,6 +580,9 @@ button {
     margin: 0 auto;
     display: block; }
 
+.wp-block-image img {
+  height: auto; }
+
 .border-columns .wp-block-column {
   border: 2px solid white;
   border-radius: 5px;
