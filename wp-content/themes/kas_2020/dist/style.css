@@ -2690,8 +2690,7 @@ section.newsletter-container {
         font-size: 16px;
         margin-bottom: 15px;
         font-weight: 600;
-        position: absolute;
-        top: -35px; }
+        margin-top: -38px; }
         .posts-feed a .post-feed-info .post-category span,
         .filtered-post-feed a .post-feed-info .post-category span {
           text-transform: initial; }
