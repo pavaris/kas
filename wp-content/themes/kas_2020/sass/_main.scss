@@ -18,16 +18,30 @@ body {
 h1 {
 	margin-bottom: 35px;
 	font-size: 65px;
+	a {
+		word-break: break-word;
+	}
 }
 
 h2 {
 	margin-bottom: 25px;
 	font-size: 40px;
+	a {
+		word-break: break-word;
+	}
 }
 
 h3 {
 	margin-bottom: 15px;
 	font-size: 35px;
+	@media (max-width: 375px) {
+		&.too-long {
+			font-size: 30px;
+		}
+	}
+	a {
+		word-break: break-word;
+	}
 }
 
 h4 {
@@ -35,16 +49,25 @@ h4 {
 	font-size: 29px;
 	font-weight: 600;
 	line-height: 1.2em;
+	a {
+		word-break: break-word;
+	}
 }
 
 h5 {
 	margin-bottom: 15px;
 	font-size: 20px;
+	a {
+		word-break: break-word;
+	}
 }
 
 h6 {
 	margin-bottom: 15px;
 	font-size: 15px;
+	a {
+		word-break: break-word;
+	}
 }
 
 p {
@@ -54,6 +77,9 @@ p {
 	color: $ughGray;
 	letter-spacing: 0.03em;
 	font-weight: 200;
+	a {
+		word-break: break-word;
+	}
 }
 
 a {
@@ -292,6 +318,10 @@ button {
 		font-weight: 600;
 		text-transform: uppercase;
 	}
+	img {
+		max-width: 100%;
+		height: auto;
+	}
 }
 
 .wp-block-columns {
@@ -430,4 +460,13 @@ article.footer-padding-gone {
 	p:nth-child(n + 2) {
 		display: none;
 	}
+}
+
+.block-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-width: 300px;
+	margin-left: auto;
+	margin-right: auto;
 }

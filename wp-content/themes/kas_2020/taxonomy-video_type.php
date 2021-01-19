@@ -31,7 +31,7 @@ get_header();
 	<?php $podcast = get_term_link(get_term_by('slug', 'not-your-average-podcast', 'podcast_type')); ?>
 	<?php if($podcast){ ?>
 	<div class="center">
-		<a href="<?php echo $podcast; ?>" class="button filled">Not Your Average Podcast</a>
+		<a href="<?php echo $podcast; ?>" class="button filled block-button">Not Your Average Podcast</a>
 	</div>
 	<?php } ?>
 <?php } ?>

@@ -325,28 +325,43 @@ body {
 h1 {
   margin-bottom: 35px;
   font-size: 65px; }
+  h1 a {
+    word-break: break-word; }
 
 h2 {
   margin-bottom: 25px;
   font-size: 40px; }
+  h2 a {
+    word-break: break-word; }
 
 h3 {
   margin-bottom: 15px;
   font-size: 35px; }
+  @media (max-width: 375px) {
+    h3.too-long {
+      font-size: 30px; } }
+  h3 a {
+    word-break: break-word; }
 
 h4 {
   margin-bottom: 15px;
   font-size: 29px;
   font-weight: 600;
   line-height: 1.2em; }
+  h4 a {
+    word-break: break-word; }
 
 h5 {
   margin-bottom: 15px;
   font-size: 20px; }
+  h5 a {
+    word-break: break-word; }
 
 h6 {
   margin-bottom: 15px;
   font-size: 15px; }
+  h6 a {
+    word-break: break-word; }
 
 p {
   margin-bottom: 20px;
@@ -355,6 +370,8 @@ p {
   color: #757f87;
   letter-spacing: 0.03em;
   font-weight: 200; }
+  p a {
+    word-break: break-word; }
 
 a {
   color: #6cb5ce; }
@@ -567,6 +584,10 @@ button {
   font-weight: 600;
   text-transform: uppercase; }
 
+.page-content img {
+  max-width: 100%;
+  height: auto; }
+
 .wp-block-columns {
   justify-content: center; }
   .wp-block-columns .wp-block-column ul li,
@@ -668,6 +689,14 @@ article.footer-padding-gone {
     margin-bottom: 0; }
   .short-desc p:nth-child(n + 2) {
     display: none; }
+
+.block-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto; }
 
 #masthead {
   position: absolute;
@@ -2780,7 +2809,7 @@ section.newsletter-container {
   padding: 80px 0 10px; }
 
 .page-header-container {
-  height: 75vh;
+  height: 80vh;
   min-height: 400px;
   width: 100%;
   position: relative;
@@ -3160,7 +3189,7 @@ section.newsletter-container {
   padding: 12px 25px; }
 
 .term-book-reviews .page-header-container {
-  height: 60vh; }
+  height: 80vh; }
 
 .single-written .all-articles .section-title,
 .term-book-reviews .all-articles .section-title {
@@ -3774,7 +3803,7 @@ section.newsletter-container {
   text-align: center; }
 
 .page-template-page-legacy-project .page-header-container {
-  height: 75vh;
+  height: 80vh;
   padding-top: 0px;
   margin-bottom: 50px; }
   .page-template-page-legacy-project .page-header-container h2 {
