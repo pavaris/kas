@@ -1523,6 +1523,9 @@ h1.section-title {
       .single .article-header h1 {
         font-size: 35px; } }
 
+.single .page-content p {
+  font-weight: 300; }
+
 .article-tag {
   background-color: #d8d8d8;
   display: inline-block;
@@ -3550,6 +3553,10 @@ section.newsletter-container {
   .single-event .more-podcasts-feed .section-title {
     font-weight: 600; }
 
+.single-video .all-articles,
+.single-event .all-articles {
+  margin-top: 0px; }
+
 .video-content {
   padding: 120px 0 60px;
   background-color: #464f5b;
@@ -4074,7 +4081,8 @@ section.newsletter-container {
 
 .page-template-page-gala .all-articles {
   padding-top: 60px;
-  background-color: #f8f8f8; }
+  background-color: #f8f8f8;
+  margin-top: 0; }
 
 .sponsors-block {
   display: flex; }

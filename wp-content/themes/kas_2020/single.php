@@ -127,7 +127,7 @@ if($author) {
 					?>
 				</article>
 			</div>
-												<?php echo do_shortcode('[yarpp]'); ?>
+							<?php echo do_shortcode('[yarpp]'); ?>
 
 		</main><!-- #main -->
 	</div><!-- #primary -->

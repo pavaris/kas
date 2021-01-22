@@ -125,7 +125,7 @@ get_header();
 					</div>
 				</article>
 
-					<section class="more-podcasts-feed">
+					<!-- <section class="more-podcasts-feed">
 					<div class="content-margins wide">
 						<h3 class="section-title"><?php echo $terms[0]->name; ?></h3>
 						<div class="posts-feed">
@@ -147,7 +147,11 @@ get_header();
 							<button id='see-more' class='filled' type='video' term="<?php echo $terms[0]->slug; ?>" offset="3" show='3'>More</button>
 						</div>
 					</div>
-				</section>
+				</section> -->
+
+
+											<?php echo do_shortcode('[yarpp]'); ?>
+
 
 
 		</main><!-- #main -->

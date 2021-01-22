@@ -21,13 +21,7 @@
         </a>
       </li>
     <?php } ?>
-    <?php if(get_field('vimeo', 'options')){ ?>
-      <li class='vimeo'>
-        <a href="<?php echo get_field('vimeo', 'options'); ?>" target='_blank'>
-          <?php include get_template_directory() . '/img/vimeo.svg'; ?>
-        </a>
-      </li>
-    <?php } ?>
+    
     <?php if(get_field('youtube', 'options')){ ?>
       <li class='youtube'>
         <a href="<?php echo get_field('youtube', 'options'); ?>" target='_blank'>
