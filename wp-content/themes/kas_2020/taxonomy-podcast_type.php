@@ -21,7 +21,7 @@ $hosts = get_field('hosts', $term);
 							</div>
 							<div class="podcast-image">
 								<?php $image = get_field('image', $term); ?>
-								<?php echo wp_get_attachment_image($image['ID'], 'large'); ?>
+								<?php echo wp_get_attachment_image($image['ID'], 'full'); ?>
 							</div>
 						</div>
 					</header>
