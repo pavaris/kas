@@ -142,7 +142,7 @@ get_header();
                         <?php foreach($feed as $post){ ?> 
                           <a href="<?php echo $post['link']['url']; ?>" class="home-feed-post">
                             <div class="home-feed-post-img">
-                              <?php echo wp_get_attachment_image($post['image']['ID'], 'large'); ?>
+                              <?php echo wp_get_attachment_image($post['image']['ID'], 'full'); ?>
                             </div>
                             <div class="home-feed-post-info">
                               <div class="home-feed-post-info-inner">
