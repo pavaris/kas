@@ -33,6 +33,9 @@
 }
 
 .single-written {
+	.content-margins.narrow {
+		max-width: 800px;
+	}
 	.all-articles {
 		.slick-track {
 			display: flex !important;

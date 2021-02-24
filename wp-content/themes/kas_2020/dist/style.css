@@ -365,11 +365,11 @@ h6 {
 
 p {
   margin-bottom: 20px;
-  font-size: 23px;
+  font-size: 20px;
   line-height: 1.4em;
-  color: #757f87;
+  color: #464f5b;
   letter-spacing: 0.03em;
-  font-weight: 200; }
+  font-weight: 300; }
   p a {
     word-break: break-word; }
 
@@ -2590,7 +2590,7 @@ section.newsletter-container {
 .podcast-header {
   margin-bottom: 50px; }
   .podcast-header .flex {
-    height: 75vh; }
+    height: 80vh; }
     @media (max-width: 767px) {
       .podcast-header .flex {
         height: auto; } }
@@ -2792,7 +2792,7 @@ section.newsletter-container {
   margin-bottom: 50px; }
   .page-template-page-about .page-content h1 {
     text-transform: uppercase;
-    color: #6a747c;
+    color: #464f5b;
     letter-spacing: 0.2em;
     font-weight: 600;
     margin-bottom: 30px;
@@ -2803,7 +2803,7 @@ section.newsletter-container {
       .page-template-page-about .page-content h1 {
         font-size: 35px; } }
   .page-template-page-about .page-content p {
-    color: #6a747c;
+    color: #464f5b;
     font-weight: 200; }
 
 .page-template-page-about .site-footer {
@@ -3206,6 +3206,9 @@ section.newsletter-container {
 .single-written .all-articles .section-title,
 .term-book-reviews .all-articles .section-title {
   color: #757f87; }
+
+.single-written .content-margins.narrow {
+  max-width: 800px; }
 
 .single-written .all-articles .slick-track {
   display: flex !important; }
@@ -3817,6 +3820,9 @@ section.newsletter-container {
 .page-donate .wp-block-button .wp-block-button__link {
   padding: 8px 25px !important;
   text-align: center; }
+
+.page-template-page-legacy-project .post-category {
+  display: none; }
 
 .page-template-page-legacy-project .page-header-container {
   height: 80vh;

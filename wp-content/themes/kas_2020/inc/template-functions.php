@@ -519,19 +519,24 @@ function podcast_article($postID){
 				</div>
 				<div class="post-feed-info">
 					
+											<?php if(get_field('creator_title', $postID)){ ?>
+
 						<div class="post-category">
-							<?php if(get_field('episode_number', $postID)){ ?>
+							<!-- <?php if(get_field('episode_number', $postID)){ ?>
 								Episode #<?php echo get_field('episode_number', $postID); ?>
 							<?php }else{
 								echo '<span>' . get_the_date('M d, Y', $postID) . '</span>';
-							} ?>
+							} ?> -->
+								<?php echo get_field('creator_title', $postID); ?>
 						</div>
+							<?php } ?>
 
 					<h6>
 						<?php echo get_the_title($postID); ?>
 					</h6>
-					<?php if(get_field('creator_title', $postID)){ ?>
-						<p><?php echo get_field('creator_title', $postID); ?></p>
+					<?php if(get_field('short_description', $postID)){ ?>
+						<div class="short-desc"><?php echo get_field('short_description', $postID); ?></div>
+
 					<?php } ?>
 				</div>
 			</a>
