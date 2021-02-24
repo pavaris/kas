@@ -59,11 +59,14 @@
 	<div class="board-members">
 		<?php foreach(get_field('board_members') as $member){ ?> 
 			<div class="board-member">
-				<div class="board-member-images">
-					<?php echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-now'); ?>
-					<?php if($member['childhood_image'] != ''){ ?> 
-						<?php echo wp_get_attachment_image($member['childhood_image']['ID'], 'medium', false, 'class=image-child'); ?>
-					<?php }else{ echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-child'); } ?>
+				<div class="board-left">
+					<div class="board-member-images">
+						<?php echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-now'); ?>
+						<?php if($member['childhood_image'] != ''){ ?>
+							<?php echo wp_get_attachment_image($member['childhood_image']['ID'], 'medium', false, 'class=image-child'); ?>
+						<?php }else{ echo wp_get_attachment_image($member['image']['ID'], 'medium', false, 'class=image-child'); } ?>
+					
+					</div>
 					<h3 class="board-member-name">
 						<span><?php echo $member['name']; ?></span>
 					</h3>

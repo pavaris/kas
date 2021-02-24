@@ -113,6 +113,7 @@ $(document).ready(function () {
 
 	$("#mobile-ham").click(function () {
 		$("#mobile-nav-links").toggleClass("active");
+		$("body").toggleClass("hide-overflow");
 	});
 
 	$(".header-slides").slick({

@@ -269,21 +269,26 @@
 			align-items: center;
 			margin-bottom: 60px;
 		}
-		.board-member-images {
-			margin-right: 40px;
-			height: 0;
-			padding-bottom: 35%;
-			position: relative;
+		.board-left {
 			min-width: 28%;
 			max-width: 28%;
+			margin-right: 40px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 
 			@media (max-width: 767px) {
-				margin-bottom: 30px;
 				max-width: 50%;
 				min-width: 50%;
-				padding-bottom: 60%;
 				margin-right: 0px;
 			}
+		}
+		.board-member-images {
+			height: 0;
+			padding-bottom: 120%;
+			position: relative;
+			width: 100%;
+			//
 			img {
 				position: absolute;
 				width: 100%;
@@ -303,17 +308,18 @@
 			}
 		}
 		h3.board-member-name {
-			top: calc(100% - 10px);
-			right: 0;
-			left: 0;
-			margin: 0 auto;
 			color: white;
 			font-size: 18px;
 			text-transform: uppercase;
 			letter-spacing: 0.15em;
-			z-index: 1;
-			position: absolute;
 			text-align: center;
+			position: relative;
+			z-index: 1;
+			white-space: nowrap;
+			top: -10px;
+			@media (max-width: 767px) {
+				margin-bottom: 40px;
+			}
 			span {
 				background-color: $darkGray;
 				padding: 10px 30px;

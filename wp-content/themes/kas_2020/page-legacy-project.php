@@ -115,7 +115,10 @@
 			<?php if(get_the_ID() == $children->posts[0]->ID){ ?>
 						<div class="page-video-container footer-margin-padding">
 							<div class="content-margins narrow">
-								<h2 class='center'>About Legacy Project</h2>
+							<?php $title= get_field('title');?>
+							<?php if($title){?>
+								<h2 class='center'><?php echo $title; ?></h2>
+							<?php } ?>
 								<div class="video-single-embed video-play-wrapper">
 									<iframe src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" data-src="https://www.youtube.com/embed/<?php echo get_field('youtube_video_id'); ?>" frameborder="0"  class="superembed-force"></iframe>
 									<a href="" id="play-video">

@@ -3,6 +3,25 @@
     "title": "Legacy Project Landing",
     "fields": [
         {
+            "key": "field_6035c8c650df3",
+            "label": "Title",
+            "name": "title",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": "",
+            "prepend": "",
+            "append": "",
+            "maxlength": ""
+        },
+        {
             "key": "field_5f2a2354934ce",
             "label": "Youtube Video ID",
             "name": "youtube_video_id",
@@ -63,5 +82,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1604638246
+    "modified": 1614137563
 }
