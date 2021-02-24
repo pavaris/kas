@@ -227,8 +227,10 @@
 	}
 
 	.header-slide .header-slide-info {
+		align-items: flex-end;
 		.header-slide-inner {
 			padding-left: 0;
+			margin-bottom: 100px;
 		}
 		width: 100%;
 		h3 {

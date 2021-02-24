@@ -2108,9 +2108,11 @@ h1.section-title {
   object-position: center; }
 
 .home-legacy-project .header-slide .header-slide-info {
+  align-items: flex-end;
   width: 100%; }
   .home-legacy-project .header-slide .header-slide-info .header-slide-inner {
-    padding-left: 0; }
+    padding-left: 0;
+    margin-bottom: 100px; }
   .home-legacy-project .header-slide .header-slide-info h3 {
     font-size: 60px;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all;
