@@ -654,7 +654,13 @@ article.footer-padding-gone {
   margin-bottom: 15px; }
 
 .mobile {
-  display: none; }
+  display: none !important; }
+
+@media (max-width: 767px) {
+  .mobile {
+    display: block !important; }
+  .desktop {
+    display: none !important; } }
 
 .wp-block-media-text {
   margin-bottom: 30px; }

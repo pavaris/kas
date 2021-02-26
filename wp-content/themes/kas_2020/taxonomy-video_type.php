@@ -16,8 +16,8 @@ get_header();
 													<?php
 										$image = get_field('banner_image', $term);
 										?>
-									
-										<?php echo wp_get_attachment_image($image['ID'], 'full'); ?>
+
+										<?php echo get_mobile_desktop_image_tax($term); ?>
 	
 							</div>
 						</div>

@@ -9,7 +9,8 @@
 		 <div class="page-header-container">
 				<h2>Legacy Project</h2>
 				<div class="page-header-image">
-					<?php echo get_the_post_thumbnail($aboutPage->ID); ?>
+					<?php echo get_mobile_desktop_image($aboutPage->ID); ?>
+
 				</div>
 			</div>
 		<div class="legacy-page-nav-cont">

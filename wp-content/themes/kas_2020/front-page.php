@@ -34,7 +34,7 @@ get_header();
                               <a href="<?php echo get_the_permalink($slide['post'][0]->ID); ?>">
                                 <div class="header-slide">
                                   <div class="header-slide-img">
-                                    <?php echo get_the_post_thumbnail($slide['post'][0]->ID); ?>
+                                    <?php echo get_mobile_desktop_image($slide['post'][0]->ID); ?>
                                   </div>
                                   <?php if(!$slide['hide_title']){ ?>
                                     <div class="header-slide-info <?php echo $slide['position']; ?>">
@@ -80,9 +80,8 @@ get_header();
                               <div class="header-slide-container">
                                 <div class="header-slide">
                                   <div class="header-slide-img">
-                                  <?php $legacy = get_page_by_path( 'legacy-project' );
- ?>
-                                    <?php echo get_the_post_thumbnail($legacy); ?>
+                                  <?php $legacy = get_page_by_path( 'legacy-project' );?>
+                                    <?php echo get_mobile_desktop_image($legacy->ID); ?>
                                   </div>
                                   
                                     <div class="header-slide-info">

@@ -3,9 +3,9 @@
     "title": "Taxonomy Fields",
     "fields": [
         {
-            "key": "field_5e93922cb01c4",
-            "label": "Image",
-            "name": "image",
+            "key": "field_5eb87be1dc572",
+            "label": "Banner Image",
+            "name": "banner_image",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -27,9 +27,9 @@
             "mime_types": ""
         },
         {
-            "key": "field_5eb87be1dc572",
-            "label": "Banner Image",
-            "name": "banner_image",
+            "key": "field_5e93922cb01c4",
+            "label": "Mobile Banner Image",
+            "name": "mobile_banner_image",
             "type": "image",
             "instructions": "",
             "required": 0,
@@ -87,5 +87,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1604629130
+    "modified": 1614311864
 }

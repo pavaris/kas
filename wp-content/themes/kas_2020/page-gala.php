@@ -10,7 +10,7 @@
  					?>
 			<div class="page-header-container">
 				<div class="page-header-image">
-					<?php echo get_the_post_thumbnail(); ?>
+					<?php echo get_mobile_desktop_image(get_the_ID()); ?>
 				</div>
 			</div>
 

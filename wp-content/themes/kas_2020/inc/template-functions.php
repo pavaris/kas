@@ -804,3 +804,30 @@ function change_tax_num_of_posts( $wp_query ) {
 	}    
 }
 add_theme_support( 'responsive-embeds' );
+
+
+function get_mobile_desktop_image($ID){
+	ob_start();
+	$mobile = get_field('mobile_image',$ID);
+	if($mobile){?> 
+		<?php echo get_the_post_thumbnail($ID, null, array( 'class' => 'desktop' )); ?>
+		<?php echo wp_get_attachment_image($mobile['ID'], 'large', false, array( 'class' => 'mobile' )); ?>
+	<?php }
+	else{ 
+		echo get_the_post_thumbnail($ID); 
+	} 
+	return ob_get_clean();
+}
+
+function get_mobile_desktop_image_tax($term){
+	ob_start();
+	$mobile = get_field('mobile_banner_image',$term);
+	if($mobile){?> 
+		<?php echo wp_get_attachment_image(get_field('banner_image', $term)['ID'], 'full', false, array( 'class' => 'desktop' )); ?>
+		<?php echo wp_get_attachment_image($mobile['ID'], 'large', false, array( 'class' => 'mobile' )); ?>
+	<?php }
+	else{ 
+		echo wp_get_attachment_image(get_field('banner_image', $term)['ID'], 'full');
+	} 
+	return ob_get_clean();
+}

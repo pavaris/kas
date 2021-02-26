@@ -412,7 +412,15 @@ article.footer-padding-gone {
 }
 
 .mobile {
-	display: none;
+	display: none !important;
+}
+@include mobile {
+	.mobile {
+		display: block !important;
+	}
+	.desktop {
+		display: none !important;
+	}
 }
 
 .wp-block-media-text {
