@@ -3411,9 +3411,7 @@ section.newsletter-container {
     position: sticky;
     position: -webkit-sticky;
     top: 100px;
-    min-width: 170px;
-    z-index: 10;
-    background-color: white; }
+    min-width: 170px; }
     @media (max-width: 1700px) {
       .search-results-container .search-filter {
         top: 175px; } }
@@ -3533,6 +3531,14 @@ section.newsletter-container {
         padding: 15px; }
         .search-results-container .search-input label input:focus {
           outline: none; }
+
+.result-category {
+  font-weight: 500;
+  margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: -5px; }
+  .result-category span {
+    text-transform: capitalize; }
 
 .single-video #page-header,
 .single-event #page-header {

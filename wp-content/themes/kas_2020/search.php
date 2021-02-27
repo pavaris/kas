@@ -97,6 +97,14 @@ global $wp_query;
 											<h5>
 												<?php the_title(); ?>
 											</h5>
+											<p class="result-category">
+												<?php $type = get_post_type(get_the_ID()); ?>
+												 <?php if($type != 'page') { ?>
+													<?php if(!is_wp_error(get_the_terms(get_the_ID(), $type . "_type"))){ ?>
+													<?php echo get_the_terms(get_the_ID(), $type . "_type")[0]->name; ?> | <span><?php echo $type; ?></span>
+													<?php } ?>
+													<?php } ?>
+											</p>
 											<div class="short-desc">
 												<?php echo get_field('short_description'); ?>
 											</div>
@@ -174,7 +182,8 @@ global $wp_query;
 							<img src="${e.image}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" />
 							</div>
 							<div class="search-result-desc">
-							<h5>${e.title}</h5><div class="short-desc">
+							<h5>${e.title}</h5>${e.tax_string !== '' ? "<p class='result-category'>" + e.tax_string + "</p>" : ''}
+							<div class="short-desc">
 							${e.desc !== null ? e.desc : ''}</div>
 							</div>
 							</a>
@@ -190,7 +199,8 @@ global $wp_query;
 							<img src="${e.image}" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" />
 							</div>
 							<div class="search-result-desc">
-							<h5>${e.title}</h5><div class="short-desc">
+							<h5>${e.title}</h5>${e.tax_string !== '' ? "<p class='result-category'>" + e.tax_string + "</p>" : ''}
+							<div class="short-desc">
 							${e.desc !== null ? e.desc : ''}</div>
 							</div>
 							</a>

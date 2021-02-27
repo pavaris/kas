@@ -723,14 +723,26 @@ function search_func($data){
 		$postProp = [];
 		foreach($response->posts as $post){
 			// print_r($post);
+			$type = get_post_type($post->ID);
+			
 			$vals = array(
 				'id' => $post->ID, 
 				'title' => $post->post_title, 
 				'image' => get_the_post_thumbnail_url( $post->ID, 'medium' ) ? get_the_post_thumbnail_url( $post->ID, 'medium' ) : '',
 				'url' => get_the_permalink($post->ID),
 				'desc' => get_field('short_description', $post->ID),
-				'type' => get_post_type($post->ID)
+				'type' => $type
 			);
+
+ 			if($type != 'page') { 
+				if(!is_wp_error(get_the_terms($post->ID, $type . "_type"))){ 
+				 $vals['tax_string'] = get_the_terms($post->ID, $type . "_type")[0]->name . ' | <span>' . $type . '</span>';
+				}
+			}else{
+				$vals['tax_string'] = '';
+			}
+
+
 			array_push($postProp, $vals);
 		}
 	}

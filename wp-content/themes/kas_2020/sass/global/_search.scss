@@ -138,8 +138,8 @@
 		position: -webkit-sticky;
 		top: 100px;
 		min-width: 170px;
-		z-index: 10;
-		background-color: white;
+		// z-index: 10;
+		// background-color: white;
 		@media (max-width: 1700px) {
 			top: 175px;
 		}
@@ -287,5 +287,15 @@
 				}
 			}
 		}
+	}
+}
+
+.result-category {
+	font-weight: 500;
+	margin-bottom: 10px;
+	font-size: 18px;
+	margin-top: -5px;
+	span {
+		text-transform: capitalize;
 	}
 }
