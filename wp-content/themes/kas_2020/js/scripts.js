@@ -121,8 +121,8 @@ $(document).ready(function () {
 		});
 	}
 
-	$(".mobile.filter").click(function () {
-		$(".mobile.filter-dropdown").slideToggle();
+	$(".mobile-drop.filter").click(function () {
+		$(".mobile-drop.filter-dropdown").slideToggle();
 	});
 
 	var lastScrollTop = $(window).scrollTop();

@@ -47,7 +47,7 @@ global $wp_query;
 					<section class="search-results-cont">
 						<div class="search-input">
 							<div class="search-input-bar">
-								<div class="mobile filter-dropdown">
+								<div class="mobile-drop filter-dropdown">
 									<div class="filter-container">
 									<h3>Filters</h3>
 									<a href="#" type='all' class='active'>All</a>
@@ -59,7 +59,7 @@ global $wp_query;
 											} ?>
 								</div>
 								</div>
-								<button class="mobile filter">
+								<button class="mobile-drop filter">
 									<img src="<?php echo get_template_directory_uri(); ?>/img/filter.svg" alt="Filter">
 								</button>
 								<form role="search" method="get" class="search-form" action="<?php echo get_home_url( ); ?>">
