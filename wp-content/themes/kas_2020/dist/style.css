@@ -1741,7 +1741,8 @@ h1.section-title {
       .single-social-share .single-signup-container form p {
         display: flex;
         width: 100%;
-        margin-bottom: 0px; }
+        margin-bottom: 0px;
+        align-items: center; }
         @media (max-width: 450px) {
           .single-social-share .single-signup-container form p {
             flex-direction: column;
@@ -1944,6 +1945,19 @@ h1.section-title {
 
 .wp-block-embed__wrapper {
   text-align: center; }
+
+.wpcf7-form input {
+  outline: none; }
+
+.wpcf7-form.sent p,
+.wpcf7-form.sent input[type="submit"] {
+  display: none !important; }
+
+.wpcf7-form.sent .wpcf7-response-output {
+  margin: 0;
+  padding: 0;
+  border: 0px;
+  font-size: 20px; }
 
 .home section h3 {
   text-transform: uppercase;
@@ -2824,6 +2838,9 @@ section.newsletter-container {
 
 .page-template-page-about .legacy-page-nav {
   padding: 80px 0 10px; }
+
+.page-template-page-about .wpcf7-response-output {
+  text-align: center; }
 
 .page-header-container {
   height: 80vh;
