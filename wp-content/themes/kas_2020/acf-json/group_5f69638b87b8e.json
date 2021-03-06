@@ -6,7 +6,7 @@
             "key": "field_5f696395ee689",
             "label": "Communities",
             "name": "communities",
-            "type": "select",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -16,24 +16,22 @@
                 "id": ""
             },
             "choices": {
-                "-Select-": "-Select-",
                 "Adopted": "Adopted",
                 "LGBTQIA+": "LGBTQIA+",
                 "Multiracial": "Multiracial"
             },
+            "allow_custom": 1,
+            "save_custom": 1,
             "default_value": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
         },
         {
             "key": "field_5f696440ee68b",
             "label": "Generation",
             "name": "generation",
-            "type": "select",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -43,25 +41,23 @@
                 "id": ""
             },
             "choices": {
-                "-Select-": "-Select-",
                 "1st Gen": "1st Gen",
                 "1.5 Gen": "1.5 Gen",
                 "2nd Gen": "2nd Gen",
                 "3+ Gen": "3+ Gen"
             },
+            "allow_custom": 1,
+            "save_custom": 1,
             "default_value": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
         },
         {
             "key": "field_5f69648aee68c",
             "label": "Language",
             "name": "language",
-            "type": "select",
+            "type": "checkbox",
             "instructions": "",
             "required": 0,
             "conditional_logic": 0,
@@ -71,18 +67,16 @@
                 "id": ""
             },
             "choices": {
-                "-Select-": "-Select-",
                 "English": "English",
                 "Korean": "Korean",
                 "Other": "Other"
             },
+            "allow_custom": 1,
+            "save_custom": 1,
             "default_value": [],
-            "allow_null": 0,
-            "multiple": 0,
-            "ui": 0,
-            "return_format": "value",
-            "ajax": 0,
-            "placeholder": ""
+            "layout": "vertical",
+            "toggle": 0,
+            "return_format": "value"
         }
     ],
     "location": [
@@ -107,5 +101,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1600828463
+    "modified": 1614743133
 }

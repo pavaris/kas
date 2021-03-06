@@ -404,12 +404,51 @@ function postStruct($ID, $type = ''){
 }
 
 function legStruct($ID, $type = ''){
+	$comm = get_field('communities',$ID);
+	$gen = get_field('generation',$ID);
+	$lang = get_field('language',$ID);
+
+	$commStr = '';
+	$genStr = '';
+	$langStr = '';
+	$removeCharArr = array(".", "+", " ");
+	
+	if(count($comm) > 0) {
+		foreach($comm as $item){
+			if($commStr == ''){
+				$commStr = str_replace($removeCharArr, '', $item);
+			}else{
+				$commStr = $commStr . ',' . str_replace($removeCharArr, '', $item);
+			}
+			
+		}
+	}
+	if(count($gen) > 0) {
+		foreach($gen as $item){
+			if($genStr == ''){
+				$genStr = str_replace($removeCharArr, '', $item);
+			}else{			
+				$genStr = $genStr . ',' . str_replace($removeCharArr, '', $item);
+			}
+		}
+	}
+	if(count($lang) > 0) {
+		foreach($lang as $item){
+			if($langStr == ''){
+				$langStr = str_replace($removeCharArr, '', $item);
+			}else{
+				$langStr = $langStr . ',' . str_replace($removeCharArr, '', $item);
+			}
+		}
+	}
 	?> 
 		<a href="<?php echo get_the_permalink($ID); ?>"
-		communities="<?php echo get_field('communities',$ID) !== '-Select-' ? get_field('communities',$ID) : ''; ?>"
-		generation="<?php echo get_field('generation',$ID) !== '-Select-' ? get_field('generation',$ID) : '';  ?>"
-		language="<?php echo get_field('language',$ID) !== '-Select-' ? get_field('language',$ID) : ''; ?>"
+		communities="<?php echo $commStr; ?>"
+		generation="<?php echo $genStr; ?>"
+		language="<?php echo $langStr; ?>"
 		>
+		
+		
 				<div class="post-feed-image">
 					<?php echo get_the_post_thumbnail($ID); ?>
 				</div>
@@ -519,17 +558,13 @@ function podcast_article($postID){
 				</div>
 				<div class="post-feed-info">
 					
-											<?php if(get_field('creator_title', $postID)){ ?>
+											<!-- <?php if(get_field('creator_title', $postID)){ ?>
 
 						<div class="post-category">
-							<!-- <?php if(get_field('episode_number', $postID)){ ?>
-								Episode #<?php echo get_field('episode_number', $postID); ?>
-							<?php }else{
-								echo '<span>' . get_the_date('M d, Y', $postID) . '</span>';
-							} ?> -->
+					
 								<?php echo get_field('creator_title', $postID); ?>
 						</div>
-							<?php } ?>
+							<?php } ?> -->
 
 					<h6>
 						<?php echo get_the_title($postID); ?>

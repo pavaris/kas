@@ -208,30 +208,30 @@ $(document).ready(function () {
 
 	$(".filtered-post-feed a").each(function (e) {
 		if ($(this).attr("language")) {
-			lang.push($(this).attr("language"));
+			let arr = $(this).attr("language").split(",");
+			arr.forEach(elem => lang.push(elem));
 		}
 		if ($(this).attr("communities")) {
-			comm.push($(this).attr("communities"));
+			let arr2 = $(this).attr("communities").split(",");
+			arr2.forEach(elem => comm.push(elem));
 		}
 		if ($(this).attr("generation")) {
-			gen.push($(this).attr("generation"));
+			let arr3 = $(this).attr("generation").split(",");
+			arr3.forEach(elem => gen.push(elem));
 		}
 	});
 
 	[...new Set(lang)].sort().forEach(function (e) {
-		if (e !== "-Select-") {
-			$(".filters #language").append(`<option value="${e}">${e}</option>`);
-		}
+		$(".filters #language").append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}" onClick="filterChange()">
+  <label for="${e}">${e}</label></div>`);
 	});
 	[...new Set(gen)].sort().forEach(function (e) {
-		if (e !== "-Select-") {
-			$(".filters #generation").append(`<option value="${e}">${e}</option>`);
-		}
+		$(".filters #generation").append(`<div><input type="checkbox" id='${e}' 'name="${e}" value="${e}" onClick="filterChange()">
+  <label for="${e}">${e}</label></div>`);
 	});
 	[...new Set(comm)].sort().forEach(function (e) {
-		if (e !== "-Select-") {
-			$(".filters #communities").append(`<option value="${e}">${e}</option>`);
-		}
+		$(".filters #communities").append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}" onClick="filterChange()">
+  <label for="${e}">${e}</label></div>`);
 	});
 
 	$("#communities").change(function () {

@@ -33,8 +33,12 @@
 
 .legacy-page-nav-cont {
 	text-align: center;
+	h1 {
+		margin-bottom: 0;
+	}
 	.page-content {
 		text-align: left;
+		padding-top: 30px;
 		p {
 			font-weight: 200;
 		}
@@ -101,15 +105,36 @@
 	.filters {
 		display: flex;
 		justify-content: center;
-		margin-bottom: 30px;
-		select {
-			background-color: transparent;
-			font-size: 16px;
-			flex: 1;
-			margin: 0 15px 15px;
-			padding: 5px;
-			text-transform: uppercase;
-			font-family: $mrEaves;
+		margin-bottom: 40px;
+		.filter-col {
+			flex-grow: 1;
+			display: flex;
+			flex-direction: column;
+			background-color: $skyBlue;
+			border-radius: 5px;
+			padding: 10px 20px;
+			margin: 0 10px;
+			color: $offWhite;
+			@media (max-width: 767px) {
+				margin-bottom: 20px;
+			}
+			h6 {
+				text-align: center;
+				font-size: 18px;
+				text-transform: uppercase;
+				font-weight: 600;
+			}
+			> div {
+				display: flex;
+				align-items: center;
+				margin-bottom: 10px;
+
+				label {
+					margin-left: 10px;
+					font-size: 15px;
+					user-select: none;
+				}
+			}
 		}
 		@include mobile {
 			flex-direction: column;

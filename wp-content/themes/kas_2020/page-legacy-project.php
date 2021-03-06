@@ -46,15 +46,17 @@
 
 				<div class="posts-feed-cont footer-margin-padding">
 					<div class="filters content-margins">
-						<select name="communities" id="communities">
-							<option value="" default>COMMUNITIES</option>
-						</select>
-						<select name="generation" id="generation">
-							<option value="" default>Generation</option>
-						</select>
-						<select name="language" id="language">
-							<option value="" default>Language</option>
-						</select>
+						<div class='filter-col' id="communities">
+							<h6>Communities</h6>
+						</div>
+						
+						<div class="filter-col" id="generation">
+							<h6>Generation</h6>
+						</div>
+						
+						<div class="filter-col" id="language">
+							<h6>Language</h6>
+						</div>
 					</div>
 					<div class="posts-feed content-margins wide">
 						<?php 
@@ -95,9 +97,23 @@
 									)); 
 									$allVids = new WP_Query($args2);
 								if($allVids->have_posts()){
+										$commArrs = [];
+										$genArrs = [];
+										$langArrs = [];
+
 									foreach($allVids->posts as $post){
 										legStruct($post->ID, 'Legacy Project');
+											$comm = get_field('communities',$post->ID);
+											if(count($comm) > 0) {
+												foreach($comm as $item){
+													array_push($commArrs, $item);
+												}
+											}
+
+											array_push($genArrs, get_field('generation',$post->ID));
+											array_push($langArrs, get_field('language',$post->ID));
 									} 
+									print_r(array_unique($commArrs));
 								}
 							?>
 						</div>
