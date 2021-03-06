@@ -990,6 +990,9 @@ article.footer-padding-gone {
       font-size: 22px; }
       #mobile-nav #mobile-header .mobile-home span {
         color: #6cb5ce; }
+      @media (max-width: 320px) {
+        #mobile-nav #mobile-header .mobile-home {
+          font-size: 20px; } }
   #mobile-nav .menu-header-menu-container {
     margin-bottom: 30px; }
     #mobile-nav .menu-header-menu-container > ul {
