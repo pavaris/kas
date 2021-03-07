@@ -245,22 +245,25 @@ $(document).ready(function () {
 	// });
 
 	function filterChange() {
-		$(".filtered-feed a").hide();
+		$(".filtered-feed a").show();
 
 		$(".filters #communities [type='checkbox']:checked").each(function () {
-			$(`.filtered-feed a[communities*=${$(this).val()}]`).show();
+			console.log($(this).val());
+			$(`.filtered-feed a:not([communities*=${$(this).val()}])`).hide();
 		});
 		$(".filters #generation [type='checkbox']:checked").each(function () {
-			$(`.filtered-feed a[generation*=${$(this).val()}]`).show();
+			$(`.filtered-feed a:not([generation*=${$(this).val()}])`).hide();
 		});
 		$(".filters #language [type='checkbox']:checked").each(function () {
-			$(`.filtered-feed a[language*=${$(this).val()}]`).show();
+			$(`.filtered-feed a:not([language*=${$(this).val()}])`).hide();
 		});
 		if ($(".filters [type='checkbox']:checked").length > 0) {
-			toggleFeed();
+			$(".posts-feed").hide();
+			$(".filtered-feed").show();
 			$("#see-more-container").hide();
 		} else {
-			toggleFeed();
+			$(".posts-feed").show();
+			$(".filtered-feed").hide();
 			$("#see-more-container").show();
 		}
 
