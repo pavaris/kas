@@ -192,7 +192,6 @@ $(document).ready(function () {
 		$(".filtered-feed a").show();
 
 		$(".filters #communities [type='checkbox']:checked").each(function () {
-			console.log($(this).val());
 			$(`.filtered-feed a:not([communities*=${$(this).val()}])`).hide();
 		});
 		$(".filters #generation [type='checkbox']:checked").each(function () {
