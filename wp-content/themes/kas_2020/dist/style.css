@@ -1008,10 +1008,12 @@ article.footer-padding-gone {
     top: 100%;
     background-color: inherit;
     width: 100%;
-    padding: 10px 25px 25px 25px;
+    padding: 10px 25px 125px 25px;
     text-align: center;
     transform: translateY(-100%);
     z-index: -1;
+    height: calc(100vh - 50px);
+    overflow: scroll;
     transition: cubic-bezier(0.645, 0.045, 0.355, 1) 300ms all; }
     #mobile-nav #mobile-nav-links.active {
       transform: none; }
