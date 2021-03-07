@@ -123,7 +123,7 @@
 											}
 									}
 									?>
-									<div id="filter-key">
+
 										<?php $removeCharArr = array(".", "+", " ");
 										$dict = [];
 										foreach(array_unique($commArrs) as $key=>$item){
@@ -139,7 +139,7 @@
 										<script>
 											var filterDict = <?php echo json_encode($dict); ?>
 										</script>
-									</div>
+
 									<?php  
 								}
 							?>
