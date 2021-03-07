@@ -160,5 +160,12 @@ $hosts = get_field('hosts', $term);
 		</main><!-- #main -->
 	</div><!-- #primary -->
 
+<script>
+		function filterChange() {
+		console.log("what");
+	}
+</script>
+
+
 <?php
 get_footer();

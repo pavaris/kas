@@ -222,95 +222,67 @@ $(document).ready(function () {
 	});
 
 	[...new Set(lang)].sort().forEach(function (e) {
-		$(".filters #language").append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}" onClick="filterChange()">
-  <label for="${e}">${e}</label></div>`);
+		$(".filters #language").append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}">
+  <label for="${e}">${filterDict[e]}</label></div>`);
 	});
 	[...new Set(gen)].sort().forEach(function (e) {
-		$(".filters #generation").append(`<div><input type="checkbox" id='${e}' 'name="${e}" value="${e}" onClick="filterChange()">
-  <label for="${e}">${e}</label></div>`);
+		$(".filters #generation").append(`<div><input type="checkbox" id='${e}' 'name="${e}" value="${e}">
+  <label for="${e}">${filterDict[e]}</label></div>`);
 	});
 	[...new Set(comm)].sort().forEach(function (e) {
-		$(".filters #communities").append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}" onClick="filterChange()">
-  <label for="${e}">${e}</label></div>`);
+		$(".filters #communities").append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}">
+  <label for="${e}">${filterDict[e]}</label></div>`);
 	});
 
-	$("#communities").change(function () {
+	$(".filters [type='checkbox']").change(function () {
 		filterChange();
 	});
-	$("#generation").change(function () {
-		filterChange();
-	});
-	$("#language").change(function () {
-		filterChange();
-	});
+	// $("#generation").change(function () {
+	// 	filterChange();
+	// });
+	// $("#language").change(function () {
+	// 	filterChange();
+	// });
 
 	function filterChange() {
-		$(".filtered-feed a").show();
-		if ($("#communities").val() !== "") {
-			$(`.filtered-feed a:not([communities="${$("#communities").val()}"])`).hide();
+		$(".filtered-feed a").hide();
+
+		$(".filters #communities [type='checkbox']:checked").each(function () {
+			$(`.filtered-feed a[communities*=${$(this).val()}]`).show();
+		});
+		$(".filters #generation [type='checkbox']:checked").each(function () {
+			$(`.filtered-feed a[generation*=${$(this).val()}]`).show();
+		});
+		$(".filters #language [type='checkbox']:checked").each(function () {
+			$(`.filtered-feed a[language*=${$(this).val()}]`).show();
+		});
+		if ($(".filters [type='checkbox']:checked").length > 0) {
+			toggleFeed();
+			$("#see-more-container").hide();
+		} else {
+			toggleFeed();
+			$("#see-more-container").show();
 		}
-		if ($("#language").val() !== "") {
-			$(`.filtered-feed a:not([language="${$("#language").val()}"])`).hide();
-		}
-		if ($("#generation").val() !== "") {
-			$(`.filtered-feed a:not([generation="${$("#generation").val()}"])`).hide();
-		}
+
 		if ($(`.filtered-feed a[style="display: none;"]`).length === $(".filtered-feed a").length) {
 			$(".filtered-feed").addClass("empty");
 		} else {
 			$(".filtered-feed").removeClass("empty");
 		}
 
-		if ($("#language").val() || $("#generation").val() || $("#communities").val()) {
-			$(".posts-feed").hide();
-			$(".filtered-feed").show();
-			$("#see-more-container").hide();
-		} else {
-			$(".posts-feed").show();
-			$(".filtered-feed").hide();
-			$("#see-more-container").show();
-			$(".filters option").removeAttr("disabled");
-		}
-	}
-
-	function parseFiltered() {
-		// var parsedLang = [];
-		// var parsedGen = [];
-		// var parsedComm = [];
-		// var filteredLang = [];
-		// var filteredGen = [];
-		// var filteredComm = [];
-		// $(`.filtered-feed a:not([style="display: none;"])`).each(function () {
-		// 	parsedLang.push($(this).attr("language"));
-		// 	parsedComm.push($(this).attr("communities"));
-		// 	parsedGen.push($(this).attr("generation"));
-		// });
-		// filteredLang = [...new Set(parsedLang)];
-		// filteredGen = [...new Set(parsedGen)];
-		// filteredComm = [...new Set(parsedComm)];
-		// console.log(filteredLang, filteredGen, filteredComm);
-		// if
-		// $(".filters option").removeAttr("disabled");
-		// if (filteredComm.length > 1) {
-		// 	$("#communities option:not([default])").attr("disabled", "true");
-		// 	filteredComm.forEach(function (e) {
-		// 		console.log(e);
-		// 		$(`#communities option[value="${e}"]`).removeAttr("disabled");
-		// 	});
-		// }
-		// if (filteredLang.length > 1) {
-		// 	$(`#language option:not([default])`).attr("disabled", "true");
-		// 	filteredLang.forEach(function (e) {
-		// 		console.log(e);
-		// 		$(`#language option[value="${e}"]`).removeAttr("disabled");
-		// 	});
-		// }
-		// if (filteredGen.length > 1) {
-		// 	$(`#generation option:not([default])`).attr("disabled", "true");
-		// 	filteredGen.forEach(function (e) {
-		// 		console.log(e);
-		// 		$(`#generation option[value="${e}"]`).removeAttr("disabled");
-		// 	});
+		// if (
+		// 	$("#language").val() ||
+		// 	$("#generation").val() ||
+		// 	$("#communities").val()
+		// ) {
+		// 	$(".posts-feed").hide();
+		// 	$(".filtered-feed").show();
+		// 	$("#see-more-container").hide();
+		// } else {
+		// 	$(".posts-feed").show();
+		// 	$(".filtered-feed").hide();
+		// 	$("#see-more-container").show();
+		// 	$(".filters option").removeAttr("disabled");
 		// }
 	}
 
@@ -346,6 +318,45 @@ $(document).ready(function () {
 			$(".yarpp-related-shortcode .center").hide();
 		}
 	});
+	// function filterChange() {
+	// 	console.log("hey");
+	// $(".filtered-feed a").show();
+	// if ($("#communities").val() !== "") {
+	// 	$(
+	// 		`.filtered-feed a:not([communities="${$("#communities").val()}"])`
+	// 	).hide();
+	// }
+	// if ($("#language").val() !== "") {
+	// 	$(`.filtered-feed a:not([language="${$("#language").val()}"])`).hide();
+	// }
+	// if ($("#generation").val() !== "") {
+	// 	$(
+	// 		`.filtered-feed a:not([generation="${$("#generation").val()}"])`
+	// 	).hide();
+	// }
+	// if (
+	// 	$(`.filtered-feed a[style="display: none;"]`).length ===
+	// 	$(".filtered-feed a").length
+	// ) {
+	// 	$(".filtered-feed").addClass("empty");
+	// } else {
+	// 	$(".filtered-feed").removeClass("empty");
+	// }
+	// if (
+	// 	$("#language").val() ||
+	// 	$("#generation").val() ||
+	// 	$("#communities").val()
+	// ) {
+	// 	$(".posts-feed").hide();
+	// 	$(".filtered-feed").show();
+	// 	$("#see-more-container").hide();
+	// } else {
+	// 	$(".posts-feed").show();
+	// 	$(".filtered-feed").hide();
+	// 	$("#see-more-container").show();
+	// 	$(".filters option").removeAttr("disabled");
+	// }
+	// }
 });
 
 /***/ })

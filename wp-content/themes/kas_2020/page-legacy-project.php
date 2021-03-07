@@ -105,15 +105,42 @@
 										legStruct($post->ID, 'Legacy Project');
 											$comm = get_field('communities',$post->ID);
 											if(count($comm) > 0) {
-												foreach($comm as $item){
-													array_push($commArrs, $item);
+												foreach($comm as $item1){
+													array_push($commArrs, $item1);
 												}
 											}
-
-											array_push($genArrs, get_field('generation',$post->ID));
-											array_push($langArrs, get_field('language',$post->ID));
-									} 
-									print_r(array_unique($commArrs));
+											$gen = get_field('generation',$post->ID);
+											if(count($gen) > 0) {
+												foreach($gen as $item2){
+													array_push($genArrs, $item2);
+												}
+											}
+											$lang = get_field('language',$post->ID);
+											if(count($lang) > 0) {
+												foreach($lang as $item3){
+													array_push($langArrs, $item3);
+												}
+											}
+									}
+									?>
+									<div id="filter-key">
+										<?php $removeCharArr = array(".", "+", " ");
+										$dict = [];
+										foreach(array_unique($commArrs) as $key=>$item){
+											$dict[str_replace($removeCharArr, '', $item)] = $commArrs[$key];
+										} 
+										foreach(array_unique($genArrs) as $key=>$item){
+											$dict[str_replace($removeCharArr, '', $item)] = $genArrs[$key];
+										} 
+										foreach(array_unique($langArrs) as $key=>$item){
+											$dict[str_replace($removeCharArr, '', $item)] = $langArrs[$key];
+										} 
+										?>
+										<script>
+											var filterDict = <?php echo json_encode($dict); ?>
+										</script>
+									</div>
+									<?php  
 								}
 							?>
 						</div>
