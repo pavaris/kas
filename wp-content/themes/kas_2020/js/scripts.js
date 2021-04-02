@@ -161,19 +161,19 @@ $(document).ready(function () {
 
 	[...new Set(lang)].sort().forEach(function (e) {
 		$(
-			".filters #language"
+			".filters #language .options"
 		).append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}">
   <label for="${e}">${filterDict[e]}</label></div>`);
 	});
 	[...new Set(gen)].sort().forEach(function (e) {
 		$(
-			".filters #generation"
+			".filters #generation .options"
 		).append(`<div><input type="checkbox" id='${e}' 'name="${e}" value="${e}">
   <label for="${e}">${filterDict[e]}</label></div>`);
 	});
 	[...new Set(comm)].sort().forEach(function (e) {
 		$(
-			".filters #communities"
+			".filters #communities .options"
 		).append(`<div><input type="checkbox" id='${e}' name="${e}" value="${e}">
   <label for="${e}">${filterDict[e]}</label></div>`);
 	});
@@ -187,6 +187,22 @@ $(document).ready(function () {
 	// $("#language").change(function () {
 	// 	filterChange();
 	// });
+
+	$(".filter-col h6").click(function () {
+		var $this = $(this);
+		if ($(window).width() > 767) {
+			$(".options").slideToggle();
+		} else {
+			if ($this.parent().attr("id") === "mobile-filters") {
+				$(".filter-col:not(#mobile-filters)").slideToggle();
+			}
+		}
+	});
+
+	$("#clear-filters").click(function () {
+		$("input[type=checkbox]").prop("checked", false);
+		filterChange();
+	});
 
 	function filterChange() {
 		$(".filtered-feed a").show();

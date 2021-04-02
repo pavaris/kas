@@ -3947,32 +3947,103 @@ section.newsletter-container {
 .posts-feed-cont .filters {
   display: flex;
   justify-content: center;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  border: 2px solid #757f87;
+  border-radius: 5px; }
   .posts-feed-cont .filters .filter-col {
     flex-grow: 1;
-    display: flex;
     flex-direction: column;
-    background-color: #6cb5ce;
-    border-radius: 5px;
-    padding: 10px 20px;
+    padding: 5px 10px;
     margin: 0 10px;
-    color: #f8f8f8; }
+    color: #757f87; }
     @media (max-width: 767px) {
       .posts-feed-cont .filters .filter-col {
-        margin-bottom: 20px; } }
+        display: none;
+        margin-bottom: 0px; }
+        .posts-feed-cont .filters .filter-col#communities {
+          margin-top: 10px; } }
+    @media (min-width: 768px) {
+      .posts-feed-cont .filters .filter-col {
+        display: flex !important; } }
+    .posts-feed-cont .filters .filter-col:last-child h6 {
+      border: 0px;
+      padding-right: 0px; }
+    @media (min-width: 768px) {
+      .posts-feed-cont .filters .filter-col:nth-last-child(2) h6 {
+        border: 0px;
+        padding-right: 0px; } }
     .posts-feed-cont .filters .filter-col h6 {
-      text-align: center;
+      user-select: none;
+      cursor: pointer;
       font-size: 18px;
       text-transform: uppercase;
-      font-weight: 600; }
-    .posts-feed-cont .filters .filter-col > div {
+      font-weight: 400;
+      margin-bottom: 0;
+      padding: 3px 0;
+      border-right: 2px solid #757f87;
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      margin-bottom: 10px; }
-      .posts-feed-cont .filters .filter-col > div label {
+      padding-right: 14px; }
+      .posts-feed-cont .filters .filter-col h6 svg {
+        margin-left: 14px;
+        height: 12px; }
+        .posts-feed-cont .filters .filter-col h6 svg path {
+          fill: #757f87; }
+      @media (max-width: 767px) {
+        .posts-feed-cont .filters .filter-col h6 {
+          cursor: initial;
+          border-right: 0;
+          justify-content: center;
+          padding-right: 0px; }
+          .posts-feed-cont .filters .filter-col h6 svg {
+            display: none; } }
+    .posts-feed-cont .filters .filter-col .options {
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-top: 15px; }
+      .posts-feed-cont .filters .filter-col .options > div {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center; }
+      .posts-feed-cont .filters .filter-col .options label {
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        cursor: pointer;
         margin-left: 10px;
         font-size: 15px;
-        user-select: none; }
+        user-select: none;
+        font-weight: 500; }
+      @media (max-width: 767px) {
+        .posts-feed-cont .filters .filter-col .options {
+          display: block !important; }
+          .posts-feed-cont .filters .filter-col .options > div {
+            max-width: 180px;
+            margin: 0 auto 10px; } }
+  .posts-feed-cont .filters #mobile-filters {
+    display: none;
+    margin: 0;
+    border-radius: 0;
+    padding: 0;
+    position: relative; }
+    .posts-feed-cont .filters #mobile-filters:after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #757f87; }
+    .posts-feed-cont .filters #mobile-filters h6 {
+      padding: 10px 15px;
+      justify-content: space-between;
+      cursor: pointer; }
+      .posts-feed-cont .filters #mobile-filters h6 svg {
+        display: block !important; }
+    @media (min-width: 768px) {
+      .posts-feed-cont .filters #mobile-filters {
+        display: none !important; } }
   @media (max-width: 767px) {
     .posts-feed-cont .filters {
       flex-direction: column; } }
@@ -3986,6 +4057,26 @@ section.newsletter-container {
 
 .legacy-video-feed-page .legacy-page-nav-cont {
   padding: 50px 0; }
+
+#clear-filters {
+  margin: 0;
+  padding: 0;
+  display: none; }
+  #clear-filters button {
+    color: white;
+    border: 0;
+    background-color: #757f87;
+    display: block;
+    width: 100%;
+    border-radius: 0px;
+    padding: 0;
+    font-weight: 400;
+    padding: 15px 5px;
+    text-transform: uppercase;
+    font-size: 16px; }
+  @media (min-width: 768px) {
+    #clear-filters {
+      display: none !important; } }
 
 .tax-event_type #page-header {
   margin-bottom: 0; }

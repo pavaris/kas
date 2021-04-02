@@ -46,16 +46,27 @@
 
 				<div class="posts-feed-cont footer-margin-padding">
 					<div class="filters content-margins">
+						<div id="mobile-filters" class="filter-col mobile">
+							<h6>Filters <?php include get_template_directory() . '/img/icon-chevron.svg'; ?></h6>
+						</div>
 						<div class='filter-col' id="communities">
-							<h6>Communities</h6>
+							<h6>Communities
+							<?php include get_template_directory() . '/img/icon-chevron.svg'; ?>
+							</h6>
+							<div class="options"></div>
 						</div>
 						
 						<div class="filter-col" id="generation">
-							<h6>Generation</h6>
+							<h6>Generation <?php include get_template_directory() . '/img/icon-chevron.svg'; ?></h6>
+							<div class="options"></div>
 						</div>
 						
 						<div class="filter-col" id="language">
-							<h6>Language</h6>
+							<h6>Language <?php include get_template_directory() . '/img/icon-chevron.svg'; ?></h6>
+							<div class="options"></div>
+						</div>
+						<div id="clear-filters" class='filter-col'>
+							<button >Clear Filter</button>
 						</div>
 					</div>
 					<div class="posts-feed content-margins wide">
