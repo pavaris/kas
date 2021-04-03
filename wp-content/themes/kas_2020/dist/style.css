@@ -685,16 +685,15 @@ article.footer-padding-gone {
 .wp-block-buttons .wp-block-button {
   margin-right: 45px; }
 
-.short-desc {
+.short-desc p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 20px; }
-  .short-desc p:last-child {
-    margin-bottom: 0; }
-  .short-desc p:nth-child(n + 2) {
-    display: none; }
+
+.short-desc p:nth-child(n + 2) {
+  display: none; }
 
 .block-button {
   display: flex;
@@ -3122,7 +3121,7 @@ section.newsletter-container {
     font-size: 25px;
     color: #757f87;
     letter-spacing: 0.1em;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 40px; }
   .single-podcast .article-header .single-tags a {
     font-weight: 500; }

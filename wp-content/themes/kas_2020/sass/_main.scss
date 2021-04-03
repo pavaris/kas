@@ -457,14 +457,14 @@ article.footer-padding-gone {
 }
 
 .short-desc {
-	display: -webkit-box;
-	-webkit-line-clamp: 3;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
-	margin-bottom: 20px;
-	p:last-child {
-		margin-bottom: 0;
+	p {
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		margin-bottom: 20px;
 	}
+
 	p:nth-child(n + 2) {
 		display: none;
 	}
