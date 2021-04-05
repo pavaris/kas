@@ -20,7 +20,7 @@ get_header();
 		
 			
 				<article class="video-content <?php echo $terms ? "" : 'footer-padding-gone'; ?>">
-					<div class="content-margins <?php echo $videos ? 'wide' : ''; ?>">
+					<div class="content-margins">
 						<?php
 						while ( have_posts() ) :
 							the_post();
