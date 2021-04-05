@@ -20,15 +20,21 @@ get_header();
 		
 			
 				<article class="video-content <?php echo $terms ? "" : 'footer-padding-gone'; ?>">
-					<div class="content-margins">
+					<div class="content-margins <?php echo $videos ? 'wide' : ''; ?>">
 						<?php
 						while ( have_posts() ) :
 							the_post();
 						?>
 							<section class="article-header">
-								<h2 class='section-title'>
-									<?php the_title(); ?>
-								</h2>
+								<div class="event-header">
+									<h2 class='section-title'>
+										<?php the_title(); ?>
+									</h2>
+									<?php if(get_field('date')){ ?>
+										<?php $date = strtotime(get_field('date')); ?>
+										<p><?php echo date('F j, Y', $date); ?></p>
+									<?php } ?>
+								</div>
 								
 							</section>
 						<?php if($videos){ ?>

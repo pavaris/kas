@@ -3,6 +3,23 @@
     "title": "Event Fields",
     "fields": [
         {
+            "key": "field_60689e83230db",
+            "label": "Date",
+            "name": "date",
+            "type": "date_picker",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "F j, Y",
+            "return_format": "Ymd",
+            "first_day": 1
+        },
+        {
             "key": "field_5f359c25d0227",
             "label": "Videos",
             "name": "videos",
@@ -168,5 +185,5 @@
     "hide_on_screen": "",
     "active": 1,
     "description": "",
-    "modified": 1604896687
+    "modified": 1617470220
 }
