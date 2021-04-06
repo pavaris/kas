@@ -163,13 +163,12 @@ get_header();
                         <h3>Our Projects</h3>
                         <div class="home-projects-feed">
                           <?php foreach($projects as $project){ ?> 
-                            <a href="<?php echo get_term_link($project->term_id); ?>">
-                              <?php if(get_field('image', 'term_' . $project->term_id)){ ?>
+                            <a href="<?php echo $project['link']['url']; ?>">
+                              
                                 <div class="home-projects-image">
-                                  <?php echo wp_get_attachment_image(get_field('image', 'term_' . $project->term_id)["ID"], 'large');  ?>
+                                  <?php echo wp_get_attachment_image($project['image']['ID'], 'full');  ?>
                                 </div>
-                              <?php } ?>
-                              <h5><?php echo $project->name; ?></h5>
+                              <h5><?php echo $project['link']['title']; ?></h5>
                             </a>
                           <?php } ?>
                         </div>
