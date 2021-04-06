@@ -126,8 +126,8 @@ get_header();
 				<section class="storytellers">
 					<div class="content-margins">
 					
-					<?php if(get_field('performer_section_label', 'term_' . $terms[0]->term_id)){ ?>
-						<h3><?php echo get_field('performer_section_label', 'term_' . $terms[0]->term_id) ?></h3>						
+					<?php if(get_field('performer_section_label')){ ?>
+						<h3><?php echo get_field('performer_section_label') ?></h3>						
 					<?php }else{
 						?> 
 						<h3>Performers</h3>

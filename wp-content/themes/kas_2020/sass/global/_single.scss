@@ -149,6 +149,14 @@
 			height: auto;
 		}
 	}
+	@media (max-width: 767px) {
+		flex-direction: column;
+		.author-img {
+			// max-width: 80%;
+			margin: 0 auto;
+			margin-bottom: 20px;
+		}
+	}
 }
 
 .author-social {
@@ -184,7 +192,9 @@
 	float: left;
 	margin-right: 40px;
 	@include mobile {
-		margin-right: 25px;
+		margin-left: auto;
+		margin-right: auto;
+		float: unset;
 	}
 }
 
@@ -193,7 +203,9 @@
 	float: right;
 	margin-left: 40px;
 	@include mobile {
-		margin-left: 25px;
+		margin-left: auto;
+		margin-right: auto;
+		float: unset;
 	}
 }
 
