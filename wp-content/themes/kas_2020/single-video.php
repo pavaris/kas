@@ -22,7 +22,7 @@ get_header();
 		
 			
 				<article class="video-content">
-					<div class="content-margins wide">
+					<div class="content-margins">
 						<?php
 						while ( have_posts() ) :
 							the_post();
@@ -167,6 +167,35 @@ get_header();
 		jQuery('.video-playlist-inner a:nth-child(n + ' + nth   +')').hide();
 		jQuery('.video-playlist-inner a:nth-last-child(n + ' + (last - key + 2)   +')').hide();
 		// jQuery('.video-playlist-inner a:nth-last-child(n + ' + key   +')').remove();
+		var lengthShown = jQuery(".video-playlist-inner a:visible").length;
+		var active;
+		var arr = [];
+		
+		if(jQuery(".video-playlist-inner a:visible").length < 10){
+			jQuery('.video-playlist-inner a').each(function(i,e){
+						var $this = jQuery(this);
+						if($this.is(':visible')){
+							if($this.hasClass('active')){
+								active = $this;
+							}else{
+								$this.remove();
+								arr.push($this);
+							}
+							
+						}else{
+							if(i < 10 - lengthShown){
+								$this.show();
+							}
+						}
+			});
+			arr.reverse().forEach(function(e, i){
+				jQuery('.video-playlist-inner .actual-playlist').prepend(e);
+			});
+			jQuery('.video-playlist-inner .actual-playlist').prepend(active);
+
+		}
+		
+		
 		
 
 	</script>

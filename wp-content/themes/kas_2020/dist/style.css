@@ -685,16 +685,15 @@ article.footer-padding-gone {
 .wp-block-buttons .wp-block-button {
   margin-right: 45px; }
 
-.short-desc {
+.short-desc p {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   margin-bottom: 20px; }
-  .short-desc p:last-child {
-    margin-bottom: 0; }
-  .short-desc p:nth-child(n + 2) {
-    display: none; }
+
+.short-desc p:nth-child(n + 2) {
+  display: none; }
 
 .block-button {
   display: flex;
@@ -1641,6 +1640,12 @@ h1.section-title {
     .single-author .author-img img {
       width: 100%;
       height: auto; }
+  @media (max-width: 767px) {
+    .single-author {
+      flex-direction: column; }
+      .single-author .author-img {
+        margin: 0 auto;
+        margin-bottom: 20px; } }
 
 .author-social {
   margin-top: 40px; }
@@ -1669,7 +1674,9 @@ h1.section-title {
   @media (max-width: 767px) {
     .alignleft,
     .wp-block-image .alignleft {
-      margin-right: 25px; } }
+      margin-left: auto;
+      margin-right: auto;
+      float: unset; } }
 
 .alignright,
 .wp-block-image .alignright {
@@ -1678,7 +1685,9 @@ h1.section-title {
   @media (max-width: 767px) {
     .alignright,
     .wp-block-image .alignright {
-      margin-left: 25px; } }
+      margin-left: auto;
+      margin-right: auto;
+      float: unset; } }
 
 .wp-block-cover {
   width: 100vw;
@@ -1963,6 +1972,16 @@ h1.section-title {
   padding: 0;
   border: 0px;
   font-size: 20px; }
+
+.event-header .section-title {
+  margin-bottom: 30px; }
+
+.event-header p {
+  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  font-size: 22px;
+  margin-bottom: 40px; }
 
 .home section h3 {
   text-transform: uppercase;
@@ -3122,7 +3141,7 @@ section.newsletter-container {
     font-size: 25px;
     color: #757f87;
     letter-spacing: 0.1em;
-    font-weight: 700;
+    font-weight: 500;
     margin-bottom: 40px; }
   .single-podcast .article-header .single-tags a {
     font-weight: 500; }

@@ -26,9 +26,15 @@ get_header();
 							the_post();
 						?>
 							<section class="article-header">
-								<h2 class='section-title'>
-									<?php the_title(); ?>
-								</h2>
+								<div class="event-header">
+									<h2 class='section-title'>
+										<?php the_title(); ?>
+									</h2>
+									<?php if(get_field('date')){ ?>
+										<?php $date = strtotime(get_field('date')); ?>
+										<p><?php echo date('F j, Y', $date); ?></p>
+									<?php } ?>
+								</div>
 								
 							</section>
 						<?php if($videos){ ?>
@@ -120,8 +126,8 @@ get_header();
 				<section class="storytellers">
 					<div class="content-margins">
 					
-					<?php if(get_field('performer_section_label', 'term_' . $terms[0]->term_id)){ ?>
-						<h3><?php echo get_field('performer_section_label', 'term_' . $terms[0]->term_id) ?></h3>						
+					<?php if(get_field('performer_section_label')){ ?>
+						<h3><?php echo get_field('performer_section_label') ?></h3>						
 					<?php }else{
 						?> 
 						<h3>Performers</h3>
