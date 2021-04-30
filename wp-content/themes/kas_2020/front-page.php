@@ -76,8 +76,8 @@ get_header();
                               )
                               ))); ?>
                         <section class="home-legacy-project">
-                          <a href="<?php echo get_the_permalink( $legacy ); ?>">
-                              <div class="header-slide-container">
+                          <a href="<?php echo get_the_permalink( $legacy ); ?>" class='header-slide-container'>
+                              
                                 <div class="header-slide">
                                   <div class="header-slide-img">
                                   <?php $legacy = get_page_by_path( 'legacy-project' );?>
@@ -96,7 +96,7 @@ get_header();
                                         </div>
                                       </div>
                                     </div>
-                                </div>
+                                
                               </div>
                             </a>
                         

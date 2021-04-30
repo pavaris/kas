@@ -482,3 +482,13 @@ article.footer-padding-gone {
 .hide-overflow {
 	overflow: hidden;
 }
+
+@mixin ratio {
+	height: 80vh;
+	width: 100%;
+	position: relative;
+	@media (min-width: 768px) {
+		height: 0;
+		padding-bottom: 55%;
+	}
+}

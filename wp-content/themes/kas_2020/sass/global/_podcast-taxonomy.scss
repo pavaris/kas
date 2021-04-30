@@ -131,11 +131,16 @@
 
 .podcast-header {
 	margin-bottom: 50px;
+	@include ratio;
 
 	.flex {
-		height: 80vh;
-		@include mobile {
-			height: auto;
+		height: 100%;
+		@media (min-width: 768px) {
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
 		}
 	}
 	.podcast-description {
