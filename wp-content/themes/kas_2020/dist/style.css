@@ -3948,7 +3948,8 @@ section.newsletter-container {
 
 .page-donate .wp-block-button .wp-block-button__link {
   padding: 8px 25px !important;
-  text-align: center; }
+  text-align: center;
+  line-height: 1.3em; }
 
 .page-template-page-legacy-project .post-category {
   display: none; }
