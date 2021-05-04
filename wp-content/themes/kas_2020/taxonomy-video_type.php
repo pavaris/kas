@@ -64,7 +64,6 @@ get_header();
 			
 
 
-
 					<section class="podcast-feed <?php echo $hosts ? '' : 'footer-margin-padding'; ?>">
 						<div class="content-margins wide">
 							<h3 class="section-title"><?php echo get_the_archive_title(); ?> Videos</h3>
@@ -98,7 +97,7 @@ get_header();
 
 <?php
 						if($hosts){ ?>
-							<section class="podcast-hosts footer-margin-padding">
+							<section class="podcast-hosts">
 								<div class="content-margins">
 									
 									<h3>Host<?php echo count($hosts) > 1 ? 's' : ""; ?></h3>
