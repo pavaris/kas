@@ -7,10 +7,11 @@
  	<div id="primary" class="content-area <?php echo $post->post_name == 'all-videos' ? 'legacy-video-feed-page' : ''; ?>">
  		<main id="main" class="site-main">
 		 <div class="page-header-container">
-				<h2>Legacy Project</h2>
-				<div class="page-header-image">
-					<?php echo get_mobile_desktop_image($aboutPage->ID); ?>
-
+				<div class="page-header-inner">
+					<h2>Legacy Project</h2>
+					<div class="page-header-image">
+						<?php echo get_mobile_desktop_image($aboutPage->ID); ?>
+					</div>
 				</div>
 			</div>
 		<div class="legacy-page-nav-cont">

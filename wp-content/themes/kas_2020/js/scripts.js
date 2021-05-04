@@ -26,7 +26,7 @@ $(document).ready(function () {
 					"https://www.youtube.com/embed/" + $this.attr("vidid")
 				);
 			}, 300);
-			$("h1").html($this.find("p").html());
+			$("h1").html($this.find("h5").html());
 		}
 	});
 

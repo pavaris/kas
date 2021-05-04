@@ -9,7 +9,9 @@
  						the_post();
  					?>
 			<div class="page-header-container">
-				<h1 class="archive-title">Roar Story Slam</h1>
+				<div class="page-header-inner">
+					<h1 class="archive-title">Roar Story Slam</h1>
+				</div>
 				<div class="page-header-image">
 					<?php echo get_mobile_desktop_image(get_the_ID()); ?>
 				</div>

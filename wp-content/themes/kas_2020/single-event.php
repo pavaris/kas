@@ -68,7 +68,7 @@ get_header();
 							</section>
 								
 							<section class='page-content <?php echo $videos ? 'playlist-padding' : ''; ?>'>
-								<h1><?php echo $videos[0]['title']; ?></h1>
+								<h1><?php echo $videos[0]['performer']; ?></h1>
 								<?php the_content(); ?>
 
 
@@ -145,6 +145,10 @@ get_header();
 									<h5>
 										<?php echo $video['performer']; ?>
 									</h5>
+									<?php if($video['title']) { ?> 
+										<h5><?php echo $video['title']; ?> </h5>
+									<?php } ?>
+
 									<p><?php echo $video['bio']; ?></p>
 								</div>
 							</div>

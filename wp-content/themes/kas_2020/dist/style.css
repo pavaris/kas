@@ -1996,7 +1996,17 @@ h1.section-title {
   @media (min-width: 768px) {
     .header-slides {
       height: 0;
-      padding-bottom: 55%; } }
+      padding-bottom: 45%; } }
+  .header-slides .page-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
   .header-slides .slick-list {
     position: absolute;
     top: 0;
@@ -2164,7 +2174,17 @@ h1.section-title {
   @media (min-width: 768px) {
     .header-slide-container {
       height: 0;
-      padding-bottom: 55%; } }
+      padding-bottom: 45%; } }
+  .header-slide-container .page-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
   .header-slide-container .header-slide {
     position: absolute;
     top: 0;
@@ -2663,7 +2683,17 @@ section.newsletter-container {
   @media (min-width: 768px) {
     .podcast-header {
       height: 0;
-      padding-bottom: 55%; } }
+      padding-bottom: 45%; } }
+  .podcast-header .page-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
   .podcast-header .flex {
     height: 100%; }
     @media (min-width: 768px) {
@@ -2905,7 +2935,17 @@ section.newsletter-container {
   @media (min-width: 768px) {
     .page-header-container {
       height: 0;
-      padding-bottom: 55%; } }
+      padding-bottom: 45%; } }
+  .page-header-container .page-header-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
   .page-header-container:before {
     content: "";
     position: absolute;

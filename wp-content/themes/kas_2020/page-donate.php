@@ -7,7 +7,9 @@
  						the_post();
  					?>
 			<div class="page-header-container">
-				<h1 class="archive-title">Support Us</h1>
+				<div class="page-header-inner">
+					<h1 class="archive-title">Support Us</h1>
+				</div>
 				<div class="page-header-image">
 					<?php echo get_the_post_thumbnail(); ?>
 				</div>

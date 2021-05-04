@@ -7,7 +7,9 @@
  						the_post();
  					?>
 			<div class="page-header-container">
-				<h2><?php the_title(); ?></h2>
+				<div class="page-header-inner">
+					<h2><?php the_title(); ?></h2>
+				</div>
 				<div class="page-header-image">
 					<?php echo get_the_post_thumbnail(); ?>
 				</div>

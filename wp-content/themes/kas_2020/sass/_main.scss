@@ -489,6 +489,17 @@ article.footer-padding-gone {
 	position: relative;
 	@media (min-width: 768px) {
 		height: 0;
-		padding-bottom: 55%;
+		padding-bottom: 45%;
+	}
+	.page-header-inner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 }

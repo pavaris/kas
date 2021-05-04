@@ -10,7 +10,7 @@ get_header();
 					<header id="page-header">
 						<div class="page-header-container">
 						<?php if(!get_field('hide_title', $term)){ ?>
-								<?php the_archive_title( '<h1 class="archive-title">', '</h1>' );?>
+								<div class="page-header-inner"><?php the_archive_title( '<h1 class="archive-title">', '</h1>' );?></div>
 							<?php } ?>
 							<div class="page-header-image">
 													<?php
