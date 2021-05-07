@@ -109,6 +109,10 @@ $(document).ready(function () {
 	) {
 		$(".blocks-gallery-item").click(function (e) {
 			e.preventDefault();
+			$(".gallery-arrow-left, .gallery-arrow-right").removeClass(
+				"button-disabled"
+			);
+
 			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
 			$(".gallery-block-lightbox-inner img").html(
@@ -119,40 +123,65 @@ $(document).ready(function () {
 				"key",
 				$this.parent().attr("key")
 			);
+			if ($(".gallery-block-lightbox-inner img").attr("key") == 0) {
+				$(".gallery-arrow-left").addClass("button-disabled");
+			}
+			if (
+				$(".gallery-block-lightbox-inner img").attr("key") ==
+				$(".blocks-gallery-item").length - 1
+			) {
+				$(".gallery-arrow-right").addClass("button-disabled");
+			}
 		});
 		$(".lightbox-close").click(function () {
 			$(".gallery-block-lightbox").fadeOut();
 		});
 
 		$(".gallery-arrow-left").click(function () {
+			$(".gallery-arrow-right").removeClass("button-disabled");
 			var $this = $(this);
-			var img = $(".gallery-block-lightbox-inner img");
-			if (img.attr("key") == 0) {
-				return;
+			var currentImg = $(".gallery-block-lightbox-inner img");
+			if (currentImg.attr("key") == 0) {
+			} else {
+				currentImg.attr(
+					"src",
+					$(
+						`.blocks-gallery-item[key='${
+							parseInt(currentImg.attr("key")) - 1
+						}'] img`
+					).attr("src")
+				);
+				currentImg.attr("key", parseInt(currentImg.attr("key")) - 1);
+				if (currentImg.attr("key") == 0) {
+					$(".gallery-arrow-left").addClass("button-disabled");
+				} else {
+					$(".gallery-arrow-left").removeClass("button-disabled");
+				}
 			}
-			img.attr("key", parseInt(img.attr("key")) - 1);
-			img.attr(
-				"src",
-				$(
-					`.blocks-gallery-item[key='${parseInt(img.attr("key")) - 1}'] img`
-				).attr("src")
-			);
 		});
 
 		$(".gallery-arrow-right").click(function () {
 			var $this = $(this);
-			var img = $(".gallery-block-lightbox-inner img");
-			console.log(img.attr("key"));
+			var currentImg = $(".gallery-block-lightbox-inner img");
+			console.log(currentImg.attr("key"));
 			console.log($(".blocks-gallery-item").length - 1);
-			if (img.attr("key") == $(".blocks-gallery-item").length) {
+			if (currentImg.attr("key") == $(".blocks-gallery-item").length - 1) {
 			} else {
-				img.attr("key", parseInt(img.attr("key")) + 1);
-				img.attr(
+				$(".gallery-arrow-left").removeClass("button-disabled");
+				currentImg.attr(
 					"src",
 					$(
-						`.blocks-gallery-item[key='${parseInt(img.attr("key")) + 1}'] img`
+						`.blocks-gallery-item[key='${
+							parseInt(currentImg.attr("key")) + 1
+						}'] img`
 					).attr("src")
 				);
+				currentImg.attr("key", parseInt(currentImg.attr("key")) + 1);
+				if (currentImg.attr("key") == $(".blocks-gallery-item").length - 1) {
+					$(".gallery-arrow-right").addClass("button-disabled");
+				} else {
+					$(".gallery-arrow-right").removeClass("button-disabled");
+				}
 			}
 		});
 	}

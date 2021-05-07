@@ -1659,6 +1659,9 @@ h1.section-title {
     width: 10px;
     border-left: 3px solid black;
     border-top: 3px solid black; }
+  .gallery-arrow.button-disabled {
+    opacity: 0.3;
+    cursor: unset; }
 
 .gallery-arrow-left {
   left: 10px;

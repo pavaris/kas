@@ -170,6 +170,10 @@
 		border-left: 3px solid black;
 		border-top: 3px solid black;
 	}
+	&.button-disabled {
+		opacity: 0.3;
+		cursor: unset;
+	}
 }
 
 .gallery-arrow-left {
