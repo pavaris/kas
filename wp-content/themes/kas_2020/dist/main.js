@@ -179,9 +179,30 @@ $(document).ready(function () {
 			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
 			$(".gallery-block-lightbox-inner img").attr("key", $this.parent().attr("key"));
 		});
-		// $(".gallery-block-lightbox-inner").click(function () {
-		// 	$(".gallery-block-lightbox").fadeOut();
-		// });
+		$(".lightbox-close").click(function () {
+			$(".gallery-block-lightbox").fadeOut();
+		});
+
+		$(".gallery-arrow-left").click(function () {
+			var $this = $(this);
+			var img = $(".gallery-block-lightbox-inner img");
+			if (img.attr("key") == 0) {
+				return;
+			}
+			img.attr("key", parseInt(img.attr("key")) - 1);
+			img.attr("src", $(`.blocks-gallery-item[key='${parseInt(img.attr("key")) - 1}'] img`).attr("src"));
+		});
+
+		$(".gallery-arrow-right").click(function () {
+			var $this = $(this);
+			var img = $(".gallery-block-lightbox-inner img");
+			console.log(img.attr("key"));
+			console.log($(".blocks-gallery-item").length - 1);
+			if (img.attr("key") == $(".blocks-gallery-item").length) {} else {
+				img.attr("key", parseInt(img.attr("key")) + 1);
+				img.attr("src", $(`.blocks-gallery-item[key='${parseInt(img.attr("key")) + 1}'] img`).attr("src"));
+			}
+		});
 	}
 
 	$(".mobile-drop.filter").click(function () {
