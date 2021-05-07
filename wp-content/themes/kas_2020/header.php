@@ -17,6 +17,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	<link rel="stylesheet" href="https://use.typekit.net/eay4akt.css">
+	<!-- <script src="https://www.google.com/recaptcha/api.js?render=6LfmacYaAAAAAOAqcgO39nBQzkZWZrgnMeoRuq0Z"></script> -->
+
 	<script>
   (function(d) {
     var config = {
