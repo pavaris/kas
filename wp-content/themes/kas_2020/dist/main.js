@@ -179,9 +179,9 @@ $(document).ready(function () {
 			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
 			$(".gallery-block-lightbox-inner img").attr("key", $this.parent().attr("key"));
 		});
-		$(".gallery-block-lightbox-inner").click(function () {
-			$(".gallery-block-lightbox").fadeOut();
-		});
+		// $(".gallery-block-lightbox-inner").click(function () {
+		// 	$(".gallery-block-lightbox").fadeOut();
+		// });
 	}
 
 	$(".mobile-drop.filter").click(function () {

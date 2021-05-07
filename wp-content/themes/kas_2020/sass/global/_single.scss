@@ -83,24 +83,65 @@
 
 .gallery-block-lightbox {
 	display: none;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: rgba(0, 0, 0, 0.9);
 	position: fixed;
 	top: 0;
 	left: 0;
 	height: 100%;
 	width: 100%;
+	z-index: 10;
 	.gallery-block-lightbox-inner {
 		height: 100%;
 		width: 100%;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-
+		position: relative;
 		img {
 			max-width: 90%;
 			max-height: 70%;
 		}
 	}
+}
+
+.gallery-arrow {
+	width: 30px;
+	height: 30px;
+	border-radius: 20px;
+	padding: 0;
+	border: 0px;
+	display: block;
+	font-size: 0;
+	background-color: $gray;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	&:hover {
+		background-color: $gray;
+	}
+	&:before {
+		content: "";
+		position: absolute;
+		left: 2px;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		margin: auto;
+		height: 10px;
+		width: 10px;
+		border-left: 3px solid black;
+		border-top: 3px solid black;
+	}
+}
+
+.gallery-arrow-left {
+	left: 10px;
+	transform: rotate(-45deg);
+}
+.gallery-arrow-right {
+	right: 10px;
+	transform: rotate(135deg);
 }
 
 .single-meta {

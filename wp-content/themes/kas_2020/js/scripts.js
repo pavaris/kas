@@ -120,9 +120,9 @@ $(document).ready(function () {
 				$this.parent().attr("key")
 			);
 		});
-		$(".gallery-block-lightbox-inner").click(function () {
-			$(".gallery-block-lightbox").fadeOut();
-		});
+		// $(".gallery-block-lightbox-inner").click(function () {
+		// 	$(".gallery-block-lightbox").fadeOut();
+		// });
 	}
 
 	$(".mobile-drop.filter").click(function () {

@@ -222,9 +222,9 @@ $args = array(
 <?php } ?>
 <div class="gallery-block-lightbox">
 	<div class="gallery-block-lightbox-inner">
-		<button class="gallery-arrow-left">left</button>
+		<button class="gallery-arrow-left gallery-arrow">left</button>
 		<img src="" alt="image">
-		<button class="gallery-arrow-right">right</button>
+		<button class="gallery-arrow-right gallery-arrow">right</button>
 	</div>
 </div>
 		</main><!-- #main -->
