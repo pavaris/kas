@@ -220,7 +220,13 @@ $args = array(
 				</section>
 <?php } ?>
 <?php } ?>
-
+<div class="gallery-block-lightbox">
+	<div class="gallery-block-lightbox-inner">
+		<button class="gallery-arrow-left">left</button>
+		<img src="" alt="image">
+		<button class="gallery-arrow-right">right</button>
+	</div>
+</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

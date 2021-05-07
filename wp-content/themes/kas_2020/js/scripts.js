@@ -107,15 +107,17 @@ $(document).ready(function () {
 		$(".wp-block-gallery").length > 0 ||
 		$(".photo-gallery-grid").length > 0
 	) {
-		$("body").append(
-			`<div class="gallery-block-lightbox"><div class="gallery-block-lightbox-inner"></div></div>`
-		);
 		$(".blocks-gallery-item").click(function (e) {
 			e.preventDefault();
 			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
-			$(".gallery-block-lightbox-inner").html(
+			$(".gallery-block-lightbox-inner img").html(
 				`<img src="${$this.attr("src")}" key="${$this.parent().attr("key")}"/>`
+			);
+			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
+			$(".gallery-block-lightbox-inner img").attr(
+				"key",
+				$this.parent().attr("key")
 			);
 		});
 		$(".gallery-block-lightbox-inner").click(function () {

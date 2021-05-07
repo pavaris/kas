@@ -1597,8 +1597,7 @@ h1.section-title {
     align-items: center; }
     .gallery-block-lightbox .gallery-block-lightbox-inner img {
       max-width: 90%;
-      max-height: 70%;
-      height: auto; }
+      max-height: 70%; }
 
 .single-meta {
   font-size: 18px;
