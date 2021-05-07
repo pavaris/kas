@@ -165,8 +165,8 @@ get_header();
 													<h3>Photos</h3>
 
 							<div class="photo-gallery-inner">
-								<?php foreach($photos as $photo){ ?>
-									<a href="#" class="blocks-gallery-item">
+								<?php foreach($photos as $key=>$photo){ ?>
+									<a href="#" class="blocks-gallery-item" key="<?php echo $key; ?>">
 										<?php echo wp_get_attachment_image($photo['ID'], 'large'); ?>
 									</a>
 								<?php } ?>

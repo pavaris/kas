@@ -112,9 +112,11 @@ $(document).ready(function () {
 		);
 		$(".blocks-gallery-item").click(function (e) {
 			e.preventDefault();
-			let href = $(this).find("img").attr("src");
+			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
-			$(".gallery-block-lightbox-inner").html("<img src='" + href + "' />");
+			$(".gallery-block-lightbox-inner").html(
+				`<img src="${$this.attr("src")}" key="${$this.parent().attr("key")}"/>`
+			);
 		});
 		$(".gallery-block-lightbox-inner").click(function () {
 			$(".gallery-block-lightbox").fadeOut();
