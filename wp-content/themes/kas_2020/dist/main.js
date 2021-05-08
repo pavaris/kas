@@ -171,15 +171,56 @@ $(document).ready(function () {
 
 	// GALLERY
 	if ($(".wp-block-gallery").length > 0 || $(".photo-gallery-grid").length > 0) {
-		$("body").append(`<div class="gallery-block-lightbox"><div class="gallery-block-lightbox-inner"></div></div>`);
 		$(".blocks-gallery-item").click(function (e) {
 			e.preventDefault();
-			let href = $(this).find("img").attr("src");
+			$(".gallery-arrow-left, .gallery-arrow-right").removeClass("button-disabled");
+
+			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
-			$(".gallery-block-lightbox-inner").html("<img src='" + href + "' />");
+
+			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
+			$(".gallery-block-lightbox-inner img").attr("key", $this.parent().attr("key"));
+			if ($(".gallery-block-lightbox-inner img").attr("key") == 0) {
+				$(".gallery-arrow-left").addClass("button-disabled");
+			}
+			if ($(".gallery-block-lightbox-inner img").attr("key") == $(".blocks-gallery-item").length - 1) {
+				$(".gallery-arrow-right").addClass("button-disabled");
+			}
 		});
-		$(".gallery-block-lightbox-inner").click(function () {
+		$(".lightbox-close").click(function () {
 			$(".gallery-block-lightbox").fadeOut();
+		});
+
+		$(".gallery-arrow-left").click(function () {
+			$(".gallery-arrow-right").removeClass("button-disabled");
+			var $this = $(this);
+			var currentImg = $(".gallery-block-lightbox-inner img");
+			if (currentImg.attr("key") == 0) {} else {
+				currentImg.attr("src", $(`.blocks-gallery-item[key='${parseInt(currentImg.attr("key")) - 1}'] img`).attr("src"));
+				currentImg.attr("key", parseInt(currentImg.attr("key")) - 1);
+				if (currentImg.attr("key") == 0) {
+					$(".gallery-arrow-left").addClass("button-disabled");
+				} else {
+					$(".gallery-arrow-left").removeClass("button-disabled");
+				}
+			}
+		});
+
+		$(".gallery-arrow-right").click(function () {
+			var $this = $(this);
+			var currentImg = $(".gallery-block-lightbox-inner img");
+			console.log(currentImg.attr("key"));
+			console.log($(".blocks-gallery-item").length - 1);
+			if (currentImg.attr("key") == $(".blocks-gallery-item").length - 1) {} else {
+				$(".gallery-arrow-left").removeClass("button-disabled");
+				currentImg.attr("src", $(`.blocks-gallery-item[key='${parseInt(currentImg.attr("key")) + 1}'] img`).attr("src"));
+				currentImg.attr("key", parseInt(currentImg.attr("key")) + 1);
+				if (currentImg.attr("key") == $(".blocks-gallery-item").length - 1) {
+					$(".gallery-arrow-right").addClass("button-disabled");
+				} else {
+					$(".gallery-arrow-right").removeClass("button-disabled");
+				}
+			}
 		});
 	}
 

@@ -165,8 +165,8 @@ get_header();
 													<h3>Photos</h3>
 
 							<div class="photo-gallery-inner">
-								<?php foreach($photos as $photo){ ?>
-									<a href="#" class="blocks-gallery-item">
+								<?php foreach($photos as $key=>$photo){ ?>
+									<a href="#" class="blocks-gallery-item" key="<?php echo $key; ?>">
 										<?php echo wp_get_attachment_image($photo['ID'], 'large'); ?>
 									</a>
 								<?php } ?>
@@ -220,7 +220,14 @@ $args = array(
 				</section>
 <?php } ?>
 <?php } ?>
-
+<div class="gallery-block-lightbox">
+	<button class="lightbox-close">close</button>
+	<div class="gallery-block-lightbox-inner">
+		<button class="gallery-arrow-left gallery-arrow">left</button>
+		<img src="" alt="image">
+		<button class="gallery-arrow-right gallery-arrow">right</button>
+	</div>
+</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

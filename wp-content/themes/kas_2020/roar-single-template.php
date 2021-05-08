@@ -165,7 +165,14 @@
 					</div>
 				</section>
 
-
+<div class="gallery-block-lightbox">
+	<button class="lightbox-close">close</button>
+	<div class="gallery-block-lightbox-inner">
+		<button class="gallery-arrow-left gallery-arrow">left</button>
+		<img src="" alt="image">
+		<button class="gallery-arrow-right gallery-arrow">right</button>
+	</div>
+</div>
 		</main><!-- #main -->
 	</div><!-- #primary -->
 

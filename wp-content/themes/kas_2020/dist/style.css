@@ -1583,22 +1583,101 @@ h1.section-title {
 
 .gallery-block-lightbox {
   display: none;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  width: 100%; }
+  width: 100%;
+  z-index: 10; }
   .gallery-block-lightbox .gallery-block-lightbox-inner {
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center; }
+    align-items: center;
+    position: relative; }
     .gallery-block-lightbox .gallery-block-lightbox-inner img {
       max-width: 90%;
       max-height: 70%;
-      height: auto; }
+      display: block; }
+
+.lightbox-close {
+  font-size: 0;
+  height: 25px;
+  width: 25px;
+  border: 0;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  padding: 0;
+  border-radius: 0;
+  cursor: pointer;
+  z-index: 10; }
+  .lightbox-close:hover {
+    background: transparent; }
+  .lightbox-close:before, .lightbox-close:after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    background-color: white;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    transform-origin: center; }
+  .lightbox-close:before {
+    transform: rotate(45deg); }
+  .lightbox-close:after {
+    transform: rotate(-45deg); }
+
+.gallery-arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  padding: 0;
+  border: 0px;
+  display: block;
+  font-size: 0;
+  background-color: #d8d8d8;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transition-duration: 150ms; }
+  .gallery-arrow:hover {
+    background-color: #d8d8d8; }
+  .gallery-arrow:before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    height: 10px;
+    width: 10px;
+    border-left: 3px solid black;
+    border-top: 3px solid black; }
+  .gallery-arrow.button-disabled {
+    opacity: 0.3;
+    cursor: unset; }
+
+.gallery-arrow-left {
+  left: 15px;
+  transform: rotate(-45deg); }
+  @media (min-width: 1500px) {
+    .gallery-arrow-left {
+      left: 12%; } }
+
+.gallery-arrow-right {
+  right: 15px;
+  transform: rotate(135deg); }
+  @media (min-width: 1500px) {
+    .gallery-arrow-right {
+      right: 12%; } }
 
 .single-meta {
   font-size: 18px;
