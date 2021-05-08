@@ -115,9 +115,7 @@ $(document).ready(function () {
 
 			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
-			$(".gallery-block-lightbox-inner img").html(
-				`<img src="${$this.attr("src")}" key="${$this.parent().attr("key")}"/>`
-			);
+
 			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
 			$(".gallery-block-lightbox-inner img").attr(
 				"key",

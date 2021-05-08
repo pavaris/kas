@@ -1599,7 +1599,8 @@ h1.section-title {
     position: relative; }
     .gallery-block-lightbox .gallery-block-lightbox-inner img {
       max-width: 90%;
-      max-height: 70%; }
+      max-height: 70%;
+      display: block; }
 
 .lightbox-close {
   font-size: 0;
@@ -1618,7 +1619,7 @@ h1.section-title {
   .lightbox-close:before, .lightbox-close:after {
     content: "";
     position: absolute;
-    height: 2px;
+    height: 3px;
     background-color: white;
     width: 100%;
     top: 0;
@@ -1644,7 +1645,8 @@ h1.section-title {
   position: absolute;
   top: 0;
   bottom: 0;
-  margin: auto; }
+  margin: auto;
+  transition-duration: 150ms; }
   .gallery-arrow:hover {
     background-color: #d8d8d8; }
   .gallery-arrow:before {
@@ -1664,12 +1666,18 @@ h1.section-title {
     cursor: unset; }
 
 .gallery-arrow-left {
-  left: 10px;
+  left: 15px;
   transform: rotate(-45deg); }
+  @media (min-width: 1500px) {
+    .gallery-arrow-left {
+      left: 12%; } }
 
 .gallery-arrow-right {
-  right: 10px;
+  right: 15px;
   transform: rotate(135deg); }
+  @media (min-width: 1500px) {
+    .gallery-arrow-right {
+      right: 12%; } }
 
 .single-meta {
   font-size: 18px;

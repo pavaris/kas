@@ -100,6 +100,7 @@
 		img {
 			max-width: 90%;
 			max-height: 70%;
+			display: block;
 		}
 	}
 }
@@ -123,7 +124,7 @@
 	&:after {
 		content: "";
 		position: absolute;
-		height: 2px;
+		height: 3px;
 		background-color: white;
 		width: 100%;
 		top: 0;
@@ -154,6 +155,7 @@
 	top: 0;
 	bottom: 0;
 	margin: auto;
+	transition-duration: 150ms;
 	&:hover {
 		background-color: $gray;
 	}
@@ -177,12 +179,22 @@
 }
 
 .gallery-arrow-left {
-	left: 10px;
+	@media (max-width: 767px) {
+	}
+	left: 15px;
 	transform: rotate(-45deg);
+	@media (min-width: 1500px) {
+		left: 12%;
+	}
 }
 .gallery-arrow-right {
-	right: 10px;
+	@media (max-width: 767px) {
+	}
+	right: 15px;
 	transform: rotate(135deg);
+	@media (min-width: 1500px) {
+		right: 12%;
+	}
 }
 
 .single-meta {
