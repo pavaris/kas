@@ -74,7 +74,7 @@ __webpack_require__(2);
 /* 1 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleBuildError: Module build failed: \n\ttransition-duration: ;\n                   ^\n      Style declaration must contain a value\n      in /Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/sass/global/_single.scss (line 158, column 21)\n    at /Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/webpack/lib/NormalModule.js:195:19\n    at /Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/loader-runner/lib/LoaderRunner.js:367:11\n    at /Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/loader-runner/lib/LoaderRunner.js:233:18\n    at context.callback (/Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.callback (/Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.done [as callback] (/Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/neo-async/async.js:8067:18)\n    at options.error (/Users/pavaris/dev/kas_new/wp-content/themes/kas_2020/node_modules/node-sass/lib/index.js:294:32)");
 
 /***/ }),
 /* 2 */
@@ -177,6 +177,21 @@ $(document).ready(function () {
 
 			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
+			$(document).keydown(function (e) {
+				if (e.which == 37) {
+					$(".gallery-arrow-left").click();
+					return false;
+				}
+				if (e.which == 39) {
+					$(".gallery-arrow-right").click();
+					return false;
+				}
+
+				if (e.which == 27) {
+					$(".lightbox-close").click();
+					return false;
+				}
+			});
 
 			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
 			$(".gallery-block-lightbox-inner img").attr("key", $this.parent().attr("key"));
@@ -187,8 +202,10 @@ $(document).ready(function () {
 				$(".gallery-arrow-right").addClass("button-disabled");
 			}
 		});
+
 		$(".lightbox-close").click(function () {
 			$(".gallery-block-lightbox").fadeOut();
+			$(document).off("keydown");
 		});
 
 		$(".gallery-arrow-left").click(function () {
