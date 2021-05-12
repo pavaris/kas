@@ -115,6 +115,21 @@ $(document).ready(function () {
 
 			var $this = $(this).find("img");
 			$(".gallery-block-lightbox").fadeIn();
+			$(document).keydown(function (e) {
+				if (e.which == 37) {
+					$(".gallery-arrow-left").click();
+					return false;
+				}
+				if (e.which == 39) {
+					$(".gallery-arrow-right").click();
+					return false;
+				}
+
+				if (e.which == 27) {
+					$(".lightbox-close").click();
+					return false;
+				}
+			});
 
 			$(".gallery-block-lightbox-inner img").attr("src", $this.attr("src"));
 			$(".gallery-block-lightbox-inner img").attr(
@@ -131,8 +146,10 @@ $(document).ready(function () {
 				$(".gallery-arrow-right").addClass("button-disabled");
 			}
 		});
+
 		$(".lightbox-close").click(function () {
 			$(".gallery-block-lightbox").fadeOut();
+			$(document).off("keydown");
 		});
 
 		$(".gallery-arrow-left").click(function () {

@@ -118,9 +118,9 @@ $hosts = get_field('hosts', $term);
 									
 									<h3>Host<?php echo count($hosts) > 1 ? 's' : ""; ?></h3>
 									<?php if(get_field('host_layout_style', $term) == 'vertical') {
-										$layout = 'members-1';
+										$layout = 'members-2';
 									 }else{
-										 $layout = 'members-2';
+										 $layout = 'members-1';
 									 } ?>
 									<div class="team-members <?php echo $layout; ?>">
 										<?php foreach($hosts as $host){
