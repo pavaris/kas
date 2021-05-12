@@ -1646,7 +1646,7 @@ h1.section-title {
   top: 0;
   bottom: 0;
   margin: auto;
-  transition-duration: 150ms; }
+  transition-duration: 200ms; }
   .gallery-arrow:hover {
     background-color: #d8d8d8; }
   .gallery-arrow:before {
