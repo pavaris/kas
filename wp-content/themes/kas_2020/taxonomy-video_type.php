@@ -110,28 +110,30 @@ get_header();
 										<?php foreach($hosts as $host){
 											?>
 											<div class="team-member">
-												<div class="team-member-images">
+												<div class="wrap">
+													<div class="team-member-images">
 													
-															<?php echo wp_get_attachment_image($host['image']['ID'], 'medium'); ?>
-
-												</div>
-												<div class="team-member-name">
-													<span><?php echo $host['name']; ?></span>
-												</div>
-												<?php if($host['social']){ ?>
-												<div class="team-member-social">
-													<?php foreach($host['social'] as $social){ ?>
-														<a href="<?php echo $social['link']; ?>" target="_blank">
-															
-																<?php echo wp_get_attachment_image($social['icon']['ID']); ?>
-															
-														</a>
-													<?php } ?>
-												</div>
-													<?php } ?>
-												<div class="team-member-info">
-													<?php echo $host['description']; ?>
-												</div>
+																<?php echo wp_get_attachment_image($host['image']['ID'], 'medium'); ?>
+													</div>
+													<div class="team-member-name">
+														<span><?php echo $host['name']; ?></span>
+													</div>
+													<?php if($host['social']){ ?>
+													<div class="team-member-social">
+														<?php foreach($host['social'] as $social){ ?>
+															<a href="<?php echo $social['link']; ?>" target="_blank">
+													
+																	<?php echo wp_get_attachment_image($social['icon']['ID']); ?>
+													
+															</a>
+														<?php } ?>
+													</div>
+														<?php } ?>
+														</div>
+													<div class="team-member-info">
+														<?php echo $host['description']; ?>
+													</div>
+												
 										</div>
 									<?php } ?>
 								</div>
