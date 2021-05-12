@@ -226,8 +226,6 @@ $(document).ready(function () {
 		$(".gallery-arrow-right").click(function () {
 			var $this = $(this);
 			var currentImg = $(".gallery-block-lightbox-inner img");
-			console.log(currentImg.attr("key"));
-			console.log($(".blocks-gallery-item").length - 1);
 			if (currentImg.attr("key") == $(".blocks-gallery-item").length - 1) {} else {
 				$(".gallery-arrow-left").removeClass("button-disabled");
 				currentImg.attr("src", $(`.blocks-gallery-item[key='${parseInt(currentImg.attr("key")) + 1}'] img`).attr("src"));
